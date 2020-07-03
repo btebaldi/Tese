@@ -83,9 +83,9 @@ summary(deltas)
 
 deltas.noNa = deltas[!is.na(deltas$tau1.p), ]
 
-cat(sprintf("Trend is not null: %d", sum(deltas.noNa$phi1.p)))
-cat(sprintf("Trend is not null: %d", sum(deltas.noNa$tau2.p)))
-cat(sprintf("tau is not null: %d", sum(deltas.noNa$tau1.p)))
+cat(sprintf("\nTrend is not null: %d\n", sum(deltas.noNa$phi1.p)))
+cat(sprintf("\ntau in trend is not null: %d\n", sum(deltas.noNa$tau2.p)))
+cat(sprintf("\ntau is not null: %d\n", sum(deltas.noNa$tau1.p)))
 
 
 
