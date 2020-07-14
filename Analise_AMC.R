@@ -18,7 +18,7 @@ head(dados.1995plus)
 # amc <- read_excel("Database/Amcs_70_91_00_v4.xlsx", range = cell_limits(c(1,1), c(NA,3)))
 amc <- read_excel("Database/Amcs_91_v1.xlsx",
                   sheet = 1,
-                  range = "A1:E5661")
+                  range = "A1:F5661")
 
 # Retirar codigos ignorados, 99 e 0
 dados.1995plus <- dados.1995plus %>% filter(!(Municipio %in% c(99, 0)))
@@ -97,13 +97,22 @@ rm(list = c("anoj", "ano", "i", "j"))
 # Agrupa os dados em uma unica tabela
 dados.full.group <- dados.1995plus %>%
   group_by(amc, ano) %>%
-  summarise(N_ini=sum(Nao_admitido_ano), N_fim=sum(Nao_desligado_ano))
+  summarise(N_ini=sum(Nao_admitido_ano), N_fim=sum(Nao_desligado_ano), pop = sum(Populacao))
+
+
+
+# Padronizo para a populacao de 2018
+for (amc in unique(dados.full.group$amc)) {
+  dados.full.group[dados.full.group$amc==amc, "pop"]<- dados.full.group[dados.full.group$amc==amc & dados.full.group$ano==2018, "pop"]
+}
+
 
 # Calcula os erros de divulgaçao a cada ano
 dados.full.wide <- pivot_wider(dados.full.group,
                                names_from = "ano",
                                values_from = c("N_ini", "N_fim"),
-                               id_cols = amc,
+                               id_cols = c("amc", "pop"),
+                               # id_cols = "amc",
                                names_sep = ".") %>% 
   mutate(
     # erro.1986 = N_ini.1986 - N_fim.1985,
@@ -145,13 +154,16 @@ dados.full.wide <- pivot_wider(dados.full.group,
 
 
 dados.deltas <- dados.full.wide %>% 
-  select( c("amc", paste("erro", 1996:2018, sep = ".")) )
+  select( c("amc", "pop", paste("erro", 1996:2018, sep = ".")) )
 
 summary(dados.deltas)
+
 
 # Analise de dados com 
 sum(!complete.cases(dados.deltas))
 
+# Estimativa da popuulacao brasileira
+sum(dados.deltas$pop)
 
 i=1
 for(i in 1:nrow(dados.deltas)){
@@ -175,27 +187,85 @@ for(i in 1:nrow(dados.deltas)){
   # print(ADF.none@lags)
   # print(ADF.drift@lags)
   
+  dados.deltas[i, "Unit.Root"] = as.logical(NA)
+  dados.deltas[i, "Criterio"] = as.numeric(NA)
   
-  dados.deltas[i, "tau1"] = ADF.none@teststat
-  dados.deltas[i, "tau1.p"] = ADF.none@teststat > -1.95
+  if(ADF.trend@teststat[1] < -3.60){
+    # se temos rejeicao da nula entao nao tem os unit root
+    dados.deltas[i, "Unit.Root"] = FALSE
+    dados.deltas[i, "Criterio"] = 1
+  } else {
+    if(ADF.trend@teststat[3] < 7.24) {
+      # aqui a trend nao é significante, entao devemos estimar o modelo drift
+      
+      if(ADF.drift@teststat[1] < -3.00){
+        #  temos rejeicao da nula e com isso nao temos raiz unitária
+        dados.deltas[i, "Unit.Root"] = FALSE
+        dados.deltas[i, "Criterio"] = 2
+      } else{
+        # temos de testar a presenca de drift nao significante
+        if(ADF.drift@teststat[2] < 5.18){
+          # aqui nao temos drift, temos de estimar o modelo sem nada
+          if(ADF.none@teststat[1] < (-1.645)){
+            #  temos rejeicao da nula e com isso nao temos raiz unitaria
+            dados.deltas[i, "Unit.Root"] = FALSE
+            dados.deltas[i, "Criterio"] = 3
+          } else {
+            dados.deltas[i, "Unit.Root"] = TRUE
+            dados.deltas[i, "Criterio"] = 4
+          
+            if(abs(ADF.none@teststat[1])>1.95)  {
+            cat(sprintf("\ni=%d\t%f", i, ADF.none@teststat[1]))
+              }
+          }
+        } else {
+          # temos presenca de drift. Realizamos o teste utilizando a distribuicao normal.
+          if(ADF.drift@teststat[1] < (-1.95)){
+            # o coeficiente de y_t-1 é diferente de zero, logo nao tem unit root
+            dados.deltas[i, "Unit.Root"] = FALSE
+            dados.deltas[i, "Criterio"] = 5
+          } else {
+            dados.deltas[i, "Unit.Root"] = TRUE
+            dados.deltas[i, "Criterio"] = 6
+          }
+        }
+        
+      }
+    } else {
+      # aqui a trend é significante, entao devemos estimar gamma com distrib normal
+      if(ADF.drift@teststat[1] < -1.95){
+        dados.deltas[i, "Unit.Root"] = FALSE
+        dados.deltas[i, "Criterio"] = 7
+      }else{
+        dados.deltas[i, "Unit.Root"] = TRUE  
+        dados.deltas[i, "Criterio"]=8
+      }
+    }
+  }
   
-  dados.deltas[i, "tau2"] = ADF.drift@teststat[1]
-  dados.deltas[i, "tau2.p"] = ADF.drift@teststat[1] > - 2.89
+  # dados.deltas[i, "tau1"] = ADF.none@teststat
+  # 
+  # dados.deltas[i, "tau2"] = ADF.drift@teststat[1]
+  # dados.deltas[i, "tau2.p"] = ADF.drift@teststat[1] > - 2.89
+  # 
+  # dados.deltas[i, "phi1"] = ADF.drift@teststat[2] 
+  # dados.deltas[i, "phi1.p"] = ADF.drift@teststat[2] < 4.71
   
-  dados.deltas[i, "phi1"] = ADF.drift@teststat[2] 
-  dados.deltas[i, "phi1.p"] = ADF.drift@teststat[2] < 4.71
-  
-  rm(list = c("x", "ADF.none", "ADF.drift"))
+  rm(list = c("x", "ADF.none", "ADF.drift", "ADF.trend"))
 }
 
 
-cat(sprintf("\ndrift or tau is not zero: %d\n", sum(dados.deltas$phi1.p)))
-cat(sprintf("\ntau is not null (drift test): %d\n", sum(dados.deltas$tau2.p)))
-cat(sprintf("\ntau and drift is not null: %d\n", sum(dados.deltas$tau2.p & dados.deltas$phi1.p) ))
+cat(sprintf("\n Total de Raiz Unitaria: %d\n", sum(dados.deltas$Unit.Root)))
 
-cat(sprintf("\ntau is not null: %d\n", sum(dados.deltas$tau1.p)))
+dados.deltas[dados.deltas$Unit.Root, ] %>% arrange(desc(pop))
+
+summary(dados.deltas$pop[dados.deltas$Unit.Root]/sum(dados.deltas$pop) *100)
+
+boxplot(dados.deltas$pop[dados.deltas$Unit.Root]/sum(dados.deltas$pop) *100)
+
+plot(unlist(dados.deltas[dados.deltas$amc==431340, paste("erro", 1996:2018, sep = ".")]), type="l")
 
 
-dados.deltas[dados.deltas$tau1.p, ]
 
-plot(unlist(dados.deltas[dados.deltas$amc == 130240, paste("erro.", 1996:2018, sep="")]), type="l")
+
+
