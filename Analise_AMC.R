@@ -6,6 +6,7 @@ load(file = "./Database/dados.1995plus.Rdata")
 
 # libraries
 library(readxl)
+library(readr)
 library(dplyr)
 library(tibble)
 library(tidyr)
@@ -190,7 +191,7 @@ for(i in 1:nrow(dados.deltas)){
   dados.deltas[i, "Unit.Root"] = as.logical(NA)
   dados.deltas[i, "Criterio"] = as.numeric(NA)
   
-  if(ADF.trend@teststat[1] < -3.60){
+  if(ADF.trend@teststat[1] < (-3.60)){
     # se temos rejeicao da nula entao nao tem os unit root
     dados.deltas[i, "Unit.Root"] = FALSE
     dados.deltas[i, "Criterio"] = 1
@@ -198,7 +199,7 @@ for(i in 1:nrow(dados.deltas)){
     if(ADF.trend@teststat[3] < 7.24) {
       # aqui a trend nao é significante, entao devemos estimar o modelo drift
       
-      if(ADF.drift@teststat[1] < -3.00){
+      if(ADF.drift@teststat[1] < (-3.00)){
         #  temos rejeicao da nula e com isso nao temos raiz unitária
         dados.deltas[i, "Unit.Root"] = FALSE
         dados.deltas[i, "Criterio"] = 2
@@ -206,21 +207,17 @@ for(i in 1:nrow(dados.deltas)){
         # temos de testar a presenca de drift nao significante
         if(ADF.drift@teststat[2] < 5.18){
           # aqui nao temos drift, temos de estimar o modelo sem nada
-          if(ADF.none@teststat[1] < (-1.645)){
+          if(ADF.none@teststat[1] < (-1.95)){
             #  temos rejeicao da nula e com isso nao temos raiz unitaria
             dados.deltas[i, "Unit.Root"] = FALSE
             dados.deltas[i, "Criterio"] = 3
           } else {
             dados.deltas[i, "Unit.Root"] = TRUE
             dados.deltas[i, "Criterio"] = 4
-          
-            if(abs(ADF.none@teststat[1])>1.95)  {
-            cat(sprintf("\ni=%d\t%f", i, ADF.none@teststat[1]))
-              }
           }
         } else {
           # temos presenca de drift. Realizamos o teste utilizando a distribuicao normal.
-          if(ADF.drift@teststat[1] < (-1.95)){
+          if(ADF.drift@teststat[1] < (-1.645)){
             # o coeficiente de y_t-1 é diferente de zero, logo nao tem unit root
             dados.deltas[i, "Unit.Root"] = FALSE
             dados.deltas[i, "Criterio"] = 5
@@ -233,7 +230,7 @@ for(i in 1:nrow(dados.deltas)){
       }
     } else {
       # aqui a trend é significante, entao devemos estimar gamma com distrib normal
-      if(ADF.drift@teststat[1] < -1.95){
+      if(ADF.drift@teststat[1] < (-1.645)){
         dados.deltas[i, "Unit.Root"] = FALSE
         dados.deltas[i, "Criterio"] = 7
       }else{
@@ -254,16 +251,26 @@ for(i in 1:nrow(dados.deltas)){
   rm(list = c("x", "ADF.none", "ADF.drift", "ADF.trend"))
 }
 
-
 cat(sprintf("\n Total de Raiz Unitaria: %d\n", sum(dados.deltas$Unit.Root)))
 
-dados.deltas[dados.deltas$Unit.Root, ] %>% arrange(desc(pop))
+dados.deltas$Criterio[dados.deltas$Unit.Root]
+dados.deltas[dados.deltas$Criterio ==8, ]
 
-summary(dados.deltas$pop[dados.deltas$Unit.Root]/sum(dados.deltas$pop) *100)
+unit.root.data <- dados.1995plus %>% 
+  filter(amc %in% dados.deltas$amc[dados.deltas$Unit.Root]) %>% 
+  select(Municipio, Nome_Municipio, Populacao) %>% 
+  distinct() %>% 
+  arrange(desc(Populacao))
+write_excel_csv(x=unit.root.data,path = "./Excel Export/Dados1.csv")
 
-boxplot(dados.deltas$pop[dados.deltas$Unit.Root]/sum(dados.deltas$pop) *100)
+summary(unit.root.data$Populacao/sum(dados.deltas$pop) *100)
 
-plot(unlist(dados.deltas[dados.deltas$amc==431340, paste("erro", 1996:2018, sep = ".")]), type="l")
+boxplot(unit.root.data$Populacao/sum(dados.deltas$pop) *100)
+
+plot(unlist(dados.deltas[dados.deltas$Criterio==8, paste("erro", 1996:2018, sep = ".")]), type="l")
+
+
+
 
 
 
