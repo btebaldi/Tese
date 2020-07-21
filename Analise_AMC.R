@@ -27,19 +27,22 @@ dados.1995plus <- dados.1995plus %>% filter(!(Municipio %in% c(99, 0)))
 # dados.1995plus %>% filter(Municipio %in% c(99, 0))
 
 # Tabela com relacao de dados ignorados
-tbl.ignorados <- tibble(cod=0, desc="NA", .rows = 27)
+tbl.ignorados <- tibble(cod=0, desc="NA", .rows = 29)
 tbl.ignorados$cod <- c(119999, 129999, 139999, 149999, 159999, 169999, 
                        179999, 219999, 229999, 239999, 249999, 259999,
                        269999, 279999, 289999, 299999, 319999, 329999, 
                        339999, 359999, 419999, 429999, 439999, 509999,
-                       519999, 529999, 539999)
+                       519999, 529999, 539999,
+                       99, 0)
 
 tbl.ignorados$desc <- c("Ro-Ignorado","Ac-Ignorado","Am-Ignorado","Rr-Ignorado","Pa-Ignorado","Ap-Ignorado",
                         "To-Ignorado","Ma-Ignorado","Pi-Ignorado","Ce-Ignorado","Rn-Ignorado","Pb-Ignorado",
                         "Pe-Ignorado","Al-Ignorado","Se-Ignorado","Ba-Ignorado","Mg-Ignorado","Es-Ignorado",
                         "Rj-Ignorado","Sp-Ignorado","Pr-Ignorado","Sc-Ignorado","Rs-Ignorado","Ms-Ignorado",
-                        "Mt-Ignorado","Go-Ignorado","Df-Ignorado")
+                        "Mt-Ignorado","Go-Ignorado","Df-Ignorado",
+                        "Total1","Total2")
 
+# save(tbl.ignorados, file = "./Database/tblIgnorados.RData")
 # Retira da amostra os dados ignorados
 dados.1995plus <- dados.1995plus %>% filter(!(Municipio %in% tbl.ignorados$cod))
 # dados.1995plus %>% filter(Municipio %in% tbl.ignorados$cod)
