@@ -224,7 +224,7 @@ for (i in 1:nrow(amc.top10)) {
     labs(title = "Nível de emprego - 1995 a 2018",
          subtitle = sprintf("%s (%d)", amc.top10$Nome_Municipio[i], amc.top10$amc[i]),
          # caption = "1995-2018",
-         y="Nível populacional",
+         y="Nível de emprego",
          x="Data") +
     scale_x_date(minor_breaks = c(as.Date(paste(1995:2019, "-01-01", sep = "")))) +
     scale_y_continuous(labels = label_number(scale = 1e-6, suffix = "M") )
