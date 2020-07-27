@@ -5,6 +5,9 @@ rm(list=ls())
 library(readxl)
 library(dplyr)
 library(tidyr)
+library(ggplot2)
+library(stringr)
+library(scales)
 
 # Carrego a lista dos municipios
 load(file = "./Database/codigos_municipios.RData")
@@ -195,7 +198,42 @@ full.nivel <- full.amc %>% select(amc,
                               paste("NIV_", 2018, "M", sprintf("%02d", 1:12), sep=""))
 )
 
+# verifica o menor nivel de emprego
+min(apply(full.nivel, 2, min))
 
-sum(amc.negativa2$minimo)
+# Seleciona top 10 regioes por populacao.
+amc.top10 <- amc %>% filter(munic %in% c(355030, 330455, 292740, 530010, 230440, 310620, 130260,  410690, 261160, 431490))
 
+# para cada regiao imprime o grafico
+for (i in 1:nrow(amc.top10)) {
+
+    full.nivel.top10 <- full.nivel %>%
+    filter(amc == amc.top10$amc[i]) %>% 
+    pivot_longer(cols = -amc, names_to = "periodo", values_to = "nivel")
+  
+  
+  full.nivel.top10$Data <- as.Date(NA)
+  
+  full.nivel.top10$Data <- full.nivel.top10$periodo %>%
+    stringr::str_replace(pattern = "NIV\\_", replacement = "") %>% 
+    stringr::str_replace(pattern = "M", replacement = "-") %>% 
+    stringr::str_replace(pattern = "$", replacement = "-01") %>% as.Date()
+  
+  g1 <- ggplot(full.nivel.top10) +
+    geom_line(aes(x = Data, y = nivel)) +
+    labs(title = "Nível de emprego - 1995 a 2018",
+         subtitle = sprintf("%s (%d)", amc.top10$Nome_Municipio[i], amc.top10$amc[i]),
+         # caption = "1995-2018",
+         y="Nível populacional",
+         x="Data") +
+    scale_x_date(minor_breaks = c(as.Date(paste(1995:2019, "-01-01", sep = "")))) +
+    scale_y_continuous(labels = label_number(scale = 1e-6, suffix = "M") )
+  
+  print(g1)
+  ggsave(sprintf("%d-%s.png",amc.top10$amc[i],amc.top10$Nome_Municipio[i]),
+         plot=g1,
+         device = "png",
+         path = "./Plots/",
+         scale = 2)
+}
 
