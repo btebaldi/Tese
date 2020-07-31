@@ -13,10 +13,16 @@ library(scales)
 load(file = "./Database/codigos_municipios.RData")
 colnames(full) = "Muni"
 
-# carrego a lista de amcs
+# carrego a lista de amcs e mesoregioes
 meso.data <- read_excel("Database/Amcs_91_v1.xlsx",
                         sheet = 1,
                         range = "A1:G5661")
+
+
+# carrego as informacoes de mesoregioes.
+meso.info <- read_excel("Database/Cadastro Municipios.xlsx", 
+                                  sheet = "Mesoregioes")
+
 
 # carrego a lista de regioes ignoradas
 load(file = "./Database/tblIgnorados.RData")
@@ -205,39 +211,44 @@ min(apply(full.nivel, 1, min))
 # tem uma regiao com -82 empregos no nivel.
 
 
-# Seleciona top 10 regioes por populacao.
-meso.top10 <- meso.data %>% filter(munic %in% c(355030, 330455, 292740, 530010, 230440, 310620, 130260,  410690, 261160, 431490))
-
+# mostra o grafico do nivel para todas as mesoregioes.
 # para cada regiao imprime o grafico
-for (i in 1:nrow(meso.top10)) {
+for (i in 1:nrow(full.nivel)) {
   
-  full.nivel.top10 <- full.nivel %>%
-    filter(Meso == meso.top10$Meso[i]) %>% 
+  currentMeso.Number <- full.nivel$Meso[i]
+  currentMeso.Name <- meso.info$Nome_Mesorregiao[meso.info$ID_Meso == currentMeso.Number]
+  
+  meso.nivel <- full.nivel %>% filter(Meso == currentMeso.Number) %>% 
     pivot_longer(cols = -Meso, names_to = "periodo", values_to = "nivel")
   
+  # adiciono uma coluna para data
+  meso.nivel$Data <- as.Date(NA)
   
-  full.nivel.top10$Data <- as.Date(NA)
-  
-  full.nivel.top10$Data <- full.nivel.top10$periodo %>%
+  # parse da data a partir da coluna de periodo
+  meso.nivel$Data <- meso.nivel$periodo %>%
     stringr::str_replace(pattern = "NIV\\_", replacement = "") %>% 
     stringr::str_replace(pattern = "M", replacement = "-") %>% 
     stringr::str_replace(pattern = "$", replacement = "-01") %>% as.Date()
   
-  g1 <- ggplot(full.nivel.top10) +
+  # gero o grafico da mesoregiao
+  g1 <- ggplot(meso.nivel) +
     geom_line(aes(x = Data, y = nivel)) +
     labs(title = "Nível de emprego - 1995 a 2018",
-         subtitle = sprintf("Mesoregião de %s (%d)", meso.top10$Nome_Municipio[i], meso.top10$amc[i]),
+         subtitle = sprintf("Mesoregião de %s (%d)", currentMeso.Name, currentMeso.Number),
          # caption = "1995-2018",
          y="Nível de emprego",
          x="Data") +
     scale_x_date(minor_breaks = c(as.Date(paste(1995:2019, "-01-01", sep = "")))) +
     scale_y_continuous(labels = label_number(scale = 1e-6, suffix = "M") )
   
-  print(g1)
-  ggsave(sprintf("meso data %d-%s.png",meso.top10$Meso[i], meso.top10$Nome_Municipio[i]),
+  # faço o print em tela
+  # print(g1)
+  
+  # salvo o grafico no diretorio
+  ggsave(sprintf("(%d) %s.png", currentMeso.Number, stringr::str_replace(currentMeso.Name, "[*.\"/\\:;|,]", "_")),
          plot=g1,
          device = "png",
-         path = "./Plots/",
+         path = "./Plots/Mesoregioes",
          scale = 2)
 }
 
