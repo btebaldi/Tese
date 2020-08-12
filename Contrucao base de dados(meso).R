@@ -10,7 +10,7 @@ library(stringr)
 library(scales)
 
 # Turn On or off the grafical print
-PrintGrafs <- FALSE
+PrintGrafs <- TRUE
 
 # Carrego a lista dos municipios
 load(file = "./Database/codigos_municipios.RData")
@@ -42,8 +42,8 @@ full.meso <- unique(full[,"Meso"])
 
 
 # caminho dos aquivos
-# path <- "C:/Users/bteba/Dropbox/bruno-tebaldi/RAIS Base de dados/XLS/"
-path <- "C:/Users/Teo/Dropbox/bruno-tebaldi/RAIS Base de dados/XLS/"
+path <- "C:/Users/bteba/Dropbox/bruno-tebaldi/RAIS Base de dados/XLS/"
+# path <- "C:/Users/Teo/Dropbox/bruno-tebaldi/RAIS Base de dados/XLS/"
 
 
 for(ano in 1995:2018){
@@ -255,6 +255,14 @@ if(PrintGrafs){
            device = "png",
            path = "./Plots/Mesoregioes",
            scale = 2)
+    
+    
+    # Se a regiao for de BH salva os dados
+    if(currentMeso.Number == 3107)
+    {
+      save(meso.nivel, file = "./Database/BH_mesoDataNivel.Rdata")
+    }
+    
   }
 }
 
