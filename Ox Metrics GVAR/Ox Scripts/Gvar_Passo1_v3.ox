@@ -1,5 +1,6 @@
 ﻿#include <oxstd.oxh>
 #import <packages/PcGive/pcgive_ects>
+#include <Cointegration.ox>
 
 //	mPhi: matrix dos coeficientes. Inicialmente uma matriz zerada [iQtdVarDependente x iQtdVarDependente*iQtdLags];
 //	iValue: vParamValues - Valor efetivo dos parametros
@@ -256,6 +257,13 @@ main() {
     decl iCont;
 
     for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
+
+        // FOR DEBUG ONLY
+        if(iCont >2){
+            exit(0);
+        }
+
+
         // print Headder
         println("\n\n*****************************************");
         println("             Regiao ", iCont);
@@ -275,7 +283,8 @@ main() {
         println("\tAdicionando variavel star da regiao ", iCont);
         // println(GetRegionNames(iQtdRegioes, "R", "_Desligados"));
         mData = model.GetVar(GetRegionNames(iQtdRegioes, "R", "_Desligados"));
-        //println("%c", GetRegionNames(iQtdRegioes, "R", "_Desligados"), mData[0:6][]);
+        
+        
         model.Append(mData * mW[][iCont - 1], {"star_Desligados"});
         mData = model.GetVar(GetRegionNames(iQtdRegioes, "R", "_Admitidos"));
         //println("%c", GetRegionNames(iQtdRegioes, "R", "_Admitidos"), mData[0:6][]);
@@ -291,15 +300,63 @@ main() {
         println("\tConcluido construcao da variavel Delta para a regiao ", iCont);
         // CONTRUCAO DA MATRIZ DE LONGO PRAZO
         println("(3) Iniciando construcao da variavel beta*Z (Cointegracao) para a regiao ", iCont);
+
+
+        // IF BETA ESTIMATION
+        println("\tIniciando determinacao do vetor de cointegracao (beta) a regiao ", iCont);
+        
+        // Inicio um objeto de integracao
+        decl CointModel = new Cointegration();
+
+        decl asX = {sprint("R", iCont, "_Admitidos"), sprint("R", iCont, "_Desligados")};
+        decl asX_star = {"star_Admitidos", "star_Desligados"};
+	    decl mdataX = model.GetVar(asX);
+        decl mdataX_star = model.GetVar(asX_star);
+
+	    // adiciona variaveis
+	    CointModel.Add_X(mdataX, asX);
+	    CointModel.Add_X_star(mdataX_star, asX_star);
+	
+	    // Seta rank para 5
+	    CointModel.SetRank(4);
+        //Informatio on the model
+	    CointModel.Info();
+        // Estima Cointegracao com o rank
+	    CointModel.EstimateCoint();
+        // Estima Rank baseado nas infos de coint
+	    CointModel.EstimateRank();
+        // Estima o modelo com novo numero de coint.
+	    CointModel.EstimateCoint();
+        // Salva a estimativa do beta
+        CointModel.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("CoInt_R", iCont, ".mat")));
+        
+        // Limpeza de ojetos criados
+        delete CointModel;
+        delete asX;
+        delete asX_star;
+	    delete mdataX;
+        delete mdataX_star;
+
         // Leitura do vetor de cointegracao
         // beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_R", iCont, ".mat")));
-        //beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_R", iCont, ".mat")));
-        beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_R_All.mat")));
+        beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_R", iCont, ".mat")));
+        // beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_R_All.mat")));
         // Duvida devo considerar vetor zero para os desligados???
-        // println(beta);
+        println(beta);
         // println(mData[1:10][]);
         // println(mData*beta');
-        model.Append(mData * beta', {"betaZ_Admitidos", "betaZ_Desligados"});
+        
+        decl asBetaZ;
+        for(decl i=1; i<=rows(beta); i++){
+            if(i==1){
+                asBetaZ =  {sprint("betaZ_", i)};    
+            } else {
+                asBetaZ =  asBetaZ ~ {sprint("betaZ_", i)};    
+            }
+            println("rows: ", asBetaZ);
+        }
+        model.Append(mData * beta', asBetaZ);
+        delete asBetaZ;
         println("\tConcluido construcao da variavel beta*Z (Cointegracao) para a regiao ", iCont);
         // ADICIONANDO MACROVARIAVEIS
         println("(4) Iniciando adicao de macrovariaveis para a regiao ", iCont);
