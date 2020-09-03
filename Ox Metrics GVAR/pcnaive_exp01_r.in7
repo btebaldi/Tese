@@ -1,0 +1,11 @@
+pcgive 700
+data pcnaive_exp01_r.bn7
+>T               1  1   10  1  1 32 pcnaive_exp0 08-08-2020 13:43:12
+>Yc_1            1  1   10  1  1 144 pcnaive_exp0 08-08-2020 13:43:12
+>MCSD_Yc_1       1  1   10  1  1 256 pcnaive_exp0 08-08-2020 13:43:12
+>Bias_Yc_1       1  1   10  1  1 368 pcnaive_exp0 08-08-2020 13:43:12
+>RMSE_Yc_1       1  1   10  1  1 480 pcnaive_exp0 08-08-2020 13:43:12
+>Constant        1  1   10  1  1 592 pcnaive_exp0 08-08-2020 13:43:12
+>MCSD_Constant    1  1   10  1  1 704 pcnaive_exp0 08-08-2020 13:43:12
+>Bias_Constant    1  1   10  1  1 816 pcnaive_exp0 08-08-2020 13:43:12
+>RMSE_Constant    1  1   10  1  1 928 pcnaive_exp0 08-08-2020 13:43:12

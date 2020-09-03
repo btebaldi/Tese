@@ -1,0 +1,10 @@
+		//GetVarIndex
+		
+		//println("Carregando dados");
+		//aVarNames = dbase.GetAllNames();
+		//mData = dbase.GetAll();
+									
+		//dbase.Append(diff(mData[][1:]), concatenate("D", aVarNames[1:], "_"));
+
+	//		println(classname(mData));
+		

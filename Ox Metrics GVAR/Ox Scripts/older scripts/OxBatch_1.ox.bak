@@ -1,0 +1,23 @@
+#include <oxstd.oxh>
+#import <packages/PcGive/pcgive>
+
+main()
+{
+// This program requires a licenced version of PcGive Professional.
+	//--- Ox code for SYS( 1)
+	decl model = new PcGive();
+
+	model.Load("C:\\Users\\Tebaldi\\Dropbox\\bruno-tebaldi\\2019-01 Ox GVAR TaylorMade\\Database\\GrandeRegiao.in7");
+	model.Deterministic(-1);
+
+	model.Select("Y", {"R1_Admitidos", 0, 0});
+	model.Select("Y", {"R1_Desligados", 0, 0});
+	model.Select("U", {"Constant", 0, 0});
+	model.SetModelClass("SYSTEM");
+	model.SetSelSample(2004, 1, 2016, 12);
+	model.SetMethod("OLS");
+	model.Estimate();
+	model.TestSummary();
+
+	delete model;
+}
