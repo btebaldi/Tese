@@ -259,9 +259,9 @@ main() {
     for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
 
         // FOR DEBUG ONLY
-        if(iCont >2){
-            exit(0);
-        }
+        // if(iCont >2){
+        //     exit(0);
+        // }
 
 
         // print Headder
@@ -438,7 +438,7 @@ main() {
         // Liga o autometrics
 		// (Mudar flag para TRUE, para estimar todos modelos com IIS)
         if ((iCont == 69) || (iCont == 84) || (iCont == 99) || TRUE) {
-            model.Autometrics(0.00001, "IIS", 1);
+            model.Autometrics(0.0001, "IIS", 1);
         } else {
             model.Autometrics(0.01, "none", 1);
         }
