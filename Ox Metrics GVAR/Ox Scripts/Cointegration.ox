@@ -9,6 +9,7 @@ class Cointegration {
 	decl iLags;
 
 	decl mRankMatrix;
+		decl mRankMatrix2;
 	decl mBeta;
 
 	decl mX;
@@ -29,6 +30,9 @@ class Cointegration {
 	// Adiciona as variaveis X_star
 	Add_X_star(const mData, const asNames);
 
+	// Permite inicializar os lags com um valor especifico
+	SetLags(const iValue);
+
 	// Inicializa a contagem dos ranks
 	InitRank();
 	
@@ -40,6 +44,7 @@ class Cointegration {
 
 	// Estima o Rank de cointegracao 
 	EstimateRank();
+	EstimateRankFromBoostrap();
 
 	// Salva a estimativa do beta
 	SaveBetaEstimative(const spath);
@@ -49,6 +54,9 @@ class Cointegration {
 //Constructor class
 Cointegration::Cointegration(){
 	iLags = 2;
+}
+Cointegration::SetLags(const iValue){
+	iLags = iValue;
 }
 // Metodo Add_X
 Cointegration::Add_X(const mData, const asNames){
@@ -68,6 +76,7 @@ Cointegration::InitRank(){
 Cointegration::SetRank(const iValue){
 	iRank = iValue;
 }
+
 // Model Info
 Cointegration::Info(){
 	println("Rank: ", iRank);
@@ -76,6 +85,7 @@ Cointegration::Info(){
 	println("X Variables: ", asX);
 	println("X* Variables: ", asX_star);
 }
+
 // Estimate Cointegration
 Cointegration::EstimateCoint(){
 	
@@ -108,17 +118,25 @@ Cointegration::EstimateCoint(){
 	// Tipo de cointegracao CIMEAN: Constante no espaço de cointegracao.
     // mode	string: one of "NONE","CIMEAN","DRIFT","CIDRIFT".
     // Equivalently, use the strings "H_z","H_c","H_lc","H_l", or the predefined constants CATS::NONE, CATS::CIMEAN, CATS::DRIFT, CATS::CIDRIFT.
+	model.Trend("DRIFT");
 
-	model.Trend("NONE");
 	// Inclui seasonal centradas
 	model.Seasonals(1);
+
 	// fixa a amostra
 	// model.SetSelSample(1975, 9, 1998, 12);
+	
 	// tipo de metodo RRR: Reduced Rank Regression
 	model.SetMethod("RRR");
 
+
+	// set print to false
+	model.SetPrint(FALSE);
+
 	// Estima o modelo.
 	model.Estimate();
+
+	mRankMatrix2 = model.BootstrapRankTest();
 
 	// Guarda o resultado o Rank table.
 	mRankMatrix = model.I1RankTable();
@@ -141,10 +159,31 @@ Cointegration::EstimateRank(){
 	println("Estimated rank: ", iRank);
 }
 
+Cointegration::EstimateRankFromBoostrap(){
+	for(decl irow = 0; irow < rows(mRankMatrix2[0][][]); irow++) {
+		// println("LINE[", irow, "]:", mRankMatrix2[0][irow][7]);
+		iRank = mRankMatrix2[0][irow][1];
+		if(mRankMatrix2[0][irow][7] > 0.05){
+			break;
+		} else {
+			iRank = iRank + 1;
+		}
+	}
+	println("Estimated rank: ", iRank);
+}
+
 Cointegration::SaveBetaEstimative(const spath){
-	savemat(spath, mBeta');
+	decl mbetaTransp = GetBetaEstimative();
+	savemat(spath, mbetaTransp');
 }
 
 Cointegration::GetBetaEstimative(){
-	return mBeta;
+	iRank=0;
+	decl ret;
+	if (iRank == 0){
+		ret = zeros(columns(mX) + columns(mX_star), 1);
+	} else {
+		ret = mBeta[][0:iRank-1];
+	}
+	return ret;
 }

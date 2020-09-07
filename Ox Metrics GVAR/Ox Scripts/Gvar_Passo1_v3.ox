@@ -319,14 +319,16 @@ main() {
 	
 	    // Seta rank para 5
 	    CointModel.SetRank(4);
+        
         //Informatio on the model
-	    CointModel.Info();
+	    // CointModel.Info();
+
         // Estima Cointegracao com o rank
 	    CointModel.EstimateCoint();
+        
         // Estima Rank baseado nas infos de coint
-	    CointModel.EstimateRank();
-        // Estima o modelo com novo numero de coint.
-	    CointModel.EstimateCoint();
+	    CointModel.EstimateRankFromBoostrap();
+
         // Salva a estimativa do beta
         CointModel.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("CoInt_R", iCont, ".mat")));
         
@@ -342,9 +344,6 @@ main() {
         beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_R", iCont, ".mat")));
         // beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_R_All.mat")));
         // Duvida devo considerar vetor zero para os desligados???
-        println(beta);
-        // println(mData[1:10][]);
-        // println(mData*beta');
         
         decl asBetaZ;
         for(decl i=1; i<=rows(beta); i++){
@@ -353,7 +352,7 @@ main() {
             } else {
                 asBetaZ =  asBetaZ ~ {sprint("betaZ_", i)};    
             }
-            println("rows: ", asBetaZ);
+            // println("rows: ", asBetaZ);
         }
         model.Append(mData * beta', asBetaZ);
         delete asBetaZ;
