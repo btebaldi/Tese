@@ -18,6 +18,37 @@ GetRegionNames(const iQtdRegioes, const sVarPrefix, const sVarPosfix) {
     return aNames;
 }
 
+EstimateRank(const mRankMatrix){
+	decl iRank;
+    for(decl irow = 0; irow < rows(mRankMatrix); irow++) {
+		iRank = mRankMatrix[0][irow][1];
+		if(mRankMatrix[0][irow][6] > 0.05){
+			break;
+		} else {
+			iRank = iRank + 1;
+		}
+	}
+	//println("Estimated rank: ", iRank);
+    return(iRank);
+}
+
+
+GetBetaEstimative(const mBeta, const iRank){
+	// println(mBeta);
+    decl ret;
+	if (iRank == 0){
+		ret = zeros(4, 1);
+	} else {
+		ret = mBeta[][0:iRank-1];
+	}
+	return ret;
+}
+
+SaveBetaEstimative(const spath, const mBeta, const iRank){
+	decl mbetaTransp = GetBetaEstimative(mBeta, iRank);
+	savemat(spath, mbetaTransp');
+}
+
 
 main() {
     // Arquivo de configuracao
@@ -55,9 +86,9 @@ main() {
     for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
 
         // FOR DEBUG ONLY
-        if(iCont >2){
-            exit(0);
-        }
+        // if(iCont >20){
+        //     exit(0);
+        // }
 
 
         // print Headder
@@ -67,6 +98,9 @@ main() {
         
         // Inicio um nomo objeto do tipo database
         decl modelDatabase = new Database();
+        decl mRankMatrix; // Matriz de selecao dos vetores de cointegracao
+        decl iRank; // Rank selecionado
+        // decl iRank;
 
         println("\nCarregando base de dados para regiao ", iCont);
         modelDatabase.Load(txDbase);
@@ -80,8 +114,8 @@ main() {
 
         // mData: Matrix com as variaveis
         // beta: vetores de cointegracao.
-        decl mData, beta;
-        beta =0;
+        decl mData, mBeta;
+        mBeta =0;
 
         println("\tAdicionando variavel star da regiao ", iCont);
         // Star dos Desligados
@@ -130,7 +164,7 @@ main() {
 	    modelCats.Lags(iLags, iLags, iLags);
 
 	    // Rank inicial (mudar para a quantidade de variaveis.)
-	    modelCats.I1Rank(2);
+	    modelCats.I1Rank(4);
 
         // Tipo de cointegracao CIMEAN: Constante no espaço de cointegracao.
         // mode	string: one of "NONE","CIMEAN","DRIFT","CIDRIFT".
@@ -147,19 +181,43 @@ main() {
         modelCats.SetMethod("RRR");
 
         // set print to false
-        modelCats.SetPrint(TRUE);
+        modelCats.SetPrint(FALSE);
 
         // Estima o modelo.
         modelCats.Estimate();
 
-        modelCats.BootstrapRankTest();
+        // Estima vetores do cointegração por bootstrap
+        mRankMatrix = modelCats.BootstrapRankTest();
 
-        // Guarda o resultado o Rank table.
-        modelCats.I1RankTable();
-	
-        // Estima a exogeniedade fraca
-        modelCats.TestAlphaCommon("* * 0 0");
+        // Escolhe o Rank 
+        iRank = EstimateRank(mRankMatrix);
 
+        mBeta = modelCats.GetBeta();
+       
+        // println(mRankMatrix);
+
+        // Se o rank for maior que dois Automaticamente teremos de modelar as variaveis no modelo dominante
+        if(iRank > 2){
+            // salva a estimacao do beta PARA AS REGIOES COM MAIS DE 3VETORES DE COINTEGRACAO
+            SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Dominant3_CoInt_R", iCont, ".mat")), mBeta, iRank);
+        } else {
+            // Restima o modelo com os dados de cointegracao.
+            modelCats.I1Rank(iRank);
+            modelCats.Estimate();
+            modelCats.BootstrapRankTest();
+
+            modelCats.SetPrint(TRUE);
+            // Estima a exogeniedade fraca
+            decl a = modelCats.TestAlphaCommon("* * 0 0");
+
+            // println("a", a[0]);
+            // println("a", a[1]);
+            // println("a", a[2]);
+            // println("a", a[3]);
+            // println("a", modelCats.GetAlpha());
+
+            SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Weak2_CoInt_R", iCont, ".mat")), mBeta, iRank);
+        }
 
         // Guarda o valor do Beta
         // mBeta = model.GetBeta();
@@ -168,7 +226,7 @@ main() {
         delete modelDatabase;
 
         // Apago variaveis que nao serao mais utilizadas
-        delete mData, beta, asX;
+        delete mData, mBeta, asX;
     } // for (iCont = 1; iCont <= iQtdRegioes; ++iCont)
 
     delete mW;
