@@ -77,7 +77,6 @@ main() {
     println("Carregando matrix de pessos W");
     decl mW;
     mW = loadmat(sprint(txMatPathW_Matrix, "data.mat"));
-    //println("mW", mW);
 
     println("*** Iniciando estimacao dos modelos *** \n");
     // iCont : Contador da regiao atual
@@ -86,9 +85,9 @@ main() {
     for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
 
         // FOR DEBUG ONLY
-        // if(iCont >20){
-        //     exit(0);
-        // }
+        if(iCont >2){
+             //exit(0);
+        }
 
 
         // print Headder
@@ -120,10 +119,18 @@ main() {
         println("\tAdicionando variavel star da regiao ", iCont);
         // Star dos Desligados
         mData = modelDatabase.GetVar(GetRegionNames(iQtdRegioes, "R", "_Desligados"));
-        modelDatabase.Append(mData * mW[][iCont - 1], {"star_Desligados"});
+
+		mData = exp(mData);
+		modelDatabase.Renew(mData, GetRegionNames(iQtdRegioes, "R", "_Desligados"));
+		
+		modelDatabase.Append(mData * mW[][iCont - 1], {"star_Desligados"});
         
         // Star dos Admitidos
         mData = modelDatabase.GetVar(GetRegionNames(iQtdRegioes, "R", "_Admitidos"));
+
+		mData = exp(mData);
+		modelDatabase.Renew(mData, GetRegionNames(iQtdRegioes, "R", "_Admitidos"));
+		
         modelDatabase.Append(mData * mW[][iCont - 1], {"star_Admitidos"});
         println("\tConcluido construcao das variaveis star para a regiao ", iCont);
 
@@ -134,6 +141,8 @@ main() {
         mData = mData ~ modelDatabase.GetVar("star_Admitidos");
         mData = mData ~ modelDatabase.GetVar("star_Desligados");
         modelDatabase.Append(diff(mData), {sprint("D_R", iCont, "_Admitidos"), sprint("D_R", iCont, "_Desligados"), "D_star_Admitidos", "D_star_Desligados"});
+
+
         println("\tConcluido construcao da variavel Delta para a regiao ", iCont);
         
         // CONTRUCAO DA MATRIZ DE LONGO PRAZO
@@ -144,12 +153,17 @@ main() {
         
         // Inicio um objeto do CATS (Cointegration)
     	decl modelCats = new CATS();
-
+	
         decl asX = {sprint("R", iCont, "_Admitidos"), sprint("R", iCont, "_Desligados"), "star_Admitidos", "star_Desligados"};
         mData = modelDatabase.GetVar(asX);
 
         // Adiciona variaveis X = [adm, des] e X*=[adm*, des*] ao banco de dados
         modelCats.Append(mData, asX);
+
+		modelCats.Resample(12, 1995, 1);
+
+		
+		//	modelCats.SaveIn7(sprint("R", iCont, "_database"));
 
     	// Adiciona as variaveis X como exogenas
 	    for(decl iqtd = 0; iqtd < columns(asX); iqtd++) {
@@ -175,7 +189,7 @@ main() {
         modelCats.Seasonals(1);
 
         // fixa a amostra
-        // model.SetSelSample(1975, 9, 1998, 12);
+        //model.SetSelSample(1995, 1, 1998, 12);
         
         // tipo de metodo RRR: Reduced Rank Regression
         modelCats.SetMethod("RRR");
@@ -201,14 +215,18 @@ main() {
             // salva a estimacao do beta PARA AS REGIOES COM MAIS DE 3VETORES DE COINTEGRACAO
             SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Dominant3_CoInt_R", iCont, ".mat")), mBeta, iRank);
         } else {
-            // Restima o modelo com os dados de cointegracao.
+			// Restima o modelo com os dados de cointegracao.
             modelCats.I1Rank(iRank);
             modelCats.Estimate();
             modelCats.BootstrapRankTest();
 
             modelCats.SetPrint(TRUE);
             // Estima a exogeniedade fraca
-            decl a = modelCats.TestAlphaCommon("* * 0 0");
+            // decl a = modelCats.TestAlphaCommon("* * 0 0");
+			modelCats.Restrict({"[beta]","[alpha]","* * 0 0","* * 0 0"});
+			modelCats.BootstrapRestrictions(399);
+			modelCats.Restrict({"[alpha]","[beta]","* * 0 0","* * 0 0"});
+        	modelCats.BootstrapRestrictions();
 
             // println("a", a[0]);
             // println("a", a[1]);
