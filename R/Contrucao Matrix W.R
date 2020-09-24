@@ -64,7 +64,7 @@ PIB.info.2016 <- PIB.info %>%
   dplyr::filter(Ano == 2016) %>% 
   dplyr::group_by(Cod_Meso) %>% 
   dplyr::select(Cod_Meso, PIB_corrente, Populacao) %>% 
-  dplyr::summarise(PIB = sum(PIB_corrente), Pop = sum(Populacao))
+  dplyr::summarise(PIB = sum(PIB_corrente), Pop = sum(Populacao), PIB_PerCapta=sum(PIB_corrente)/sum(Populacao))
 
 
 # Carrega a tabela de conexoes entre as regioes
@@ -136,7 +136,7 @@ for (col in 1:ncol(W.mat)) {
       # Coloca na matrix de connexao o total do pib baseano na conexao entre as cidades.
       if(Qtd_connex > 0){
         W.mat[row, col] <- PIB.info.2016 %>% 
-          filter(Cod_Meso == Destino) %>% pull(Pop)  
+          filter(Cod_Meso == Destino) %>% pull(PIB_PerCapta)
       } else {
         W.mat[row, col] <- 0
       }
@@ -152,15 +152,26 @@ for (col in 1:ncol(W.mat)) {
 }
 
 # --- Salva a matrix em arquivo .mat ----
-fileConn <- file("./Excel Export/Teste.mat")
-writeLines(c("137 137 // A 137 by 137 matrix"), fileConn)
+fileConn <- file("./Excel Export/data.mat")
+writeLines(c("137 137 // A 137 by 137 matrix (PIB per capta)"), fileConn)
 close(fileConn)
 
-write.table(x = W.mat, file = "./Excel Export/Teste.mat",
+write.table(x = W.mat, file = "./Excel Export/data.mat",
             append = TRUE,
             col.names = FALSE,
             row.names = FALSE)
 
+
+# write.table(x = W.mat[,1], file = "./Excel Export/data_R1.mat",
+#             append = FALSE,
+#             col.names = FALSE,
+#             row.names = FALSE)
+
+
+# write.table(x = W.mat[,2], file = "./Excel Export/data_R2.mat",
+#             append = FALSE,
+#             col.names = FALSE,
+#             row.names = FALSE)
 
 
 
