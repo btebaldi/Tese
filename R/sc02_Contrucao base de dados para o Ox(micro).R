@@ -4,25 +4,23 @@
 #
 # Script que cria banco para o consumo do OX.
 #
-# Inputs: Micro_adm.csv e Micro_des.csv
+# Inputs: Micro.Rdata (contem full.adm e full.des)
 #
 # Outputs:
 #
-# Micro_Nivel.csv : Arquivo com o nivel de emprego de cada microregiao
-# (calculado a partir do nivel de 1995 e a seguir soma-se os fluxos ano a ano)
+# Dicionario Ox-GVAR.csv : Arquivo com a relação de de-para dar regioes do Ox,
+# GVAR e IBGE
 #
-# Micro_EmpLiq.csv : Arquivo com o nivel de emprego liquido de cada microregiao
-# (calculado a partir dos dados de nivel de admissao e demissao)
-#
-# Micro_adm.csv e Micro_des.csv : Arquivo com os fluxos de emprego (admissao e
-# demissao) de cada microregiao
-
+# DatabaseDesAdm_micro_v1.csv : Arquivo os dados de desligados e Admitidos para
+# consumo direto no OxMetrics.
+# 
 
 # Clear all
 rm(list=ls())
 
 # Load libraries
 library(readr)
+library(dplyr)
 library(stringr)
 
 # Load database
@@ -32,17 +30,25 @@ load("./Database/Micro.Rdata")
 head(full.adm)
 head(full.des)
 
+# Crio o dicionario de dados entre os nomes das regioes
+dicionario_OxGvar <- data.frame(ID_Micro=full.adm$ID_Micro,
+                                GVAR=paste("R", full.adm$ID_Micro, sep = "_"),
+                                Ox=paste("R", 1:nrow(full.adm), sep = ""))
+
 # Regexp pattern para extracao das datas
 pattern <- "(?<=(ADM_)|(DES_))\\d{4}M\\d{1,2}"
 
 adm.mat <- full.adm %>% select(-1) %>% t()
-colnames(adm.mat) <- paste("R", full.adm$ID_Micro, sep = "_")
+colnames(adm.mat) <- paste(dicionario_OxGvar$Ox, "Admitidos", sep = "_")
 rownames(adm.mat) <- stringr::str_extract(rownames(adm.mat), stringr::regex(pattern))
 
 
 des.mat <- full.des %>% select(-1) %>% t()
-colnames(des.mat) <- paste("R", full.adm$ID_Micro, sep = "_")
+colnames(des.mat) <- paste(dicionario_OxGvar$Ox, "Desligados", sep = "_")
 rownames(des.mat) <- stringr::str_extract(rownames(des.mat), stringr::regex(pattern))
 
+readr::write_excel_csv(dicionario_OxGvar, path = "./Excel Export/Dicionario Ox-GVAR.csv")
 
+full.mat <- cbind(des.mat, adm.mat)
 
+write.csv(full.mat, file = "./Excel Export/DatabaseDesAdm_micro_v1.csv")
