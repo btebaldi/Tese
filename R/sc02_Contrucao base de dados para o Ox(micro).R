@@ -11,6 +11,9 @@
 # Dicionario Ox-GVAR.csv : Arquivo com a relação de de-para dar regioes do Ox,
 # GVAR e IBGE
 #
+# Dicionario_microregioes.RData : Arquivo com a relação de de-para dar regioes
+# do Ox, GVAR e IBGE
+#
 # DatabaseDesAdm_micro_v1.csv : Arquivo os dados de desligados e Admitidos para
 # consumo direto no OxMetrics.
 # 
@@ -32,7 +35,7 @@ head(full.des)
 
 # Crio o dicionario de dados entre os nomes das regioes
 dicionario_OxGvar <- data.frame(ID_Micro=full.adm$ID_Micro,
-                                GVAR=paste("R", full.adm$ID_Micro, sep = "_"),
+                                Short_name=paste("R", full.adm$ID_Micro, sep = "_"),
                                 Ox=paste("R", 1:nrow(full.adm), sep = ""))
 
 # Regexp pattern para extracao das datas
@@ -48,7 +51,9 @@ colnames(des.mat) <- paste(dicionario_OxGvar$Ox, "Desligados", sep = "_")
 rownames(des.mat) <- stringr::str_extract(rownames(des.mat), stringr::regex(pattern))
 
 readr::write_excel_csv(dicionario_OxGvar, path = "./Excel Export/Dicionario Ox-GVAR.csv")
+save(dicionario_OxGvar, file = "./Database/Dicionario_microregioes.RData")
 
 full.mat <- cbind(des.mat, adm.mat)
 
 write.csv(full.mat, file = "./Excel Export/DatabaseDesAdm_micro_v1.csv")
+
