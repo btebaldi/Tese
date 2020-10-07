@@ -1,70 +1,31 @@
+#  VALE ESTE AQUI
 # Clear all
 rm(list=ls())
 
-# bibliotecas utilizadas
+
+# ---- bibliotecas utilizadas ----
 library(readxl)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(stringr)
-library(scales)
 
 
-# Suppress summarise info
-options(dplyr.summarise.inform = FALSE)
 
-#  ToDo: Fazer uma check de que a lista de municiopios eh sempre a mesma, acho
-#  que posso fazer uma lista "Basica" a qual será utilizada como gabarito para
-#  qualquer analise.
-
+# ---- Load data sources ----
 # Carrego a lista dos municipios
 load(file = "./Database/codigos_municipios.RData")
 colnames(full) = "Muni"
 
+# carrega o dicionario com relacao do codigo da mesoregioao
+load("./Database/Dicionario_microregioes.RData")
+Dicionario <- dicionario_OxGvar
+
 # carrego as informacoes de mesoregioes.
-meso.info <- readxl::read_excel("Database/Cadastro Municipios.xlsx", sheet = "Mesoregioes")
+Muni_Micro.info <- readxl::read_excel("Database/Cadastro Municipios.xlsx", sheet = "TabelaCompleta")
 
-# carrego as informacoes de PIB
-PIB.info <- readxl::read_excel("Database/PIB_Municipios_2010a2016.xlsx", 
-                               col_types = c("numeric", "numeric", "text", 
-                                             "numeric", "text", "text", "numeric", 
-                                             "text", "skip", "numeric", "text", 
-                                             "skip", "skip", "skip", "skip", "skip", 
-                                             "skip", "skip", "skip", "skip", "skip", 
-                                             "skip", "skip", "skip", "skip", "skip", 
-                                             "skip", "skip", "skip", "skip", "skip", 
-                                             "skip", "skip", "skip", "skip", "skip", 
-                                             "skip", "skip", "skip", "numeric",
-                                             "numeric", "numeric", "skip", "skip",
-                                             "skip"))
-colnames(PIB.info) <- c("Ano",
-                        "Cod_GrandeRegiao",
-                        "Nome_GrandeRegiao",
-                        "Cod_UniFed",
-                        "Sigla_UniFed", 
-                        "Nome_UniFed",
-                        "Cod_Municipio",
-                        "Nome_Municipio",
-                        "Cod_Meso",
-                        "Nome_Meso",
-                        "PIB_corrente",
-                        "Populacao",
-                        "PIB_perCapita")
-
-
-# Seleciona o PIN e POPULACAO para o ano de 2016
-PIB.info %>% 
-  dplyr::filter(Ano == 2016) %>% 
-  dplyr::group_by(Cod_Meso) %>% 
-  dplyr::select(Cod_Meso, PIB_corrente, Populacao) %>% 
-  dplyr::summarise(PIB = sum(PIB_corrente), Pop = sum(Populacao)) %>% 
-  apply(MARGIN = 2, FUN=sum) %>% format(big.mark=" ")
-
-PIB.info.2016 <- PIB.info %>% 
-  dplyr::filter(Ano == 2016) %>% 
-  dplyr::group_by(Cod_Meso) %>% 
-  dplyr::select(Cod_Meso, PIB_corrente, Populacao) %>% 
-  dplyr::summarise(PIB = sum(PIB_corrente), Pop = sum(Populacao), PIB_PerCapta=sum(PIB_corrente)/sum(Populacao))
+# Crio a variavel de municipio sem o digito verificador
+Muni_Micro.info$ID_Municipio2 <- trunc(Muni_Micro.info$ID_Municipio / 10)
 
 
 # Carrega a tabela de conexoes entre as regioes
@@ -89,17 +50,30 @@ colnames(Connexoes.df) <- c("Cod_Municipio",
                             "Qtd_Link_Centro_fonte_centro",
                             "Qtd_Link_fonte Demais")
 
-# carrega o dicionario com relacao do codigo da mesoregioao
-Dicionario <- read_excel("./Database/GVAR Data/Dicionario.xlsx", 
-                         # col_types = c("text", "text", "text", "text")
-)
+# Ajusto o banco de dados de conexoes
+Connexoes.df <- Connexoes.df %>% 
+  dplyr::inner_join(Muni_Micro.info, by = c("Cod_Municipio"="ID_Municipio2")) %>% 
+  dplyr::mutate(Micro_Origem = ID_Micro) %>% 
+  dplyr::select("Cod_Municipio", "Nome", "Micro_Origem", "Cod_Detino", "Nome_Destino") %>% 
+  dplyr::inner_join(Muni_Micro.info, by = c("Cod_Detino"="ID_Municipio2")) %>% 
+  dplyr::mutate(Micro_Destino = ID_Micro) %>% 
+  dplyr::select("Cod_Municipio", "Nome", "Micro_Origem", "Cod_Detino", "Nome_Destino", "Micro_Destino")
 
-# Arruma o nome das colunas 
-colnames(Dicionario) <- c("Name", "Short_name", "Code", "Ox")
+
+# ---- Macroregiao ou Microregiao ----
+# Selecao entre construcao de matriz
+i=2
+if(i==1){
+  qtd_of_regions <- 137;
+} else {
+  qtd_of_regions <- 558;  
+}
+
+# ---- Algoritimo de construcao da matrix ----
 
 
 # Constroe uma matrix de pessos zerada
-W.mat <- matrix(0, ncol = 137, nrow = 137)
+W.mat <- matrix(0, ncol = qtd_of_regions, nrow = qtd_of_regions)
 colnames(W.mat) <- Dicionario$Short_name
 rownames(W.mat) <- Dicionario$Short_name
 
@@ -110,7 +84,7 @@ for (col in 1:ncol(W.mat)) {
   nomeColuna <- colnames(W.mat)[col]
   
   # busca o codigo da coluna (regiao de origem)
-  Origem <- Dicionario$Code[which(Dicionario$Short_name == nomeColuna)]
+  Origem <- Dicionario$ID_Micro[which(Dicionario$Short_name == nomeColuna)]
   
   for (row in 1:nrow(W.mat)) {
     # cat(sprintf("%d, %d\n", row, col))
@@ -119,27 +93,14 @@ for (col in 1:ncol(W.mat)) {
     nomeLinha <- rownames(W.mat)[row]
     
     # busca o codigo da coluna (regiao de origem)
-    Destino <- Dicionario$Code[which(Dicionario$Short_name == nomeLinha)]
+    Destino <- Dicionario$ID_Micro[which(Dicionario$Short_name == nomeLinha)]
     
     if(Origem == Destino){
       W.mat[row, col] <- 0;
     } else {
-      
-      Qtd_connex <- Connexoes.df %>% 
-        filter(Meso_Origem == Origem, Meso_Destino == Destino) %>% 
+      W.mat[row, col] <- Connexoes.df %>% 
+        filter(Micro_Origem == Origem, Micro_Destino == Destino) %>% 
         summarise(Total=n()) %>% pull(Total)
-      
-      # Coloca na matrix de connexao o total de conexao entre as cidades.
-      # W.mat[row, col] <- Qtd_connex
-      
-      
-      # Coloca na matrix de connexao o total do pib baseano na conexao entre as cidades.
-      if(Qtd_connex > 0){
-        W.mat[row, col] <- PIB.info.2016 %>% 
-          filter(Cod_Meso == Destino) %>% pull(PIB_PerCapta)
-      } else {
-        W.mat[row, col] <- 0
-      }
     }
   }
 }
@@ -153,25 +114,10 @@ for (col in 1:ncol(W.mat)) {
 
 # --- Salva a matrix em arquivo .mat ----
 fileConn <- file("./Excel Export/data.mat")
-writeLines(c("137 137 // A 137 by 137 matrix (PIB per capta)"), fileConn)
+writeLines(sprintf("%d %d // A %d by %d matrix", qtd_of_regions, qtd_of_regions, qtd_of_regions, qtd_of_regions), fileConn)
 close(fileConn)
 
 write.table(x = W.mat, file = "./Excel Export/data.mat",
             append = TRUE,
             col.names = FALSE,
             row.names = FALSE)
-
-
-# write.table(x = W.mat[,1], file = "./Excel Export/data_R1.mat",
-#             append = FALSE,
-#             col.names = FALSE,
-#             row.names = FALSE)
-
-
-# write.table(x = W.mat[,2], file = "./Excel Export/data_R2.mat",
-#             append = FALSE,
-#             col.names = FALSE,
-#             row.names = FALSE)
-
-
-
