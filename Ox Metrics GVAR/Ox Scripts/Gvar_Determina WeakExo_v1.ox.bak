@@ -121,7 +121,7 @@ modelDatabase.SaveIn7(sprint("DEBUG_", iCont, "_Fulldatabase"));
         mData = modelDatabase.GetVar(GetRegionNames(iQtdRegioes, "R", "_Desligados"));
 
 //println(mData);
-println(mW);
+println(mW[][iCont - 1]);
 		
 		modelDatabase.Append(mData * mW[][iCont - 1], {"star_Desligados"});
         
