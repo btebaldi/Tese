@@ -26,7 +26,6 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(stringr)
-library(scales)
 
 
 # Funcao que atualiza o ID de monicipios antigos para seus respectivos codigos
@@ -38,70 +37,37 @@ source("./Function AtualizaIdMunicipio.R")
 load(file = "./Database/tblIgnorados.RData")
 
 
-# Carrego a lista dos municipios (Precisa?????)
-# load(file = "./Database/codigos_municipios.RData")
-# colnames(full) = "Muni"
-
-# carrego a lista de amcs e mesoregioes
-# meso.data <- readxl::read_excel("Database/Amcs_91_v1.xlsx",
-#                         sheet = 1,
-#                         range = "A1:G5661")
-
-# carrego as informacoes de microregioes
-micro.info <- readxl::read_excel("Database/Cadastro Municipios.xlsx", 
-                                 sheet = "Microregioes",
-                                 range = "A1:E574")
-
-# filtro os dados para considerar apenas as microregioes que nao sao ignoradas
-micro.info <- micro.info %>% dplyr::filter(Ignorado == 0) %>% select(-Ignorado)
-
 # carrego as informacoes de municipios
-municipio.info <- readxl::read_excel("Database/Cadastro Municipios.xlsx", 
-                                     sheet = "Municipios",
-                                     range = "A1:G5679")
+municipio.info <- readxl::read_excel("Database/Cadastro Municipios.xlsx", sheet = "Municipios", range = "B1:G5679")
 
 # filtro os dados para considerar apenas os codigos atuais dos municipios
-# municipio.info <- municipio.info %>% dplyr::filter(old == 0)
+municipio.info <- municipio.info %>% dplyr::filter(old == 0)
+municipio.info <- municipio.info %>% dplyr::filter( !(ID_Municipio %in% tbl.ignorados$cod_digt) )
 
 
-# carrego as informacoes cruzadas de municipios vs microregioes
-municipio_Region.info <- readxl::read_excel("Database/Cadastro Municipios.xlsx", 
-                                            sheet = "TabelaCompleta",
-                                            range = "A1:E5613")
-
+# carrego as informacoes cruzadas de municipios vs Regioes de agregacao
+municipio_RA.info <- readxl::read_excel("Database/Agregacao de Municipios.xlsx", sheet = "TabelaCompleta")
 
 # Tamnho de dados esperado retirando os ignorados
-dim(municipio_Region.info %>% filter( !(ID_Municipio %in% tbl.ignorados$cod_digt) ))
+dim(municipio_RA.info %>% filter( Ignorado ==0 ))
 
 
 # Costruo a matrix completa de informacoes dos municipios
 Municipio.FullInfo <- 
-  municipio_Region.info %>%
+  municipio_RA.info %>%
   dplyr::inner_join(municipio.info, by=c("ID_Municipio"= "ID_Municipio")) %>% 
-  dplyr::inner_join(micro.info, by=c("ID_Micro.x"= "ID_Micro")) %>% 
-  select(c("ID_GR", "ID_UF", "ID_Meso.x", "ID_Micro.x", "ID_Municipio", "ID_MunicipioNoDigit",
-           "MunicipioNumber", "Capital", "Nome_Municipio", "Nome_Microrregiao", "UF-NomeMicroregiao"))
-
-colnames(Municipio.FullInfo) <- c("ID_GR", "ID_UF", "ID_Meso", "ID_Micro", "ID_Municipio", "ID_MunicipioNoDigit",
-                                  "MunicipioNumber", "Capital", "Nome_Municipio", "Nome_Microrregiao", "UF_NomeMicroregiao")
-
+  select(c("ID_GR", "ID_UF", "ID_Meso", "ID_Micro", "ID_Municipio", "ID_MunicipioNoDigit",
+           "MunicipioNumber", "Capital", "Nome_Municipio", "RegiaoAgregacao"))
 
 # determino a lista de Microregioes
-full.micro <- micro.info %>% select(ID_Micro)
-
-# Removo as bases que nao serao mais utilizadas
-# rm(list = c("micro.info", "municipio.info", "municipio_Region.info"))
-
-# # faço o join entre municipios e as mesoregioes
-# full <- dplyr::left_join(full, meso.data, by=c("Muni"="munic"))
-
-# retiro os casos que nao estao completos
-# full <- na.omit(full)
+full.RA <- Municipio.FullInfo %>% select(RegiaoAgregacao) %>% unique()
 
 
 # caminho dos aquivos
 path <- "C:/Users/bteba/Dropbox/bruno-tebaldi/RAIS Base de dados/XLS/"
 # path <- "C:/Users/Teo/Dropbox/bruno-tebaldi/RAIS Base de dados/XLS/"
+
+ano <- 1995
 
 for(ano in 1995:2018){
   # nome do arquivo
@@ -122,13 +88,12 @@ for(ano in 1995:2018){
   data.adm <- AtualizaIdMunicipio(data.adm)
   data.des <- AtualizaIdMunicipio(data.des)
   
-
   # filtro regioes que nao interessam
   data.adm <- data.adm %>% filter(!(Muni %in% tbl.ignorados$cod))
   
   # agrupo nas mesoregioes
   data.adm <- data.adm %>% left_join(Municipio.FullInfo, by=c("Muni"="ID_MunicipioNoDigit")) %>% 
-    group_by(ID_Micro) %>% 
+    group_by(RegiaoAgregacao) %>% 
     summarise(col_0 = sum(Nivel),
               col_1 = sum(col01),
               col_2 = sum(col02),
@@ -146,7 +111,7 @@ for(ano in 1995:2018){
   
   # padroniza as colunas da serie de admissao no nivel de mesoregiao
   colunas <- paste("ADM_", ano, "M", sprintf("%02d",1:12), sep="")
-  colnames(data.adm) <- c("ID_Micro", paste("NIV_", ano, "M00", sep=""), colunas)
+  colnames(data.adm) <- c("RegiaoAgregacao", paste("NIV_", ano, "M00", sep=""), colunas)
   
   
   # filtro regioes que nao interessam
@@ -154,7 +119,7 @@ for(ano in 1995:2018){
   
   # agrupo nas mesoregioes
   data.des <- data.des %>% left_join(Municipio.FullInfo, by=c("Muni"="ID_MunicipioNoDigit")) %>% 
-    group_by(ID_Micro) %>% 
+    group_by(RegiaoAgregacao) %>% 
     summarise(col_0 = sum(Nivel),
               col_1 = sum(col01),
               col_2 = sum(col02),
@@ -173,30 +138,15 @@ for(ano in 1995:2018){
   
   # padroniza as colunas da serie de desligamento no nivel das mesoregioes
   colunas <- paste("DES_", ano, "M", sprintf("%02d",1:12), sep="")
-  colnames(data.des) <- c("ID_Micro", paste("NIV_", ano, "M13", sep=""), colunas)  
+  colnames(data.des) <- c("RegiaoAgregacao", paste("NIV_", ano, "M13", sep=""), colunas)  
   
   # inicializo a tabela do nivel
-  full.micro <- data.adm %>% full_join(full.micro, by=c("ID_Micro"="ID_Micro"))
-  full.micro <- data.des %>% full_join(full.micro, by=c("ID_Micro"="ID_Micro"))
+  full.RA <- data.adm %>% full_join(full.RA, by=c("RegiaoAgregacao"="RegiaoAgregacao"))
+  full.RA <- data.des %>% full_join(full.RA, by=c("RegiaoAgregacao"="RegiaoAgregacao"))
   
   data.adm[!complete.cases(data.adm), ]
   data.des[!complete.cases(data.des), ]
-  full.micro[!complete.cases(full.micro), ]
-  
-  # inicializa o nivel naquele ano
-  
-  # Acerto do nivel
-  # if(ano==1995){
-  #   load("./amc.negativa.Rdata")
-  #   
-  #   for (j in 1:nrow(amc.negativa2)) {
-  #     index = match(amc.negativa2$amc[j], full.amc$amc)
-  #     
-  #     full.amc$NIV_1995M00[index] = full.amc$NIV_1995M00[index] - amc.negativa2$minimo[j]
-  #   }
-  #   rm(list = c("j", "amc.negativa2"))
-  # }
-  
+  full.RA[!complete.cases(full.RA), ]
   
   
   # i=1
@@ -221,18 +171,15 @@ for(ano in 1995:2018){
     
     
     # para cada coluna calcula-se o nivel atual
-    full.micro[, myCol.Niv] = full.micro[, myCol_1.Niv] +
-      full.micro[, myCol.adm] - full.micro[, myCol.des]
+    full.RA[, myCol.Niv] = full.RA[, myCol_1.Niv] +
+      full.RA[, myCol.adm] - full.RA[, myCol.des]
   }
   
   
 } # fim do for de ano.
 
-
 # mostra apenas os niveis
-full.micro %>% select(ID_Micro, starts_with("NIV"))
-
-
+full.RA %>% select(RegiaoAgregacao, starts_with("NIV"))
 
 # Remove arquivos que nao serao mais autlizados
 rm(list = c("data.adm", "data.des", "colunas"))
@@ -240,10 +187,10 @@ rm(list = c("i", "myCol.Niv", "myCol.adm", "myCol.des", "myCol_1.Niv"))
 rm(list = c("file.adm", "file.des"))
 
 # CHECK PARA SABER SE TEM REGIAO NA
-full.micro[!complete.cases(full.micro),]
+full.RA[!complete.cases(full.RA),]
 
 
-full.nivel <- full.micro %>% select(ID_Micro,
+full.nivel <- full.RA %>% select(RegiaoAgregacao,
                                    c(paste("NIV_", 1995, "M", sprintf("%02d", 1:12), sep=""),
                                      paste("NIV_", 1996, "M", sprintf("%02d", 1:12), sep=""),
                                      paste("NIV_", 1997, "M", sprintf("%02d", 1:12), sep=""),
@@ -275,7 +222,7 @@ full.nivel <- full.micro %>% select(ID_Micro,
 )
 
 # verifica o menor nivel de emprego
-min(apply(full.nivel, 1, min))
+min(apply(full.RA, 1, min))
 
 # tem uma regiao com -82 empregos no nivel.
 
@@ -284,7 +231,7 @@ min(apply(full.nivel, 1, min))
 # para cada regiao imprime o grafico
 
 # Calculo do emprego liquido para exportacao para o excel
-full.EmpLiqu <- full.micro %>% mutate(Liq_1995M01 = ADM_1995M01 - DES_1995M01,
+full.EmpLiqu <- full.RA %>% mutate(Liq_1995M01 = ADM_1995M01 - DES_1995M01,
                                      Liq_1995M02 = ADM_1995M02 - DES_1995M02,
                                      Liq_1995M03 = ADM_1995M03 - DES_1995M03,
                                      Liq_1995M04 = ADM_1995M04 - DES_1995M04,
@@ -596,10 +543,10 @@ full.EmpLiqu <- full.micro %>% mutate(Liq_1995M01 = ADM_1995M01 - DES_1995M01,
                                      Liq_2018M11 = ADM_2018M11 - DES_2018M11,
                                      Liq_2018M12 = ADM_2018M12 - DES_2018M12
                                      
-) %>% select(ID_Micro, starts_with("Liq"))
+) %>% select(RegiaoAgregacao, starts_with("Liq"))
 
 
-full.adm <- full.micro %>% select(ID_Micro,
+full.adm <- full.RA %>% select(RegiaoAgregacao,
                                  c(paste("ADM_", 1995, "M", sprintf("%02d", 1:12), sep=""),
                                    paste("ADM_", 1996, "M", sprintf("%02d", 1:12), sep=""),
                                    paste("ADM_", 1997, "M", sprintf("%02d", 1:12), sep=""),
@@ -631,7 +578,7 @@ full.adm <- full.micro %>% select(ID_Micro,
 )
 
 
-full.des <- full.micro %>% select(ID_Micro,
+full.des <- full.RA %>% select(RegiaoAgregacao,
                                  c(paste("DES_", 1995, "M", sprintf("%02d", 1:12), sep=""),
                                    paste("DES_", 1996, "M", sprintf("%02d", 1:12), sep=""),
                                    paste("DES_", 1997, "M", sprintf("%02d", 1:12), sep=""),
@@ -664,12 +611,12 @@ full.des <- full.micro %>% select(ID_Micro,
 
 
 # Salva as planilhas de Nivel e emprego liquido.
-readr::write_excel_csv(full.nivel, path = "./Excel Export/Micro_Nivel.csv")
-readr::write_excel_csv(full.EmpLiqu, path = "./Excel Export/Micro_EmpLiq.csv")
+readr::write_excel_csv(full.nivel, path = "./Excel Export/RA_Nivel.csv")
+readr::write_excel_csv(full.EmpLiqu, path = "./Excel Export/RA_EmpLiq.csv")
 
-readr::write_excel_csv(full.adm, path = "./Excel Export/Micro_adm.csv")
-readr::write_excel_csv(full.des, path = "./Excel Export/Micro_des.csv")
+readr::write_excel_csv(full.adm, path = "./Excel Export/RA_adm.csv")
+readr::write_excel_csv(full.des, path = "./Excel Export/RA_des.csv")
 
 
-save(full.adm, full.des, file = "./Database/Micro.Rdata")
+save(full.adm, full.des, file = "./Database/RA.Rdata")
 
