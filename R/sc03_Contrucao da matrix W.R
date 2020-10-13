@@ -1,4 +1,12 @@
-#  VALE ESTE AQUI
+# ---- Header ----
+#
+# Script para construcao da matrix de pesos do GVAR utilizado pelo OxMetrics
+#
+# Autor: Bruno Tebaldi de Queiroz Barbosa
+#
+# Data de criacao: 2020-10-13
+
+
 # Clear all
 rm(list=ls())
 
