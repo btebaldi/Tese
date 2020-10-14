@@ -6,14 +6,14 @@
 #
 # Outputs:
 #
-# Micro_Nivel.csv : Arquivo com o nivel de emprego de cada microregiao
+# RA_Nivel.csv : Arquivo com o nivel de emprego de cada regiao de agregacao
 # (calculado a partir do nivel de 1995 e a seguir soma-se os fluxos ano a ano)
 #
-# Micro_EmpLiq.csv : Arquivo com o nivel de emprego liquido de cada microregiao
-# (calculado a partir dos dados de nivel de admissao e demissao)
+# RA_EmpLiq.csv : Arquivo com o nivel de emprego liquido de cada regiao de
+# agregacao (calculado a partir dos dados de nivel de admissao e demissao)
 #
-# Micro_adm.csv e Micro_des.csv : Arquivo com os fluxos de emprego (admissao e
-# demissao) de cada microregiao
+# RA_adm.csv e RA_des.csv : Arquivo com os fluxos de emprego (admissao e
+# demissao) de cada regiao de agregacao
 
 
 
@@ -38,7 +38,7 @@ load(file = "./Database/tblIgnorados.RData")
 
 
 # carrego as informacoes de municipios
-municipio.info <- readxl::read_excel("Database/Cadastro Municipios.xlsx", sheet = "Municipios", range = "B1:G5679")
+municipio.info <- readxl::read_excel("Database/Cadastro Municipios.xlsx", sheet = "Municipios", range = "B1:H5679")
 
 # filtro os dados para considerar apenas os codigos atuais dos municipios
 municipio.info <- municipio.info %>% dplyr::filter(old == 0)

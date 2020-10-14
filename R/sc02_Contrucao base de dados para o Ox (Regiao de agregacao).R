@@ -4,7 +4,7 @@
 #
 # Script que cria banco para o consumo do OX.
 #
-# Inputs: Micro.Rdata (contem full.adm e full.des)
+# Inputs: RA.Rdata (contem full.adm e full.des)
 #
 # Outputs:
 #
@@ -27,15 +27,15 @@ library(dplyr)
 library(stringr)
 
 # Load database
-load("./Database/Micro.Rdata")
+load("./Database/RA.Rdata")
 
 # preview data
 head(full.adm)
 head(full.des)
 
 # Crio o dicionario de dados entre os nomes das regioes
-dicionario_OxGvar <- data.frame(ID_Micro=full.adm$ID_Micro,
-                                Short_name=paste("R", full.adm$ID_Micro, sep = "_"),
+dicionario_OxGvar <- data.frame(RegiaoAgregacao=full.adm$RegiaoAgregacao,
+                                Short_name=paste("R", full.adm$RegiaoAgregacao, sep = "_"),
                                 Ox=paste("R", 1:nrow(full.adm), sep = ""))
 
 # Regexp pattern para extracao das datas
@@ -45,15 +45,14 @@ adm.mat <- full.adm %>% select(-1) %>% t()
 colnames(adm.mat) <- paste(dicionario_OxGvar$Ox, "Admitidos", sep = "_")
 rownames(adm.mat) <- stringr::str_extract(rownames(adm.mat), stringr::regex(pattern))
 
-
 des.mat <- full.des %>% select(-1) %>% t()
 colnames(des.mat) <- paste(dicionario_OxGvar$Ox, "Desligados", sep = "_")
 rownames(des.mat) <- stringr::str_extract(rownames(des.mat), stringr::regex(pattern))
 
 readr::write_excel_csv(dicionario_OxGvar, path = "./Excel Export/Dicionario Ox-GVAR.csv")
-save(dicionario_OxGvar, file = "./Database/Dicionario_microregioes.RData")
+save(dicionario_OxGvar, file = "./Database/Dicionario_RA.RData")
 
 full.mat <- cbind(des.mat, adm.mat)
 
-write.csv(full.mat, file = "./Excel Export/DatabaseDesAdm_micro_v1.csv")
+write.csv(full.mat, file = "./Excel Export/DatabaseDesAdm_RA_v1.csv")
 
