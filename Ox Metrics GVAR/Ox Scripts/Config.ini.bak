@@ -12,7 +12,7 @@
     // ISSO PODE SER ALTERADO!!
     decl iQtdLags, iQtdRegioes;
 	iQtdLags = 1;
-	iQtdRegioes = 137;
+	iQtdRegioes = 558;
 
 	// Configuracao dos diretorios
 	decl txMatPathRawMatrix, txMatPathA_Matrix, txMatPathW_Matrix, txMatPathG_Matrix, txMatPathResult_Matrix, txCoIntMatPath, txDbase, txDbaseMacroVariables;

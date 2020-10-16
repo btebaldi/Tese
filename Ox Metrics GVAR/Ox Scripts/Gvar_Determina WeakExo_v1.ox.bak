@@ -86,11 +86,16 @@ main() {
 
         // FOR DEBUG ONLY
         if(iCont >2){
-             exit(0);
+             //exit(0);
         }
 
+		// zero cointegra 59,74, 77, 114, 115, 117, 144, 221, 225, 227, 237, 247
+		if( any(<17,19,20,25,59, 74, 77, 81, 95, 114, 115, 117, 144, 183,184, 185, 221, 225, 227, 237, 247> .== iCont)){
+        println("SKIP: Regiao ", iCont);
+             continue;
+        }
 
-        // print Headder
+		// print Headder
         println("\n\n*****************************************");
         println("             Regiao ", iCont);
         println("*****************************************\n\n");
@@ -103,7 +108,7 @@ main() {
 
         println("\nCarregando base de dados para regiao ", iCont);
         modelDatabase.Load(txDbase);
-modelDatabase.SaveIn7(sprint("DEBUG_", iCont, "_Fulldatabase"));        
+//modelDatabase.SaveIn7(sprint("DEBUG_", iCont, "_Fulldatabase"));        
         println("\tPeriodo da base de dados");
         println("\tData inicial: ", modelDatabase.GetYear1(), "-", modelDatabase.GetPeriod1());
         println("\tData final: ", modelDatabase.GetYear2(), "-", modelDatabase.GetPeriod2());
@@ -121,7 +126,7 @@ modelDatabase.SaveIn7(sprint("DEBUG_", iCont, "_Fulldatabase"));
         mData = modelDatabase.GetVar(GetRegionNames(iQtdRegioes, "R", "_Desligados"));
 
 //println(mData);
-println(mW[][iCont - 1]);
+//println(mW);
 		
 		modelDatabase.Append(mData * mW[][iCont - 1], {"star_Desligados"});
         
@@ -141,7 +146,7 @@ println(mW[][iCont - 1]);
         mData = mData ~ modelDatabase.GetVar("star_Desligados");
         modelDatabase.Append(diff(mData), {sprint("D_R", iCont, "_Admitidos"), sprint("D_R", iCont, "_Desligados"), "D_star_Admitidos", "D_star_Desligados"});
 
-println(mData);
+//println(mData);
         println("\tConcluido construcao da variavel Delta para a regiao ", iCont);
         
         // CONTRUCAO DA MATRIZ DE LONGO PRAZO
@@ -161,24 +166,24 @@ println(mData);
 
 		modelCats.Resample(12, 1995, 1);
 
-println("DEBUG(1)");
-modelCats.SaveIn7(sprint("R", iCont, "_database"));
+//println("DEBUG(1)");
+//modelCats.SaveIn7(sprint("R", iCont, "_database"));
 
     	// Adiciona as variaveis X como exogenas
 	    for(decl iqtd = 0; iqtd < columns(asX); iqtd++) {
             println("append: ", asX[iqtd]);
 			modelCats.Select("Y", {asX[iqtd], 0, 0});
 	    }
-println("DEBUG(2)");
+//println("DEBUG(2)");
         decl iLags;
-        iLags = 2;
+        iLags = 13;
 
         // Lags ( const lags , const lagsExo = - 1 , const lagsDet = - 1 )
 	    modelCats.Lags(iLags, iLags, iLags);
 
 	    // Rank inicial (mudar para a quantidade de variaveis.)
 	    modelCats.I1Rank(4);
-println("DEBUG(3)");
+//println("DEBUG(3)");
         // Tipo de cointegracao CIMEAN: Constante no espaço de cointegracao.
         // mode	string: one of "NONE","CIMEAN","DRIFT","CIDRIFT".
         // Equivalently, use the strings "H_z","H_c","H_lc","H_l", or the predefined constants CATS::NONE, CATS::CIMEAN, CATS::DRIFT, CATS::CIDRIFT.
@@ -200,7 +205,7 @@ println("DEBUG(3.1)");
         modelCats.Estimate();
 println("DEBUG(4)");
         // Estima vetores do cointegração por bootstrap
-        mRankMatrix = modelCats.BootstrapRankTest();
+       	mRankMatrix = modelCats.BootstrapRankTest();
 
         // Escolhe o Rank 
         iRank = EstimateRank(mRankMatrix);
@@ -215,16 +220,14 @@ println("DEBUG(5)");
             SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Dominant3_CoInt_R", iCont, ".mat")), mBeta, iRank);
         } else {
 			// Restima o modelo com os dados de cointegracao.
+println(iRank);
             modelCats.I1Rank(iRank);
             modelCats.Estimate();
             modelCats.BootstrapRankTest();
 
             modelCats.SetPrint(TRUE);
             // Estima a exogeniedade fraca
-            // decl a = modelCats.TestAlphaCommon("* * 0 0");
 			modelCats.Restrict({"[beta]","[alpha]","* * 0 0","* * 0 0"});
-			modelCats.BootstrapRestrictions(399);
-			modelCats.Restrict({"[alpha]","[beta]","* * 0 0","* * 0 0"});
         	modelCats.BootstrapRestrictions();
 
             // println("a", a[0]);
