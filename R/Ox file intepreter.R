@@ -4,6 +4,15 @@
   
 library(stringr)
 
+
+path = "C:/Users/bteba/Downloads/Gvar_Determina WeakExo_v2.txt"
+
+
+
+
+
+
+
 processFile = function(filepath) {
     ReadCon  <- file(description = filepath, open = "r")
     
@@ -51,17 +60,5 @@ processFile = function(filepath) {
 
 
 # --- Salva a matrix em arquivo .mat ----
-path = "../Ox Metrics GVAR/Ox Scripts/Gvar_Determina WeakExo_v1_2020_10_16.out"
-
 processFile(path)
 
-line <- "--------------- Ox at 12:57:39 on 14-Oct-2020 ---------------"
-
-
-stringr::str_match(line, stringr::regex(pattern))
-
-line <- "Test of restrictions on alpha:           Chi^2(4)  =   53.409 [0.0000]**"
-pattern <- "Test of restrictions on alpha:\\s*.*\\[.*\\].*"
-
-stringr::str_match(line, stringr::regex(pattern))
-stringr::str_detect(line, stringr::regex(pattern))
