@@ -1,3 +1,4 @@
+rm(list=ls())
 # You should take care with readLines(...) and big files. Reading all lines at
 # memory can be risky. Below is a example of how to read file and process just
 # one line at time:
@@ -5,7 +6,7 @@
 library(stringr)
 
 
-path = "C:/Users/bteba/Downloads/Gvar_Determina WeakExo_v2.txt"
+path = "../Ox Metrics GVAR/Ox Scripts/Gvar_Determina WeakExo_v1_2020_10_26.out"
 
 
 
