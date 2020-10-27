@@ -1,4 +1,4 @@
---------------- Ox at 13:45:34 on 16-Oct-2020 ---------------
+--------------- Ox at 11:57:56 on 26-Oct-2020 ---------------
 Test of restrictions on alpha:           Chi^2(4)  =   10.390 [0.0343]* 
 Test of restrictions on alpha:           Chi^2(4)  =   10.409 [0.0341]* 
 Test of restrictions on alpha:           Chi^2(4)  =   18.827 [0.0008]**
