@@ -1,6 +1,8 @@
 ﻿#include <oxstd.oxh>
 #import <packages/PcGive/pcgive_ects>
-#import <packages/CATS/CATS>
+
+#include <C:\Users\Teo\Documents\Git\Tese\Ox Metrics GVAR\Ox Scripts\ClasseCATS_Custom.ox>
+
 
 GetRegionNames(const iQtdRegioes, const sVarPrefix, const sVarPosfix) {
     // println("iQtdRegioes: ", iQtdRegioes);
@@ -33,21 +35,21 @@ EstimateRank(const mRankMatrix){
 }
 
 
-GetBetaEstimative(const mBeta, const iRank){
-	// println(mBeta);
-    decl ret;
-	if (iRank == 0){
-		ret = zeros(4, 1);
-	} else {
-		ret = mBeta[][0:iRank-1];
-	}
-	return ret;
-}
-
-SaveBetaEstimative(const spath, const mBeta, const iRank){
-	decl mbetaTransp = GetBetaEstimative(mBeta, iRank);
-	savemat(spath, mbetaTransp');
-}
+//GetBetaEstimative(const mBeta, const iRank){
+//	// println(mBeta);
+//    decl ret;
+//	if (iRank == 0){
+//		ret = zeros(4, 1);
+//	} else {
+//		ret = mBeta[][0:iRank-1];
+//	}
+//	return ret;
+//}
+//
+//SaveBetaEstimative(const spath, const mBeta, const iRank){
+//	decl mbetaTransp = GetBetaEstimative(mBeta, iRank);
+//	savemat(spath, mbetaTransp');
+//}
 
 
 main() {
@@ -85,8 +87,9 @@ main() {
     for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
 
         // FOR DEBUG ONLY
-        if(iCont >2){
+        if(iCont != 397){
              //exit(0);
+			 continue;
         }
 
 		// zero cointegra 59,74, 77, 114, 115, 117, 144, 221, 225, 227, 237, 247
@@ -156,7 +159,7 @@ main() {
         println("\tIniciando determinacao do vetor de cointegracao (beta) a regiao ", iCont);
         
         // Inicio um objeto do CATS (Cointegration)
-    	decl modelCats = new CATS();
+    	decl modelCats = new GVAR_CATS();
 	
         decl asX = {sprint("R", iCont, "_Admitidos"), sprint("R", iCont, "_Desligados"), "star_Admitidos", "star_Desligados"};
         mData = modelDatabase.GetVar(asX);
@@ -167,7 +170,7 @@ main() {
 		modelCats.Resample(12, 1995, 1);
 
 //println("DEBUG(1)");
-//modelCats.SaveIn7(sprint("R", iCont, "_database"));
+modelCats.SaveIn7(sprint("R", iCont, "_database"));
 
     	// Adiciona as variaveis X como exogenas
 	    for(decl iqtd = 0; iqtd < columns(asX); iqtd++) {
@@ -222,7 +225,7 @@ println("DEBUG(5)");
         // Se o rank for maior que dois Automaticamente teremos de modelar as variaveis no modelo dominante
         if(iRank > 2){
             // salva a estimacao do beta PARA AS REGIOES COM MAIS DE 3VETORES DE COINTEGRACAO
-            SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Dominant3_CoInt_R", iCont, ".mat")), mBeta, iRank);
+            modelCats.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Dominant3_CoInt_R", iCont, ".mat")), mBeta, iRank);
         } else {
 			// Restima o modelo com os dados de cointegracao.
 println(iRank);
@@ -241,7 +244,7 @@ println(iRank);
             // println("a", a[3]);
             // println("a", modelCats.GetAlpha());
 
-            SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Weak2_CoInt_R", iCont, ".mat")), mBeta, iRank);
+            modelCats.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Weak2_CoInt_R", iCont, ".mat")), mBeta, iRank);
         }
 println("DEBUG(6)");
         // Guarda o valor do Beta
