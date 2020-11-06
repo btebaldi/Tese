@@ -1,7 +1,9 @@
 ﻿#include <oxstd.oxh>
 #import <packages/PcGive/pcgive_ects>
 
-#include <C:\Users\Teo\Documents\Git\Tese\Ox Metrics GVAR\Ox Scripts\ClasseCATS_Custom.ox>
+#include <C:\Users\bteba\Documents\GitHub\Tese\Ox Metrics GVAR\Ox Scripts\ClasseCATS_Custom.ox>
+
+// GET WD()  OLHAR PARA PEGAR O DIRETORIO
 
 
 GetRegionNames(const iQtdRegioes, const sVarPrefix, const sVarPosfix) {
