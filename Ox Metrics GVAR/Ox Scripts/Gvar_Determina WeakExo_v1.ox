@@ -91,7 +91,7 @@ main() {
         // FOR DEBUG ONLY
         if(iCont != 397){
              //exit(0);
-			 continue;
+			 //continue;
         }
 
 		// zero cointegra 59,74, 77, 114, 115, 117, 144, 221, 225, 227, 237, 247
@@ -205,10 +205,10 @@ modelCats.SaveIn7(sprint("R", iCont, "_database"));
 
         // set print to false
         modelCats.SetPrint(FALSE);
-println("DEBUG(3.1)");
+//println("DEBUG(3.1)");
         // Estima o modelo.
         modelCats.Estimate();
-println("DEBUG(4)");
+//println("DEBUG(4)");
         // Estima vetores do cointegração por bootstrap
        	mRankMatrix = modelCats.BootstrapRankTest();
 
@@ -221,7 +221,6 @@ println("RANK ZERO DETECTADO, MUDANDO PARA RANK=1");
 }
 
         mBeta = modelCats.GetBeta();
-println("DEBUG(5)");       
         // println(mRankMatrix);
 
         // Se o rank for maior que dois Automaticamente teremos de modelar as variaveis no modelo dominante
@@ -230,7 +229,7 @@ println("DEBUG(5)");
             modelCats.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Dominant3_CoInt_R", iCont, ".mat")), mBeta, iRank);
         } else {
 			// Restima o modelo com os dados de cointegracao.
-println(iRank);
+println("RANK TOTAL: ",iRank);
             modelCats.I1Rank(iRank);
             modelCats.Estimate();
             modelCats.BootstrapRankTest();
@@ -239,7 +238,9 @@ println(iRank);
             // Estima a exogeniedade fraca
 			modelCats.Restrict({"[beta]","[alpha]","* * 0 0","* * 0 0"});
         	modelCats.BootstrapRestrictions();
-
+println("TESTE REGIAO ", iCont, " (hail mary)");
+			modelCats.Restrict({"[beta]","* * * *","0 0 * *","[alpha]","* * 0 0","0 0 * *"});
+        	modelCats.BootstrapRestrictions();
             // println("a", a[0]);
             // println("a", a[1]);
             // println("a", a[2]);
@@ -248,7 +249,7 @@ println(iRank);
 
             modelCats.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("Weak2_CoInt_R", iCont, ".mat")), mBeta, iRank);
         }
-println("DEBUG(6)");
+
         // Guarda o valor do Beta
         // mBeta = model.GetBeta();
 

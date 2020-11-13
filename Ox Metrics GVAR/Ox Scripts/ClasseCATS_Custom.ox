@@ -6,6 +6,7 @@ class GVAR_CATS : CATS
 	GVAR_CATS(); // Construtor
 	GetBetaEstimative(const mBeta, const iRank);
 	SaveBetaEstimative(const spath, const mBeta, const iRank);
+	teste();
 };
 
 GVAR_CATS::GVAR_CATS()
@@ -29,5 +30,10 @@ GVAR_CATS::SaveBetaEstimative(const spath, const mBeta, const iRank){
 	decl mbetaTransp = GetBetaEstimative(mBeta, iRank);
 	savemat(spath, mbetaTransp');
 }
- 
+GVAR_CATS::teste(){
+	println("Oi Mundo!");
+	decl a, b;
+	a=OutputRestrictionsTest();
+	println(a);
+}
 
