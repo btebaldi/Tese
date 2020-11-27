@@ -4,9 +4,10 @@
 #
 # Script para construcao da matrix de pesos do GVAR utilizado pelo OxMetrics
 #
- 
 
 
+
+# Setup -------------------------------------------------------------------
 
 # Clear all
 rm(list=ls())
@@ -16,12 +17,16 @@ library(readxl)
 library(dplyr)
 
 
+
+# Dataload ----------------------------------------------------------------
+
+
 # carrega o dicionario com relacao do codigo da regiao de agregacao
 Dicionario <- readxl::read_excel("./Database/Relacao_Agregacao_Ox.xlsx")
 
 # carrego as informacoes dos municipios e suas regioes de agregacao.
 Muni_RA.info <- readxl::read_excel("./Database/Agregacao de Municipios.xlsx", 
-                                      sheet = "TabelaCompleta")
+                                   sheet = "TabelaCompleta")
 
 # Filtro para ter apernas regioes nao ignoradas
 Muni_RA.info <- Muni_RA.info %>% dplyr::filter(Ignorado == 0)
@@ -42,7 +47,24 @@ Connexoes.df <-
 
 
 
-# ---- Contrucao de Matriz de pesos ----
+
+# carrego as informacoes de PIB
+PIB.info <- readxl::read_excel("Database/Agregacao de Municipios.xlsx", 
+                               col_types = c("skip", "skip", "skip", "skip",
+                                             "numeric", "numeric", "numeric", "numeric",
+                                             "numeric", "numeric", "numeric"),
+                               sheet = "TabelaCompleta")
+
+
+PIB.RA.2016 <- PIB.info %>% 
+  dplyr::filter(Ignorado == 0) %>% 
+  dplyr::group_by(RegiaoAgregacao) %>% 
+  dplyr::summarise(PIB = sum(PIB),
+                   Pop = sum(Pop2016),
+                   PIB_PerCapta=sum(PIB_perCap))
+
+
+# Contrucao de Matriz de pesos --------------------------------------------
 
 # Constroe uma matrix de pessos zerada
 qtd_of_regions <- nrow(Dicionario)
@@ -50,6 +72,14 @@ qtd_of_regions <- nrow(Dicionario)
 W.mat <- matrix(0, ncol = qtd_of_regions, nrow = qtd_of_regions)
 colnames(W.mat) <- Dicionario$RegiaoOx
 rownames(W.mat) <- Dicionario$RegiaoOx
+
+
+# ESCOLHA DO TIPO DE MATRIZ DE PESO
+# tipo_matrix = 1 : Construcao classica
+# tipo_matrix = 2 : Ponderada pelo pib
+# tipo_matrix = 3 : Ponderada pelo pib per capita
+# tipo_matrix = 4 : Ponderada pela populacao
+tipo_matrix = 1
 
 
 # Faz a construção efetiva da matrix de pesos
@@ -72,9 +102,55 @@ for (col in 1:ncol(W.mat)) {
     if(Origem == Destino){
       W.mat[row, col] <- 0;
     } else {
-      W.mat[row, col] <- Connexoes.df %>% 
-        filter(RA_Origem == Origem, RA_Destino == Destino) %>% 
-        summarise(Total=n()) %>% pull(Total)
+      
+      if(tipo_matrix == 1){
+        # Matrix do tipo classica
+        W.mat[row, col] <- Connexoes.df %>% 
+          filter(RA_Origem == Origem, RA_Destino == Destino) %>% 
+          summarise(Total=n()) %>% pull(Total)
+      } else if (tipo_matrix == 2) {
+        # Coloca na matrix de connexao o total do pib baseano na conexao entre as cidades.
+        existe.con <- Connexoes.df %>% 
+          filter(RA_Origem == Origem, RA_Destino == Destino) %>% 
+          summarise(Total=n()) %>% pull(Total)
+        
+        if(existe.con > 0){
+          W.mat[row, col] <- PIB.RA.2016 %>% 
+            filter(RegiaoAgregacao == Destino) %>% pull(PIB)
+        } else {
+          W.mat[row, col] <- 0
+        }
+      } else if (tipo_matrix == 3) {
+        # Coloca na matrix de connexao o total do pib per capta baseano na conexao entre as cidades.
+        
+        existe.con <- Connexoes.df %>% 
+          filter(RA_Origem == Origem, RA_Destino == Destino) %>% 
+          summarise(Total=n()) %>% pull(Total)
+        
+        if(existe.con > 0){
+          W.mat[row, col] <- PIB.RA.2016 %>% 
+            filter(RegiaoAgregacao == Destino) %>% pull(PIB_PerCapta)
+        } else {
+          W.mat[row, col] <- 0
+        }
+        
+      } else if (tipo_matrix == 4) {
+        # Coloca na matrix de connexao o total da populacao na conexao entre as cidades.
+        existe.con <- Connexoes.df %>% 
+          filter(RA_Origem == Origem, RA_Destino == Destino) %>% 
+          summarise(Total=n()) %>% pull(Total)
+        
+        if(existe.con > 0){
+          W.mat[row, col] <- PIB.RA.2016 %>% 
+            filter(RegiaoAgregacao == Destino) %>% pull(Pop)
+        } else {
+          W.mat[row, col] <- 0
+        }
+        
+      } else {
+        stop("Tipo de matrix nao informado corretamente")
+      }
+      
     }
   }
 }
@@ -87,12 +163,29 @@ for (col in 1:ncol(W.mat)) {
 }
 
 # --- Salva a matrix em arquivo .mat ----
-fileConn <- file("./Excel Export/data.mat")
-writeLines( text = sprintf("%1$d %1$d // A %1$d by %1$d matrix (%2$s)", qtd_of_regions, "connections"),
+
+# tipo_matrix = 1 : Construcao classica
+# tipo_matrix = 2 : Ponderada pelo pib
+# tipo_matrix = 3 : Ponderada pelo pib per capita
+# tipo_matrix = 3 : Ponderada pela populacao
+if (tipo_matrix == 1) {
+  file.name.sufix <- "Connections"
+} else if(tipo_matrix == 2) {
+  file.name.sufix <- "Pib"
+} else if(tipo_matrix == 3) {
+  file.name.sufix <- "PibPerCapta"
+} else if(tipo_matrix == 4) {
+  file.name.sufix <- "Populacao"
+} 
+file.name <- sprintf("./Excel Export/data_%s.mat", file.name.sufix)
+
+
+fileConn <- file(file.name)
+writeLines( text = sprintf("%1$d %1$d // A %1$d by %1$d matrix (%2$s)", qtd_of_regions, file.name.sufix),
             con = fileConn)
 close(fileConn)
 
-write.table(x = W.mat, file = "./Excel Export/data.mat",
+write.table(x = W.mat, file = file.name,
             append = TRUE,
             col.names = FALSE,
             row.names = FALSE)
