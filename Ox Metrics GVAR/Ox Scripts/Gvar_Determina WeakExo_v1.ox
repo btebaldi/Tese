@@ -80,23 +80,27 @@ main() {
 
     println("Carregando matrix de pessos W");
     decl mW;
-    mW = loadmat(sprint(txMatPathW_Matrix, "data.mat"));
+//    mW = loadmat(sprint(txMatPathW_Matrix, "data.mat"));
+    mW = loadmat(sprint(txMatPathW_Matrix, "data_Pib.mat"));
 
     println("*** Iniciando estimacao dos modelos *** \n");
     // iCont : Contador da regiao atual
     decl iCont;
 
-    for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
+    for (iCont = 185; iCont <= iQtdRegioes; ++iCont) {
 
         // FOR DEBUG ONLY
-        if(iCont != 397){
-             //exit(0);
-			 //continue;
-        }
+       
 
-		// zero cointegra 59,74, 77, 114, 115, 117, 144, 221, 225, 227, 237, 247
-		if( any(<17,19,20,25,59, 74, 77, 81, 95, 114, 115, 117, 144, 183,184, 185, 221, 225, 227, 237, 247> .== iCont)){
-        println("SKIP: Regiao ", iCont);
+		// Matriz de conexao
+		// zero cointegracao:  59, 74, 77, 114, 115, 117, 144, 221, 225, 227, 237, 247
+		// if( any(<17,19,20,25,59, 74, 77, 81, 95, 114, 115, 117, 144, 183,184, 185, 221, 225, 227, 237, 247> .== iCont)){
+
+
+        // Matriz de PIB
+		// zero cointegracao:  13,52,77, 99, 114, 115
+		if( any(<13, 14, 15,17,18,19,20,21,23,24,25,51,52,63,77,81,91,99, 114, 115, 184,185> .== iCont)){
+		println("SKIP: Regiao ", iCont);
              continue;
         }
 
@@ -217,7 +221,8 @@ modelCats.SaveIn7(sprint("R", iCont, "_database"));
 
 if(iRank == 0){
 println("RANK ZERO DETECTADO, MUDANDO PARA RANK=1");
-		iRank=1;
+continue;
+//		iRank=1;
 }
 
         mBeta = modelCats.GetBeta();
