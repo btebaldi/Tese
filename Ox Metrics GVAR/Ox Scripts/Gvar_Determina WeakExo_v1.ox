@@ -1,7 +1,7 @@
 ﻿#include <oxstd.oxh>
 #import <packages/PcGive/pcgive_ects>
 
-#include <C:\Users\bteba\Documents\GitHub\Tese\Ox Metrics GVAR\Ox Scripts\ClasseCATS_Custom.ox>
+#include <.\ClasseCATS_Custom.ox>
 
 // GET WD()  OLHAR PARA PEGAR O DIRETORIO
 
@@ -81,13 +81,13 @@ main() {
     println("Carregando matrix de pessos W");
     decl mW;
 //    mW = loadmat(sprint(txMatPathW_Matrix, "data.mat"));
-    mW = loadmat(sprint(txMatPathW_Matrix, "data_Pib.mat"));
+    mW = loadmat(sprint(txMatPathW_Matrix, "data_PibPerCapta.mat"));
 
     println("*** Iniciando estimacao dos modelos *** \n");
     // iCont : Contador da regiao atual
     decl iCont;
 
-    for (iCont = 185; iCont <= iQtdRegioes; ++iCont) {
+    for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
 
         // FOR DEBUG ONLY
        
@@ -99,11 +99,26 @@ main() {
 
         // Matriz de PIB
 		// zero cointegracao:  13,52,77, 99, 114, 115
-		if( any(<13, 14, 15,17,18,19,20,21,23,24,25,51,52,63,77,81,91,99, 114, 115, 184,185> .== iCont)){
+		//if( any(<13, 14, 15,17,18,19,20,21,23,24,25,51,52,63,77,81,91,99, 114, 115, 184,185> .== iCont)){
+		//println("SKIP: Regiao ", iCont);
+        //     continue;
+        //}
+
+		// Matriz de PIB per capta
+		// zero cointegracao:  
+		if( any(<19,20,25,43,63,81,184> .== iCont)){
 		println("SKIP: Regiao ", iCont);
              continue;
         }
 
+		// Matriz de Populacao
+		// zero cointegracao:  
+		//if( any(<17,18,19,20,21,23,25,63,81,184> .== iCont)){
+		//println("SKIP: Regiao ", iCont);
+        //     continue;
+        //}
+
+		
 		// print Headder
         println("\n\n*****************************************");
         println("             Regiao ", iCont);
@@ -176,7 +191,7 @@ main() {
 		modelCats.Resample(12, 1995, 1);
 
 //println("DEBUG(1)");
-modelCats.SaveIn7(sprint("R", iCont, "_database"));
+//modelCats.SaveIn7(sprint("R", iCont, "_database"));
 
     	// Adiciona as variaveis X como exogenas
 	    for(decl iqtd = 0; iqtd < columns(asX); iqtd++) {
@@ -221,8 +236,8 @@ modelCats.SaveIn7(sprint("R", iCont, "_database"));
 
 if(iRank == 0){
 println("RANK ZERO DETECTADO, MUDANDO PARA RANK=1");
-continue;
-//		iRank=1;
+//continue;
+		iRank=1;
 }
 
         mBeta = modelCats.GetBeta();
