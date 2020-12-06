@@ -1,0 +1,62 @@
+Regioes com problema - GVAR
+Ox_Num	RA	OXCode	Nome Regiao
+13	12005	R13	Ac-Brasiléia
+16	13003	R16	Am-Alto Solimões
+17	13004	R17	Am-Juruá
+19	13006	R19	Am-Coari
+20	13007	R20	Am-Manaus
+22	13009	R22	Am-Itacoatiara
+23	13010	R23	Am-Parintins
+24	13011	R24	Am-Boca do Acre
+25	13012	R25	Am-Purus
+26	13013	R26	Am-Madeira
+28	14002	R28	Rr-Nordeste de Roraima
+31	15001	R31	Pa-Óbidos
+32	15002	R32	Pa-Santarém
+43	15013	R43	Pa-Guamá
+79	21015	R79	Ma-Codó
+81	21017	R81	Ma-Caxias
+87	22002	R87	Pi-Litoral Piauiense
+95	22010	R95	Pi-Alto Médio Gurguéia
+103	23003	R103	Ce-Coreaú
+107	23007	R107	Ce-Santa Quitéria
+114	23014	R114	Ce-Chorozinho
+115	23015	R115	Ce-Cascavel
+120	23020	R120	Ce-Sertão de Inhamuns
+137	24004	R137	Rn-Vale do Açu
+158	25006	R158	Pb-Itaporanga
+165	25013	R165	Pb-Curimataú Oriental
+171	25019	R171	Pb-Umbuzeiro
+174	25022	R174	Pb-João Pessoa
+184	26009	R184	Pe-Alto Capibaribe
+187	26012	R187	Pe-Brejo Pernambucano
+198	27006	R198	Al-Arapiraca
+217	28012	R217	Se-Boquim
+218	28013	R218	Se-Estância
+237	29019	R237	Ba-Catu
+242	29024	R242	Ba-Jequié
+259	31009	R259	Mg-Bocaiúva
+263	31013	R263	Mg-Pedra Azul
+288	31038	R288	Mg-Mantena
+289	31039	R289	Mg-Ipatinga
+296	31046	R296	Mg-Oliveira
+306	31056	R306	Mg-Itajubá
+320	32004	R320	Es-Montanha
+354	35008	R354	Sp-Novo Horizonte
+368	35022	R368	Sp-Avaré
+372	35026	R372	Sp-Rio Claro
+376	35030	R376	Sp-São João da Boa Vista
+380	35034	R380	Sp-Dracena
+425	41019	R425	Pr-Telêmaco Borba
+429	41023	R429	Pr-Cascavel
+432	41026	R432	Pr-Francisco Beltrão
+438	41032	R438	Pr-Irati
+456	42011	R456	Sc-Rio do Sul
+458	42013	R458	Sc-Itajaí
+460	42015	R460	Sc-Tijucas
+466	43001	R466	Rs-Santa Rosa
+472	43007	R472	Rs-Santo Ângelo
+501	50001	R501	Ms-Baixo Pantanal
+510	50010	R510	Ms-Dourados
+526	51015	R526	Mt-Alto Paraguai
+548	52015	R548	Go-Meia Ponte
