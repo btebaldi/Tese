@@ -32,7 +32,13 @@ EstimateRank(const mRankMatrix){
 			iRank = iRank + 1;
 		}
 	}
-	//println("Estimated rank: ", iRank);
+
+	print("%c", {"p-r", "r", "Eig.Value", "Trace", "Trace*", "Crit5%", "p-value", "p-value*"},
+//          "%cf",{"%8.4g", " [%4.2f]"}
+	"%10.2f",mRankMatrix[0]);
+
+
+	println("Estimated rank: ", iRank);
     return(iRank);
 }
 
@@ -81,7 +87,7 @@ main() {
     println("Carregando matrix de pessos W");
     decl mW;
 //    mW = loadmat(sprint(txMatPathW_Matrix, "data.mat"));
-    mW = loadmat(sprint(txMatPathW_Matrix, "data_PibPerCapta.mat"));
+    mW = loadmat(sprint(txMatPathW_Matrix, "data_Pib.mat"));
 
     println("*** Iniciando estimacao dos modelos *** \n");
     // iCont : Contador da regiao atual
@@ -235,16 +241,13 @@ main() {
         modelCats.SetMethod("RRR");
 
         // set print to false
-        modelCats.SetPrint(TRUE);
+        modelCats.SetPrint(FALSE);
 //println("DEBUG(3.1)");
         // Estima o modelo.
         modelCats.Estimate();
-println("DEBUG(4)", modelCats.DoI1RankTable());
 
-
-modelCats.PrintI1Rank();
         // Estima vetores do cointegração por bootstrap
-       	mRankMatrix = modelCats.BootstrapRankTest();
+       	mRankMatrix = modelCats.DoI1RankTable();
 
         // Escolhe o Rank 
         iRank = EstimateRank(mRankMatrix);
@@ -267,15 +270,17 @@ println("RANK ZERO DETECTADO, MUDANDO PARA RANK=1");
 println("RANK TOTAL: ",iRank);
             modelCats.I1Rank(iRank);
             modelCats.Estimate();
-            modelCats.BootstrapRankTest();
+//            modelCats.BootstrapRankTest();
 
             modelCats.SetPrint(TRUE);
             // Estima a exogeniedade fraca
+			println("Estima a exogeniedade fraca");
 			modelCats.Restrict({"[beta]","[alpha]","* * 0 0","* * 0 0"});
-        	modelCats.BootstrapRestrictions();
+        	//modelCats.BootstrapRestrictions();
 println("TESTE REGIAO ", iCont, " (hail mary)");
+			println("Estima a exogeniedade fraca");
 			modelCats.Restrict({"[beta]","* * * *","0 0 * *","[alpha]","* * 0 0","0 0 * *"});
-        	modelCats.BootstrapRestrictions();
+        	//modelCats.BootstrapRestrictions();
             // println("a", a[0]);
             // println("a", a[1]);
             // println("a", a[2]);

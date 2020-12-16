@@ -32,7 +32,13 @@ EstimateRank(const mRankMatrix){
 			iRank = iRank + 1;
 		}
 	}
-	//println("Estimated rank: ", iRank);
+
+	print("%c", {"p-r", "r", "Eig.Value", "Trace", "Trace*", "Crit5%", "p-value", "p-value*"},
+//          "%cf",{"%8.4g", " [%4.2f]"}
+	"%10.2f",mRankMatrix[0]);
+
+
+	println("Estimated rank: ", iRank);
     return(iRank);
 }
 
@@ -81,7 +87,7 @@ main() {
     println("Carregando matrix de pessos W");
     decl mW;
 //    mW = loadmat(sprint(txMatPathW_Matrix, "data.mat"));
-    mW = loadmat(sprint(txMatPathW_Matrix, "data_PibPerCapta.mat"));
+    mW = loadmat(sprint(txMatPathW_Matrix, "data_Populacao.mat"));
 
     println("*** Iniciando estimacao dos modelos *** \n");
     // iCont : Contador da regiao atual
@@ -112,7 +118,7 @@ main() {
         // }
 
 
-		if( any(<13, 16, 17, 19, 20, 22, 23, 24, 25, 26, 28, 31, 32, 43, 79, 81, 87, 95, 103, 107, 114, 115, 120, 137, 158, 165, 171, 174, 184, 187, 198, 217, 218, 237, 242, 259, 263, 288, 289, 296, 306, 320, 354, 368, 372, 376, 380, 425, 429, 432, 438, 456, 458, 460, 466, 472, 501, 510, 526, 548> .== iCont)){
+		if( any(<16,22,23,26,28,31,32,79,87,95,103,107,120,137,158,165,171,174,187,198,217,218,242,259,263,288,289,296,306,320,354,368,372,376,380,425,429,432,438,456,458,460,466,472,501,510,526,548> .== iCont)){
 //		 println("SKIP: Regiao ", iCont);
 //              continue;
         } else {
@@ -235,19 +241,17 @@ main() {
         modelCats.SetMethod("RRR");
 
         // set print to false
-        modelCats.SetPrint(TRUE);
+        modelCats.SetPrint(FALSE);
 //println("DEBUG(3.1)");
         // Estima o modelo.
         modelCats.Estimate();
-println("DEBUG(4)", modelCats.DoI1RankTable());
 
-
-modelCats.PrintI1Rank();
         // Estima vetores do cointegração por bootstrap
-       	mRankMatrix = modelCats.BootstrapRankTest();
+       	mRankMatrix = modelCats.DoI1RankTable();
 
         // Escolhe o Rank 
         iRank = EstimateRank(mRankMatrix);
+		iRank = 1;
 
 if(iRank == 0){
 println("RANK ZERO DETECTADO, MUDANDO PARA RANK=1");
@@ -267,15 +271,17 @@ println("RANK ZERO DETECTADO, MUDANDO PARA RANK=1");
 println("RANK TOTAL: ",iRank);
             modelCats.I1Rank(iRank);
             modelCats.Estimate();
-            modelCats.BootstrapRankTest();
+//            modelCats.BootstrapRankTest();
 
             modelCats.SetPrint(TRUE);
             // Estima a exogeniedade fraca
+			println("Estima a exogeniedade fraca");
 			modelCats.Restrict({"[beta]","[alpha]","* * 0 0","* * 0 0"});
-        	modelCats.BootstrapRestrictions();
+        	//modelCats.BootstrapRestrictions();
 println("TESTE REGIAO ", iCont, " (hail mary)");
+			println("Estima a exogeniedade fraca");
 			modelCats.Restrict({"[beta]","* * * *","0 0 * *","[alpha]","* * 0 0","0 0 * *"});
-        	modelCats.BootstrapRestrictions();
+        	//modelCats.BootstrapRestrictions();
             // println("a", a[0]);
             // println("a", a[1]);
             // println("a", a[2]);

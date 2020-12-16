@@ -1,2185 +1,245 @@
---------------- Ox at 10:02:17 on 30-Nov-2020 ---------------
-             Regiao 1
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.7042 [0.0457]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.4478 [0.0765]  
-             Regiao 2
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.225 [0.0241]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.2591 [0.3721]  
-             Regiao 3
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.002 [0.0113]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.3814 [0.3568]  
-             Regiao 4
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.495 [0.0329]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.1292 [0.7120]  
-             Regiao 5
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.768 [0.0009]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.9443 [0.2931]  
-             Regiao 6
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.4407 [0.0510]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.3156 [0.3650]  
-             Regiao 7
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.504 [0.0038]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.8771 [0.5786]  
-             Regiao 8
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   6.1562 [0.1878]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.4567 [0.6524]  
-             Regiao 9
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   25.536 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.0894 [0.1312]  
-             Regiao 10
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   8.3094 [0.0157]* 
-Test of restrictions on alpha:           Chi^2(2)  =   8.3094 [0.0157]* 
-             Regiao 11
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   7.2317 [0.0269]* 
-Test of restrictions on alpha:           Chi^2(2)  =   7.2317 [0.0269]* 
-             Regiao 12
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.166 [0.0018]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.4987 [0.0749]  
+--------------- Ox at 14:54:02 on 14-Dec-2020 ---------------
              Regiao 13
 RANK ZERO DETECTADO, MUDANDO PARA RANK=1
-             Regiao 14
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   72.948 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.6536 [0.3247]  
-             Regiao 15
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   59.450 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.3706 [0.6679]  
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(2)  =   6.0892 [0.0476]* 
+Test of restrictions on alpha:           Chi^2(2)  =   6.0892 [0.0476]* 
              Regiao 16
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   47.508 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   18.486 [0.0010]**
-SKIP: Regiao 17
-No data
-No data
-No data
-SKIP: Regiao 18
-No data
-No data
-No data
-SKIP: Regiao 19
-No data
-No data
-No data
-SKIP: Regiao 20
-No data
-No data
-No data
-SKIP: Regiao 21
-No data
-No data
-No data
+Test of restrictions on alpha:           Chi^2(4)  =   44.039 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   18.736 [0.0009]**
+             Regiao 17
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(2)  =   6.1183 [0.0469]* 
+Test of restrictions on alpha:           Chi^2(2)  =   6.1183 [0.0469]* 
+             Regiao 19
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(4)  =   18.206 [0.0011]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   3.8439 [0.4275]  
+             Regiao 20
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(2)  =   6.8377 [0.0327]* 
+Test of restrictions on alpha:           Chi^2(2)  =   6.8377 [0.0327]* 
              Regiao 22
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   30.281 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   27.334 [0.0000]**
-SKIP: Regiao 23
-No data
-No data
-No data
+Test of restrictions on alpha:           Chi^2(4)  =   22.217 [0.0002]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   23.417 [0.0001]**
+             Regiao 23
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(4)  =   22.479 [0.0002]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   36.528 [0.0000]**
              Regiao 24
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   72.568 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   18.950 [0.0008]**
-SKIP: Regiao 25
-No data
-No data
-No data
+Test of restrictions on alpha:           Chi^2(4)  =   53.213 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   15.014 [0.0047]**
+             Regiao 25
+RANK TOTAL: 2
+Test of restrictions on alpha:           Chi^2(4)  =   20.022 [0.0005]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   6.8304 [0.1451]  
              Regiao 26
 RANK TOTAL: 1
 Test of restrictions on alpha:           Chi^2(2)  =   17.742 [0.0001]**
 Test of restrictions on alpha:           Chi^2(2)  =   17.742 [0.0001]**
-             Regiao 27
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.640 [0.0309]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.3875 [0.1720]  
              Regiao 28
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   34.545 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   22.267 [0.0002]**
-             Regiao 29
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.466 [0.0059]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   13.146 [0.0106]* 
-             Regiao 30
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.25687 [0.8795]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.25687 [0.8795]  
+Test of restrictions on alpha:           Chi^2(2)  =   21.235 [0.0000]**
+Test of restrictions on alpha:           Chi^2(2)  =   21.235 [0.0000]**
              Regiao 31
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   13.445 [0.0012]**
-Test of restrictions on alpha:           Chi^2(2)  =   13.445 [0.0012]**
+Test of restrictions on alpha:           Chi^2(2)  =   27.640 [0.0000]**
+Test of restrictions on alpha:           Chi^2(2)  =   27.640 [0.0000]**
              Regiao 32
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   13.978 [0.0009]**
-Test of restrictions on alpha:           Chi^2(2)  =   13.978 [0.0009]**
-             Regiao 33
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   26.135 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.247 [0.0156]* 
-             Regiao 34
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.3597 [0.5067]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.3597 [0.5067]  
-             Regiao 35
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   8.7446 [0.0126]* 
-Test of restrictions on alpha:           Chi^2(2)  =   8.7446 [0.0126]* 
-             Regiao 36
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   9.2289 [0.0099]**
-Test of restrictions on alpha:           Chi^2(2)  =   9.2289 [0.0099]**
-             Regiao 37
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.057 [0.0008]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.4450 [0.6545]  
-             Regiao 38
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   3.3342 [0.1888]  
-Test of restrictions on alpha:           Chi^2(2)  =   3.3342 [0.1888]  
-             Regiao 39
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.949 [0.0115]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.3782 [0.1726]  
-             Regiao 40
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   5.0477 [0.0802]  
-Test of restrictions on alpha:           Chi^2(2)  =   5.0477 [0.0802]  
-             Regiao 41
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   20.296 [0.0004]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.891 [0.0278]* 
-             Regiao 42
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.698 [0.0009]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.3768 [0.6668]  
+Test of restrictions on alpha:           Chi^2(2)  =   21.805 [0.0000]**
+Test of restrictions on alpha:           Chi^2(2)  =   21.805 [0.0000]**
              Regiao 43
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   11.115 [0.0039]**
-Test of restrictions on alpha:           Chi^2(2)  =   11.115 [0.0039]**
-             Regiao 44
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   10.090 [0.0064]**
-Test of restrictions on alpha:           Chi^2(2)  =   10.090 [0.0064]**
-             Regiao 45
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   7.9096 [0.0949]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.6815 [0.3216]  
-             Regiao 46
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.970 [0.0114]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.2643 [0.3714]  
-             Regiao 47
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   24.513 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.380 [0.0147]* 
-             Regiao 48
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.541 [0.0010]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.5258 [0.1632]  
-             Regiao 49
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   13.190 [0.0014]**
-Test of restrictions on alpha:           Chi^2(2)  =   13.190 [0.0014]**
-             Regiao 50
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.213 [0.0158]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.3907 [0.0520]  
-             Regiao 51
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   39.422 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.9804 [0.0923]  
-             Regiao 52
-RANK ZERO DETECTADO, MUDANDO PARA RANK=1
-             Regiao 53
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.3182 [0.0536]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.168 [0.0247]* 
-             Regiao 54
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.287 [0.0041]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.9277 [0.1398]  
-             Regiao 55
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.829 [0.0121]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.6268 [0.4589]  
-             Regiao 56
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.31613 [0.8538]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.31613 [0.8538]  
-             Regiao 57
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   8.0840 [0.0176]* 
-Test of restrictions on alpha:           Chi^2(2)  =   8.0840 [0.0176]* 
-             Regiao 58
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   7.6985 [0.0213]* 
-Test of restrictions on alpha:           Chi^2(2)  =   7.6985 [0.0213]* 
-             Regiao 59
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.93700 [0.6259]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.93700 [0.6259]  
-             Regiao 60
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   16.920 [0.0020]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.2219 [0.6950]  
-             Regiao 61
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   3.8579 [0.1453]  
-Test of restrictions on alpha:           Chi^2(2)  =   3.8579 [0.1453]  
-             Regiao 62
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   12.117 [0.0023]**
-Test of restrictions on alpha:           Chi^2(2)  =   12.117 [0.0023]**
-SKIP: Regiao 63
-No data
-No data
-No data
-             Regiao 64
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.8430 [0.2413]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.8430 [0.2413]  
-             Regiao 65
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   10.452 [0.0054]**
-Test of restrictions on alpha:           Chi^2(2)  =   10.452 [0.0054]**
-             Regiao 66
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.804 [0.0289]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.663 [0.0130]* 
-             Regiao 67
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   7.2222 [0.1246]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   18.789 [0.0009]**
-             Regiao 68
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.8668 [0.3932]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.8668 [0.3932]  
-             Regiao 69
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   11.125 [0.0038]**
-Test of restrictions on alpha:           Chi^2(2)  =   11.125 [0.0038]**
-             Regiao 70
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.2920 [0.0542]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.8945 [0.0638]  
-             Regiao 71
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   13.830 [0.0010]**
-Test of restrictions on alpha:           Chi^2(2)  =   13.830 [0.0010]**
-             Regiao 72
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   6.0200 [0.0493]* 
-Test of restrictions on alpha:           Chi^2(2)  =   6.0200 [0.0493]* 
-             Regiao 73
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.5078 [0.2854]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.5078 [0.2854]  
-             Regiao 74
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   3.5132 [0.1726]  
-Test of restrictions on alpha:           Chi^2(2)  =   3.5132 [0.1726]  
-             Regiao 75
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   4.4960 [0.1056]  
-Test of restrictions on alpha:           Chi^2(2)  =   4.4960 [0.1056]  
-             Regiao 76
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.706 [0.0054]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.893 [0.0278]* 
-             Regiao 77
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.4894 [0.4749]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.4894 [0.4749]  
-             Regiao 78
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.82068 [0.6634]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.82068 [0.6634]  
+Test of restrictions on alpha:           Chi^2(2)  =   7.5159 [0.0233]* 
+Test of restrictions on alpha:           Chi^2(2)  =   7.5159 [0.0233]* 
              Regiao 79
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.005 [0.0047]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   27.779 [0.0000]**
-             Regiao 80
+Test of restrictions on alpha:           Chi^2(4)  =   14.296 [0.0064]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   18.267 [0.0011]**
+             Regiao 81
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   4.2288 [0.3759]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.2199 [0.2655]  
-SKIP: Regiao 81
-No data
-No data
-No data
-             Regiao 82
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.8943 [0.3878]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.8943 [0.3878]  
-             Regiao 83
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   10.848 [0.0044]**
-Test of restrictions on alpha:           Chi^2(2)  =   10.848 [0.0044]**
-             Regiao 84
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.946 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.9051 [0.2063]  
-             Regiao 85
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.482 [0.0141]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.974 [0.0114]* 
-             Regiao 86
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   9.0711 [0.0107]* 
-Test of restrictions on alpha:           Chi^2(2)  =   9.0711 [0.0107]* 
+Test of restrictions on alpha:           Chi^2(4)  =   35.668 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   15.492 [0.0038]**
              Regiao 87
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   14.723 [0.0006]**
-Test of restrictions on alpha:           Chi^2(2)  =   14.723 [0.0006]**
-             Regiao 88
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.465 [0.0038]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.7811 [0.2161]  
-             Regiao 89
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   23.572 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.1241 [0.1901]  
-             Regiao 90
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.640 [0.0006]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.7800 [0.3106]  
-             Regiao 91
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.55625 [0.7572]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.55625 [0.7572]  
-             Regiao 92
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.9100 [0.0420]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.9341 [0.7479]  
-             Regiao 93
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.273 [0.0100]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.8709 [0.0964]  
-             Regiao 94
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   17.493 [0.0002]**
-Test of restrictions on alpha:           Chi^2(2)  =   17.493 [0.0002]**
+Test of restrictions on alpha:           Chi^2(2)  =   13.892 [0.0010]**
+Test of restrictions on alpha:           Chi^2(2)  =   13.892 [0.0010]**
              Regiao 95
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   23.511 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   20.420 [0.0004]**
-             Regiao 96
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.982 [0.0268]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.8168 [0.7694]  
-             Regiao 97
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   26.933 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.1351 [0.2737]  
-             Regiao 98
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.283 [0.0041]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.7441 [0.1014]  
-             Regiao 99
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.3529 [0.5084]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.3529 [0.5084]  
-             Regiao 100
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.700 [0.0009]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.4065 [0.2481]  
-             Regiao 101
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   6.1222 [0.0468]* 
-Test of restrictions on alpha:           Chi^2(2)  =   6.1222 [0.0468]* 
-             Regiao 102
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   5.4228 [0.0664]  
-Test of restrictions on alpha:           Chi^2(2)  =   5.4228 [0.0664]  
+Test of restrictions on alpha:           Chi^2(4)  =   31.498 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   18.031 [0.0012]**
              Regiao 103
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   13.162 [0.0014]**
-Test of restrictions on alpha:           Chi^2(2)  =   13.162 [0.0014]**
-             Regiao 104
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   8.4952 [0.0750]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.3515 [0.0529]  
-             Regiao 105
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   3.1454 [0.5338]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.928 [0.0020]**
-             Regiao 106
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.510 [0.0214]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.807 [0.0288]* 
+Test of restrictions on alpha:           Chi^2(2)  =   17.137 [0.0002]**
+Test of restrictions on alpha:           Chi^2(2)  =   17.137 [0.0002]**
              Regiao 107
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.802 [0.0005]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   17.790 [0.0014]**
-             Regiao 108
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.4538 [0.4834]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.4538 [0.4834]  
-             Regiao 109
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.965 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   14.126 [0.0069]**
-             Regiao 110
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.4362 [0.4877]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.4362 [0.4877]  
-             Regiao 111
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   5.8354 [0.2118]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.1536 [0.1880]  
-             Regiao 112
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.7764 [0.4114]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.7764 [0.4114]  
-             Regiao 113
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.1470 [0.3418]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.1470 [0.3418]  
+Test of restrictions on alpha:           Chi^2(4)  =   19.026 [0.0008]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   16.179 [0.0028]**
              Regiao 114
 RANK ZERO DETECTADO, MUDANDO PARA RANK=1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(2)  =   2.7994 [0.2467]  
+Test of restrictions on alpha:           Chi^2(2)  =   2.7994 [0.2467]  
              Regiao 115
 RANK ZERO DETECTADO, MUDANDO PARA RANK=1
-             Regiao 116
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.464 [0.0010]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.947 [0.0020]**
-             Regiao 117
-RANK ZERO DETECTADO, MUDANDO PARA RANK=1
-             Regiao 118
-RANK ZERO DETECTADO, MUDANDO PARA RANK=1
-             Regiao 119
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   4.1642 [0.1247]  
-Test of restrictions on alpha:           Chi^2(2)  =   4.1642 [0.1247]  
+Test of restrictions on alpha:           Chi^2(2)  =   1.1227 [0.5704]  
+Test of restrictions on alpha:           Chi^2(2)  =   1.1227 [0.5704]  
              Regiao 120
+RANK ZERO DETECTADO, MUDANDO PARA RANK=1
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   12.361 [0.0021]**
-Test of restrictions on alpha:           Chi^2(2)  =   12.361 [0.0021]**
-             Regiao 121
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   3.7029 [0.1570]  
-Test of restrictions on alpha:           Chi^2(2)  =   3.7029 [0.1570]  
-             Regiao 122
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.72684 [0.6953]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.72684 [0.6953]  
-             Regiao 123
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   4.4612 [0.1075]  
-Test of restrictions on alpha:           Chi^2(2)  =   4.4612 [0.1075]  
-             Regiao 124
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   5.8311 [0.0542]  
-Test of restrictions on alpha:           Chi^2(2)  =   5.8311 [0.0542]  
-             Regiao 125
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   8.0804 [0.0887]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   14.236 [0.0066]**
-             Regiao 126
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   13.602 [0.0011]**
-Test of restrictions on alpha:           Chi^2(2)  =   13.602 [0.0011]**
-             Regiao 127
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   3.2661 [0.1953]  
-Test of restrictions on alpha:           Chi^2(2)  =   3.2661 [0.1953]  
-             Regiao 128
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.9952 [0.3688]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.9952 [0.3688]  
-             Regiao 129
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.026 [0.0008]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   23.873 [0.0001]**
-             Regiao 130
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   5.1503 [0.0761]  
-Test of restrictions on alpha:           Chi^2(2)  =   5.1503 [0.0761]  
-             Regiao 131
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.9024 [0.2343]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.9024 [0.2343]  
-             Regiao 132
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   4.4588 [0.3475]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.922 [0.0179]* 
-             Regiao 133
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.64604 [0.7240]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.64604 [0.7240]  
-             Regiao 134
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.4588 [0.4822]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.4588 [0.4822]  
-             Regiao 135
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   11.932 [0.0026]**
-Test of restrictions on alpha:           Chi^2(2)  =   11.932 [0.0026]**
-             Regiao 136
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   25.015 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   21.542 [0.0002]**
+Test of restrictions on alpha:           Chi^2(2)  =   13.231 [0.0013]**
+Test of restrictions on alpha:           Chi^2(2)  =   13.231 [0.0013]**
              Regiao 137
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   14.247 [0.0008]**
-Test of restrictions on alpha:           Chi^2(2)  =   14.247 [0.0008]**
-             Regiao 138
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.047 [0.0170]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   19.647 [0.0006]**
-             Regiao 139
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.6621 [0.2642]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.6621 [0.2642]  
-             Regiao 140
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   16.050 [0.0030]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   27.432 [0.0000]**
-             Regiao 141
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   3.6858 [0.4502]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.9363 [0.2040]  
-             Regiao 142
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =0.0061872 [0.9969]  
-Test of restrictions on alpha:           Chi^2(2)  =0.0061872 [0.9969]  
-             Regiao 143
-RANK ZERO DETECTADO, MUDANDO PARA RANK=1
-             Regiao 144
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   3.1832 [0.2036]  
-Test of restrictions on alpha:           Chi^2(2)  =   3.1832 [0.2036]  
-             Regiao 145
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   1.3925 [0.8455]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.0699 [0.0594]  
-             Regiao 146
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.737 [0.0006]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.791 [0.0123]* 
-             Regiao 147
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.626 [0.0009]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.537 [0.0138]* 
-             Regiao 148
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   6.5819 [0.0372]* 
-Test of restrictions on alpha:           Chi^2(2)  =   6.5819 [0.0372]* 
-             Regiao 149
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.8637 [0.2389]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.8637 [0.2389]  
-             Regiao 150
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   10.831 [0.0044]**
-Test of restrictions on alpha:           Chi^2(2)  =   10.831 [0.0044]**
-             Regiao 151
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.496 [0.0006]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.5425 [0.8191]  
-             Regiao 152
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.090 [0.0108]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =  0.55913 [0.9675]  
-             Regiao 153
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.429 [0.0003]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.187 [0.0160]* 
-             Regiao 154
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   3.3482 [0.1875]  
-Test of restrictions on alpha:           Chi^2(2)  =   3.3482 [0.1875]  
-             Regiao 155
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.477 [0.0217]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.3926 [0.8455]  
-             Regiao 156
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   7.2644 [0.1226]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.723 [0.0195]* 
-             Regiao 157
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   3.3619 [0.4992]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.1636 [0.7057]  
+Test of restrictions on alpha:           Chi^2(2)  =   11.960 [0.0025]**
+Test of restrictions on alpha:           Chi^2(2)  =   11.960 [0.0025]**
              Regiao 158
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   23.189 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   31.182 [0.0000]**
-             Regiao 159
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   7.7311 [0.0210]* 
-Test of restrictions on alpha:           Chi^2(2)  =   7.7311 [0.0210]* 
-             Regiao 160
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   8.4756 [0.0144]* 
-Test of restrictions on alpha:           Chi^2(2)  =   8.4756 [0.0144]* 
-             Regiao 161
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   8.4240 [0.0148]* 
-Test of restrictions on alpha:           Chi^2(2)  =   8.4240 [0.0148]* 
-             Regiao 162
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   7.5287 [0.0232]* 
-Test of restrictions on alpha:           Chi^2(2)  =   7.5287 [0.0232]* 
-             Regiao 163
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   3.5353 [0.1707]  
-Test of restrictions on alpha:           Chi^2(2)  =   3.5353 [0.1707]  
-             Regiao 164
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.18319 [0.9125]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.18319 [0.9125]  
+Test of restrictions on alpha:           Chi^2(4)  =   15.005 [0.0047]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   24.392 [0.0001]**
              Regiao 165
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   15.497 [0.0004]**
-Test of restrictions on alpha:           Chi^2(2)  =   15.497 [0.0004]**
-             Regiao 166
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.7052 [0.0457]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.953 [0.0115]* 
-             Regiao 167
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   3.0339 [0.5522]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.5868 [0.2322]  
-             Regiao 168
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   8.7536 [0.0126]* 
-Test of restrictions on alpha:           Chi^2(2)  =   8.7536 [0.0126]* 
-             Regiao 169
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.429 [0.0221]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.4113 [0.0776]  
-             Regiao 170
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   7.1626 [0.1275]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   19.624 [0.0006]**
+Test of restrictions on alpha:           Chi^2(2)  =   11.546 [0.0031]**
+Test of restrictions on alpha:           Chi^2(2)  =   11.546 [0.0031]**
              Regiao 171
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   32.373 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   23.319 [0.0001]**
-             Regiao 172
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.87398 [0.6460]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.87398 [0.6460]  
-             Regiao 173
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   4.6076 [0.3300]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.5056 [0.6436]  
+Test of restrictions on alpha:           Chi^2(4)  =   30.035 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   22.161 [0.0002]**
              Regiao 174
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.247 [0.0011]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   15.353 [0.0040]**
-             Regiao 175
+Test of restrictions on alpha:           Chi^2(4)  =   21.943 [0.0002]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   24.862 [0.0001]**
+             Regiao 184
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.955 [0.0048]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.9847 [0.1367]  
-             Regiao 176
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   5.6116 [0.0605]  
-Test of restrictions on alpha:           Chi^2(2)  =   5.6116 [0.0605]  
-             Regiao 177
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   31.107 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.3900 [0.0521]  
-             Regiao 178
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   15.408 [0.0005]**
-Test of restrictions on alpha:           Chi^2(2)  =   15.408 [0.0005]**
-             Regiao 179
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   12.360 [0.0021]**
-Test of restrictions on alpha:           Chi^2(2)  =   12.360 [0.0021]**
-             Regiao 180
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.0836 [0.0590]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   15.459 [0.0038]**
-             Regiao 181
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.146 [0.0012]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.9226 [0.2050]  
-             Regiao 182
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   3.7729 [0.1516]  
-Test of restrictions on alpha:           Chi^2(2)  =   3.7729 [0.1516]  
-             Regiao 183
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.068 [0.0012]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   14.594 [0.0056]**
-SKIP: Regiao 184
-No data
-No data
-No data
-             Regiao 185
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   4.8425 [0.0888]  
-Test of restrictions on alpha:           Chi^2(2)  =   4.8425 [0.0888]  
-             Regiao 186
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   8.8197 [0.0122]* 
-Test of restrictions on alpha:           Chi^2(2)  =   8.8197 [0.0122]* 
+Test of restrictions on alpha:           Chi^2(4)  =   37.470 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =  0.70149 [0.9511]  
              Regiao 187
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   16.988 [0.0019]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   20.800 [0.0003]**
-             Regiao 188
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   24.664 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.3102 [0.2569]  
-             Regiao 189
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.4452 [0.4855]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.4452 [0.4855]  
-             Regiao 190
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  = 0.087419 [0.9572]  
-Test of restrictions on alpha:           Chi^2(2)  = 0.087419 [0.9572]  
-             Regiao 191
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.403 [0.0010]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   21.152 [0.0003]**
-             Regiao 192
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   11.232 [0.0036]**
-Test of restrictions on alpha:           Chi^2(2)  =   11.232 [0.0036]**
-             Regiao 193
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   13.669 [0.0011]**
-Test of restrictions on alpha:           Chi^2(2)  =   13.669 [0.0011]**
-             Regiao 194
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.399 [0.0224]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.343 [0.0026]**
-             Regiao 195
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   25.377 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   20.830 [0.0003]**
-             Regiao 196
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.598 [0.0036]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.4365 [0.4876]  
-             Regiao 197
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.37919 [0.8273]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.37919 [0.8273]  
+Test of restrictions on alpha:           Chi^2(2)  =   21.223 [0.0000]**
+Test of restrictions on alpha:           Chi^2(2)  =   21.223 [0.0000]**
              Regiao 198
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.677 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   13.366 [0.0096]**
-             Regiao 199
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.526 [0.0058]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.6643 [0.0465]* 
-             Regiao 200
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.910 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.9664 [0.0928]  
-             Regiao 201
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   30.337 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.562 [0.0136]* 
-             Regiao 202
-RANK ZERO DETECTADO, MUDANDO PARA RANK=1
-             Regiao 203
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   33.083 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.821 [0.0286]* 
-             Regiao 204
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.916 [0.0013]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.7046 [0.6084]  
-             Regiao 205
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   16.532 [0.0024]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.8491 [0.7635]  
-             Regiao 206
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   26.106 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.6438 [0.6191]  
-             Regiao 207
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.13736 [0.9336]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.13736 [0.9336]  
-             Regiao 208
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.347 [0.0097]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.2339 [0.0834]  
-             Regiao 209
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   16.989 [0.0019]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.3143 [0.3651]  
-             Regiao 210
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.656 [0.0085]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.3658 [0.2518]  
-             Regiao 211
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.793 [0.0290]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.5959 [0.6276]  
-             Regiao 212
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.578 [0.0057]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   18.953 [0.0008]**
-             Regiao 213
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   3.1851 [0.5273]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.653 [0.0307]* 
-             Regiao 214
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.70013 [0.7046]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.70013 [0.7046]  
-             Regiao 215
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   7.0950 [0.1310]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.5171 [0.3405]  
-             Regiao 216
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   39.248 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.6419 [0.0707]  
+Test of restrictions on alpha:           Chi^2(4)  =   26.529 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   21.051 [0.0003]**
              Regiao 217
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   15.578 [0.0004]**
-Test of restrictions on alpha:           Chi^2(2)  =   15.578 [0.0004]**
+Test of restrictions on alpha:           Chi^2(2)  =   10.290 [0.0058]**
+Test of restrictions on alpha:           Chi^2(2)  =   10.290 [0.0058]**
              Regiao 218
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   20.001 [0.0005]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   17.016 [0.0019]**
-             Regiao 219
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   3.5792 [0.1670]  
-Test of restrictions on alpha:           Chi^2(2)  =   3.5792 [0.1670]  
-             Regiao 220
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   25.379 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.249 [0.0239]* 
-             Regiao 221
-RANK ZERO DETECTADO, MUDANDO PARA RANK=1
-             Regiao 222
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.9202 [0.2322]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.9202 [0.2322]  
-             Regiao 223
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.5134 [0.0495]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   14.773 [0.0052]**
-             Regiao 224
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.4251 [0.0513]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.1826 [0.3819]  
-             Regiao 225
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   6.2813 [0.0433]* 
-Test of restrictions on alpha:           Chi^2(2)  =   6.2813 [0.0433]* 
-             Regiao 226
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   24.137 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.1481 [0.5334]  
-             Regiao 227
-RANK ZERO DETECTADO, MUDANDO PARA RANK=1
-             Regiao 228
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.1287 [0.3450]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.1287 [0.3450]  
-             Regiao 229
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   4.5365 [0.1035]  
-Test of restrictions on alpha:           Chi^2(2)  =   4.5365 [0.1035]  
-             Regiao 230
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   7.4327 [0.1147]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.472 [0.0217]* 
-             Regiao 231
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.985 [0.0012]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   14.537 [0.0058]**
-             Regiao 232
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.8724 [0.0426]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.4920 [0.1653]  
-             Regiao 233
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   10.358 [0.0056]**
-Test of restrictions on alpha:           Chi^2(2)  =   10.358 [0.0056]**
-             Regiao 234
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   11.329 [0.0035]**
-Test of restrictions on alpha:           Chi^2(2)  =   11.329 [0.0035]**
-             Regiao 235
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   7.3711 [0.0251]* 
-Test of restrictions on alpha:           Chi^2(2)  =   7.3711 [0.0251]* 
-             Regiao 236
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.1959 [0.3335]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.1959 [0.3335]  
+Test of restrictions on alpha:           Chi^2(4)  =   20.300 [0.0004]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   17.252 [0.0017]**
              Regiao 237
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   14.527 [0.0007]**
-Test of restrictions on alpha:           Chi^2(2)  =   14.527 [0.0007]**
-             Regiao 238
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.535 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   15.204 [0.0043]**
-             Regiao 239
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   5.5064 [0.2392]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.2130 [0.2661]  
-             Regiao 240
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   5.7740 [0.0557]  
-Test of restrictions on alpha:           Chi^2(2)  =   5.7740 [0.0557]  
-             Regiao 241
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   20.328 [0.0004]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.1978 [0.3799]  
+Test of restrictions on alpha:           Chi^2(2)  =   9.4836 [0.0087]**
+Test of restrictions on alpha:           Chi^2(2)  =   9.4836 [0.0087]**
              Regiao 242
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.235 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   17.711 [0.0014]**
-             Regiao 243
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.986 [0.0005]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.1365 [0.8884]  
-             Regiao 244
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  = 0.041443 [0.9795]  
-Test of restrictions on alpha:           Chi^2(2)  = 0.041443 [0.9795]  
-             Regiao 245
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.396 [0.0095]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.808 [0.0288]* 
-             Regiao 246
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   20.310 [0.0004]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.2722 [0.2605]  
-             Regiao 247
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   20.709 [0.0004]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.514 [0.0139]* 
-             Regiao 248
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.064 [0.0071]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.9754 [0.4093]  
-             Regiao 249
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.860 [0.0078]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.3242 [0.8573]  
-             Regiao 250
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.2205 [0.3295]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.2205 [0.3295]  
-             Regiao 251
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.56197 [0.7550]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.56197 [0.7550]  
-             Regiao 252
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   16.151 [0.0028]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =  0.82800 [0.9347]  
-             Regiao 253
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.065 [0.0071]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.2926 [0.6821]  
-             Regiao 254
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   22.229 [0.0000]**
-Test of restrictions on alpha:           Chi^2(2)  =   22.229 [0.0000]**
-             Regiao 255
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.119 [0.0007]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.2307 [0.1242]  
-             Regiao 256
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   31.958 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.754 [0.0022]**
-             Regiao 257
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   16.759 [0.0022]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.9164 [0.0947]  
-             Regiao 258
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   25.340 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.574 [0.0318]* 
+Test of restrictions on alpha:           Chi^2(4)  =   22.716 [0.0001]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   15.323 [0.0041]**
              Regiao 259
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.893 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   13.884 [0.0077]**
-             Regiao 260
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.182 [0.0246]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.8480 [0.5836]  
-             Regiao 261
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   9.3227 [0.0095]**
-Test of restrictions on alpha:           Chi^2(2)  =   9.3227 [0.0095]**
-             Regiao 262
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.664 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.6377 [0.1058]  
+Test of restrictions on alpha:           Chi^2(4)  =   35.989 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   13.468 [0.0092]**
              Regiao 263
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   13.529 [0.0012]**
-Test of restrictions on alpha:           Chi^2(2)  =   13.529 [0.0012]**
-             Regiao 264
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   25.440 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   13.629 [0.0086]**
-             Regiao 265
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   36.122 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   20.611 [0.0004]**
-             Regiao 266
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.678 [0.0054]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.4390 [0.1687]  
-             Regiao 267
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.126 [0.0018]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.6894 [0.7926]  
-             Regiao 268
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.485 [0.0010]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.7534 [0.1010]  
-             Regiao 269
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.8559 [0.3954]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.8559 [0.3954]  
-             Regiao 270
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.8642 [0.3937]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.8642 [0.3937]  
-             Regiao 271
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   27.334 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.057 [0.0395]* 
-             Regiao 272
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   20.409 [0.0004]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.4762 [0.4815]  
-             Regiao 273
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   23.440 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.5330 [0.2368]  
-             Regiao 274
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.371 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.5954 [0.1076]  
-             Regiao 275
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   29.816 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.1201 [0.0582]  
-             Regiao 276
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.998 [0.0174]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.9558 [0.5653]  
-             Regiao 277
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   9.9186 [0.0070]**
-Test of restrictions on alpha:           Chi^2(2)  =   9.9186 [0.0070]**
-             Regiao 278
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.2107 [0.0560]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.6691 [0.7963]  
-             Regiao 279
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.7591 [0.0447]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.6359 [0.6205]  
-             Regiao 280
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   16.583 [0.0023]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.6846 [0.1038]  
-             Regiao 281
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.268 [0.0362]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.4776 [0.8306]  
-             Regiao 282
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   24.020 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.372 [0.0148]* 
-             Regiao 283
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.4470 [0.0508]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.6914 [0.2234]  
-             Regiao 284
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.647 [0.0131]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.229 [0.0241]* 
-             Regiao 285
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.427 [0.0061]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.080 [0.0257]* 
-             Regiao 286
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.270 [0.0042]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.6211 [0.3284]  
-             Regiao 287
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.544 [0.0010]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.4899 [0.3437]  
+Test of restrictions on alpha:           Chi^2(2)  =   26.733 [0.0000]**
+Test of restrictions on alpha:           Chi^2(2)  =   26.733 [0.0000]**
              Regiao 288
-RANK ZERO DETECTADO, MUDANDO PARA RANK=1
+RANK TOTAL: 1
+Test of restrictions on alpha:           Chi^2(2)  =   28.906 [0.0000]**
+Test of restrictions on alpha:           Chi^2(2)  =   28.906 [0.0000]**
              Regiao 289
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   42.240 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   23.196 [0.0001]**
-             Regiao 290
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.790 [0.0033]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.7706 [0.3117]  
-             Regiao 291
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   26.939 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.8352 [0.3046]  
-             Regiao 292
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.055 [0.0003]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.8228 [0.3060]  
-             Regiao 293
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   7.6481 [0.0218]* 
-Test of restrictions on alpha:           Chi^2(2)  =   7.6481 [0.0218]* 
-             Regiao 294
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.815 [0.0033]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.7772 [0.2164]  
-             Regiao 295
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   5.5504 [0.0623]  
-Test of restrictions on alpha:           Chi^2(2)  =   5.5504 [0.0623]  
+Test of restrictions on alpha:           Chi^2(4)  =   45.889 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   20.026 [0.0005]**
              Regiao 296
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   33.429 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   23.789 [0.0001]**
-             Regiao 297
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.946 [0.0178]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.9876 [0.1365]  
-             Regiao 298
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.958 [0.0115]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.219 [0.0027]**
-             Regiao 299
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   7.3314 [0.1194]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.8748 [0.3004]  
-             Regiao 300
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.934 [0.0008]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.6586 [0.3242]  
-             Regiao 301
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.380 [0.0226]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.771 [0.0293]* 
-             Regiao 302
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.560 [0.0088]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.527 [0.0324]* 
-             Regiao 303
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   8.6805 [0.0696]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.202 [0.0244]* 
-             Regiao 304
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.661 [0.0035]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.9641 [0.1378]  
-             Regiao 305
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.125 [0.0069]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.5990 [0.3310]  
+Test of restrictions on alpha:           Chi^2(4)  =   42.196 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   23.984 [0.0001]**
              Regiao 306
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   26.752 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   23.769 [0.0001]**
-             Regiao 307
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.223 [0.0368]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.7492 [0.4410]  
-             Regiao 308
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.1660 [0.3386]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.1660 [0.3386]  
-             Regiao 309
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.402 [0.0007]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.764 [0.0293]* 
-             Regiao 310
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.709 [0.0300]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.8989 [0.0422]* 
-             Regiao 311
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   7.7004 [0.1032]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.4007 [0.3545]  
-             Regiao 312
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.565 [0.0209]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.9559 [0.7439]  
-             Regiao 313
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   9.7101 [0.0078]**
-Test of restrictions on alpha:           Chi^2(2)  =   9.7101 [0.0078]**
-             Regiao 314
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.329 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.7051 [0.3189]  
-             Regiao 315
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   8.9024 [0.0636]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.6176 [0.2296]  
-             Regiao 316
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.202 [0.0043]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.7669 [0.5976]  
-             Regiao 317
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.005 [0.0019]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.2721 [0.6859]  
-             Regiao 318
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.412 [0.0145]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.5984 [0.3310]  
-             Regiao 319
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   6.4745 [0.1664]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.874 [0.0119]* 
+Test of restrictions on alpha:           Chi^2(4)  =   26.518 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   15.359 [0.0040]**
              Regiao 320
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   42.632 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   37.985 [0.0000]**
-             Regiao 321
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.861 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.2304 [0.8731]  
-             Regiao 322
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.272 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.1837 [0.7020]  
-             Regiao 323
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   4.9260 [0.0852]  
-Test of restrictions on alpha:           Chi^2(2)  =   4.9260 [0.0852]  
-             Regiao 324
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   4.5679 [0.1019]  
-Test of restrictions on alpha:           Chi^2(2)  =   4.5679 [0.1019]  
-             Regiao 325
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   20.010 [0.0005]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.4733 [0.0757]  
-             Regiao 326
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.149 [0.0068]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.6846 [0.7935]  
-             Regiao 327
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.653 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.1772 [0.3826]  
-             Regiao 328
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.880 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   18.931 [0.0008]**
-             Regiao 329
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.600 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.6120 [0.3295]  
-             Regiao 330
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.920 [0.0275]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.6880 [0.7929]  
-             Regiao 331
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.150 [0.0068]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.5725 [0.3340]  
-             Regiao 332
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.797 [0.0123]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.9805 [0.2006]  
-             Regiao 333
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.047 [0.0012]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   14.214 [0.0066]**
-             Regiao 334
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   11.876 [0.0026]**
-Test of restrictions on alpha:           Chi^2(2)  =   11.876 [0.0026]**
-             Regiao 335
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.669 [0.0305]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.2105 [0.5232]  
-             Regiao 336
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   20.046 [0.0005]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.261 [0.0238]* 
-             Regiao 337
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.922 [0.0008]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.7829 [0.3103]  
-             Regiao 338
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.528 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.5699 [0.2337]  
-             Regiao 339
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.963 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   14.419 [0.0061]**
-             Regiao 340
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   4.1927 [0.1229]  
-Test of restrictions on alpha:           Chi^2(2)  =   4.1927 [0.1229]  
-             Regiao 341
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.785 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.2739 [0.0820]  
-             Regiao 342
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   16.841 [0.0021]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.412 [0.0223]* 
-             Regiao 343
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   10.445 [0.0054]**
-Test of restrictions on alpha:           Chi^2(2)  =   10.445 [0.0054]**
-             Regiao 344
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.623 [0.0015]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   14.824 [0.0051]**
-             Regiao 345
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   27.031 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.4888 [0.0752]  
-             Regiao 346
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   30.653 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   20.747 [0.0004]**
-             Regiao 347
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   5.6988 [0.0579]  
-Test of restrictions on alpha:           Chi^2(2)  =   5.6988 [0.0579]  
-             Regiao 348
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   4.9739 [0.0832]  
-Test of restrictions on alpha:           Chi^2(2)  =   4.9739 [0.0832]  
-             Regiao 349
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   31.060 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.059 [0.0029]**
-             Regiao 350
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.538 [0.0010]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.868 [0.0119]* 
-             Regiao 351
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   30.007 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   24.123 [0.0001]**
-             Regiao 352
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.189 [0.0011]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.9691 [0.2905]  
-             Regiao 353
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.834 [0.0078]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.0797 [0.2792]  
+Test of restrictions on alpha:           Chi^2(4)  =   33.913 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   26.809 [0.0000]**
              Regiao 354
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.728 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   13.673 [0.0084]**
-             Regiao 355
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   25.103 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.1976 [0.0563]  
-             Regiao 356
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.718 [0.0196]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   17.447 [0.0016]**
-             Regiao 357
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   33.593 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.338 [0.0150]* 
-             Regiao 358
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   8.0858 [0.0885]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.0801 [0.3953]  
-             Regiao 359
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.034 [0.0072]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.3922 [0.0782]  
-             Regiao 360
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.449 [0.0093]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.2843 [0.2594]  
-             Regiao 361
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.451 [0.0219]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   14.921 [0.0049]**
-             Regiao 362
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.800 [0.0051]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.666 [0.0022]**
-             Regiao 363
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.2010 [0.0563]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.792 [0.0021]**
-             Regiao 364
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.757 [0.0034]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.568 [0.0319]* 
-             Regiao 365
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   23.051 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.1465 [0.1283]  
-             Regiao 366
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.422 [0.0094]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   18.928 [0.0008]**
-             Regiao 367
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.453 [0.0016]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.2983 [0.1780]  
+Test of restrictions on alpha:           Chi^2(4)  =   38.090 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   16.981 [0.0019]**
              Regiao 368
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.623 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   20.110 [0.0005]**
-             Regiao 369
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   7.6036 [0.0223]* 
-Test of restrictions on alpha:           Chi^2(2)  =   7.6036 [0.0223]* 
-             Regiao 370
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.537 [0.0058]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.446 [0.0025]**
-             Regiao 371
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.525 [0.0090]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   17.472 [0.0016]**
+Test of restrictions on alpha:           Chi^2(4)  =   43.971 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   20.998 [0.0003]**
              Regiao 372
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.967 [0.0005]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   28.270 [0.0000]**
-             Regiao 373
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   2.9235 [0.5707]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.2877 [0.0816]  
-             Regiao 374
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   3.7914 [0.4350]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.2361 [0.3750]  
-             Regiao 375
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.360 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.1283 [0.0870]  
+Test of restrictions on alpha:           Chi^2(4)  =   18.640 [0.0009]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   20.338 [0.0004]**
              Regiao 376
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   24.438 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   19.979 [0.0005]**
-             Regiao 377
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   7.7783 [0.0205]* 
-Test of restrictions on alpha:           Chi^2(2)  =   7.7783 [0.0205]* 
-             Regiao 378
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   4.2592 [0.3721]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.8089 [0.0438]* 
-             Regiao 379
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.966 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.4883 [0.3439]  
+Test of restrictions on alpha:           Chi^2(4)  =   52.846 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   35.977 [0.0000]**
              Regiao 380
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   29.747 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.521 [0.0024]**
-             Regiao 381
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.922 [0.0049]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.2610 [0.3718]  
-             Regiao 382
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.687 [0.0009]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.3718 [0.0524]  
-             Regiao 383
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.395 [0.0146]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.050 [0.0396]* 
-             Regiao 384
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   8.7642 [0.0673]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.656 [0.0023]**
-             Regiao 385
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.89634 [0.6388]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.89634 [0.6388]  
-             Regiao 386
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   6.9270 [0.1398]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.689 [0.0022]**
-             Regiao 387
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   11.641 [0.0030]**
-Test of restrictions on alpha:           Chi^2(2)  =   11.641 [0.0030]**
-             Regiao 388
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.562 [0.0088]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.9283 [0.4158]  
-             Regiao 389
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   4.7105 [0.3183]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.2881 [0.5108]  
-             Regiao 390
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.4154 [0.4928]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.4154 [0.4928]  
-             Regiao 391
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  = 0.056276 [0.9723]  
-Test of restrictions on alpha:           Chi^2(2)  = 0.056276 [0.9723]  
-             Regiao 392
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.384 [0.0147]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.4090 [0.0517]  
-             Regiao 393
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.265 [0.0155]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   20.209 [0.0005]**
-             Regiao 394
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.49900 [0.7792]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.49900 [0.7792]  
-             Regiao 395
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   16.901 [0.0020]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.7759 [0.2165]  
-             Regiao 396
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.1883 [0.0566]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   14.837 [0.0051]**
-             Regiao 397
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   9.9034 [0.0421]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.0579 [0.0895]  
-             Regiao 398
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.128 [0.0107]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.1364 [0.0867]  
-             Regiao 399
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.087 [0.0012]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.6649 [0.2256]  
-             Regiao 400
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.701 [0.0014]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   13.441 [0.0093]**
-             Regiao 401
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.512 [0.0058]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.1134 [0.0583]  
-             Regiao 402
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   7.8236 [0.0983]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.8603 [0.1435]  
-             Regiao 403
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   3.0951 [0.2128]  
-Test of restrictions on alpha:           Chi^2(2)  =   3.0951 [0.2128]  
-             Regiao 404
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.509 [0.0139]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   19.542 [0.0006]**
-             Regiao 405
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.0041 [0.6053]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.0041 [0.6053]  
-             Regiao 406
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   3.1065 [0.5402]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.1000 [0.0880]  
-             Regiao 407
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.064 [0.0394]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.863 [0.0120]* 
-             Regiao 408
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   8.5068 [0.0747]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.5389 [0.0737]  
-             Regiao 409
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   8.0648 [0.0892]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.5157 [0.8238]  
-             Regiao 410
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   9.4792 [0.0087]**
-Test of restrictions on alpha:           Chi^2(2)  =   9.4792 [0.0087]**
-             Regiao 411
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.359 [0.0348]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.8886 [0.7562]  
-             Regiao 412
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   5.7797 [0.2162]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.5458 [0.8185]  
-             Regiao 413
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.669 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   21.045 [0.0003]**
-             Regiao 414
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   9.3869 [0.0092]**
-Test of restrictions on alpha:           Chi^2(2)  =   9.3869 [0.0092]**
-             Regiao 415
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   28.226 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   18.575 [0.0010]**
-             Regiao 416
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   24.849 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.5881 [0.6289]  
-             Regiao 417
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   4.1719 [0.1242]  
-Test of restrictions on alpha:           Chi^2(2)  =   4.1719 [0.1242]  
-             Regiao 418
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.067 [0.0019]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.4475 [0.6541]  
-             Regiao 419
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.692 [0.0035]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.8957 [0.7549]  
-             Regiao 420
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.513 [0.0058]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.4461 [0.0765]  
-             Regiao 421
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.7061 [0.2585]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.7061 [0.2585]  
-             Regiao 422
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.500 [0.0015]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.0637 [0.1326]  
-             Regiao 423
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.041 [0.0012]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.4261 [0.3514]  
-             Regiao 424
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.2013 [0.5484]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.2013 [0.5484]  
+Test of restrictions on alpha:           Chi^2(4)  =   39.522 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   15.881 [0.0032]**
              Regiao 425
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.281 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.933 [0.0020]**
-             Regiao 426
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.061 [0.0008]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.9444 [0.7460]  
-             Regiao 427
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   5.4207 [0.0665]  
-Test of restrictions on alpha:           Chi^2(2)  =   5.4207 [0.0665]  
-             Regiao 428
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   31.231 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.283 [0.0236]* 
+Test of restrictions on alpha:           Chi^2(4)  =   23.909 [0.0001]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   17.674 [0.0014]**
              Regiao 429
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   17.897 [0.0001]**
-Test of restrictions on alpha:           Chi^2(2)  =   17.897 [0.0001]**
-             Regiao 430
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   16.942 [0.0020]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.197 [0.0244]* 
-             Regiao 431
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   28.365 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   19.601 [0.0006]**
+Test of restrictions on alpha:           Chi^2(2)  =   32.636 [0.0000]**
+Test of restrictions on alpha:           Chi^2(2)  =   32.636 [0.0000]**
              Regiao 432
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   36.499 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   21.632 [0.0002]**
-             Regiao 433
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   6.7338 [0.1506]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   17.049 [0.0019]**
-             Regiao 434
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.288 [0.0153]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.9319 [0.1395]  
-             Regiao 435
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   7.8999 [0.0953]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   13.990 [0.0073]**
-             Regiao 436
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.7401 [0.2541]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.7401 [0.2541]  
-             Regiao 437
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  = 0.066325 [0.9674]  
-Test of restrictions on alpha:           Chi^2(2)  = 0.066325 [0.9674]  
+Test of restrictions on alpha:           Chi^2(4)  =   33.570 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   16.532 [0.0024]**
              Regiao 438
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   27.968 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   15.167 [0.0044]**
-             Regiao 439
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   31.477 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   17.670 [0.0014]**
-             Regiao 440
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.213 [0.0158]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.1595 [0.5315]  
-             Regiao 441
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.1256 [0.5696]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.1256 [0.5696]  
-             Regiao 442
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   26.273 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.6517 [0.1555]  
-             Regiao 443
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.097 [0.0012]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.7559 [0.2181]  
-             Regiao 444
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.919 [0.0013]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.5930 [0.2317]  
-             Regiao 445
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.9756 [0.2259]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.9756 [0.2259]  
-             Regiao 446
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   20.452 [0.0004]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.1473 [0.0863]  
-             Regiao 447
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   4.0370 [0.1329]  
-Test of restrictions on alpha:           Chi^2(2)  =   4.0370 [0.1329]  
-             Regiao 448
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   37.772 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.3427 [0.1188]  
-             Regiao 449
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.044 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.8626 [0.7610]  
-             Regiao 450
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   41.762 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.2312 [0.1825]  
-             Regiao 451
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   24.202 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.852 [0.0120]* 
-             Regiao 452
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   23.623 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.5605 [0.4687]  
-             Regiao 453
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   25.248 [0.0000]**
-Test of restrictions on alpha:           Chi^2(2)  =   25.248 [0.0000]**
-             Regiao 454
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.212 [0.0011]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.5545 [0.8170]  
-             Regiao 455
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.475 [0.0003]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.1009 [0.7172]  
+Test of restrictions on alpha:           Chi^2(4)  =   23.284 [0.0001]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   16.333 [0.0026]**
              Regiao 456
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   34.337 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   24.030 [0.0001]**
-             Regiao 457
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   29.303 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.4349 [0.2455]  
+Test of restrictions on alpha:           Chi^2(4)  =   32.290 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   21.542 [0.0002]**
              Regiao 458
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   20.088 [0.0005]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   28.145 [0.0000]**
-             Regiao 459
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   30.734 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   18.912 [0.0008]**
+Test of restrictions on alpha:           Chi^2(4)  =   23.601 [0.0001]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   25.251 [0.0000]**
              Regiao 460
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   40.387 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   24.844 [0.0001]**
-             Regiao 461
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   25.840 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.860 [0.0282]* 
-             Regiao 462
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.722 [0.0014]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.0648 [0.0892]  
-             Regiao 463
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   24.815 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.029 [0.0399]* 
-             Regiao 464
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   20.109 [0.0005]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.049 [0.0260]* 
-             Regiao 465
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   8.8072 [0.0122]* 
-Test of restrictions on alpha:           Chi^2(2)  =   8.8072 [0.0122]* 
+Test of restrictions on alpha:           Chi^2(4)  =   39.848 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   23.882 [0.0001]**
              Regiao 466
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   31.157 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   15.154 [0.0044]**
-             Regiao 467
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.005 [0.0403]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.8071 [0.4327]  
-             Regiao 468
-RANK ZERO DETECTADO, MUDANDO PARA RANK=1
-             Regiao 469
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   8.0021 [0.0915]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.9314 [0.0941]  
-             Regiao 470
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.698 [0.0035]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   13.512 [0.0090]**
-             Regiao 471
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.214 [0.0007]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.5478 [0.3369]  
+Test of restrictions on alpha:           Chi^2(4)  =   30.760 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   13.489 [0.0091]**
              Regiao 472
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   31.576 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   13.569 [0.0088]**
-             Regiao 473
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   2.9961 [0.5585]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.5702 [0.1604]  
-             Regiao 474
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   26.940 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.1596 [0.1277]  
-             Regiao 475
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.466 [0.0016]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.638 [0.0132]* 
-             Regiao 476
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   10.869 [0.0281]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.4626 [0.4836]  
-             Regiao 477
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   32.568 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.069 [0.0168]* 
-             Regiao 478
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.422 [0.0145]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.1500 [0.2722]  
-             Regiao 479
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.163 [0.0248]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.0482 [0.2824]  
-             Regiao 480
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   28.453 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   12.011 [0.0173]* 
-             Regiao 481
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   5.8121 [0.0547]  
-Test of restrictions on alpha:           Chi^2(2)  =   5.8121 [0.0547]  
-             Regiao 482
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   4.5877 [0.3323]  
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.8101 [0.1463]  
-             Regiao 483
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.897 [0.0032]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.348 [0.0229]* 
-             Regiao 484
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.328 [0.0231]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.1303 [0.1292]  
-             Regiao 485
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   4.5339 [0.1036]  
-Test of restrictions on alpha:           Chi^2(2)  =   4.5339 [0.1036]  
-             Regiao 486
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   32.813 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   24.257 [0.0001]**
-             Regiao 487
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   8.9763 [0.0112]* 
-Test of restrictions on alpha:           Chi^2(2)  =   8.9763 [0.0112]* 
-             Regiao 488
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   16.736 [0.0022]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.6696 [0.4526]  
-             Regiao 489
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   45.785 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.6892 [0.1037]  
-             Regiao 490
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   28.621 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   26.499 [0.0000]**
-             Regiao 491
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.005 [0.0265]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.3980 [0.0780]  
-             Regiao 492
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.852 [0.0032]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.8462 [0.0651]  
-             Regiao 493
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.353 [0.0011]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   1.5304 [0.8212]  
-             Regiao 494
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.157 [0.0105]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.4385 [0.1687]  
-             Regiao 495
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   6.1644 [0.0459]* 
-Test of restrictions on alpha:           Chi^2(2)  =   6.1644 [0.0459]* 
-             Regiao 496
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.642 [0.0002]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.2145 [0.2660]  
-             Regiao 497
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.415 [0.0007]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.7646 [0.1489]  
-             Regiao 498
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   22.904 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.1286 [0.0580]  
-             Regiao 499
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.613 [0.0006]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.0750 [0.1320]  
-             Regiao 500
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.616 [0.0015]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.5309 [0.1104]  
+Test of restrictions on alpha:           Chi^2(4)  =   28.749 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   14.957 [0.0048]**
              Regiao 501
 RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   19.732 [0.0001]**
-Test of restrictions on alpha:           Chi^2(2)  =   19.732 [0.0001]**
-             Regiao 502
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   6.5617 [0.0376]* 
-Test of restrictions on alpha:           Chi^2(2)  =   6.5617 [0.0376]* 
-             Regiao 503
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.493 [0.0140]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.7154 [0.3178]  
-             Regiao 504
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   9.7689 [0.0076]**
-Test of restrictions on alpha:           Chi^2(2)  =   9.7689 [0.0076]**
-             Regiao 505
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   7.5014 [0.0235]* 
-Test of restrictions on alpha:           Chi^2(2)  =   7.5014 [0.0235]* 
-             Regiao 506
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.10317 [0.9497]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.10317 [0.9497]  
-             Regiao 507
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.093 [0.0019]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.8688 [0.0645]  
-             Regiao 508
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.835 [0.0051]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.0916 [0.0588]  
-             Regiao 509
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   3.2190 [0.2000]  
-Test of restrictions on alpha:           Chi^2(2)  =   3.2190 [0.2000]  
+Test of restrictions on alpha:           Chi^2(2)  =   23.805 [0.0000]**
+Test of restrictions on alpha:           Chi^2(2)  =   23.805 [0.0000]**
              Regiao 510
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   29.358 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   18.251 [0.0011]**
-             Regiao 511
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   14.389 [0.0062]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.4027 [0.1710]  
-             Regiao 512
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.082 [0.0109]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   19.405 [0.0007]**
-             Regiao 513
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   23.702 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.184 [0.0374]* 
-             Regiao 514
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   5.1266 [0.0770]  
-Test of restrictions on alpha:           Chi^2(2)  =   5.1266 [0.0770]  
-             Regiao 515
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   10.754 [0.0046]**
-Test of restrictions on alpha:           Chi^2(2)  =   10.754 [0.0046]**
-             Regiao 516
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   9.8081 [0.0074]**
-Test of restrictions on alpha:           Chi^2(2)  =   9.8081 [0.0074]**
-             Regiao 517
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.191 [0.0160]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   10.487 [0.0330]* 
-             Regiao 518
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   29.677 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   14.276 [0.0065]**
-             Regiao 519
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.5371 [0.4637]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.5371 [0.4637]  
-             Regiao 520
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   11.048 [0.0040]**
-Test of restrictions on alpha:           Chi^2(2)  =   11.048 [0.0040]**
-             Regiao 521
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   32.097 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.9976 [0.1993]  
-             Regiao 522
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   24.435 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.9902 [0.0613]  
-             Regiao 523
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   29.063 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.0611 [0.2811]  
-             Regiao 524
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.657 [0.0085]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.2905 [0.3681]  
-             Regiao 525
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.29362 [0.8635]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.29362 [0.8635]  
+Test of restrictions on alpha:           Chi^2(4)  =   30.240 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   20.296 [0.0004]**
              Regiao 526
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   33.465 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   25.512 [0.0000]**
-             Regiao 527
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   11.154 [0.0249]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =  0.43622 [0.9794]  
-             Regiao 528
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.279 [0.0003]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.4183 [0.2470]  
-             Regiao 529
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   34.718 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   3.3224 [0.5054]  
-             Regiao 530
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   2.0474 [0.3593]  
-Test of restrictions on alpha:           Chi^2(2)  =   2.0474 [0.3593]  
-             Regiao 531
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.330 [0.0003]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.5639 [0.0485]* 
-             Regiao 532
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   1.1937 [0.5505]  
-Test of restrictions on alpha:           Chi^2(2)  =   1.1937 [0.5505]  
-             Regiao 533
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.745 [0.0006]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.1200 [0.0873]  
-             Regiao 534
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   24.569 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.3095 [0.0538]  
-             Regiao 535
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   24.126 [0.0001]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   9.9039 [0.0421]* 
-             Regiao 536
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   15.351 [0.0040]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   6.1707 [0.1868]  
-             Regiao 537
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   26.268 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.638 [0.0203]* 
-             Regiao 538
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   13.454 [0.0093]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.8864 [0.2992]  
-             Regiao 539
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.17145 [0.9178]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.17145 [0.9178]  
-             Regiao 540
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.309 [0.0152]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.5921 [0.0721]  
-             Regiao 541
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   31.176 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   16.171 [0.0028]**
-             Regiao 542
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   19.863 [0.0005]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   7.4179 [0.1154]  
-             Regiao 543
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   18.845 [0.0008]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   23.467 [0.0001]**
-             Regiao 544
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.406 [0.0003]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   4.0198 [0.4033]  
-             Regiao 545
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =  0.91426 [0.6331]  
-Test of restrictions on alpha:           Chi^2(2)  =  0.91426 [0.6331]  
-             Regiao 546
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   21.094 [0.0003]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   2.2487 [0.6901]  
-             Regiao 547
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   16.894 [0.0020]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   11.415 [0.0223]* 
+Test of restrictions on alpha:           Chi^2(4)  =   34.856 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   31.922 [0.0000]**
              Regiao 548
 RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   28.395 [0.0000]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   19.670 [0.0006]**
-             Regiao 549
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   12.038 [0.0171]* 
-Test of restrictions on alpha and beta:  Chi^2(4)  =   5.6806 [0.2243]  
-             Regiao 550
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   12.869 [0.0016]**
-Test of restrictions on alpha:           Chi^2(2)  =   12.869 [0.0016]**
-             Regiao 551
-RANK TOTAL: 2
-Test of restrictions on alpha:           Chi^2(4)  =   17.980 [0.0012]**
-Test of restrictions on alpha and beta:  Chi^2(4)  =   8.2180 [0.0839]  
-             Regiao 552
-RANK TOTAL: 1
-Test of restrictions on alpha:           Chi^2(2)  =   9.3433 [0.0094]**
-Test of restrictions on alpha:           Chi^2(2)  =   9.3433 [0.0094]**
+Test of restrictions on alpha:           Chi^2(4)  =   28.153 [0.0000]**
+Test of restrictions on alpha and beta:  Chi^2(4)  =   16.451 [0.0025]**

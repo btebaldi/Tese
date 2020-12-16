@@ -15,7 +15,7 @@ library(here)
 
 # Variaveis internas ------------------------------------------------------
 
-fileName = "Gvar_Determina WeakExo_v1 2020-11-30 populacao.out"
+fileName = "Gvar_Determina WeakExo_v1(regioes problema)-2020-12-14 pibpercapta.out"
 filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", fileName)
 
 

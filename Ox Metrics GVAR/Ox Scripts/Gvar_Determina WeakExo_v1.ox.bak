@@ -239,7 +239,7 @@ main() {
 //println("DEBUG(3.1)");
         // Estima o modelo.
         modelCats.Estimate();
-println("DEBUG(4)", modelCats.DoI1RankTable());
+println("DEBUG(4)", modelCats.GetBeta());
 
 
 modelCats.PrintI1Rank();
