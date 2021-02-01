@@ -87,7 +87,7 @@ main() {
     println("Carregando matrix de pessos W");
     decl mW;
 //    mW = loadmat(sprint(txMatPathW_Matrix, "data.mat"));
-    mW = loadmat(sprint(txMatPathW_Matrix, "data_Pib.mat"));
+    mW = loadmat(sprint(txMatPathW_Matrix, "data_Populacao.mat"));
 
     println("*** Iniciando estimacao dos modelos *** \n");
     // iCont : Contador da regiao atual

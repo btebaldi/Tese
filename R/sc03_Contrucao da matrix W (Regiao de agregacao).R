@@ -26,7 +26,9 @@ Dicionario <- readxl::read_excel("./Database/Relacao_Agregacao_Ox.xlsx")
 
 # carrego as informacoes dos municipios e suas regioes de agregacao.
 Muni_RA.info <- readxl::read_excel("./Database/Agregacao de Municipios.xlsx", 
-                                   sheet = "TabelaCompleta")
+                                   sheet = "TabelaCompleta",
+                                   range = cell_limits(c(1, 1), c(NA, 11))
+                                   )
 
 # Filtro para ter apernas regioes nao ignoradas
 Muni_RA.info <- Muni_RA.info %>% dplyr::filter(Ignorado == 0)
@@ -53,7 +55,9 @@ PIB.info <- readxl::read_excel("Database/Agregacao de Municipios.xlsx",
                                col_types = c("skip", "skip", "skip", "skip",
                                              "numeric", "numeric", "numeric", "numeric",
                                              "numeric", "numeric", "numeric"),
-                               sheet = "TabelaCompleta")
+                               
+                               sheet = "TabelaCompleta",
+                               range = cell_limits(c(1, 1), c(NA, 11)))
 
 
 PIB.RA.2016 <- PIB.info %>% 
@@ -79,7 +83,8 @@ rownames(W.mat) <- Dicionario$RegiaoOx
 # tipo_matrix = 2 : Ponderada pelo pib
 # tipo_matrix = 3 : Ponderada pelo pib per capita
 # tipo_matrix = 4 : Ponderada pela populacao
-tipo_matrix = 1
+# tipo_matrix = 5 : Equal Weight
+tipo_matrix = 5
 
 
 # Faz a construção efetiva da matrix de pesos
@@ -147,6 +152,17 @@ for (col in 1:ncol(W.mat)) {
           W.mat[row, col] <- 0
         }
         
+      } else if(tipo_matrix == 5) {
+        # Coloca na matrix de connexao o total da populacao na conexao entre as cidades.
+        existe.con <- Connexoes.df %>% 
+          filter(RA_Origem == Origem, RA_Destino == Destino) %>% 
+          summarise(Total=n()) %>% pull(Total)
+        
+        if(existe.con > 0){
+          W.mat[row, col] <- 1
+        } else {
+          W.mat[row, col] <- 0
+        }
       } else {
         stop("Tipo de matrix nao informado corretamente")
       }
@@ -176,6 +192,8 @@ if (tipo_matrix == 1) {
   file.name.sufix <- "PibPerCapta"
 } else if(tipo_matrix == 4) {
   file.name.sufix <- "Populacao"
+} else if(tipo_matrix == 5) {
+  file.name.sufix <- "EqualWeight"
 } 
 file.name <- sprintf("./Excel Export/data_%s.mat", file.name.sufix)
 

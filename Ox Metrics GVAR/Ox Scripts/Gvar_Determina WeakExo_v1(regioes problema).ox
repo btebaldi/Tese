@@ -87,7 +87,7 @@ main() {
     println("Carregando matrix de pessos W");
     decl mW;
 //    mW = loadmat(sprint(txMatPathW_Matrix, "data.mat"));
-    mW = loadmat(sprint(txMatPathW_Matrix, "data_Populacao.mat"));
+    mW = loadmat(sprint(txMatPathW_Matrix, "data_EqualWeight.mat"));
 
     println("*** Iniciando estimacao dos modelos *** \n");
     // iCont : Contador da regiao atual
@@ -118,7 +118,15 @@ main() {
         // }
 
 
-		if( any(<13, 16, 17, 19, 20, 22, 23, 24, 25, 26, 28, 31, 32, 43, 79, 81, 87, 95, 103, 107, 114, 115, 120, 137, 158, 165, 171, 174, 184, 187, 198, 217, 218, 237, 242, 259, 263, 288, 289, 296, 306, 320, 354, 368, 372, 376, 380, 425, 429, 432, 438, 456, 458, 460, 466, 472, 501, 510, 526, 548> .== iCont)){
+//		if( any(<13, 16, 17, 19, 20, 22, 23, 24, 25, 26, 28, 31, 32, 43, 79, 81, 87, 95, 103, 107, 114, 115, 120, 137, 158, 165, 171, 174, 184, 187, 198, 217, 218, 237, 242, 259, 263, 288, 289, 296, 306, 320, 354, 368, 372, 376, 380, 425, 429, 432, 438, 456, 458, 460, 466, 472, 501, 510, 526, 548> .== iCont)){
+//		 println("SKIP: Regiao ", iCont);
+//              continue;
+//       } else {
+//			println("PULANDO SAPORRA", iCont);
+//			continue;
+//		}
+
+				if( any(<16,22,79,87,95,103,165,171,198,217,218,288,296,306,320,354,368,372,376,380,425,432,456,460,466,526,548> .== iCont)){
 //		 println("SKIP: Regiao ", iCont);
 //              continue;
         } else {
