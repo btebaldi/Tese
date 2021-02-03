@@ -1,0 +1,190 @@
+
+*****************************************
+             Regiao 28
+*****************************************
+
+
+Carregando base de dados para regiao 28
+	Periodo da base de dados
+	Data inicial: 1995-1
+	Data final: 2018-12
+(1) Iniciando construcao das variaveis star para a regiao 28
+	Adicionando variavel star da regiao 28
+	Concluido construcao das variaveis star para a regiao 28
+(2) Iniciando construcao da variavel Delta para a regiao 28
+	Concluido construcao da variavel Delta para a regiao 28
+(3) Iniciando construcao da variavel beta*Z (Cointegracao) para a regiao 28
+	Iniciando determinacao do vetor de cointegracao (beta) a regiao 28
+CATS package version 3.00, object created on 30-11-2020
+Comecando com a rotina!append: R28_Admitidos
+append: R28_Desligados
+append: star_Admitidos
+append: star_Desligados
+RANK TOTAL: 2
+INITIALIZING 20
+it0     f=    -34.51664763
+ALPHA,BETA SWITCHING, eps=1e-009:
+it1     f=    -34.48077597  change=    0.001010 pi-change      0.3920
+it4     f=    -34.48076332  change=  1.474e-013 pi-change  3.193e-006  step=1.01692
+Strong convergence
+I(1) BFGS:
+it0     f=     -34.4807633 df=1.135e-008 e1=6.742e-009 e2=8.940e-006 step=1
+BFGS: Strong convergence
+ALPHA,BETA SWITCHING, eps=1e-009:
+it1     f=    -34.48076332  change=      0.0000 pi-change  6.101e-008  step=1.13753
+Strong convergence
+
+
+RESTRICTED I(1) ESTIMATES FOR RANK 2:
+	Z0_t = Pi Z1_t + Phi Z2_t + rest* + epsilon_t, epsilon_t ~ N(0,Omega),
+	Z0_t = DX_t, Z1_t = X_{t-1} | W_t | D^r_{t-1}, Z2_t = differences | D^u_{t-1}.
+	Cointegrated I(1) model: Pi = alpha beta' with rank r < p, alpha is (p x r), beta is (p_1 x r).
+	Restrictions: alpha = G theta 
+
+beta', the normalized cointegrating vectors:
+           R28_Admitidos_1R28_Desligados_1star_Admitidos_1star_Desligados_1
+     CVec(1)          1       0.471       0.389      -0.744 
+     CVec(2)  5.69e-005           1       0.145      -0.308 
+
+alpha, the loadings on the cointegrating vectors:
+             alpha[][0]  alpha[][1]
+DR28_Admitidos     -0.231      -0.172 
+                {  -1.9}    {  -0.6}
+DR28_Desligados      0.533       -1.14 
+                {   4.8}    {  -4.6}
+Dstar_Admitidos          0           0 
+                                    
+Dstar_Desligados          0           0 
+   {t-value}                        
+
+Pi = alpha beta', the long-run coefficients:
+           R28_Admitidos_1R28_Desligados_1star_Admitidos_1star_Desligados_1
+DR28_Admitidos     -0.231      -0.281      -0.115       0.225 
+                {  -1.9}    {  -1.2}    {  -1.4}    {   2.1}
+DR28_Desligados      0.533       -0.89      0.0414     -0.0452 
+                {   3.0}    {  -3.2}    {   0.5}    {  -0.4}
+Dstar_Admitidos          0           0           0           0 
+                                                            
+Dstar_Desligados          0           0           0           0 
+   {t-value}                                                
+
+Residual correlations and standard errors:
+           R28_AdmitidosR28_Desligadosstar_Admitidosstar_Desligados
+R28_Admitidos          1 
+R28_Desligados    -0.0728           1 
+star_Admitidos      0.382      -0.307           1 
+star_Desligados      0.254      0.0672      0.0978           1 
+        S.E.       44.7        39.1         132         158 
+
+log-likelihood    -6301.93734  -log|Omega|       -34.4807633
+-T/2log|Omega|    -4741.10496
+SC                 50.8975779  AIC                47.6359079
+no. of observations       275  no. of parameters         248
+no. of dependent vars, p    4  with lag length            13
+rank of Pi=alpha*beta', r   2  columns in beta, p1         4
+no. of restrictions         4  identified                 No
+estimation:       Switch+BFGS  Strong convergence
+Constant/Trend:         DRIFT  Seasonal dummies           11
+
+Restrictions on columns of alpha:
+	alpha[][0]	    *     *     0     0 
+	alpha[][1]	    *     *     0     0 
+Test of restrictions on alpha:           Chi^2(4)  =   34.545 [0.0000]**
+
+
+BOOTSTRAP OF RESTRICTIONS TEST
+Bootstrap sampling scheme  : Wild IIN[0,1]
+Number of replications (B) : 199
+Length of time series  (T) : 275
+Starting from default seed : no
+Bootstrap time             : 6.77
+Bootstrap 10% quantile     : 14.8061
+Bootstrap 5% quantile      : 18.1249
+Bootstrap test             : 34.545 [0.0000]**
+TESTE REGIAO 28 (hail mary)
+INITIALIZING 20
+it0     f=    -34.44446225
+ALPHA,BETA SWITCHING, eps=1e-009:
+it1     f=    -34.43617877  change=   0.0002337 pi-change      0.1318
+it5     f=    -34.43611489  change=  6.226e-013 pi-change  1.143e-005  step=1.03401
+Strong convergence
+I(1) BFGS:
+it0     f=     -34.4361149 df=1.640e-007 e1=5.948e-008 e2=1.080e-007 step=1
+BFGS: Strong convergence
+ALPHA,BETA SWITCHING, eps=1e-009:
+it1     f=    -34.43611489  change=  1.404e-015 pi-change  3.122e-007  step=1.31997
+Strong convergence
+
+
+RESTRICTED I(1) ESTIMATES FOR RANK 2:
+	Z0_t = Pi Z1_t + Phi Z2_t + rest* + epsilon_t, epsilon_t ~ N(0,Omega),
+	Z0_t = DX_t, Z1_t = X_{t-1} | W_t | D^r_{t-1}, Z2_t = differences | D^u_{t-1}.
+	Cointegrated I(1) model: Pi = alpha beta' with rank r < p, alpha is (p x r), beta is (p_1 x r).
+	Restrictions: alpha = G theta beta=(H_1 phi_1, H_2 phi_2, ...)
+
+beta', the normalized cointegrating vectors:
+           R28_Admitidos_1R28_Desligados_1star_Admitidos_1star_Desligados_1
+     CVec(1)     -0.873           1      -0.311       0.424 
+                {  -4.4}                {  -2.7}    {   3.4}
+     CVec(2)          0           0      -0.844           1 
+   {t-value}                            { -37.2}            
+
+alpha, the loadings on the cointegrating vectors:
+             alpha[][0]  alpha[][1]
+DR28_Admitidos      0.334           0 
+                {   2.8}            
+DR28_Desligados     -0.575           0 
+                {  -5.3}            
+Dstar_Admitidos          0        1.04 
+                            {   4.0}
+Dstar_Desligados          0      -0.958 
+   {t-value}                {  -2.9}
+
+Pi = alpha beta', the long-run coefficients:
+           R28_Admitidos_1R28_Desligados_1star_Admitidos_1star_Desligados_1
+DR28_Admitidos     -0.292       0.334      -0.104       0.142 
+                {  -2.3}    {   2.8}    {  -1.9}    {   2.1}
+DR28_Desligados      0.502      -0.575       0.179      -0.244 
+                {   3.4}    {  -5.3}    {   2.4}    {  -2.9}
+Dstar_Admitidos          0           0      -0.879        1.04 
+                                        {  -4.0}    {   4.0}
+Dstar_Desligados          0           0       0.809      -0.958 
+   {t-value}                            {   2.9}    {  -2.9}
+
+Residual correlations and standard errors:
+           R28_AdmitidosR28_Desligadosstar_Admitidosstar_Desligados
+R28_Admitidos          1 
+R28_Desligados    -0.0526           1 
+star_Admitidos      0.373      -0.295           1 
+star_Desligados      0.253      0.0485       0.139           1 
+        S.E.       45.2        39.1         128         156 
+
+log-likelihood    -6295.79818  -log|Omega|       -34.4361149
+-T/2log|Omega|    -4734.96580
+SC                 50.8529295  AIC                47.5912595
+no. of observations       275  no. of parameters         248
+no. of dependent vars, p    4  with lag length            13
+rank of Pi=alpha*beta', r   2  columns in beta, p1         4
+no. of restrictions         4  identified                Yes
+estimation:       Switch+BFGS  Strong convergence
+Constant/Trend:         DRIFT  Seasonal dummies           11
+
+
+Restrictions on columns of beta:
+	CVec(1) 	    *     1     *     * 
+	CVec(2) 	    0     0     *     1 
+Restrictions on columns of alpha:
+	alpha[][0]	    *     *     0     0 
+	alpha[][1]	    0     0     *     * 
+Test of restrictions on alpha and beta:  Chi^2(4)  =   22.267 [0.0002]**
+
+
+BOOTSTRAP OF RESTRICTIONS TEST
+Bootstrap sampling scheme  : Wild IIN[0,1]
+Number of replications (B) : 199
+Length of time series  (T) : 275
+Starting from default seed : no
+Bootstrap time             : 16.43
+Bootstrap 10% quantile     : 14.5368
+Bootstrap 5% quantile      : 17.1363
+Bootstrap test             : 22.267 [0.0201]* 

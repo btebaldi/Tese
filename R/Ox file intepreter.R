@@ -15,7 +15,7 @@ library(here)
 
 # Variaveis internas ------------------------------------------------------
 
-fileName = "Gvar_Determina WeakExo_v1(regioes problema)-2020-12-14 pibpercapta.out"
+fileName = "Gvar_Determina WeakExo_v1 2020-11-30 populacao.out"
 filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", fileName)
 
 
@@ -36,13 +36,18 @@ pattern4 <- "RANK TOTAL: "
 pattern5 <- "Test of restrictions on alpha and beta:"
 pattern6 <- "RANK ZERO DETECTADO"
 
+pattern7 <- "Bootstrap test\\s+:"
+
+
 tbl.results <- tibble(region = 1:552,
                       rank = as.integer(NA),
                       A_test = as.numeric(NA),
                       AB_test = as.numeric(NA),
                       A_test_Logical = as.logical(NA),
                       AB_test_Logical = as.logical(NA),
-                      Zero_Rank = FALSE)
+                      Zero_Rank = FALSE,
+                      A_test_boot = as.numeric(NA),
+                      AB_test_boot = as.numeric(NA))
 
 
 while ( TRUE ) {
@@ -54,6 +59,7 @@ while ( TRUE ) {
   teste2 <- 0           # Alpha Beta Test
   zerorank <- 0         # rank zero detectado
   WriteInfo <- FALSE
+  teste7 <- 0
   
   #  Faz leitura da linha
   line = readLines(ReadCon, n = 1)
@@ -142,6 +148,15 @@ while ( TRUE ) {
     
   }
   
+  # Verifica a restrição em alpha (2020-11-18: A principio tera dois testes por regiao)
+  if(stringr::str_detect(line, stringr::regex(pattern7))){
+    writeLines(text = line, con = WriteCon)
+    teste7 <- stringr::str_match(line,  stringr::regex("(?<=\\[).*(?=\\])"))
+    WriteInfo <- TRUE
+    print(line)
+    
+  }
+  
   if(WriteInfo)
   {
     selctVector <- tbl.results$region == as.integer(region_number)
@@ -162,6 +177,15 @@ while ( TRUE ) {
       tbl.results$Zero_Rank[selctVector] <- TRUE  
     }
     
+    if(teste7 != 0) {
+      if (is.na(tbl.results$A_test_boot[selctVector])){
+        tbl.results$A_test_boot[selctVector] <- as.numeric(teste7)
+      } else {
+        tbl.results$AB_test_boot[selctVector] <- as.numeric(teste7)
+      }
+
+    }
+    
   }
   
 }
@@ -175,5 +199,5 @@ tbl.results <- tbl.results %>%
   mutate(A_test_Logical = if_else(A_test >= 0.01, TRUE, FALSE, missing = NA)) %>% 
   mutate(AB_test_Logical = if_else(AB_test >= 0.01, TRUE, FALSE, missing = NA))
 
-readr::write_excel_csv(x=tbl.results, file = sprintf("Ox_Results_Analise(%s).csv", fileName))
+readr::write_excel_csv(x=tbl.results, file = sprintf("2021-02-03 - Ox_Results_Analise(%s).csv", fileName))
 

@@ -1,0 +1,178 @@
+
+*****************************************
+             Regiao 137
+*****************************************
+
+
+Carregando base de dados para regiao 137
+	Periodo da base de dados
+	Data inicial: 1995-1
+	Data final: 2018-12
+(1) Iniciando construcao das variaveis star para a regiao 137
+	Adicionando variavel star da regiao 137
+	Concluido construcao das variaveis star para a regiao 137
+(2) Iniciando construcao da variavel Delta para a regiao 137
+	Concluido construcao da variavel Delta para a regiao 137
+(3) Iniciando construcao da variavel beta*Z (Cointegracao) para a regiao 137
+	Iniciando determinacao do vetor de cointegracao (beta) a regiao 137
+CATS package version 3.00, object created on 16-12-2020
+Comecando com a rotina!append: R137_Admitidos
+append: R137_Desligados
+append: star_Admitidos
+append: star_Desligados
+
+       p-r         r Eig.Value     Trace    Trace*    Crit5%   p-value  p-value*
+      4.00      0.00      0.10     55.79     52.57     47.71      0.01      0.02
+      3.00      1.00      0.05     27.39     26.00     29.80      0.09      0.13
+      2.00      2.00      0.03     13.55     12.77     15.41      0.10      0.12
+      1.00      3.00      0.01      3.98      3.69      3.84      0.05      0.05
+Estimated rank: 1
+RANK TOTAL: 2
+Estima a exogeniedade fraca
+INITIALIZING 20
+it0     f=    -41.88460314
+ALPHA,BETA SWITCHING, eps=1e-009:
+it1     f=    -41.84212265  change=   0.0009906 pi-change      0.2111
+it4     f=    -41.84211578  change=  8.608e-014 pi-change  3.423e-006  step=1.00736
+Strong convergence
+I(1) BFGS:
+it0     f=     -41.8421158 df=4.117e-008 e1=2.055e-008 e2=7.962e-008 step=1
+BFGS: Strong convergence
+ALPHA,BETA SWITCHING, eps=1e-009:
+it1     f=    -41.84211578  change=  3.317e-016 pi-change  1.100e-007  step=1.03923
+Strong convergence
+
+
+RESTRICTED I(1) ESTIMATES FOR RANK 2:
+	Z0_t = Pi Z1_t + Phi Z2_t + rest* + epsilon_t, epsilon_t ~ N(0,Omega),
+	Z0_t = DX_t, Z1_t = X_{t-1} | W_t | D^r_{t-1}, Z2_t = differences | D^u_{t-1}.
+	Cointegrated I(1) model: Pi = alpha beta' with rank r < p, alpha is (p x r), beta is (p_1 x r).
+	Restrictions: alpha = G theta 
+
+beta', the normalized cointegrating vectors:
+           R137_Admitidos_1R137_Desligados_1star_Admitidos_1star_Desligados_1
+     CVec(1)     -0.682           1        0.52      -0.781 
+     CVec(2)          1      -0.376      -0.307      -0.595 
+
+alpha, the loadings on the cointegrating vectors:
+             alpha[][0]  alpha[][1]
+DR137_Admitidos   -0.00948      -0.234 
+                {  -0.1}    {  -2.5}
+DR137_Desligados     -0.459     -0.0325 
+                {  -3.3}    {  -0.3}
+Dstar_Admitidos          0           0 
+                                    
+Dstar_Desligados          0           0 
+   {t-value}                        
+
+Pi = alpha beta', the long-run coefficients:
+           R137_Admitidos_1R137_Desligados_1star_Admitidos_1star_Desligados_1
+DR137_Admitidos     -0.227      0.0784      0.0669       0.147 
+                {  -2.5}    {   0.5}    {   0.4}    {   0.6}
+DR137_Desligados       0.28      -0.446      -0.229       0.378 
+                {   1.8}    {  -3.4}    {  -1.1}    {   1.4}
+Dstar_Admitidos          0           0           0           0 
+                                                            
+Dstar_Desligados          0           0           0           0 
+   {t-value}                                                
+
+Residual correlations and standard errors:
+           R137_AdmitidosR137_Desligadosstar_Admitidosstar_Desligados
+R137_Admitidos          1 
+R137_Desligados     -0.024           1 
+star_Admitidos      0.148     -0.0248           1 
+star_Desligados     0.0714       0.185        0.04           1 
+        S.E.        137         176         232         226 
+
+log-likelihood    -7314.12331  -log|Omega|       -41.8421158
+-T/2log|Omega|    -5753.29092
+SC                 58.2589303  AIC                54.9972604
+no. of observations       275  no. of parameters         248
+no. of dependent vars, p    4  with lag length            13
+rank of Pi=alpha*beta', r   2  columns in beta, p1         4
+no. of restrictions         4  identified                 No
+estimation:       Switch+BFGS  Strong convergence
+Constant/Trend:         DRIFT  Seasonal dummies           11
+
+Restrictions on columns of alpha:
+	alpha[][0]	    *     *     0     0 
+	alpha[][1]	    *     *     0     0 
+Test of restrictions on alpha:           Chi^2(4)  =   23.537 [0.0001]**
+
+TESTE REGIAO 137 (hail mary)
+Estima a exogeniedade fraca
+INITIALIZING 20
+it0     f=    -41.79700964
+ALPHA,BETA SWITCHING, eps=1e-009:
+it1     f=    -41.79242362  change=   0.0001072 pi-change      0.1665  step=1.2
+it6     f=    -41.79169612  change=  4.112e-012 pi-change  2.008e-005  step=1.17156
+Strong convergence
+I(1) BFGS:
+it0     f=     -41.7916961 df=8.681e-007 e1=7.665e-007 e2=4.063e-007 step=1
+BFGS: Strong convergence
+ALPHA,BETA SWITCHING, eps=1e-009:
+it1     f=    -41.79169612  change=  1.743e-014 pi-change  8.251e-007  step=1.1023
+Strong convergence
+
+
+RESTRICTED I(1) ESTIMATES FOR RANK 2:
+	Z0_t = Pi Z1_t + Phi Z2_t + rest* + epsilon_t, epsilon_t ~ N(0,Omega),
+	Z0_t = DX_t, Z1_t = X_{t-1} | W_t | D^r_{t-1}, Z2_t = differences | D^u_{t-1}.
+	Cointegrated I(1) model: Pi = alpha beta' with rank r < p, alpha is (p x r), beta is (p_1 x r).
+	Restrictions: alpha = G theta beta=(H_1 phi_1, H_2 phi_2, ...)
+
+beta', the normalized cointegrating vectors:
+           R137_Admitidos_1R137_Desligados_1star_Admitidos_1star_Desligados_1
+     CVec(1)     -0.892           1       0.302      -0.231 
+                {  -3.8}                {   0.7}    {  -0.5}
+     CVec(2)          0           0      -0.833           1 
+   {t-value}                            {  -8.8}            
+
+alpha, the loadings on the cointegrating vectors:
+             alpha[][0]  alpha[][1]
+DR137_Admitidos      0.176           0 
+                {   1.9}            
+DR137_Desligados     -0.373           0 
+                {  -3.1}            
+Dstar_Admitidos          0       0.998 
+                            {   3.9}
+Dstar_Desligados          0      -0.545 
+   {t-value}                {  -2.2}
+
+Pi = alpha beta', the long-run coefficients:
+           R137_Admitidos_1R137_Desligados_1star_Admitidos_1star_Desligados_1
+DR137_Admitidos     -0.157       0.176      0.0532     -0.0407 
+                {  -1.7}    {   1.9}    {   0.6}    {  -0.4}
+DR137_Desligados      0.333      -0.373      -0.113      0.0862 
+                {   2.4}    {  -3.1}    {  -0.6}    {   0.5}
+Dstar_Admitidos          0           0      -0.831       0.998 
+                                        {  -3.6}    {   3.9}
+Dstar_Desligados          0           0       0.454      -0.545 
+   {t-value}                            {   2.1}    {  -2.2}
+
+Residual correlations and standard errors:
+           R137_AdmitidosR137_Desligadosstar_Admitidosstar_Desligados
+R137_Admitidos          1 
+R137_Desligados    -0.0155           1 
+star_Admitidos      0.138     -0.0226           1 
+star_Desligados     0.0662       0.178      0.0702           1 
+        S.E.        137         176         226         224 
+
+log-likelihood    -7307.19060  -log|Omega|       -41.7916961
+-T/2log|Omega|    -5746.35822
+SC                 58.2085107  AIC                54.9468408
+no. of observations       275  no. of parameters         248
+no. of dependent vars, p    4  with lag length            13
+rank of Pi=alpha*beta', r   2  columns in beta, p1         4
+no. of restrictions         4  identified                Yes
+estimation:       Switch+BFGS  Strong convergence
+Constant/Trend:         DRIFT  Seasonal dummies           11
+
+
+Restrictions on columns of beta:
+	CVec(1) 	    *     1     *     * 
+	CVec(2) 	    0     0     *     1 
+Restrictions on columns of alpha:
+	alpha[][0]	    *     *     0     0 
+	alpha[][1]	    0     0     *     * 
+Test of restrictions on alpha and beta:  Chi^2(4)  =   9.6720 [0.0463]* 

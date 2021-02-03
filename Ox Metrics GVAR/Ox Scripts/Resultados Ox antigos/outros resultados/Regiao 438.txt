@@ -1,0 +1,172 @@
+*****************************************
+             Regiao 438
+*****************************************
+
+
+Carregando base de dados para regiao 438
+	Periodo da base de dados
+	Data inicial: 1995-1
+	Data final: 2018-12
+(1) Iniciando construcao das variaveis star para a regiao 438
+	Adicionando variavel star da regiao 438
+	Concluido construcao das variaveis star para a regiao 438
+(2) Iniciando construcao da variavel Delta para a regiao 438
+	Concluido construcao da variavel Delta para a regiao 438
+(3) Iniciando construcao da variavel beta*Z (Cointegracao) para a regiao 438
+	Iniciando determinacao do vetor de cointegracao (beta) a regiao 438
+CATS package version 3.00, object created on 16-12-2020
+Comecando com a rotina!append: R438_Admitidos
+append: R438_Desligados
+append: star_Admitidos
+append: star_Desligados
+
+       p-r         r Eig.Value     Trace    Trace*    Crit5%   p-value  p-value*
+      4.00      0.00      0.14     73.69     65.99     47.71      0.00      0.00
+      3.00      1.00      0.09     32.09     28.78     29.80      0.03      0.07
+      2.00      2.00      0.01      5.26      4.73     15.41      0.78      0.83
+      1.00      3.00      0.00      1.28      1.10      3.84      0.26      0.29
+Estimated rank: 2
+RANK TOTAL: 1
+Estima a exogeniedade fraca
+*** Warning: too many G matrices in amG, array truncated to 1 elements
+INITIALIZING 20
+it0     f=    -37.52788310
+it11    f=    -37.51943104
+ALPHA,BETA SWITCHING, eps=1e-009:
+it1     f=    -37.51943104  change=  1.845e-016 pi-change  1.345e-007  step=1.64638
+Strong convergence
+I(1) BFGS:
+it0     f=     -37.5194310 df=5.308e-007 e1=9.600e-008 e2=2.196e-009 step=1
+BFGS: Strong convergence
+ALPHA,BETA SWITCHING, eps=1e-009:
+it1     f=    -37.51943104  change=      0.0000 pi-change  1.659e-008  step=1.18661
+Strong convergence
+
+
+RESTRICTED I(1) ESTIMATES FOR RANK 1:
+	Z0_t = Pi Z1_t + Phi Z2_t + rest* + epsilon_t, epsilon_t ~ N(0,Omega),
+	Z0_t = DX_t, Z1_t = X_{t-1} | W_t | D^r_{t-1}, Z2_t = differences | D^u_{t-1}.
+	Cointegrated I(1) model: Pi = alpha beta' with rank r < p, alpha is (p x r), beta is (p_1 x r).
+	Restrictions: alpha = G theta 
+
+beta', the normalized cointegrating vectors:
+           R438_Admitidos_1R438_Desligados_1star_Admitidos_1star_Desligados_1
+     CVec(1)     -0.841           1       0.149      -0.167 
+   {t-value}    {  -8.3}                {   5.3}    {  -5.4}
+
+alpha, the loadings on the cointegrating vectors:
+             alpha[][0]
+DR438_Admitidos      0.277 
+                {   1.3}
+DR438_Desligados     -0.943 
+                {  -5.9}
+Dstar_Admitidos          0 
+                        
+Dstar_Desligados          0 
+   {t-value}            
+
+Pi = alpha beta', the long-run coefficients:
+           R438_Admitidos_1R438_Desligados_1star_Admitidos_1star_Desligados_1
+DR438_Admitidos     -0.233       0.277      0.0413     -0.0462 
+                {  -1.3}    {   1.3}    {   1.3}    {  -1.3}
+DR438_Desligados      0.793      -0.943       -0.14       0.157 
+                {   4.8}    {  -5.9}    {  -3.9}    {   4.0}
+Dstar_Admitidos          0           0           0           0 
+                                                            
+Dstar_Desligados          0           0           0           0 
+   {t-value}                                                
+
+Residual correlations and standard errors:
+           R438_AdmitidosR438_Desligadosstar_Admitidosstar_Desligados
+R438_Admitidos          1 
+R438_Desligados      0.115           1 
+star_Admitidos      0.247       0.109           1 
+star_Desligados      0.141       0.241       0.352           1 
+        S.E.       64.2        48.9         274         187 
+
+log-likelihood    -6719.75415  -log|Omega|       -37.5194310
+-T/2log|Omega|    -5158.92177
+SC                 53.8749717  AIC                50.6527575
+no. of observations       275  no. of parameters         245
+no. of dependent vars, p    4  with lag length            13
+rank of Pi=alpha*beta', r   1  columns in beta, p1         4
+no. of restrictions         2  identified                Yes
+estimation:       Switch+BFGS  Strong convergence
+Constant/Trend:         DRIFT  Seasonal dummies           11
+
+Restrictions on columns of alpha:
+	alpha[][0]	    *     *     0     0 
+Test of restrictions on alpha:           Chi^2(2)  =   6.2897 [0.0431]* 
+
+TESTE REGIAO 438 (hail mary)
+Estima a exogeniedade fraca
+*** Warning: too many G matrices in amG, array truncated to 1 elements
+*** Warning: too many H matrices in amH, array truncated to 1 elements
+INITIALIZING 20
+it0     f=    -37.52788310
+it11    f=    -37.51943104
+ALPHA,BETA SWITCHING, eps=1e-009:
+it1     f=    -37.51943104  change=  1.845e-016 pi-change  1.345e-007  step=1.64638
+Strong convergence
+I(1) BFGS:
+it0     f=     -37.5194310 df=5.308e-007 e1=9.600e-008 e2=2.196e-009 step=1
+BFGS: Strong convergence
+ALPHA,BETA SWITCHING, eps=1e-009:
+it1     f=    -37.51943104  change=      0.0000 pi-change  1.659e-008  step=1.18661
+Strong convergence
+
+
+RESTRICTED I(1) ESTIMATES FOR RANK 1:
+	Z0_t = Pi Z1_t + Phi Z2_t + rest* + epsilon_t, epsilon_t ~ N(0,Omega),
+	Z0_t = DX_t, Z1_t = X_{t-1} | W_t | D^r_{t-1}, Z2_t = differences | D^u_{t-1}.
+	Cointegrated I(1) model: Pi = alpha beta' with rank r < p, alpha is (p x r), beta is (p_1 x r).
+	Restrictions: alpha = G theta 
+
+beta', the normalized cointegrating vectors:
+           R438_Admitidos_1R438_Desligados_1star_Admitidos_1star_Desligados_1
+     CVec(1)     -0.841           1       0.149      -0.167 
+   {t-value}    {  -8.3}                {   5.3}    {  -5.4}
+
+alpha, the loadings on the cointegrating vectors:
+             alpha[][0]
+DR438_Admitidos      0.277 
+                {   1.3}
+DR438_Desligados     -0.943 
+                {  -5.9}
+Dstar_Admitidos          0 
+                        
+Dstar_Desligados          0 
+   {t-value}            
+
+Pi = alpha beta', the long-run coefficients:
+           R438_Admitidos_1R438_Desligados_1star_Admitidos_1star_Desligados_1
+DR438_Admitidos     -0.233       0.277      0.0413     -0.0462 
+                {  -1.3}    {   1.3}    {   1.3}    {  -1.3}
+DR438_Desligados      0.793      -0.943       -0.14       0.157 
+                {   4.8}    {  -5.9}    {  -3.9}    {   4.0}
+Dstar_Admitidos          0           0           0           0 
+                                                            
+Dstar_Desligados          0           0           0           0 
+   {t-value}                                                
+
+Residual correlations and standard errors:
+           R438_AdmitidosR438_Desligadosstar_Admitidosstar_Desligados
+R438_Admitidos          1 
+R438_Desligados      0.115           1 
+star_Admitidos      0.247       0.109           1 
+star_Desligados      0.141       0.241       0.352           1 
+        S.E.       64.2        48.9         274         187 
+
+log-likelihood    -6719.75415  -log|Omega|       -37.5194310
+-T/2log|Omega|    -5158.92177
+SC                 53.8749717  AIC                50.6527575
+no. of observations       275  no. of parameters         245
+no. of dependent vars, p    4  with lag length            13
+rank of Pi=alpha*beta', r   1  columns in beta, p1         4
+no. of restrictions         2  identified                Yes
+estimation:       Switch+BFGS  Strong convergence
+Constant/Trend:         DRIFT  Seasonal dummies           11
+
+Restrictions on columns of alpha:
+	alpha[][0]	    *     *     0     0 
+Test of restrictions on alpha:           Chi^2(2)  =   6.2897 [0.0431]* 

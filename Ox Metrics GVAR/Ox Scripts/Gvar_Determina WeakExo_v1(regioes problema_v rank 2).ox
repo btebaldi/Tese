@@ -87,7 +87,10 @@ main() {
     println("Carregando matrix de pessos W");
     decl mW;
 //    mW = loadmat(sprint(txMatPathW_Matrix, "data.mat"));
-    mW = loadmat(sprint(txMatPathW_Matrix, "data_PibPerCapta.mat"));
+	decl matrixFile;
+	matrixFile = "data_PibPerCapta.mat";
+    mW = loadmat(sprint(txMatPathW_Matrix, "data_EqualWeight.mat"));
+	println("matriz de peso:", matrixFile);
 
     println("*** Iniciando estimacao dos modelos *** \n");
     // iCont : Contador da regiao atual
@@ -119,7 +122,7 @@ main() {
 
 
 //		if( any(<16,22,23,26,28,31,32,79,87,95,103,120,137,165,171,174,187,198,217,218,263,288,289,296,306,320,354,368,372,376,380,425,429,432,456,458,460,466,501,510,526,548> .== iCont)){
-		if( any(<289> .== iCont)){
+		if( any(<22,289,296,320,456,460> .== iCont)){
 //		 println("SKIP: Regiao ", iCont);
 //              continue;
         } else {
@@ -278,11 +281,11 @@ println("RANK TOTAL: ",iRank);
             // Estima a exogeniedade fraca
 			println("Estima a exogeniedade fraca");
 			modelCats.Restrict({"[beta]","[alpha]","* * 0 0","* * 0 0"});
-        	//modelCats.BootstrapRestrictions();
+        	modelCats.BootstrapRestrictions();
 println("TESTE REGIAO ", iCont, " (hail mary)");
 			println("Estima a exogeniedade fraca");
 			modelCats.Restrict({"[beta]","* * * *","0 0 * *","[alpha]","* * 0 0","0 0 * *"});
-        	//modelCats.BootstrapRestrictions();
+        	modelCats.BootstrapRestrictions();
             // println("a", a[0]);
             // println("a", a[1]);
             // println("a", a[2]);
