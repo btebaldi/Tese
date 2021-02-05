@@ -1,108 +1,84 @@
+# Data: 2020-10-13
+#
+# Autor: Bruno Tebaldi de Queiroz Barbosa
+#
+# Script para construcao da matrix de pesos do GVAR utilizado pelo OxMetrics
+#
+
+
+
+# Setup -------------------------------------------------------------------
+
 # Clear all
 rm(list=ls())
 
 # bibliotecas utilizadas
 library(readxl)
 library(dplyr)
-library(tidyr)
-library(ggplot2)
-library(stringr)
-library(scales)
 
 
-# Suppress summarise info
-options(dplyr.summarise.inform = FALSE)
 
-#  ToDo: Fazer uma check de que a lista de municiopios eh sempre a mesma, acho
-#  que posso fazer uma lista "Basica" a qual será utilizada como gabarito para
-#  qualquer analise.
-
-# Carrego a lista dos municipios
-load(file = "./Database/codigos_municipios.RData")
-colnames(full) = "Muni"
-
-# carrego as informacoes de mesoregioes.
-meso.info <- readxl::read_excel("Database/Cadastro Municipios.xlsx", sheet = "Mesoregioes")
-
-# carrego as informacoes de PIB
-PIB.info <- readxl::read_excel("Database/PIB_Municipios_2010a2016.xlsx", 
-                               col_types = c("numeric", "numeric", "text", 
-                                             "numeric", "text", "text", "numeric", 
-                                             "text", "skip", "numeric", "text", 
-                                             "skip", "skip", "skip", "skip", "skip", 
-                                             "skip", "skip", "skip", "skip", "skip", 
-                                             "skip", "skip", "skip", "skip", "skip", 
-                                             "skip", "skip", "skip", "skip", "skip", 
-                                             "skip", "skip", "skip", "skip", "skip", 
-                                             "skip", "skip", "skip", "numeric",
-                                             "numeric", "numeric", "skip", "skip",
-                                             "skip"))
-colnames(PIB.info) <- c("Ano",
-                        "Cod_GrandeRegiao",
-                        "Nome_GrandeRegiao",
-                        "Cod_UniFed",
-                        "Sigla_UniFed", 
-                        "Nome_UniFed",
-                        "Cod_Municipio",
-                        "Nome_Municipio",
-                        "Cod_Meso",
-                        "Nome_Meso",
-                        "PIB_corrente",
-                        "Populacao",
-                        "PIB_perCapita")
+# Dataload ----------------------------------------------------------------
 
 
-# Seleciona o PIN e POPULACAO para o ano de 2016
-PIB.info %>% 
-  dplyr::filter(Ano == 2016) %>% 
-  dplyr::group_by(Cod_Meso) %>% 
-  dplyr::select(Cod_Meso, PIB_corrente, Populacao) %>% 
-  dplyr::summarise(PIB = sum(PIB_corrente), Pop = sum(Populacao)) %>% 
-  apply(MARGIN = 2, FUN=sum) %>% format(big.mark=" ")
+# carrega o dicionario com relacao do codigo da regiao de agregacao
+Dicionario <- readxl::read_excel("./Database/Relacao_Agregacao_Ox.xlsx")
 
-PIB.info.2016 <- PIB.info %>% 
-  dplyr::filter(Ano == 2016) %>% 
-  dplyr::group_by(Cod_Meso) %>% 
-  dplyr::select(Cod_Meso, PIB_corrente, Populacao) %>% 
-  dplyr::summarise(PIB = sum(PIB_corrente), Pop = sum(Populacao), PIB_PerCapta=sum(PIB_corrente)/sum(Populacao))
-
-
-# Carrega a tabela de conexoes entre as regioes
-Connexoes.df <- read_excel("C:/Users/bteba/Dropbox/bruno-tebaldi/Base de dados/MatrixW.xlsx",
-                           sheet = "Conex",
-                           range = "A1:O24930")
-
-# Acerta o nome das colunas 
-colnames(Connexoes.df) <- c("Cod_Municipio",
-                            "Nome", 
-                            "Cod_Detino",
-                            "Nome_Destino",
-                            "Tipo_Link",
-                            "Id_Tipo_Link",
-                            "Unitario",
-                            "Meso_Origem", 
-                            "Meso_Destino",
-                            "LinkUnico",
-                            "LinkUnico_por_tipo", 
-                            "Mesma_regiao",
-                            "Qtd_Link_entre_meso", 
-                            "Qtd_Link_Centro_fonte_centro",
-                            "Qtd_Link_fonte Demais")
-
-# carrega o dicionario com relacao do codigo da mesoregioao
-Dicionario <- read_excel("./Database/GVAR Data/Dicionario.xlsx", 
-                         # col_types = c("text", "text", "text", "text")
+# carrego as informacoes dos municipios e suas regioes de agregacao.
+Muni_RA.info <- readxl::read_excel("./Database/Agregacao de Municipios.xlsx", 
+                                   sheet = "TabelaCompleta",
+                                   range = cell_limits(c(1, 1), c(NA, 11))
 )
 
-# Arruma o nome das colunas 
-colnames(Dicionario) <- c("Name", "Short_name", "Code", "Ox")
+# Filtro para ter apernas regioes nao ignoradas
+Muni_RA.info <- Muni_RA.info %>% dplyr::filter(Ignorado == 0)
 
+# Carrega a tabela de conexoes entre as regioes
+Connexoes.df <- read_excel("./Database/Ligacoes_entre_Cidades.xlsx",
+                           sheet = "ligacoes")
+
+# Ajusto o banco de dados de conexoes
+Connexoes.df <- 
+  Connexoes.df %>% 
+  dplyr::inner_join(Muni_RA.info, by = c("cod_ori"="ID_Municipio")) %>% 
+  dplyr::mutate(RA_Origem = RegiaoAgregacao) %>% 
+  dplyr::select("cod_ori", "nome_ori", "RA_Origem", "cod_dest", "nome_dest") %>% 
+  dplyr::inner_join(Muni_RA.info, by = c("cod_dest"="ID_Municipio")) %>% 
+  dplyr::mutate(RA_Destino = RegiaoAgregacao) %>% 
+  dplyr::select("cod_ori", "nome_ori", "RA_Origem", "cod_dest", "nome_dest", "RA_Destino")
+
+
+
+
+# carrego as informacoes de PIB
+PIB.info <- readxl::read_excel("Database/Agregacao de Municipios.xlsx", 
+                               col_types = c("skip", "skip", "skip", "skip",
+                                             "numeric", "numeric", "numeric", "numeric",
+                                             "numeric", "numeric", "numeric"),
+                               
+                               sheet = "TabelaCompleta",
+                               range = cell_limits(c(1, 1), c(NA, 11)))
+
+
+PIB.RA.2016 <- PIB.info %>% 
+  dplyr::filter(Ignorado == 0) %>% 
+  dplyr::group_by(RegiaoAgregacao) %>% 
+  dplyr::summarise(PIB = sum(PIB),
+                   Pop = sum(Pop2016),
+                   PIB_PerCapta=sum(PIB_perCap))
+
+
+# Contrucao de Matriz de pesos --------------------------------------------
 
 # Constroe uma matrix de pessos zerada
-W.mat <- matrix(0, ncol = 137, nrow = 137)
-colnames(W.mat) <- Dicionario$Short_name
-rownames(W.mat) <- Dicionario$Short_name
+qtd_of_regions <- nrow(Dicionario)
 
+W.mat <- matrix(0, ncol = qtd_of_regions, nrow = qtd_of_regions)
+colnames(W.mat) <- Dicionario$RegiaoOx
+rownames(W.mat) <- Dicionario$RegiaoOx
+
+
+source("./ScriptRegioes.R")
 
 # Faz a construção efetiva da matrix de pesos
 for (col in 1:ncol(W.mat)) {
@@ -110,7 +86,7 @@ for (col in 1:ncol(W.mat)) {
   nomeColuna <- colnames(W.mat)[col]
   
   # busca o codigo da coluna (regiao de origem)
-  Origem <- Dicionario$Code[which(Dicionario$Short_name == nomeColuna)]
+  Origem <- Dicionario$RegiaoAgregacao[which(Dicionario$RegiaoOx == nomeColuna)]
   
   for (row in 1:nrow(W.mat)) {
     # cat(sprintf("%d, %d\n", row, col))
@@ -119,27 +95,71 @@ for (col in 1:ncol(W.mat)) {
     nomeLinha <- rownames(W.mat)[row]
     
     # busca o codigo da coluna (regiao de origem)
-    Destino <- Dicionario$Code[which(Dicionario$Short_name == nomeLinha)]
+    Destino <- Dicionario$RegiaoAgregacao[which(Dicionario$RegiaoOx == nomeLinha)]
     
     if(Origem == Destino){
       W.mat[row, col] <- 0;
     } else {
       
-      Qtd_connex <- Connexoes.df %>% 
-        filter(Meso_Origem == Origem, Meso_Destino == Destino) %>% 
-        summarise(Total=n()) %>% pull(Total)
-      
-      # Coloca na matrix de connexao o total de conexao entre as cidades.
-      # W.mat[row, col] <- Qtd_connex
-      
-      
-      # Coloca na matrix de connexao o total do pib baseano na conexao entre as cidades.
-      if(Qtd_connex > 0){
-        W.mat[row, col] <- PIB.info.2016 %>% 
-          filter(Cod_Meso == Destino) %>% pull(PIB_PerCapta)
+      if(col %in% data_Conn){
+        # Matrix do tipo classica
+        W.mat[row, col] <- Connexoes.df %>% 
+          filter(RA_Origem == Origem, RA_Destino == Destino) %>% 
+          summarise(Total=n()) %>% pull(Total)
+      } else if (col %in% data_Pib) {
+        # Coloca na matrix de connexao o total do pib baseano na conexao entre as cidades.
+        existe.con <- Connexoes.df %>% 
+          filter(RA_Origem == Origem, RA_Destino == Destino) %>% 
+          summarise(Total=n()) %>% pull(Total)
+        
+        if(existe.con > 0){
+          W.mat[row, col] <- PIB.RA.2016 %>% 
+            filter(RegiaoAgregacao == Destino) %>% pull(PIB)
+        } else {
+          W.mat[row, col] <- 0
+        }
+      } else if (col %in% data_PibPerCapta) {
+        # Coloca na matrix de connexao o total do pib per capta baseano na conexao entre as cidades.
+        
+        existe.con <- Connexoes.df %>% 
+          filter(RA_Origem == Origem, RA_Destino == Destino) %>% 
+          summarise(Total=n()) %>% pull(Total)
+        
+        if(existe.con > 0){
+          W.mat[row, col] <- PIB.RA.2016 %>% 
+            filter(RegiaoAgregacao == Destino) %>% pull(PIB_PerCapta)
+        } else {
+          W.mat[row, col] <- 0
+        }
+        
+      } else if (col %in% data_Populacao) {
+        # Coloca na matrix de connexao o total da populacao na conexao entre as cidades.
+        existe.con <- Connexoes.df %>% 
+          filter(RA_Origem == Origem, RA_Destino == Destino) %>% 
+          summarise(Total=n()) %>% pull(Total)
+        
+        if(existe.con > 0){
+          W.mat[row, col] <- PIB.RA.2016 %>% 
+            filter(RegiaoAgregacao == Destino) %>% pull(Pop)
+        } else {
+          W.mat[row, col] <- 0
+        }
+        
+      } else if(col %in% data_Equal_Weight) {
+        # Coloca na matrix de connexao o total da populacao na conexao entre as cidades.
+        existe.con <- Connexoes.df %>% 
+          filter(RA_Origem == Origem, RA_Destino == Destino) %>% 
+          summarise(Total=n()) %>% pull(Total)
+        
+        if(existe.con > 0){
+          W.mat[row, col] <- 1
+        } else {
+          W.mat[row, col] <- 0
+        }
       } else {
-        W.mat[row, col] <- 0
+        stop("Tipo de matrix nao informado corretamente")
       }
+      
     }
   }
 }
@@ -152,26 +172,20 @@ for (col in 1:ncol(W.mat)) {
 }
 
 # --- Salva a matrix em arquivo .mat ----
-fileConn <- file("./Excel Export/data.mat")
-writeLines(c("137 137 // A 137 by 137 matrix (PIB per capta)"), fileConn)
+
+file.name.sufix <- "FINAL"
+file.name <- sprintf("./Excel Export/data_%s.mat", file.name.sufix)
+
+
+fileConn <- file(file.name)
+writeLines( text = sprintf("%1$d %1$d // A %1$d by %1$d matrix (%2$s)", qtd_of_regions, file.name.sufix),
+            con = fileConn)
 close(fileConn)
 
-write.table(x = W.mat, file = "./Excel Export/data.mat",
+write.table(x = W.mat, file = file.name,
             append = TRUE,
             col.names = FALSE,
             row.names = FALSE)
-
-
-# write.table(x = W.mat[,1], file = "./Excel Export/data_R1.mat",
-#             append = FALSE,
-#             col.names = FALSE,
-#             row.names = FALSE)
-
-
-# write.table(x = W.mat[,2], file = "./Excel Export/data_R2.mat",
-#             append = FALSE,
-#             col.names = FALSE,
-#             row.names = FALSE)
 
 
 
