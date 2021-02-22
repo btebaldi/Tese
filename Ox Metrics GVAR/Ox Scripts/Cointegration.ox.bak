@@ -109,7 +109,8 @@ Cointegration::EstimateCoint(){
 			model.Select("X", {asX_star[iqtd], 0, 0});
 	}
 
-
+	println("ESTIMANDOSAPORRA ------>", mX);
+	
 	// Lags ( const lags , const lagsExo = - 1 , const lagsDet = - 1 )
 	model.Lags(iLags, iLags, iLags);
 	
@@ -123,17 +124,18 @@ Cointegration::EstimateCoint(){
 
 	// Inclui seasonal centradas
 	model.Seasonals(1);
-
+println("DRIFT ------>");
 	// fixa a amostra
 	// model.SetSelSample(1975, 9, 1998, 12);
 	
 	// tipo de metodo RRR: Reduced Rank Regression
 	model.SetMethod("RRR");
-
+println("RRR ------>");
 
 	// set print to false
 	model.SetPrint(TRUE);
 
+println("ESTIMATE ------>", asX_star);
 	// Estima o modelo.
 	model.Estimate();
 

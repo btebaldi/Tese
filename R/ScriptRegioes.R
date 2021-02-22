@@ -33,10 +33,10 @@ data_PibPerCapta <- c(17, 20, 35, 44, 46, 59, 74, 77, 87, 95, 102, 114, 115, 117
 data_Populacao <- c(51)
 
 
-
+print(sprintf("Check de regioes: %d",
 length(data_Conn) +
 length(data_Equal_Weight) +
 length(data_Pib) +
 length(data_PibPerCapta) +
-length(data_Populacao) 
+length(data_Populacao) ))
 

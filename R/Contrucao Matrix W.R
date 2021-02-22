@@ -16,7 +16,7 @@ rm(list=ls())
 library(readxl)
 library(dplyr)
 
-
+source("./ScriptRegioes.R")
 
 # Dataload ----------------------------------------------------------------
 
@@ -77,8 +77,6 @@ W.mat <- matrix(0, ncol = qtd_of_regions, nrow = qtd_of_regions)
 colnames(W.mat) <- Dicionario$RegiaoOx
 rownames(W.mat) <- Dicionario$RegiaoOx
 
-
-source("./ScriptRegioes.R")
 
 # Faz a construção efetiva da matrix de pesos
 for (col in 1:ncol(W.mat)) {
@@ -167,7 +165,7 @@ for (col in 1:ncol(W.mat)) {
 
 # --- Normaliza as colunas da matrix ----
 for (col in 1:ncol(W.mat)) {
-  somaColuna <- sum(W.mat[,col]);
+  somaColuna <- sum(W.mat[,col], na.rm = T);
   W.mat[,col] <- W.mat[,col] / somaColuna
 }
 
