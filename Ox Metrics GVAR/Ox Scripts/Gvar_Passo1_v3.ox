@@ -320,8 +320,6 @@ main() {
 	    decl mdataX = model.GetVar(asX);
         decl mdataX_star = model.GetVar(asX_star);
 
-		println("asX_star: ", mdataX_star, "FIM");
-
 	    // adiciona variaveis
 	    CointModel.Add_X(mdataX, asX);
 	    CointModel.Add_X_star(mdataX_star, asX_star);

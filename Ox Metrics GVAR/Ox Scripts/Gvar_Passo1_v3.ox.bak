@@ -288,7 +288,7 @@ main() {
         // println(GetRegionNames(iQtdRegioes, "R", "_Desligados"));
         mData = model.GetVar(GetRegionNames(iQtdRegioes, "R", "_Desligados"));
 
-		print(mW[][iCont - 1]);
+		//print(mW[][iCont - 1]);
         
         model.Append(mData * mW[][iCont - 1], {"star_Desligados"});
         mData = model.GetVar(GetRegionNames(iQtdRegioes, "R", "_Admitidos"));
