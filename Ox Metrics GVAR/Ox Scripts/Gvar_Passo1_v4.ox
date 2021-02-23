@@ -264,12 +264,14 @@ main() {
 	decl mRankRegions;
 	println("Lista de ranks das regioes: ", sprint("./mat_files/", "rankOfRegions.mat"));
     mRankRegions = loadmat(sprint("./mat_files/", "rankOfRegions.mat"));
-    
-	println(mRankRegions);
-	exit(0);
-	
+    // println(mRankRegions);
+		
     for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
 
+		println("Rank: ", mRankRegions[iCont-1][0]);
+
+		//println("mRankRegions has ", rows(mRankRegions), " rows and ", columns(mRankRegions), " cols");
+		continue;
         // FOR DEBUG ONLY
         // if(iCont >2){
         //     exit(0);
