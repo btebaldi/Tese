@@ -260,6 +260,14 @@ main() {
     // iCont2: Contador
     decl iCont;
 
+	// Carrega a informação de qual o rank de cada região 
+	decl mRankRegions;
+	println("Lista de ranks das regioes: ", sprint("./mat_files/", "rankOfRegions.mat"));
+    mRankRegions = loadmat(loadmat(sprint("./mat_files/", "rankOfRegions.mat")));
+    
+	println(mRankRegions);
+	exit(0);
+	
     for (iCont = 1; iCont <= iQtdRegioes; ++iCont) {
 
         // FOR DEBUG ONLY
@@ -319,8 +327,6 @@ main() {
 
 	    decl mdataX = model.GetVar(asX);
         decl mdataX_star = model.GetVar(asX_star);
-
-		println("asX_star: ", mdataX_star, "FIM");
 
 	    // adiciona variaveis
 	    CointModel.Add_X(mdataX, asX);

@@ -271,7 +271,7 @@ main() {
 		println("Rank: ", mRankRegions[iCont-1][0]);
 
 		//println("mRankRegions has ", rows(mRankRegions), " rows and ", columns(mRankRegions), " cols");
-		continue;
+		// continue;
         // FOR DEBUG ONLY
         // if(iCont >2){
         //     exit(0);
@@ -316,7 +316,7 @@ main() {
         // CONTRUCAO DA MATRIZ DE LONGO PRAZO
         println("(3) Iniciando construcao da variavel beta*Z (Cointegracao) para a regiao ", iCont);
 
-		model.SaveIn7(sprint("BASEDEBUG_", iCont, "_Fulldatabase"));
+		//model.SaveIn7(sprint("BASEDEBUG_", iCont, "_Fulldatabase"));
 
         // IF BETA ESTIMATION
         println("\tIniciando determinacao do vetor de cointegracao (beta) a regiao ", iCont);
@@ -455,9 +455,9 @@ main() {
         // Liga o autometrics
 		// (Mudar flag para TRUE, para estimar todos modelos com IIS)
         if ((iCont == 69) || (iCont == 84) || (iCont == 99) || TRUE) {
-            model.Autometrics(0.0001, "IIS", 1);
+            model.Autometrics(0.001, "IIS", 1);
         } else {
-            model.Autometrics(0.01, "none", 1);
+            model.Autometrics(0.001, "IIS", 1);
         }
 		 
 
