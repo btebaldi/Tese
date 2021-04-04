@@ -316,7 +316,7 @@ main() {
         // CONTRUCAO DA MATRIZ DE LONGO PRAZO
         println("(3) Iniciando construcao da variavel beta*Z (Cointegracao) para a regiao ", iCont);
 
-		model.SaveIn7(sprint("BASEDEBUG_", iCont, "_Fulldatabase"));
+		//model.SaveIn7(sprint("BASEDEBUG_", iCont, "_Fulldatabase"));
 
         // IF BETA ESTIMATION
         println("\tIniciando determinacao do vetor de cointegracao (beta) a regiao ", iCont);
