@@ -1,4 +1,4 @@
-url.mask <- "http://api.bcb.gov.br/dados/serie/bcdata.sgs.%s/dados?formato=%s&amp;dataInicial=%s"
+url.mask <- "http://api.bcb.gov.br/dados/serie/bcdata.sgs.%s/dados?formato=%s&dataInicial=%s"
 
 # 24363 - IbcBr
 Serie.Id <- 24363
