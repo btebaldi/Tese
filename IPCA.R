@@ -1,16 +1,39 @@
-# Setup -------------------------------------------------------------------
-rm(list=ls())
+# Script para download dos dados do IPCA
 
-library(jsonlite)
+# Setup -------------------------------------------------------------------
+
+library(sidrar)
+library(stringi)
 library(dplyr)
 library(lubridate)
 
+# Dataload ----------------------------------------------------------------
 
-url <- "http://www.ipeadata.gov.br/api/odata4/Metadados"
-tbl1 = jsonlite::fromJSON(url)
-aa <- tbl1$value %>% as_tibble()
+# help em http://api.sidra.ibge.gov.br/
+IPCA.tbl <- get_sidra(api = "/t/1737/v/2266/p/all/N1/1")
+
+# Data preparation --------------------------------------------------------
+
+# padroniza o nome das colunas
+colnames(IPCA.tbl) <- stringi::stri_replace_all(str = stringi::stri_trans_general(colnames(IPCA.tbl), "latin-ascii"),
+                                                replacement = "_",
+                                                regex = "\\s")
 
 
-"http://www2.bmf.com.br/pages/portal/bmfbovespa/lumis/lum-taxas-referenciais-bmf-ptBR.asp?Data=18/04/2021"
+# seleciona apenas as colunas de interesse
+IPCA.tbl <- IPCA.tbl %>% 
+  dplyr::select(YearMonth="Mes_(Codigo)",
+                Valor="Valor")
+
+# acerta as datas de referencia
+IPCA.tbl$Data <- lubridate::ymd(IPCA.tbl$YearMonth, truncated = 1)
+
+# coloca as colunas em ordem
+IPCA.tbl <- IPCA.tbl %>% dplyr::select(Data, YearMonth, Valor)
 
 
+IPCA.tbl <- IPCA.tbl %>% dplyr::filter(Data >= as.Date("1995-01-01")) %>% 
+  mutate(ln_ICPA = log(Valor))
+
+
+readr::write_excel_csv(x = IPCA.tbl, file = "IPCA.csv")
