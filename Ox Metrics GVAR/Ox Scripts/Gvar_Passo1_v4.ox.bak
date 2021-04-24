@@ -285,26 +285,29 @@ main() {
         // Inicio um nomo objeto do tipo PcGive
         println("Iniciando um nomo objeto do tipo PcGive referente a regiao ", iCont);
         decl model = new PcGive();
-        println("\nCarregando base de dados para regiao ", iCont);
+
+		println("\nCarregando base de dados para regiao ", iCont);
         model.Load(txDbase);
-        println("\tPeriodo da base de dados");
+
+		println("\tPeriodo da base de dados");
         println("\tData inicial: ", model.GetYear1(), "-", model.GetPeriod1());
         println("\tData final: ", model.GetYear2(), "-", model.GetPeriod2());
-        // As Variaveis Star sao uma combinacao linear das variaveis esternas.
+
+		// As Variaveis Star sao uma combinacao linear das variaveis esternas.
         println("(1) Iniciando construcao das variaveis star para a regiao ", iCont);
-        decl mData, beta;
+
+		decl mData, beta;
         //mData = model.GetAll();
-        println("\tAdicionando variavel star da regiao ", iCont);
+
+		println("\tAdicionando variavel star da regiao ", iCont);
         // println(GetRegionNames(iQtdRegioes, "R", "_Desligados"));
         mData = model.GetVar(GetRegionNames(iQtdRegioes, "R", "_Desligados"));
-
-		//print(mW[][iCont - 1]);
-        
         model.Append(mData * mW[][iCont - 1], {"star_Desligados"});
         mData = model.GetVar(GetRegionNames(iQtdRegioes, "R", "_Admitidos"));
-        //println("%c", GetRegionNames(iQtdRegioes, "R", "_Admitidos"), mData[0:6][]);
         model.Append(mData * mW[][iCont - 1], {"star_Admitidos"});
-        println("\tConcluido construcao das variaveis star para a regiao ", iCont);
+		//println("%c", GetRegionNames(iQtdRegioes, "R", "_Admitidos"), mData[0:6][]);
+
+		println("\tConcluido construcao das variaveis star para a regiao ", iCont);
         println("(2) Iniciando construcao da variavel Delta para a regiao ", iCont);
         // CONTRUCAO DAS VARIAVEIS DELTA
         mData =	model.GetVar(sprint("R", iCont, "_Admitidos"));
@@ -316,50 +319,49 @@ main() {
         // CONTRUCAO DA MATRIZ DE LONGO PRAZO
         println("(3) Iniciando construcao da variavel beta*Z (Cointegracao) para a regiao ", iCont);
 
-		//model.SaveIn7(sprint("BASEDEBUG_", iCont, "_Fulldatabase"));
 
-        // IF BETA ESTIMATION
-        println("\tIniciando determinacao do vetor de cointegracao (beta) a regiao ", iCont);
-        
-        // Inicio um objeto de integracao
-        decl CointModel = new Cointegration();
-
-        decl asX = {sprint("R", iCont, "_Admitidos"), sprint("R", iCont, "_Desligados")};
-        decl asX_star = {"star_Admitidos", "star_Desligados"};
-
-	    decl mdataX = model.GetVar(asX);
-        decl mdataX_star = model.GetVar(asX_star);
-
-	    // adiciona variaveis
-	    CointModel.Add_X(mdataX, asX);
-	    CointModel.Add_X_star(mdataX_star, asX_star);
+        // procedimento de determinacao do vetor de cointegracao foi feito separadamente
+		if (FALSE){
+	        println("\tIniciando determinacao do vetor de cointegracao (beta) a regiao ", iCont);
+	        
+	        // Inicio um objeto de integracao
+	        decl CointModel = new Cointegration();
 	
-	    // Seta rank para 5
-	    CointModel.SetRank(4);
-        
-        //Informatio on the model
-	    // CointModel.Info();
-
-        // Estima Cointegracao com o rank
-	    CointModel.EstimateCoint();
-        
-        // Estima Rank baseado nas infos de coint
-	    CointModel.EstimateRankFromBoostrap();
-
-        // Salva a estimativa do beta
-        CointModel.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("CoInt_R", iCont, ".mat")));
-        
-        // Limpeza de ojetos criados
-        delete CointModel;
-        delete asX;
-        delete asX_star;
-	    delete mdataX;
-        delete mdataX_star;
-
+	        decl asX = {sprint("R", iCont, "_Admitidos"), sprint("R", iCont, "_Desligados")};
+	        decl asX_star = {"star_Admitidos", "star_Desligados"};
+	
+		    decl mdataX = model.GetVar(asX);
+	        decl mdataX_star = model.GetVar(asX_star);
+	
+		    // adiciona variaveis
+		    CointModel.Add_X(mdataX, asX);
+		    CointModel.Add_X_star(mdataX_star, asX_star);
+		
+		    // Seta rank para 5
+		    CointModel.SetRank(4);
+	        
+	        //Informatio on the model
+		    // CointModel.Info();
+	
+	        // Estima Cointegracao com o rank
+		    CointModel.EstimateCoint();
+	        
+	        // Estima Rank baseado nas infos de coint
+		    CointModel.EstimateRankFromBoostrap();
+	
+	        // Salva a estimativa do beta
+	        CointModel.SaveBetaEstimative(sprint(txCoIntMatPath, sprint("CoInt_R", iCont, ".mat")));
+	        
+	        // Limpeza de ojetos criados
+	        delete CointModel;
+	        delete asX;
+	        delete asX_star;
+		    delete mdataX;
+	        delete mdataX_star;
+		}
         // Leitura do vetor de cointegracao
-        // beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_R", iCont, ".mat")));
-        beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_R", iCont, ".mat")));
-        // beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_R_All.mat")));
+        beta = loadmat(sprint(txCoIntMatPath, sprint("Weak2_CoInt_R", iCont, ".mat")));
+
         // Duvida devo considerar vetor zero para os desligados???
         
         decl asBetaZ;
@@ -372,19 +374,26 @@ main() {
             // println("rows: ", asBetaZ);
         }
         model.Append(mData * beta', asBetaZ);
+		
         delete asBetaZ;
+
+//		model.SaveIn7(sprint("BASEDEBUG_", iCont, "_Fulldatabase"));
+
         println("\tConcluido construcao da variavel beta*Z (Cointegracao) para a regiao ", iCont);
-        // ADICIONANDO MACROVARIAVEIS
+
+		// ADICIONANDO MACROVARIAVEIS
         println("(4) Iniciando adicao de macrovariaveis para a regiao ", iCont);
         // Leitura do vetor de cointegracao
         println("\tAdicao de macrovariaveis em nivel para a regiao ", iCont);
         //println(mMacroData[1:10][]);
+		
         model.Append(mMacroData, aMacroVarNames);
-        println("\tAdicao de macrovariaveis em primeira differenca para a regiao ", iCont);
 
+		println("\tAdicao de macrovariaveis em primeira differenca para a regiao ", iCont);
         for (i = 0; i < rows(aMacroVarNames); ++i) {
             model.Append(diff(mMacroData[][i]), sprint("D_", aMacroVarNames[i]));
         }
+		
         if (columns(mMacroData) > 1) {
             println("(5) Adicionando matriz de longo prazo das Macrovariaveis para a regiao ", iCont);
             beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_MacroVar.mat")));
@@ -431,9 +440,10 @@ main() {
         // Adiciona a variavel "star"
         model.Select("X", {sprint(sVarSufix, "star_Desligados"), 0, iQtdLags});
         model.Select("X", {sprint(sVarSufix, "star_Admitidos"), 0, iQtdLags});
-        // Adiciona a variavel "betaZ" com um lag apenas (representação da matriz de longo prazo)
-        model.Select("X", {"betaZ_Admitidos", 1, 1});
-        model.Select("X", {"betaZ_Desligados", 1, 1});
+
+		// Adiciona a variavel "betaZ" com um lag apenas (representação da matriz de longo prazo)
+        model.Select("X", {"betaZ_1", 1, 1});
+        model.Select("X", {"betaZ_2", 1, 1});
 
         // Adiciona a variaveis macroeconomicas com um lag apenas (representação da matriz de longo prazo)
         //decl nContVarMacro;
@@ -447,7 +457,7 @@ main() {
         model.Select("U", {"CSeasonal", 0, 10});
         // determina a janela de tempo do modelo
         //model.SetSample(model.GetYear1(),  model.GetPeriod1(),  model.GetYear2(),  model.GetPeriod2());
-        //model.SetSample(1995, 1, 2018, 12);
+        model.SetSample(1995, 1, 2018, 12);
         //model.SetSelSampleByIndex(1, 951);
         model.SetSelSampleByIndex(model.GetSelStart(), model.GetSelEnd());
         println("Model Sample: ", model.GetSelSample());
@@ -467,7 +477,8 @@ main() {
         model.SetMethod(M_OLS);
         // Realiza a estimacao do modelo
         model.Estimate();
-//		model.TestSummary();
+
+
         println("Fazendo aquisicao de parametros");
         // Declaro as matrizes Phi e Lambda
         // Phi: Matrix de coeficientes do log da dependente
