@@ -395,10 +395,13 @@ main() {
         }
 		
         if (columns(mMacroData) > 1) {
-            println("(5) Adicionando matriz de longo prazo das Macrovariaveis para a regiao ", iCont);
-            beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_MacroVar.mat")));
-            model.Append(mMacroData * beta', {"betaMacro"});
-            println("\tConcluido adicao de macrovariaveis para a regiao ", iCont);
+			// ****************
+			// Processo comentado pois foi verificado que nao existe cointegracao entre as variaveis externas e as macrovariaveis.
+
+			// println("(5) Adicionando matriz de longo prazo das Macrovariaveis para a regiao ", iCont);
+            // beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_MacroVar.mat")));
+            // model.Append(mMacroData * beta', {"betaMacro"});
+            // println("\tConcluido adicao de macrovariaveis para a regiao ", iCont);
         }
 
         // Apago variaveis que nao serao mais utilizadas
@@ -451,13 +454,16 @@ main() {
             model.Select("X", {sprint(sVarSufix, aMacroVarNames[i]), 0, iQtdLags});
             println("\tAdicionado: ", aMacroVarNames[i]);
         }
+		
         //model.Select("X", {"betaMacro", 1, 1});
         // Adiciona variaveis constante e sesonals
         model.Select("U", {"Constant", 0, 0});
         model.Select("U", {"CSeasonal", 0, 10});
+		
         // determina a janela de tempo do modelo
         //model.SetSample(model.GetYear1(),  model.GetPeriod1(),  model.GetYear2(),  model.GetPeriod2());
         model.SetSample(1995, 1, 2018, 12);
+		
         //model.SetSelSampleByIndex(1, 951);
         model.SetSelSampleByIndex(model.GetSelStart(), model.GetSelEnd());
         println("Model Sample: ", model.GetSelSample());
@@ -465,9 +471,9 @@ main() {
         // Liga o autometrics
 		// (Mudar flag para TRUE, para estimar todos modelos com IIS)
         if ((iCont == 69) || (iCont == 84) || (iCont == 99) || TRUE) {
-            model.Autometrics(0.001, "IIS", 1);
+            model.Autometrics(0.0001, "IIS", 1);
         } else {
-            model.Autometrics(0.001, "IIS", 1);
+            model.Autometrics(0.0001, "IIS", 1);
         }
 		 
 
