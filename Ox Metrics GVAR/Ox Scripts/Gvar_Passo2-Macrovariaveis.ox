@@ -318,7 +318,7 @@ main()
 		
 	for(nCont=0; nCont < rows(aMacroVarNames); ++nCont)
 	{
-		println("Adicionado lag da variavel: ", aMacroVarNames[nCont]);
+		println("Adicionado Diff da variavel: ", aMacroVarNames[nCont]);
 		model.Append(diff(model.GetVar(aMacroVarNames[nCont])), {sprint("D_", aMacroVarNames[nCont])});
 		//println("%c", sprint("D_", aMacroVarNames[nCont]), diff(model.GetVar(aMacroVarNames[nCont])));
    	}
@@ -332,11 +332,14 @@ main()
 	model.Append(diff(mX), {"D_mX"});
 
 	if(rows(aMacroVarNames) > 1){
-	// Leitura do vetor de cointegracao
-	beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_MacroVar.mat")));
-   	mMacroData = model.GetVar(aMacroVarNames);
-	//println(">>>",mMacroData*beta'); 
-	model.Append(mMacroData*beta', {"betaMacro"});
+		// ****************
+		// Processo comentado pois foi verificado que nao existe cointegracao entre as variaveis externas e as macrovariaveis.
+	
+		//// Leitura do vetor de cointegracao
+		//beta = loadmat(sprint(txCoIntMatPath, sprint("CoInt_MacroVar.mat")));
+	   	//mMacroData = model.GetVar(aMacroVarNames);
+		////println(">>>",mMacroData*beta'); 
+		//model.Append(mMacroData*beta', {"betaMacro"});
 	}
 
 	model.SetModelClass("SYSTEM");
@@ -361,7 +364,9 @@ main()
 	// Adiciona a variavel "star"
 	model.Select("X", {"D_mX", 1, iQtdLags});
 
-	if(rows(aMacroVarNames) > 1){
+// ****************
+// Processo comentado pois foi verificado que nao existe cointegracao entre as variaveis externas e as macrovariaveis.
+	if(rows(aMacroVarNames) < -1){
 	// Adiciona a variavel "betaMacro" com um lag apenas (representação da matriz de longo prazo)
 	model.Select("X", {"betaMacro", 1, 1});
 	}
@@ -377,10 +382,10 @@ main()
 //	println("GetSelEnd", model.GetSelEnd());
 
 	println("Model Sample: ", model.GetSelSample());
-//	exit(0);
+
 	// Liga o autometrics
-	model.Autometrics(0.001, "none", 2);
-	//model.Autometrics(0.0005, "IIS", 1);
+	//model.Autometrics(0.001, "none", 2);
+	model.Autometrics(0.0001, "IIS", 1);
 	model.AutometricsSet("print", 0);
 		
 	// determina o metodo de estimacao.
@@ -427,10 +432,13 @@ main()
 	decl mAlphaBeta_w, mAlpha_w;
 	mAlpha_w = ProcessoAlphaBeta(asParamNames, vParamValues, aMacroVarNames);
 
-	if(rows(aMacroVarNames) > 1){
+
+// ****************
+// Processo comentado pois foi verificado que nao existe cointegracao entre as variaveis externas e as macrovariaveis.
+	if(rows(aMacroVarNames) < -1){
 	mAlphaBeta_w = mAlpha_w * beta;
 	}else{
-	mAlphaBeta_w=0;
+	mAlphaBeta_w= reshape(0, rows(aMacroVarNames), rows(aMacroVarNames));
 	}
 	
 	savemat(sprint(txMatPathRawMatrix, "AlphaBeta_w.mat"), mAlphaBeta_w);

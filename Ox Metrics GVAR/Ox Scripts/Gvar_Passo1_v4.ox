@@ -140,7 +140,7 @@ ProcessoPILongRun(const iValue, const sName, const iRegDependente, const sVarSuf
     println("Processo Extracao da matriz de longo prazo");
     decl nContTipo, nContTotal, iContVar, sParamName, asTipo, nCountAno, nCountMes, mReturn, index;
     mReturn = zeros(2, 2);
-    asTipo = {"Admitidos", "Desligados"};
+    asTipo = {"1", "2"};
 
     for (nContTipo = 0; nContTipo < sizeof(asTipo); ++nContTipo) {
         index = find(sName, sprint("betaZ_", asTipo[0], "_", 1, "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));

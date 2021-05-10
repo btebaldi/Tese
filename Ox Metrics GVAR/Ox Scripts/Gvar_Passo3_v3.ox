@@ -1,4 +1,4 @@
-#include <oxstd.oxh>
+﻿#include <oxstd.oxh>
 
 main()
 {
@@ -32,7 +32,7 @@ main()
 			}
 			//println(GL);
 	    }
-	
+		println("Saving G", iCurrentLag, " matrix");
 		savemat(sprint(txMatPathG_Matrix, "G", iCurrentLag, ".mat"), GL);
 	}
 
@@ -52,6 +52,7 @@ main()
 			mUStack = mUStack | mUi;
 		}
 
+		println("Saving U_Stacked (region ", iContRegion, ")");
 		savemat(sprint(txMatPathG_Matrix, "U_Stacked", ".mat"), mUStack);
 	}
 
@@ -62,12 +63,16 @@ main()
 	{
 		mAlphai = loadmat(sprint(txMatPathRawMatrix, sVarSufix, "R", iContRegion, "_Alpha.mat"));
 		//mBetai = loadmat(sprint(txCoIntMatPath, "CoInt_R", iContRegion, ".mat"));
-		mBetai = loadmat(sprint(txCoIntMatPath, "CoInt_R_All.mat"));
+		mBetai = loadmat(sprint(txCoIntMatPath, "Weak2_CoInt_R", iContRegion, ".mat"));
 		mWi = loadmat(sprint(txMatPathW_Matrix, "W", iContRegion, ".mat"));
 
-//		println("mAlphai", mAlphai);
-//		println("mBetai * mWi", mBetai * mWi);
-		
+		// Regularizacao do beta para operacionalizacao.
+		if(columns(mAlphai) > rows(mBetai))
+		{
+		//adiciono uma linha zerada no beta pois nao há dois betas.
+		mBetai = mBetai |reshape(0, columns(mAlphai) - rows(mBetai), columns(mBetai));;
+		}
+	
 		// primeira passagem, inicializo o Aplha0 e AplhaL
 		if(iContRegion==1)
 		{
@@ -79,7 +84,7 @@ main()
 			aAlphaiStack = aAlphaiStack | mAlphai * mBetai * mWi;
 		}
 
-		//println(sprint("aAlphaiStack_",iContRegion), aAlphaiStack);
+		println(sprint("Saving G_alpha (region ",iContRegion, ")"));
 		savemat(sprint(txMatPathG_Matrix, "G_alpha", ".mat"), aAlphaiStack);
 	}
 
@@ -100,6 +105,7 @@ main()
 			mIISiStack = mIISiStack | mIISi;
 		}
 
+		println(sprint("Saving G_alpha (region ",iContRegion, ")"));
 		savemat(sprint(txMatPathG_Matrix, "IIS_Stacked", ".mat"), mIISiStack);
 	}
 
@@ -119,6 +125,7 @@ main()
 			mDStack = mDStack | mDi;
 		}
 
+		println(sprint("Saving D_Stacked (region ",iContRegion, ")"));
 		savemat(sprint(txMatPathG_Matrix, "D_Stacked", ".mat"), mDStack);
 	}
 

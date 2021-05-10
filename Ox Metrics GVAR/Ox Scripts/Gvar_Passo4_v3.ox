@@ -122,5 +122,6 @@ main()
 
 
 
-	println("GVAR Passo 3 Finalizado");
+	println("***************************************************");
+	println("GVAR Passo 4 Finalizado");
 }
