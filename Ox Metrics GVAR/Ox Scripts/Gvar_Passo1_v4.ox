@@ -470,10 +470,12 @@ main() {
 
         // Liga o autometrics
 		// (Mudar flag para TRUE, para estimar todos modelos com IIS)
-        if ((iCont == 69) || (iCont == 84) || (iCont == 99) || TRUE) {
+		//	ANTIGA CONDICAO:	(iCont == 69) || (iCont == 84) || (iCont == 99) || TRUE
+        if (FALSE) {
             model.Autometrics(0.0001, "IIS", 1);
         } else {
-            model.Autometrics(0.0001, "IIS", 1);
+            //model.Autometrics(0.0001, "IIS", 1);
+			println("Processo IIS desligado para esta regiao");
         }
 		 
 
@@ -484,7 +486,15 @@ main() {
         // Realiza a estimacao do modelo
         model.Estimate();
 
+		// mostra os criterios de informacao dos modelos
+		decl mInfoCrit;
+		mInfoCrit = model.InformationCriteria();
+		print("%c", {"AIC", "SC", "HQ", "FPE"}, "%cf", mInfoCrit);
+		println(">>> AIC: ", mInfoCrit[0]);
+		println(">>> SC: ", mInfoCrit[1]);
+		println(">>> HQ: ", mInfoCrit[2]);
 
+		
         println("Fazendo aquisicao de parametros");
         // Declaro as matrizes Phi e Lambda
         // Phi: Matrix de coeficientes do log da dependente

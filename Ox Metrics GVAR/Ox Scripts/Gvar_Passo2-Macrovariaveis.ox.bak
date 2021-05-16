@@ -438,7 +438,7 @@ main()
 	if(rows(aMacroVarNames) < -1){
 	mAlphaBeta_w = mAlpha_w * beta;
 	}else{
-	mAlphaBeta_w= ;
+	mAlphaBeta_w= reshape(0, rows(aMacroVarNames), rows(aMacroVarNames));
 	}
 	
 	savemat(sprint(txMatPathRawMatrix, "AlphaBeta_w.mat"), mAlphaBeta_w);
