@@ -84,7 +84,7 @@ main()
 			aAlphaiStack = aAlphaiStack | mAlphai * mBetai * mWi;
 		}
 
-		println(sprint("Saving G_alpha (region ",iContRegion, ")");
+		println(sprint("Saving G_alpha (region ",iContRegion, ")"));
 		savemat(sprint(txMatPathG_Matrix, "G_alpha", ".mat"), aAlphaiStack);
 	}
 
@@ -105,7 +105,7 @@ main()
 			mIISiStack = mIISiStack | mIISi;
 		}
 
-		println(sprint("Saving G_alpha (region ",iContRegion, ")");
+		println(sprint("Saving G_alpha (region ",iContRegion, ")"));
 		savemat(sprint(txMatPathG_Matrix, "IIS_Stacked", ".mat"), mIISiStack);
 	}
 
@@ -125,7 +125,7 @@ main()
 			mDStack = mDStack | mDi;
 		}
 
-		println(sprint("Saving D_Stacked (region ",iContRegion, ")");
+		println(sprint("Saving D_Stacked (region ",iContRegion, ")"));
 		savemat(sprint(txMatPathG_Matrix, "D_Stacked", ".mat"), mDStack);
 	}
 

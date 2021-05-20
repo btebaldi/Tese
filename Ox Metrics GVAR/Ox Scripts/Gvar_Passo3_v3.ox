@@ -105,7 +105,7 @@ main()
 			mIISiStack = mIISiStack | mIISi;
 		}
 
-		println(sprint("Saving G_alpha (region ",iContRegion, ")"));
+		println(sprint("Saving IIS (region ",iContRegion, ")"));
 		savemat(sprint(txMatPathG_Matrix, "IIS_Stacked", ".mat"), mIISiStack);
 	}
 

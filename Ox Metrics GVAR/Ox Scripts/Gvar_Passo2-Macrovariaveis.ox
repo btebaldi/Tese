@@ -322,7 +322,6 @@ main()
 		model.Append(diff(model.GetVar(aMacroVarNames[nCont])), {sprint("D_", aMacroVarNames[nCont])});
 		//println("%c", sprint("D_", aMacroVarNames[nCont]), diff(model.GetVar(aMacroVarNames[nCont])));
    	}
-
 	
 	
 	println("Adicionando variavel mX");	
