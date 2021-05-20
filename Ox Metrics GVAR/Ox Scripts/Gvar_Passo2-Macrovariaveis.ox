@@ -385,7 +385,7 @@ main()
 
 	// Liga o autometrics
 	//model.Autometrics(0.001, "none", 2);
-	//model.Autometrics(0.0001, "IIS", 1);
+	model.Autometrics(0.0001, "IIS", 1);
 	model.AutometricsSet("print", 0);
 		
 	// determina o metodo de estimacao.

@@ -471,7 +471,7 @@ main() {
         // Liga o autometrics
 		// (Mudar flag para TRUE, para estimar todos modelos com IIS)
 		//	ANTIGA CONDICAO:	(iCont == 69) || (iCont == 84) || (iCont == 99) || TRUE
-        if (FALSE) {
+        if (TRUE) {
             model.Autometrics(0.0001, "IIS", 1);
         } else {
             //model.Autometrics(0.0001, "IIS", 1);
