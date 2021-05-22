@@ -141,23 +141,26 @@ ProcessoPILongRun(const iValue, const sName, const iRegDependente, const sVarSuf
     decl nContTipo, nContTotal, iContVar, sParamName, asTipo, nCountAno, nCountMes, mReturn, index;
     mReturn = zeros(2, 2);
     asTipo = {"1", "2"};
+    asTipo = {"Admitidos", "Desligados"};
 
+	println(sName);
+	
     for (nContTipo = 0; nContTipo < sizeof(asTipo); ++nContTipo) {
-        index = find(sName, sprint("betaZ_", asTipo[0], "_", 1, "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
-
+        index = find(sName, sprint("betaZ_", "1", "_", 1, "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
+	 println(sprint("betaZ_", "1", "_", 1, "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
         // caso tenha achado o indice atualiza a tabela
         if (index >= 0) {
             mReturn[nContTipo][0] = iValue[index];
         }
 
-        index = find(sName, sprint("betaZ_", asTipo[1], "_", 1, "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
+        index = find(sName, sprint("betaZ_", "2", "_", 1, "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
 
         // caso tenha achado o indice atualiza a tabela
         if (index >= 0) {
             mReturn[nContTipo][1] = iValue[index];
         }
     }
-//	println(mReturn);
+	println(mReturn);
     return mReturn;
 }
 
@@ -471,7 +474,7 @@ main() {
         // Liga o autometrics
 		// (Mudar flag para TRUE, para estimar todos modelos com IIS)
 		//	ANTIGA CONDICAO:	(iCont == 69) || (iCont == 84) || (iCont == 99) || TRUE
-        if (FALSE) {
+        if (TRUE) {
             model.Autometrics(0.0001, "IIS", 1);
         } else {
             //model.Autometrics(0.0001, "IIS", 1);

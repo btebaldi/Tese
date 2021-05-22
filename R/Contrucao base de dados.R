@@ -6,7 +6,7 @@ library(readxl)
 library(dplyr)
 library(tidyr)
 
-ano = 2018
+ano = 2019
 
 # nome do arquivo
 path <- "C:/Users/bteba/Dropbox/bruno-tebaldi/RAIS Base de dados/XLS/"

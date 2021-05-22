@@ -72,7 +72,7 @@ main()
 		//adiciono uma linha zerada no beta pois nao há dois betas.
 		mBetai = mBetai |reshape(0, columns(mAlphai) - rows(mBetai), columns(mBetai));;
 		}
-	
+
 		// primeira passagem, inicializo o Aplha0 e AplhaL
 		if(iContRegion==1)
 		{

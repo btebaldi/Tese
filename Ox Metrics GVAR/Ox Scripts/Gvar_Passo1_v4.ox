@@ -140,24 +140,24 @@ ProcessoPILongRun(const iValue, const sName, const iRegDependente, const sVarSuf
     println("Processo Extracao da matriz de longo prazo");
     decl nContTipo, nContTotal, iContVar, sParamName, asTipo, nCountAno, nCountMes, mReturn, index;
     mReturn = zeros(2, 2);
-    asTipo = {"1", "2"};
+    asTipo = {"Admitidos", "Desligados"};
 
     for (nContTipo = 0; nContTipo < sizeof(asTipo); ++nContTipo) {
-        index = find(sName, sprint("betaZ_", asTipo[0], "_", 1, "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
+        index = find(sName, sprint("betaZ_", "1", "_", 1, "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
 
         // caso tenha achado o indice atualiza a tabela
         if (index >= 0) {
             mReturn[nContTipo][0] = iValue[index];
         }
 
-        index = find(sName, sprint("betaZ_", asTipo[1], "_", 1, "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
+        index = find(sName, sprint("betaZ_", "2", "_", 1, "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
 
         // caso tenha achado o indice atualiza a tabela
         if (index >= 0) {
             mReturn[nContTipo][1] = iValue[index];
         }
     }
-//	println(mReturn);
+	// println(mReturn);
     return mReturn;
 }
 

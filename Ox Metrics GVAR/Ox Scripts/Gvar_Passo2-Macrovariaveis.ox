@@ -341,6 +341,7 @@ main()
 		//model.Append(mMacroData*beta', {"betaMacro"});
 	}
 
+	
 	model.SetModelClass("SYSTEM");
 	  	
 	// Deseleciona as variaveis
@@ -372,7 +373,7 @@ main()
 
 	// Adiciona variaveis constante e sesonals
 	model.Select("U", {"Constant", 0, 0});
-//	model.Select("U", {"CSeasonal", 0, 10});
+	model.Select("U", {"CSeasonal", 0, 10});
 		
 	// determina a janela de tempo do modelo
 	//model.SetSample(2004,1 ,2016, 12);
