@@ -176,7 +176,7 @@ ProcessoMacroVariables(const iValue, const sName, const iQtdLags, const iRegDepe
     mReturn = zeros(2, (rows(aMacoVarNames) * (iQtdLags + 1)));
     asTipo = {"Admitidos", "Desligados"};
 
-    //println("%r", asTipo, "%c", {"D_Selic", "D_IPCA", "D_PIM", "D_Selic_1", "D_IPCA_1", "D_PIM_1", "D_Selic_2", "D_IPCA_2", "D_PIM_2", "betaMacro"},  mReturn);
+    //println("%r", asTipo, "%c", {"D_Selic", "D_IPCA", "D_PIM", "D_Selic_1", "D_IPCA_1", "D_PIM_1", "D_Selic_2", "D_IPCA_2", "D_PIM_2"},  mReturn);
 
     for (nContTipo = 0; nContTipo < sizeof(asTipo); ++nContTipo) {
         nContTotal = 0;
@@ -471,7 +471,7 @@ main() {
         // Liga o autometrics
 		// (Mudar flag para TRUE, para estimar todos modelos com IIS)
 		//	ANTIGA CONDICAO:	(iCont == 69) || (iCont == 84) || (iCont == 99) || TRUE
-        if (TRUE) {
+        if (is_IIS_ON) {
             model.Autometrics(0.0001, "IIS", 1);
         } else {
             //model.Autometrics(0.0001, "IIS", 1);

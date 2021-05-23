@@ -52,6 +52,7 @@ main()
 	mGy = (unit(iQtdVarMacro) | -mD0_stk)~(zeros(iQtdVarMacro,columns(mG0)) | mG0);
 	//println("mGy:", mGy);
 
+	savemat(sprint(txMatPathResult_Matrix, "mGy", ".mat"), mGy);
 	mGy_inv = invert(mGy);
 	
 	// Salva as matrizes de resultado

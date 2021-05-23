@@ -140,14 +140,11 @@ ProcessoPILongRun(const iValue, const sName, const iRegDependente, const sVarSuf
     println("Processo Extracao da matriz de longo prazo");
     decl nContTipo, nContTotal, iContVar, sParamName, asTipo, nCountAno, nCountMes, mReturn, index;
     mReturn = zeros(2, 2);
-    asTipo = {"1", "2"};
     asTipo = {"Admitidos", "Desligados"};
 
-	println(sName);
-	
     for (nContTipo = 0; nContTipo < sizeof(asTipo); ++nContTipo) {
         index = find(sName, sprint("betaZ_", "1", "_", 1, "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
-	 println(sprint("betaZ_", "1", "_", 1, "@", sVarSufix, iRegDependente, "_" , asTipo[nContTipo]));
+
         // caso tenha achado o indice atualiza a tabela
         if (index >= 0) {
             mReturn[nContTipo][0] = iValue[index];
@@ -160,7 +157,7 @@ ProcessoPILongRun(const iValue, const sName, const iRegDependente, const sVarSuf
             mReturn[nContTipo][1] = iValue[index];
         }
     }
-	println(mReturn);
+	// println(mReturn);
     return mReturn;
 }
 
@@ -179,7 +176,7 @@ ProcessoMacroVariables(const iValue, const sName, const iQtdLags, const iRegDepe
     mReturn = zeros(2, (rows(aMacoVarNames) * (iQtdLags + 1)));
     asTipo = {"Admitidos", "Desligados"};
 
-    //println("%r", asTipo, "%c", {"D_Selic", "D_IPCA", "D_PIM", "D_Selic_1", "D_IPCA_1", "D_PIM_1", "D_Selic_2", "D_IPCA_2", "D_PIM_2", "betaMacro"},  mReturn);
+    //println("%r", asTipo, "%c", {"D_Selic", "D_IPCA", "D_PIM", "D_Selic_1", "D_IPCA_1", "D_PIM_1", "D_Selic_2", "D_IPCA_2", "D_PIM_2"},  mReturn);
 
     for (nContTipo = 0; nContTipo < sizeof(asTipo); ++nContTipo) {
         nContTotal = 0;

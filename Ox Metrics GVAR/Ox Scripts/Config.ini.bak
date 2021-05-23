@@ -28,7 +28,10 @@
 
     decl aMacroVarNames; 
     //aMacroVarNames = {"Macro1", "Macro2", "Macro3"};
-	aMacroVarNames = {"lpim_BR", "ln_Selic_aa", "ln_cambio", "Dln_IPCA"};
+	aMacroVarNames = {"lpim_BR", "ln_Selic_aa", "Dln_IPCA"};
+
+	// TRUE / FALSE;
+	decl is_IIS_ON = FALSE;
     
 // Ativa a impressao de 
 #define pritnConfig 
