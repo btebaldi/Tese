@@ -1,4 +1,4 @@
-
+rm(list=ls())
 library(readxl)
 
 DX.df <- read_excel("Excel Export/DatabaseDesAdm_RA_vForecast_v3.xlsx", 
