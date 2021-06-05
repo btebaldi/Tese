@@ -107,56 +107,56 @@ results.tbl$Tipo = str_split(results.tbl$variavel, "\\_", simplify = TRUE)[,2]
 
 readr::write_excel_csv(results.tbl, file = "./Excel Export/forecast_result_COM IIS.csv")
 
-Relacao_Agregacao_Ox <- read_excel("Database/Relacao_Agregacao_Ox.xlsx")
-
-dm <- Relacao_Agregacao_Ox %>%
-  mutate(Reg2=sprintf("R%d",Id)) %>%
-  right_join(results.tbl, by=c("Reg2"="Regiao")) %>% 
-  select(Id, Pop, starts_with("Error")) %>%
-  filter(Id > 0) %>%
-  dplyr::transmute(Id, 
-                   Error_1_pc = Error_2019M01/Pop,
-                   Error_2_pc = Error_2019M02/Pop,
-                   Error_3_pc = Error_2019M03/Pop,
-                   
-                   Error_4_pc = Error_2019M04/Pop,
-                   Error_5_pc = Error_2019M05/Pop,
-                   Error_6_pc = Error_2019M06/Pop,
-                   
-                   Error_7_pc = Error_2019M07/Pop,
-                   Error_8_pc = Error_2019M08/Pop,
-                   Error_9_pc = Error_2019M09/Pop,
-                   
-                   Error_10_pc = Error_2019M10/Pop,
-                   Error_11_pc = Error_2019M11/Pop,
-                   Error_12_pc = Error_2019M12/Pop, 
-                   
-                   
-                   Error_1 = Error_2019M01,
-                   Error_2 = Error_2019M02,
-                   Error_3 = Error_2019M03,
-                   
-                   Error_4 = Error_2019M04,
-                   Error_5 = Error_2019M05,
-                   Error_6 = Error_2019M06,
-                   
-                   Error_7 = Error_2019M07,
-                   Error_8 = Error_2019M08,
-                   Error_9 = Error_2019M09,
-                   
-                   Error_10 = Error_2019M10,
-                   Error_11 = Error_2019M11,
-                   Error_12 = Error_2019M12)
-
-summary(dm)
-
-library(ggplot2)
-library(tidyr)
-dm %>% pivot_longer(cols = starts_with("Error")) %>% 
-  ggplot() +
-  geom_boxplot(aes(x=name, y = value)) 
-
-
-boxplot(t(dm[dm$Id == 404,-1]))
+# Relacao_Agregacao_Ox <- read_excel("Database/Relacao_Agregacao_Ox.xlsx")
+# 
+# dm <- Relacao_Agregacao_Ox %>%
+#   mutate(Reg2=sprintf("R%d",Id)) %>%
+#   right_join(results.tbl, by=c("Reg2"="Regiao")) %>% 
+#   select(Id, Pop, starts_with("Error")) %>%
+#   filter(Id > 0) %>%
+#   dplyr::transmute(Id, 
+#                    Error_1_pc = Error_2019M01/Pop,
+#                    Error_2_pc = Error_2019M02/Pop,
+#                    Error_3_pc = Error_2019M03/Pop,
+#                    
+#                    Error_4_pc = Error_2019M04/Pop,
+#                    Error_5_pc = Error_2019M05/Pop,
+#                    Error_6_pc = Error_2019M06/Pop,
+#                    
+#                    Error_7_pc = Error_2019M07/Pop,
+#                    Error_8_pc = Error_2019M08/Pop,
+#                    Error_9_pc = Error_2019M09/Pop,
+#                    
+#                    Error_10_pc = Error_2019M10/Pop,
+#                    Error_11_pc = Error_2019M11/Pop,
+#                    Error_12_pc = Error_2019M12/Pop, 
+#                    
+#                    
+#                    Error_1 = Error_2019M01,
+#                    Error_2 = Error_2019M02,
+#                    Error_3 = Error_2019M03,
+#                    
+#                    Error_4 = Error_2019M04,
+#                    Error_5 = Error_2019M05,
+#                    Error_6 = Error_2019M06,
+#                    
+#                    Error_7 = Error_2019M07,
+#                    Error_8 = Error_2019M08,
+#                    Error_9 = Error_2019M09,
+#                    
+#                    Error_10 = Error_2019M10,
+#                    Error_11 = Error_2019M11,
+#                    Error_12 = Error_2019M12)
+# 
+# summary(dm)
+# 
+# library(ggplot2)
+# library(tidyr)
+# dm %>% pivot_longer(cols = starts_with("Error")) %>% 
+#   ggplot() +
+#   geom_boxplot(aes(x=name, y = value)) 
+# 
+# 
+# boxplot(t(dm[dm$Id == 404,-1]))
 
         
