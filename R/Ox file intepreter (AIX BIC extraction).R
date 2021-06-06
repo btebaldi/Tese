@@ -10,12 +10,12 @@ rm(list=ls())
 
 library(stringr)
 library(dplyr)
-library(here)
 
 
 # Variaveis internas ------------------------------------------------------
 
 fileName = "Gvar_Passo1_v4 (saida modelo COM IIS).txt"
+# fileName = "Gvar_Passo1_v4 (saida modelo SEM IIS).txt" <- <- <- <- %>% %>% 
 filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", fileName)
 
 
@@ -51,7 +51,7 @@ while ( TRUE ) {
   
   #  Faz leitura da linha
   line = readLines(ReadCon, n = 1)
-
+  
   # Se a linha tem tamanho zero entao para o processamento
   if ( length(line) == 0 ) {
     break
@@ -109,17 +109,17 @@ while ( TRUE ) {
   if(WriteInfo)
   {
     selctVector <- tbl.results$region == as.integer(region_number)
-     
+    
     if(AIC != 0){
-     tbl.results$AIC[selctVector] <- as.numeric(AIC)  
-     cat(sprintf("%s => Region: %d \tAIC: %f\n", line, as.integer(region_number), as.numeric(AIC)))
+      tbl.results$AIC[selctVector] <- as.numeric(AIC)  
+      cat(sprintf("%s => Region: %d \tAIC: %f\n", line, as.integer(region_number), as.numeric(AIC)))
     }
-
+    
     if(BIC != 0){
       tbl.results$BIC[selctVector] <- as.numeric(BIC)
       cat(sprintf("%s => Region: %d \tBIC: %f\n", line, as.integer(region_number), as.numeric(BIC)))
     }
-
+    
     if(HaQ != 0){
       tbl.results$HaQ[selctVector] <- as.numeric(HaQ)
       cat(sprintf("%s => Region: %d \tHaQ: %f\n", line, as.integer(region_number), as.numeric(HaQ)))
@@ -130,6 +130,6 @@ while ( TRUE ) {
 
 close(ReadCon)
 
-readr::write_excel_csv(x=tbl.results,
-                       file = sprintf("Criterios_de_Inforacao(COM ISS).csv", fileName))
- 
+readr::write_excel_csv2(x=tbl.results,
+                        file = sprintf("Criterios_de_Inforacao(%s).csv", fileName))
+

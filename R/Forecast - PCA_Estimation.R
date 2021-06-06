@@ -70,8 +70,10 @@ for(i in 1:length(medias)){
 
 pca.both <- prcomp(data.both.c, center = FALSE, scale. = FALSE, rank. = 2*m)
 
+factoextra::fviz_screeplot(pca.both, addlabels = TRUE)
 
 Forecast.PCA <- DX_t %*% pca.both$rotation
+
 
 
 # Vetor de datas
