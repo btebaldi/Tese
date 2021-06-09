@@ -24,10 +24,12 @@ mGyL.file_list <-   c(
   "mGy_inv_X_mL"
 )
 
+main_dir <- "C:/Users/Teo/Documents/GitHub/Tese/Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/"
+
 for(item in mGyL.file_list) {
   
   # Caminho do arquivo a ser lido
-  fileName.mask <- "C:/Users/bteba/Documents/GitHub/Tese/Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/%s.mat"
+  fileName.mask <- paste(main_dir, "%s.mat", sep = "")
   
   fileName <- sprintf(fileName.mask, item)
   
@@ -64,7 +66,7 @@ for(item in mGyL.file_list) {
     
   }
 
-  saveRDS(M, file = sprintf("C:/Users/bteba/Documents/GitHub/Tese/Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/%s.rds", item))
+  saveRDS(M, file = sprintf(paste(main_dir, "%s.rds", sep = ""), item))
   
 }
 
@@ -75,7 +77,8 @@ for(item in mGyL.file_list) {
 
 
 # Caminho do arquivo a ser lido
-fileName.mask <- "C:/Users/bteba/Documents/GitHub/Tese/Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/%s.mat"
+fileName.mask <- paste(main_dir, "%s.mat", sep = "")
+  
 
 fileName <- sprintf(fileName.mask, "mGy_inv_X_mC")
 
@@ -112,6 +115,6 @@ for (i in 2:length(line)){
   
 }
 
-saveRDS(M, file = sprintf("C:/Users/bteba/Documents/GitHub/Tese/Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/%s.rds", "mGy_inv_X_mC"))
+saveRDS(M, file = sprintf(paste(main_dir, "%s.rds", sep = "") , "mGy_inv_X_mC"))
 
 
