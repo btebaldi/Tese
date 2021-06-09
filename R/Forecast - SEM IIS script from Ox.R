@@ -3,50 +3,53 @@
 
 rm(list=ls())
 library(readxl)
+library(readr)
+library(tidyr)
 library(dplyr)
 library(stringr)
 library(lubridate)
 
 # Load data ---------------------------------------------------------------
 
+
 DX.df <- read_excel("Excel Export/DatabaseDesAdm_RA_vForecast_v3.xlsx", 
-                    range = "A1:AK1108")
+                    range = "A1:BR1108")
 
 DX <- DX.df[,-1] %>% data.matrix()
 
 X.df <- read_excel("Excel Export/DatabaseDesAdm_RA_vForecast_v3.xlsx", 
-                   range = "A1115:AK2222")
+                   range = "A1115:BR2222")
 
 X <- X.df[,-1] %>% data.matrix()
 
-mLag1 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mGyL1.rds")
-mLag2 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mGyL2.rds")
-mLag3 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mGyL3.rds")
+mLag1 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mGyL1.rds")
+mLag2 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mGyL2.rds")
+mLag3 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mGyL3.rds")
 
-mLag4 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mGyL4.rds")
-mLag5 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mGyL5.rds")
-mLag6 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mGyL6.rds")
+mLag4 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mGyL4.rds")
+mLag5 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mGyL5.rds")
+mLag6 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mGyL6.rds")
 
-mLag7 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mGyL7.rds")
-mLag8 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mGyL8.rds")
-mLag9 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mGyL9.rds")
+mLag7 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mGyL7.rds")
+mLag8 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mGyL8.rds")
+mLag9 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mGyL9.rds")
 
-mLag10 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mGyL10.rds")
-mLag11 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mGyL11.rds")
-mLag12 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mGyL12.rds")
-mLag13 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mGyL13.rds")
+mLag10 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mGyL10.rds")
+mLag11 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mGyL11.rds")
+mLag12 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mGyL12.rds")
+mLag13 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mGyL13.rds")
 
 # Carrega matriz de coeficiente de longo prazo
-mLagLR <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mL.rds")
+mLagLR <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mL.rds")
 
 # Carrega matriz de coeficiente de constante e dummies sazonais
-mLagDm <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS/mGy_inv_X_mC.rds")
+mLagDm <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/mGy_inv_X_mC.rds")
 mLagDm <- mLagDm[, 1:12]
 colnames(mLagDm) <- c("CONST", paste("M", 1:11))
 
 
 #  Vetor de datas
-datelist <- seq(from = as.Date("2017-01-01"),
+datelist <- seq(from = as.Date("2015-01-01"),
                 to = as.Date("2019-12-01"),
                 by="month")
 
@@ -54,7 +57,7 @@ datelist <- seq(from = as.Date("2017-01-01"),
 results.tbl <-  tibble(variavel=X.df$Variavel)
 
 i=0
-for(i in 0:11){
+for(i in 0:35){
   n <- 25+i
   cat(sprintf("%s\n",datelist[n]))
   
@@ -88,8 +91,9 @@ for(i in 0:11){
   Dummies[1,1] <- 1 # Constante
   Dummies[2:12,1] <- 0-1/12 # Constante
   
-  if (i != 11){
+  if (!(i %in% c(11, 23, 35))){
     Dummies[month(datelist[n])+1,1] <- 1-1/12 # mes de previsao
+    # cat(month(datelist[n]), "<\n")
   }
   
   Forecast.Dm <- mLagDm %*% Dummies
@@ -105,7 +109,7 @@ for(i in 0:11){
 results.tbl$Regiao = str_split(results.tbl$variavel, "\\_", simplify = TRUE)[,1]
 results.tbl$Tipo = str_split(results.tbl$variavel, "\\_", simplify = TRUE)[,2]
 
-readr::write_excel_csv(results.tbl, file = "./Excel Export/forecast_result_SEM IIS.csv")
+readr::write_excel_csv(results.tbl, file = "./Excel Export/forecast_result_SEM IIS 2016 (2016).csv")
 
 # Relacao_Agregacao_Ox <- read_excel("Database/Relacao_Agregacao_Ox.xlsx")
 # 

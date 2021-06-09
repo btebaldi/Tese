@@ -9,7 +9,7 @@ library(dplyr)
 library(ggplot2)
 library(tidyr)
 library(factoextra)
-
+library(lubridate)
 
 # User defined function ---------------------------------------------------
 
@@ -24,17 +24,18 @@ fn <- function(x){
 
 
 # busca dados de estimacao
-region.db <- read_csv("~/GitHub/Tese/Ox Metrics GVAR/Database/DatabaseDesAdm_RA_v1.csv")
+region.db <- read_csv("../Ox Metrics GVAR/Database/DatabaseDesAdm_RA_v1.csv")
 head(region.db)
 
-
+selVector <- lubridate::ymd(region.db$X1, truncated = 1) < as.Date("2017-01-01")
+region.db <- region.db[selVector, ]
 # macro.db <- read_excel("~/GitHub/Tese/Ox Metrics GVAR/Database/MacroVariables_forR_20210604.xlsx",
 #                        na = "#N/A")
 # head(macro.db)
 
 # data para forecast em diferenca
 DX.df <- read_excel("Excel Export/DatabaseDesAdm_RA_vForecast_v3.xlsx", 
-                    range = "A1:AK1108")
+                    range = "A1:BR1108")
 
 DX <- DX.df[,-1] %>% data.matrix()
 
@@ -77,7 +78,7 @@ Forecast.PCA <- DX_t %*% pca.both$rotation
 
 
 # Vetor de datas
-datelist <- seq(from = as.Date("2017-01-01"),
+datelist <- seq(from = as.Date("2015-01-01"),
                 to = as.Date("2019-12-01"),
                 by="month")
 
@@ -165,7 +166,7 @@ for (j in 1:552) {
   
   i=0
   # para cada lag calcula o forecast
-  for(i in 0:11){
+  for(i in 0:35){
     
     n <- 25+i
     cat(sprintf("%d - %s\n",j,datelist[n]))
@@ -202,4 +203,4 @@ results.tbl$Regiao = str_split(results.tbl$variavel, "\\_", simplify = TRUE)[,1]
 results.tbl$Tipo = str_split(results.tbl$variavel, "\\_", simplify = TRUE)[,2]
 
 # Salva os dados para o futuro
-readr::write_excel_csv(results.tbl, file = "./Excel Export/forecast_result_PCA.csv")
+readr::write_excel_csv(results.tbl, file = "./Excel Export/forecast_result_PCA (2016).csv")
