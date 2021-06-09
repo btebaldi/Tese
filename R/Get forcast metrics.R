@@ -345,7 +345,7 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
          path = "Graficos",
          plot = g,
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
-
+  
 }
 
 # Contas para MAE ---------------------------------------------------------
@@ -496,6 +496,8 @@ tbl.adm <- tbl.adm %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "sou
 tbl.des <- tbl.des %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
 tbl.net <- tbl.net %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
 
+legend.names <- c("tbl.overall"="MAE by pop. Overall", "tbl.adm"="MAE by pop. Adm", "tbl.des"="MAE by pop. Des",  "tbl.net"="MAE by pop. Net")
+
 for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
   my_tbl <- get(table)
   
@@ -507,24 +509,24 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
   FE.GVAR <-  mean(erros)
   FE.GVAR.sd <-  sd(erros)
   
-    erros <- my_tbl %>% filter(source == "VECM") %>% pull(value)
+  erros <- my_tbl %>% filter(source == "VECM") %>% pull(value)
   FE.VECM <-  mean(erros)
   FE.VECM.sd <-  sd(erros)
   
   erros <- my_tbl %>% filter(source == "PCA") %>% pull(value)
   FE.PCA <-  mean(erros)
   FE.PCA.sd <-  sd(erros)
-  SE.PCA <- MSFE.PCA^0.5
   
-  metric <- c("RMSE.PCA" = RMSE.PCA,
-              "RMSE.VECM" = RMSE.VECM,
-              "RMSE.GVAR" = RMSE.GVAR,
-              "RMSE.GVAR_IIS" = RMSE.GVAR_IIS)
   
-  metric.sd <- c("RMSE.PCA" = RMSE.PCA.sd,
-              "RMSE.VECM" = RMSE.VECM.sd,
-              "RMSE.GVAR" = RMSE.GVAR.sd,
-              "RMSE.GVAR_IIS" = RMSE.GVAR_IIS.sd)
+  metric <- c("RMSE.PCA" = FE.PCA,
+              "RMSE.VECM" = FE.VECM,
+              "RMSE.GVAR" = FE.GVAR,
+              "RMSE.GVAR_IIS" = FE.GVAR_IIS)
+  
+  metric.sd <- c("RMSE.PCA" = FE.PCA.sd,
+                 "RMSE.VECM" = FE.VECM.sd,
+                 "RMSE.GVAR" = FE.GVAR.sd,
+                 "RMSE.GVAR_IIS" = FE.GVAR_IIS.sd)
   
   cat(sprintf("\n%s", table))
   cat(sprintf("\n%13s = %f (%f)", names(metric), metric, metric.sd))
@@ -539,13 +541,17 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
     # geom_point(size = 3, alpha = 0.15) +
     labs(title = "Forecast error - Mean Squared error",
-         subtitle = table,
+         subtitle = legend.names[table],
          y = NULL,
          x = "Error squared"
     ) + 
     theme_bw()
   
   print(g)
+  ggsave(filename = sprintf("%s - Main.png", legend.names[table]),
+         path = "Graficos",
+         plot = g,
+         scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
   
   g <- my_tbl %>%
     filter(Regiao %in% c("R379", "R341")) %>% 
@@ -563,6 +569,10 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
     theme_bw()
   
   print(g)
-
+  ggsave(filename = sprintf("%s - SP e RJ.png", legend.names[table]),
+         path = "Graficos",
+         plot = g,
+         scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
+  
 }
 

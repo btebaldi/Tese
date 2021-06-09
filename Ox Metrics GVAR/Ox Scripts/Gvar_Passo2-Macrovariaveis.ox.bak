@@ -385,7 +385,14 @@ main()
 
 	// Liga o autometrics
 	//model.Autometrics(0.001, "none", 2);
-	model.Autometrics(0.0001, "IIS", 1);
+    if (is_IIS_ON) {
+		model.Autometrics(0.0001, "IIS", 1);
+    } else {
+        //model.Autometrics(0.0001, "IIS", 1);
+		println("Processo IIS desligado para esta regiao");
+    }
+
+	
 	model.AutometricsSet("print", 0);
 		
 	// determina o metodo de estimacao.

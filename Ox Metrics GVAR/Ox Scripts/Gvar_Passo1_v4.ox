@@ -462,7 +462,7 @@ main() {
 		
         // determina a janela de tempo do modelo
         //model.SetSample(model.GetYear1(),  model.GetPeriod1(),  model.GetYear2(),  model.GetPeriod2());
-        model.SetSample(1995, 1, 2018, 12);
+        model.SetSample(1995, 1, 2016, 12);
 		
         //model.SetSelSampleByIndex(1, 951);
         model.SetSelSampleByIndex(model.GetSelStart(), model.GetSelEnd());
