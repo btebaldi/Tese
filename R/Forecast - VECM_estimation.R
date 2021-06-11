@@ -110,7 +110,8 @@ for (j in 1:552) {
       mLag10 %*% DX[idx,sprintf("D%dM%02d", year(datelist[n-10]), month(datelist[n-10]))] + 
       mLag11 %*% DX[idx,sprintf("D%dM%02d", year(datelist[n-11]), month(datelist[n-11]))] + 
       mLag12 %*% DX[idx,sprintf("D%dM%02d", year(datelist[n-12]), month(datelist[n-12]))] + 
-      mLag13 %*% DX[idx,sprintf("D%dM%02d", year(datelist[n-13]), month(datelist[n-13]))]
+      mLag13 %*% DX[idx,sprintf("D%dM%02d", year(datelist[n-13]), month(datelist[n-13]))] +
+      0
     
     # forecast longo prazo
     Forecast.LR <- mLagLR %*% X[idx,sprintf("D%dM%02d", year(datelist[n-1]), month(datelist[n-1]))]
