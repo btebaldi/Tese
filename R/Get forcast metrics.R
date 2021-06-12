@@ -277,10 +277,10 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
   
   
   g <- my_tbl %>%
-    filter(Regiao %in% c("R379", "R341", "R291", "R178", "R243")) %>% 
+    filter(Regiao %in% c("R404", "R346", "R280", "R191", "R491")) %>% 
     mutate(Regiao = factor(Regiao,
-                           levels = c("R379", "R341", "R291", "R178", "R243"),
-                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador") )) %>% 
+                           levels = c("R404", "R346", "R280", "R191", "R491"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>% 
     ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
     labs(title = "Forecast error",
@@ -297,10 +297,10 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
   
   g <- my_tbl %>%
-    filter(Regiao %in% c("R379")) %>% 
+    filter(Regiao %in% c("R404")) %>% 
     mutate(Regiao = factor(Regiao,
-                           levels = c("R379", "R341", "R291", "R178", "R243"),
-                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador") )) %>% 
+                           levels = c("R404", "R346", "R280", "R191", "R491"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>% 
     ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
     labs(title = "Forecast error",
@@ -317,10 +317,10 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
   
   g <- my_tbl %>%
-    filter(Regiao %in% c("R341")) %>% 
+    filter(Regiao %in% c("R346")) %>% 
     mutate(Regiao = factor(Regiao,
-                           levels = c("R379", "R341", "R291", "R178", "R243"),
-                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador") )) %>% 
+                           levels = c("R404", "R346", "R280", "R191", "R491"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>% 
     ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
     labs(title = "Forecast error",
@@ -337,10 +337,10 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
   
   g <- my_tbl %>%
-    filter(Regiao %in% c("R291")) %>% 
+    filter(Regiao %in% c("R280")) %>% 
     mutate(Regiao = factor(Regiao,
-                           levels = c("R379", "R341", "R291", "R178", "R243"),
-                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador") )) %>% 
+                           levels = c("R404", "R346", "R280", "R191", "R491"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>% 
     ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
     labs(title = "Forecast error",
@@ -482,10 +482,10 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
   cat(sprintf("\n%13s = %f  (%f)", names(metric), metric, metric.sd))
   
   g <- my_tbl %>%
-    filter(Regiao %in% c("R379", "R341", "R291", "R178", "R243")) %>% 
+    filter(Regiao %in% c("R404", "R346", "R280", "R191", "R491")) %>% 
     mutate(Regiao = factor(Regiao,
-                           levels = c("R379", "R341", "R291", "R178", "R243"),
-                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador") )) %>% 
+                           levels = c("R404", "R346", "R280", "R191", "R491"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>% 
     ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
     # geom_point(size = 3, alpha = 0.15) +
@@ -503,10 +503,10 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
   
   g <- my_tbl %>%
-    filter(Regiao %in% c("R379", "R341")) %>% 
+    filter(Regiao %in% c("R404", "R346")) %>% 
     mutate(Regiao = factor(Regiao,
-                           levels = c("R379", "R341", "R291", "R178", "R243"),
-                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador") )) %>% 
+                           levels = c("R404", "R346", "R280", "R191", "R491"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>% 
     ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
     labs(title = "Forecast error",
@@ -632,10 +632,10 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
   
   
   g <- my_tbl %>%
-    filter(Regiao %in% c("R379", "R341", "R291", "R178", "R243")) %>% 
+    filter(Regiao %in% c("R404", "R346", "R280", "R191", "R491")) %>% 
     mutate(Regiao = factor(Regiao,
-                           levels = c("R379", "R341", "R291", "R178", "R243"),
-                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador") )) %>% 
+                           levels = c("R404", "R346", "R280", "R191", "R491"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>% 
     ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
     # geom_point(size = 3, alpha = 0.15) +
@@ -653,11 +653,10 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
   
   g <- my_tbl %>%
-    filter(Regiao %in% c("R379", "R341")) %>% 
+    filter(Regiao %in% c("R404", "R346")) %>% 
     mutate(Regiao = factor(Regiao,
-                           levels = c("R379", "R341", "R291", "R178", "R243"),
-                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador") )) %>% 
-    ggplot(aes(y=Regiao, x = value)) +
+                           levels = c("R404", "R346", "R280", "R191", "R491"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>%    ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
     # geom_point(size = 3, alpha = 0.15) +
     labs(title = "Forecast error - Mean Squared error",
