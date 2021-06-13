@@ -22,6 +22,9 @@ region.db <- region.db[selVector, ]
 
 head(region.db)
 
+
+
+
 # busca dados Macro (nao utilizados)
 # macro.db <- read_excel("~/GitHub/Tese/Ox Metrics GVAR/Database/MacroVariables_forR_20210604.xlsx", 
 #                        na = "#N/A")

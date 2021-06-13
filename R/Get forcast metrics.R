@@ -208,6 +208,26 @@ PCA <- PCA[-c(1:3), ]
 head(PCA)
 
 
+AR13 <- read_csv("Excel Export/forecast_result_AR13 (2016).csv",
+                 col_types = cols(
+                   .default = col_double(),
+                   variavel = col_character(),
+                   Regiao = col_character(),
+                   Tipo = col_character()
+                 ))
+head(AR13)
+
+
+AR1 <- read_csv("Excel Export/forecast_result_AR1 (2016).csv",
+                col_types = cols(
+                  .default = col_double(),
+                  variavel = col_character(),
+                  Regiao = col_character(),
+                  Tipo = col_character()
+                ))
+head(AR1)
+
+
 # Adiciona emprego liquido ------------------------------------------------
 GVAR.IIS <- Add.EmpLiq(GVAR.IIS)
 GVAR <- Add.EmpLiq(GVAR)
@@ -222,6 +242,9 @@ GVAR.IIS.error <- GVAR.IIS %>%  dplyr::select(variavel, Regiao, Tipo, starts_wit
 GVAR.error <- GVAR %>% dplyr::select(variavel, starts_with("Error")) %>% mutate(source="GVAR")
 VECM.error <- VECM %>% dplyr::select(variavel, starts_with("Error")) %>% mutate(source="VECM")
 PCA.error <- PCA %>% dplyr::select(variavel, starts_with("Error")) %>% mutate(source="PCA")
+
+AR1.error <- AR1 %>% dplyr::select(variavel, starts_with("Error")) %>% mutate(source="AR1")
+AR13.error <- AR13 %>% dplyr::select(variavel, starts_with("Error")) %>% mutate(source="AR13")
 
 
 # Contas para MSE ---------------------------------------------------------
@@ -246,33 +269,46 @@ tbl.des <- tbl.des %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "sou
 tbl.net <- tbl.net %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
 
 legend.names <- c("tbl.overall"="MSE Overall", "tbl.adm"="MSE Adm", "tbl.des"="MSE Des",  "tbl.net"="MSE Net")
-
+# table <- "tbl.overall"
 for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
   my_tbl <- get(table)
   
   erros <- my_tbl %>% filter(source == "GVAR_IIS") %>% pull(value)
   MSFE.GVAR_IIS <-  mean(erros)
+  MSFE.GVAR_IIS.sd <-  sd(erros)
   RMSE.GVAR_IIS <- MSFE.GVAR_IIS^0.5
+  RMSE.GVAR_IIS.sd <- MSFE.GVAR_IIS.sd^0.5
   
   erros <- my_tbl %>% filter(source == "GVAR") %>% pull(value)
   MSFE.GVAR <-  mean(erros)
+  MSFE.GVAR.sd <-  sd(erros)
   RMSE.GVAR <- MSFE.GVAR^0.5
+  RMSE.GVAR.sd <- MSFE.GVAR.sd^0.5
   
   erros <- my_tbl %>% filter(source == "VECM") %>% pull(value)
   MSFE.VECM <-  mean(erros)
+  MSFE.VECM.sd <- sd(erros)
   RMSE.VECM <- MSFE.VECM^0.5
+  RMSE.VECM.sd <- MSFE.VECM.sd^0.5
   
   erros <- my_tbl %>% filter(source == "PCA") %>% pull(value)
   MSFE.PCA <-  mean(erros)
+  MSFE.PCA.sd <- sd(erros)
   RMSE.PCA <- MSFE.PCA^0.5
+  RMSE.PCA.sd <- MSFE.PCA.sd^0.5
   
   metric <- c("RMSE.PCA" = RMSE.PCA,
               "RMSE.VECM" = RMSE.VECM,
               "RMSE.GVAR" = RMSE.GVAR,
               "RMSE.GVAR_IIS" = RMSE.GVAR_IIS)
   
+  metric.sd <- c("RMSE.PCA" = RMSE.PCA.sd,
+                 "RMSE.VECM" = RMSE.VECM.sd,
+                 "RMSE.GVAR" = RMSE.GVAR.sd,
+                 "RMSE.GVAR_IIS" = RMSE.GVAR_IIS.sd)
+  
   cat(sprintf("\n%s", table))
-  cat(sprintf("\n%13s = %f", names(metric), metric))
+  cat(sprintf("\n%13s = %f (%f)", names(metric), metric, metric.sd))
   
   
   
@@ -356,16 +392,15 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
          plot = g,
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
   
+  
   g <- my_tbl %>%
-    # filter(source %in% c("GVAR_IIS", "R341", "R291", "R178", "R243")) %>% 
-    # filter(Regiao %in% c("R379", "R341", "R291", "R178", "R243")) %>% 
-    # mutate(Regiao = factor(Regiao,
-    #                        levels = c("R379", "R341", "R291", "R178", "R243"),
-    #                        labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador") )) %>% 
-    ggplot() +
-    geom_histogram(aes(x=log(value), y=..density.., fill = source), position = "identity", alpha=0.5, bins = 50) +
-    facet_wrap(.~source) +
-    labs(title = "Forecast error - Histogram log(error^2)",
+    filter(Regiao %in% c("R552")) %>% 
+    mutate(Regiao = factor(Regiao,
+                           levels = c("R404", "R346", "R280", "R191", "R552"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Brasilia") )) %>% 
+    ggplot(aes(y=Regiao, x = value)) +
+    geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
+    labs(title = "Forecast error",
          subtitle = legend.names[table],
          y = NULL,
          x = "Error squared"
@@ -373,11 +408,49 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
     theme_bw()
   
   print(g)
-  ggsave(filename = sprintf("%s - Hist.png", legend.names[table]),
+  ggsave(filename = sprintf("%s - Brasilia.png", legend.names[table]),
          path = "Graficos",
          plot = g,
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
   
+  
+  g <- my_tbl %>%
+    filter(Regiao %in% c("R66", "R151")) %>% 
+    mutate(Regiao = factor(Regiao,
+                           levels = c("R66", "R552", "R151"),
+                           labels = c("Ma - São Luis", "Brasilia", "Natal") )) %>% 
+    ggplot(aes(y=Regiao, x = value)) +
+    geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
+    labs(title = "Forecast error",
+         subtitle = legend.names[table],
+         y = NULL,
+         x = "Error squared"
+    ) + 
+    theme_bw()
+  
+  print(g)
+  ggsave(filename = sprintf("%s - Brasilia.png", legend.names[table]),
+         path = "Graficos",
+         plot = g,
+         scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
+  
+  
+  # g <- my_tbl %>%
+  #   ggplot() +
+  #   geom_histogram(aes(x=log(value), y=..density.., fill = source), position = "identity", alpha=0.5, bins = 50) +
+  #   facet_wrap(.~source) +
+  #   labs(title = "Forecast error - Histogram log(error^2)",
+  #        subtitle = legend.names[table],
+  #        y = NULL,
+  #        x = "Error squared"
+  #   ) + 
+  #   theme_bw()
+  #   print(g)
+  #     ggsave(filename = sprintf("%s - Hist.png", legend.names[table]),
+  #        path = "Graficos",
+  #        plot = g,
+  #        scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
+  # 
   
   
   g <- my_tbl %>%
@@ -387,7 +460,7 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
     #                        levels = c("R379", "R341", "R291", "R178", "R243"),
     #                        labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador") )) %>% 
     ggplot() +
-    geom_boxplot(aes(x=log(value), y=source, colour = source), outlier.shape = NA) +
+    geom_boxplot(aes(x=log(value), y=source, colour = source)) +
     # facet_wrap(.~source) +
     labs(title = "Forecast error - Boxplot log(error^2)",
          subtitle = legend.names[table],
@@ -402,27 +475,202 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
          plot = g,
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
   
+  # g <- my_tbl %>%
+  #   ggplot() +
+  #   geom_boxplot(aes(x=value, y=source, colour = source)) +
+  #   # facet_wrap(.~source) +
+  #   labs(title = "Forecast error - Boxplot",
+  #        subtitle = legend.names[table],
+  #        y = NULL,
+  #        x = "Error squared"
+  #   ) + 
+  #   theme_bw()
+  # 
+  # print(g)
+  # ggsave(filename = sprintf("%s - All box.png", legend.names[table]),
+  #        path = "Graficos",
+  #        plot = g,
+  #        scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
+  
+}
+
+
+# Contas para Erros simples ---------------------------------------------------------
+
+tbl <- bind_rows(GVAR.IIS.error, GVAR.error, VECM.error, PCA.error)
+# Faz strip do numero da regiao e tipo
+tbl$Regiao = str_split(tbl$variavel, "\\_", simplify = TRUE)[,1]
+tbl$Tipo = str_split(tbl$variavel, "\\_", simplify = TRUE)[,2]
+
+fn <- function(x){
+  return(x)
+}
+
+tbl.overall <- tbl %>% mutate_if(is.numeric, fn) %>% filter(Tipo != "empLiquido")
+tbl.adm <- tbl %>% mutate_if(is.numeric, fn) %>% filter(Tipo == "Admitidos")
+tbl.des <- tbl %>% mutate_if(is.numeric, fn) %>% filter(Tipo == "Desligados")
+tbl.net <- tbl %>% mutate_if(is.numeric, fn) %>% filter(Tipo == "empLiquido")
+
+tbl.overall <- tbl.overall %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+tbl.adm <- tbl.adm %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+tbl.des <- tbl.des %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+tbl.net <- tbl.net %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+legend.names <- c("tbl.overall"="Overall", "tbl.adm"="Adm", "tbl.des"="Des",  "tbl.net"="Net")
+# table <- "tbl.overall"
+for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
+  my_tbl <- get(table)
+  
+  erros <- my_tbl %>% filter(source == "GVAR_IIS") %>% pull(value)
+  GVAR_IIS <-  mean(erros)
+  GVAR_IIS.sd <-  sd(erros)
+  
+  
+  erros <- my_tbl %>% filter(source == "GVAR") %>% pull(value)
+  GVAR <-  mean(erros)
+  GVAR.sd <-  sd(erros)
+  
+  
+  erros <- my_tbl %>% filter(source == "VECM") %>% pull(value)
+  VECM <-  mean(erros)
+  VECM.sd <- sd(erros)
+  
+  erros <- my_tbl %>% filter(source == "PCA") %>% pull(value)
+  PCA <-  mean(erros)
+  PCA.sd <- sd(erros)
+  
+  
+  metric <- c("PCA" = PCA,
+              "VECM" = VECM,
+              "GVAR" = GVAR,
+              "GVAR_IIS" = GVAR_IIS)
+  
+  metric.sd <- c("RMSE.PCA" = PCA.sd,
+                 "RMSE.VECM" = VECM.sd,
+                 "RMSE.GVAR" = GVAR.sd,
+                 "RMSE.GVAR_IIS" = GVAR_IIS.sd)
+  
+  cat(sprintf("\n%s", table))
+  cat(sprintf("\n%13s = %f (%f)", names(metric), metric, metric.sd))
+  
+  
+  
   g <- my_tbl %>%
-    # filter(source %in% c("GVAR_IIS", "R341", "R291", "R178", "R243")) %>% 
-    # filter(Regiao %in% c("R379", "R341", "R291", "R178", "R243")) %>% 
-    # mutate(Regiao = factor(Regiao,
-    #                        levels = c("R379", "R341", "R291", "R178", "R243"),
-    #                        labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador") )) %>% 
-    ggplot() +
-    geom_boxplot(aes(x=value, y=source, colour = source)) +
-    # facet_wrap(.~source) +
-    labs(title = "Forecast error - Boxplot",
+    filter(Regiao %in% c("R404", "R346", "R280", "R191", "R491")) %>%
+    mutate(Regiao = factor(Regiao,
+                           levels = c("R404", "R346", "R280", "R191", "R491"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>%
+    ggplot(aes(y=Regiao, x = value)) +
+    geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
+    labs(title = "Forecast error",
          subtitle = legend.names[table],
          y = NULL,
-         x = "Error squared"
-    ) + 
+         x = "Error"
+    ) +
     theme_bw()
   
   print(g)
-  ggsave(filename = sprintf("%s - All box.png", legend.names[table]),
+  ggsave(filename = sprintf("%s - main.png", legend.names[table]),
          path = "Graficos",
          plot = g,
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
+  
+  g <- my_tbl %>%
+    filter(Regiao %in% c("R404")) %>%
+    mutate(Regiao = factor(Regiao,
+                           levels = c("R404", "R346", "R280", "R191", "R491"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>%
+    ggplot(aes(y=Regiao, x = value)) +
+    geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
+    labs(title = "Forecast error",
+         subtitle = legend.names[table],
+         y = NULL,
+         x = "Error squared"
+    ) +
+    theme_bw()
+  
+  print(g)
+  ggsave(filename = sprintf("%s - SP.png", legend.names[table]),
+         path = "Graficos",
+         plot = g,
+         scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
+  
+  g <- my_tbl %>%
+    filter(Regiao %in% c("R346")) %>%
+    mutate(Regiao = factor(Regiao,
+                           levels = c("R404", "R346", "R280", "R191", "R491"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>%
+    ggplot(aes(y=Regiao, x = value)) +
+    geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
+    labs(title = "Forecast error",
+         subtitle = legend.names[table],
+         y = NULL,
+         x = "Error squared"
+    ) +
+    theme_bw()
+  
+  print(g)
+  
+  ggsave(filename = sprintf("%s - RJ.png", legend.names[table]),
+         path = "Graficos",
+         plot = g,
+         scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
+  
+  g <- my_tbl %>%
+    filter(Regiao %in% c("R280")) %>% 
+    mutate(Regiao = factor(Regiao,
+                           levels = c("R404", "R346", "R280", "R191", "R491"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>%
+    ggplot(aes(y=Regiao, x = value)) +
+    geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
+    labs(title = "Forecast error",
+         subtitle = legend.names[table],
+         y = NULL,
+         x = "Error squared"
+    ) +
+    theme_bw()
+  
+  print(g)
+  ggsave(filename = sprintf("%s - BH.png", legend.names[table]),
+         path = "Graficos",
+         plot = g,
+         scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
+  
+  
+  g <- my_tbl %>%
+    filter(Regiao %in% c("R552")) %>%
+    mutate(Regiao = factor(Regiao,
+                           levels = c("R404", "R346", "R280", "R191", "R552"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Brasilia") )) %>%
+    ggplot(aes(y=source, x = value)) +
+    geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
+    geom_point(aes(colour = source), size = 3, alpha = 0.15) + 
+    labs(title = "Forecast error",
+         subtitle = paste("Brasilia", legend.names[table]),
+         y = NULL,
+         x = "Error squared"
+    ) +
+    theme_bw()
+  
+  print(g)
+  
+  
+  g <- my_tbl %>%
+    filter(Regiao %in% c("R346")) %>%
+    mutate(Regiao = factor(Regiao,
+                           levels = c("R404", "R346", "R280", "R191", "R552"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Brasilia") )) %>%
+    ggplot(aes(y=source, x = value)) +
+    geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
+    geom_point(aes(colour = source), size = 3, alpha = 0.15) + 
+    labs(title = "Forecast error",
+         subtitle = paste("Brasilia", legend.names[table]),
+         y = NULL,
+         x = "Error squared"
+    ) +
+    theme_bw()
+  
+  print(g)
   
 }
 
@@ -672,6 +920,26 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
          plot = g,
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
   
+  g <- my_tbl %>%
+    filter(Regiao %in% c("R346")) %>% 
+    mutate(Regiao = factor(Regiao,
+                           levels = c("R404", "R346", "R280", "R191", "R491"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>%    ggplot(aes(y=Regiao, x = value)) +
+    geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
+    # geom_point(size = 3, alpha = 0.15) +
+    labs(title = "Forecast error - Mean Squared error",
+         subtitle = legend.names[table],
+         y = NULL,
+         x = "Error squared"
+    ) + 
+    theme_bw()
+  
+  print(g)
+  ggsave(filename = sprintf("%s - RJ.png", legend.names[table]),
+         path = "Graficos",
+         plot = g,
+         scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
+  
 }
 
 
@@ -728,7 +996,43 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
 }
 
 
+
+
+for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
+  my_tbl <- get(table)
+  
+  
+  tbl.overall.IIS <- my_tbl %>% filter(source == "GVAR_IIS") %>% filter(Regiao == "R151")
+  tbl.overall.GVAR <- my_tbl %>% filter(source == "GVAR") %>% filter(Regiao == "R151")
+  tbl.overall.VECM <- my_tbl %>% filter(source == "VECM") %>% filter(Regiao == "R151")
+  tbl.overall.PCA <- my_tbl %>% filter(source == "PCA") %>% filter(Regiao == "R151")
+  
+  dm <- dm.test(e1 = tbl.overall.IIS$value,  e2 = tbl.overall.GVAR$value,  h = 1, power = 2)
+  print(dm)
+  
+  dm <- dm.test(e1 = tbl.overall.IIS$value,  e2 = tbl.overall.VECM$value,  h = 1, power = 2)
+  print(dm)
+  
+  dm <- dm.test(e1 = tbl.overall.IIS$value,  e2 = tbl.overall.PCA$value,  h = 1, power = 2)
+  print(dm)
+  
+  dm <- dm.test(e1 = tbl.overall.GVAR$value,  e2 = tbl.overall.VECM$value,  h = 1, power = 2)
+  print(dm)
+  
+  dm <- dm.test(e1 = tbl.overall.GVAR$value,  e2 = tbl.overall.PCA$value,  h = 1, power = 2)
+  print(dm)
+  
+  dm <- dm.test(e1 = tbl.overall.VECM$value,  e2 = tbl.overall.PCA$value,  h = 1, power = 2)
+  print(dm)
+  
+}
+
+
+
+
 # ANALISE BRASIL TODO -----------------------------------------------------
+rm(list = setdiff(ls(), c("GVAR.IIS.error", "GVAR.error", "VECM.error", "PCA.error", "AR1.error", "AR13.error",
+                          "AR1", "AR13","PCA","GVAR.IIS","GVAR","VECM")))
 
 tbl <- bind_rows(GVAR.IIS.error, GVAR.error, VECM.error, PCA.error)
 # Faz strip do numero da regiao e tipo
@@ -736,97 +1040,75 @@ tbl$Regiao = str_split(tbl$variavel, "\\_", simplify = TRUE)[,1]
 tbl$Tipo = str_split(tbl$variavel, "\\_", simplify = TRUE)[,2]
 
 
-tbl <- tbl %>% group_by(Tipo, source) %>% summarise_if(.predicate = is.numeric, .funs = sum) %>% ungroup()
-
-
 fn <- function(x){
   return(abs(x))
 }
 
-tbl.overall <- tbl %>% mutate_if(is.numeric, fn) %>% filter(Tipo != "empLiquido")
-tbl.adm <- tbl %>% mutate_if(is.numeric, fn) %>% filter(Tipo == "Admitidos")
-tbl.des <- tbl %>% mutate_if(is.numeric, fn) %>% filter(Tipo == "Desligados")
-tbl.net <- tbl %>% mutate_if(is.numeric, fn) %>% filter(Tipo == "empLiquido")
+tbl.net <- tbl %>% filter(Tipo == "empLiquido") %>% 
+  group_by(source) %>% summarise_if(.predicate = is.numeric, .funs = sum) %>% 
+  mutate_if(.predicate = is.numeric, .funs = fn)
 
-tbl.overall <- tbl.overall %>% pivot_longer(cols = -c("Tipo", "source"))
-tbl.adm <- tbl.adm %>% pivot_longer(cols = -c("Tipo", "source"))
-tbl.des <- tbl.des %>% pivot_longer(cols = -c("Tipo", "source"))
-tbl.net <- tbl.net %>% pivot_longer(cols = -c("Tipo", "source"))
+# tbl <- tbl %>% group_by(Tipo, source) %>% summarise_if(.predicate = is.numeric, .funs = sum) %>% ungroup()
+  # group_by(source) %>% 
+  # summarise_if(.predicate = is.numeric, .funs = sum) %>% ungroup()
+
+erros <- AR1.error %>% summarise_if(.predicate = is.numeric, .funs = sum) %>% 
+  mutate_if(.predicate = is.numeric, .funs = fn) %>% 
+  mutate(source="AR1") %>% 
+  pivot_longer(cols = -c("source")) %>% 
+  pull(value)
+MAFE.AR1 <-  mean(erros)
+MAFE.AR1.sd <- sd(erros)
+
+
+erros <- AR13.error %>% summarise_if(.predicate = is.numeric, .funs = sum) %>% 
+  mutate_if(.predicate = is.numeric, .funs = fn) %>% 
+  mutate(source="AR13") %>% 
+  pivot_longer(cols = -c("source")) %>% 
+  pull(value)
+MAFE.AR13 <-  mean(erros)
+MAFE.AR13.sd <- sd(erros)
+
+
+tbl.net <- tbl.net %>%
+  # dplyr::select(-variavel, -Regiao, -Tipo) %>% 
+  # mutate_if(is.numeric, .funs = fn) %>% 
+  pivot_longer(cols = -c("source"))
 
 legend.names <- c("tbl.overall"="MAE Overall", "tbl.adm"="MAE Adm", "tbl.des"="MAE Des",  "tbl.net"="MAE Net")
 
+table <- "tbl.net"
+my_tbl <- get(table)
 
-for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
-  my_tbl <- get(table)
-  
-  erros <- my_tbl %>% filter(source == "GVAR_IIS") %>% pull(value)
-  MAFE.GVAR_IIS <-  mean(erros)
-  MAFE.GVAR_IIS.sd <- sd(erros)
-  
-  erros <- my_tbl %>% filter(source == "GVAR") %>% pull(value)
-  MAFE.GVAR <-  mean(erros)
-  MAFE.GVAR.sd <- sd(erros)
-  
-  erros <- my_tbl %>% filter(source == "VECM") %>% pull(value)
-  MAFE.VECM <-  mean(erros)
-  MAFE.VECM.sd <- sd(erros)
-  
-  erros <- my_tbl %>% filter(source == "PCA") %>% pull(value)
-  MAFE.PCA <-  mean(erros)
-  MAFE.PCA.sd <- sd(erros)
-  
-  metric <- c("MAFE.PCA" = MAFE.PCA,
-              "MAFE.VECM" = MAFE.VECM,
-              "MAFE.GVAR" = MAFE.GVAR,
-              "MAFE.GVAR_IIS" = MAFE.GVAR_IIS)
-  
-  metric.sd <- c("MAFE.PCA.sd" = MAFE.PCA.sd,
-                 "MAFE.VECM.sd" = MAFE.VECM.sd,
-                 "MAFE.GVAR.sd" = MAFE.GVAR.sd,
-                 "MAFE.GVAR_IIS.sd" = MAFE.GVAR_IIS.sd)
-  
-  cat(sprintf("\n%s", table))
-  cat(sprintf("\n%13s = %f  (%f)", names(metric), metric, metric.sd))
-  
-  g <- my_tbl %>%
-    # filter(Regiao %in% c("R379", "R341", "R291", "R178", "R243")) %>% 
-    # mutate(Regiao = factor(Regiao,
-    #                        levels = c("R379", "R341", "R291", "R178", "R243"),
-    #                        labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador") )) %>% 
-    ggplot(aes( x = value)) +
-    geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
-    # geom_point(size = 3, alpha = 0.15) +
-    labs(title = "Forecast error - Mean ABSOLUT error",
-         subtitle = legend.names[table],
-         y = NULL,
-         x = "Error"
-    ) + 
-    theme_bw()
-  
-  print(g)
-  ggsave(filename = sprintf("%s - main.png", legend.names[table]),
-         path = "Graficos",
-         plot = g,
-         scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
-  
-  g <- my_tbl %>%
-    # filter(Regiao %in% c("R379", "R341")) %>% 
-    # mutate(Regiao = factor(Regiao,
-    #                        levels = c("R379", "R341", "R291", "R178", "R243"),
-    #                        labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Salvador") )) %>% 
-    ggplot(aes( x = value)) +
-    geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
-    labs(title = "Forecast error",
-         subtitle = legend.names[table],
-         y = NULL,
-         x = "Error squared"
-    ) + 
-    theme_bw()
-  
-  print(g)
-  ggsave(filename = sprintf("%s - SP e RJ.png", legend.names[table]),
-         path = "Graficos",
-         plot = g,
-         scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
-  
-}
+erros <- my_tbl %>% filter(source == "GVAR_IIS") %>% pull(value)
+MAFE.GVAR_IIS <-  mean(erros)
+MAFE.GVAR_IIS.sd <- sd(erros)
+
+erros <- my_tbl %>% filter(source == "GVAR") %>% pull(value)
+MAFE.GVAR <-  mean(erros)
+MAFE.GVAR.sd <- sd(erros)
+
+erros <- my_tbl %>% filter(source == "VECM") %>% pull(value)
+MAFE.VECM <-  mean(erros)
+MAFE.VECM.sd <- sd(erros)
+
+erros <- my_tbl %>% filter(source == "PCA") %>% pull(value)
+MAFE.PCA <-  mean(erros)
+MAFE.PCA.sd <- sd(erros)
+
+metric <- c("MAFE.PCA" = MAFE.PCA,
+            "MAFE.VECM" = MAFE.VECM,
+            "MAFE.GVAR" = MAFE.GVAR,
+            "MAFE.GVAR_IIS" = MAFE.GVAR_IIS,
+            "MAFE.AR1" = MAFE.AR1,
+            "MAFE.AR13" = MAFE.AR13)
+
+metric.sd <- c(MAFE.PCA.sd,
+               MAFE.VECM.sd,
+               MAFE.GVAR.sd,
+               MAFE.GVAR_IIS.sd,
+               MAFE.AR1.sd,
+               MAFE.AR13.sd)
+
+cat(sprintf("\n%s", table))
+cat(sprintf("\n%13s = %f  (%f)", names(metric), metric, metric.sd))
