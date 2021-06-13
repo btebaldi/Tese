@@ -644,7 +644,7 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
                            labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Brasilia") )) %>%
     ggplot(aes(y=source, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
-    geom_point(aes(colour = source), size = 3, alpha = 0.15) + 
+    # geom_point(aes(colour = source), size = 3, alpha = 0.15) + 
     labs(title = "Forecast error",
          subtitle = paste("Brasilia", legend.names[table]),
          y = NULL,
@@ -770,6 +770,23 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
          plot = g,
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
   
+  
+  g <- my_tbl %>%
+    filter(Regiao %in% c("R66", "R151", "R552")) %>% 
+    mutate(Regiao = factor(Regiao,
+                           levels = c("R66", "R552", "R151"),
+                           labels = c("Ma - São Luis", "Brasilia", "Natal") )) %>% 
+    ggplot(aes(y=Regiao, x = value)) +
+    geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
+    labs(title = "Forecast error",
+         subtitle = legend.names[table],
+         y = NULL,
+         x = "Error squared"
+    ) + 
+    theme_bw()
+  
+  print(g)
+  
 }
 
 # Avaliacao por tamanho da Populacao --------------------------------------
@@ -779,6 +796,7 @@ tbl <- bind_rows(GVAR.IIS.error, GVAR.error, VECM.error, PCA.error)
 tbl$Regiao = str_split(tbl$variavel, "\\_", simplify = TRUE)[,1]
 tbl$Tipo = str_split(tbl$variavel, "\\_", simplify = TRUE)[,2]
 
+library(readxl)
 Relacao_Agregacao_Ox <- read_excel("Database/Relacao_Agregacao_Ox.xlsx")
 
 tbl <- Relacao_Agregacao_Ox %>% 
@@ -921,10 +939,11 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
   
   g <- my_tbl %>%
-    filter(Regiao %in% c("R346")) %>% 
+    filter(Regiao %in% c("R151")) %>% 
     mutate(Regiao = factor(Regiao,
-                           levels = c("R404", "R346", "R280", "R191", "R491"),
-                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Porto Alegre") )) %>%    ggplot(aes(y=Regiao, x = value)) +
+                           levels = c("R404", "R346", "R280", "R191", "R552"),
+                           labels = c("São Paulo", "Rio de Janeiro", "Belo Horizonte", "Recife", "Natal") )) %>%
+    ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
     # geom_point(size = 3, alpha = 0.15) +
     labs(title = "Forecast error - Mean Squared error",
@@ -969,29 +988,30 @@ tbl.net <- tbl.net %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "sou
 for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
   my_tbl <- get(table)
   
-  
   tbl.overall.IIS <- my_tbl %>% filter(source == "GVAR_IIS")
   tbl.overall.GVAR <- my_tbl %>% filter(source == "GVAR")
   tbl.overall.VECM <- my_tbl %>% filter(source == "VECM")
   tbl.overall.PCA <- my_tbl %>% filter(source == "PCA")
   
+  cat(table)
+  
   dm <- dm.test(e1 = tbl.overall.IIS$value,  e2 = tbl.overall.GVAR$value,  h = 1, power = 2)
-  print(dm)
+  cat(sprintf("IIS vs GVAR: %0.4f\n", dm$p.value))
   
   dm <- dm.test(e1 = tbl.overall.IIS$value,  e2 = tbl.overall.VECM$value,  h = 1, power = 2)
-  print(dm)
+  cat(sprintf("IIS vs VECM: %0.4f\n", dm$p.value))
   
   dm <- dm.test(e1 = tbl.overall.IIS$value,  e2 = tbl.overall.PCA$value,  h = 1, power = 2)
-  print(dm)
+  cat(sprintf("IIS vs PCA: %0.4f\n", dm$p.value))
   
   dm <- dm.test(e1 = tbl.overall.GVAR$value,  e2 = tbl.overall.VECM$value,  h = 1, power = 2)
-  print(dm)
+  cat(sprintf("GVAR vs VECM: %0.4f\n", dm$p.value))
   
   dm <- dm.test(e1 = tbl.overall.GVAR$value,  e2 = tbl.overall.PCA$value,  h = 1, power = 2)
-  print(dm)
+  cat(sprintf("GVAR vs PCA: %0.4f\n", dm$p.value))
   
-  dm <- dm.test(e1 = tbl.overall.VECM$value,  e2 = tbl.overall.PCA$value,  h = 1, power = 2)
-  print(dm)
+  dm <- dm.test(e1 = tbl.overall.VECM$value,  e2 = tbl.overall.PCA$value,  h = 1, power = 2, )
+  cat(sprintf("VECM vs PCA: %0.4f\n", dm$p.value))
   
 }
 
@@ -1007,23 +1027,25 @@ for(table in c("tbl.overall", "tbl.adm", "tbl.des",  "tbl.net")){
   tbl.overall.VECM <- my_tbl %>% filter(source == "VECM") %>% filter(Regiao == "R151")
   tbl.overall.PCA <- my_tbl %>% filter(source == "PCA") %>% filter(Regiao == "R151")
   
+  cat(table, "\n")
+  
   dm <- dm.test(e1 = tbl.overall.IIS$value,  e2 = tbl.overall.GVAR$value,  h = 1, power = 2)
-  print(dm)
+  cat(sprintf("IIS vs GVAR: %0.4f\n", dm$p.value))
   
   dm <- dm.test(e1 = tbl.overall.IIS$value,  e2 = tbl.overall.VECM$value,  h = 1, power = 2)
-  print(dm)
+  cat(sprintf("IIS vs VECM: %0.4f\n", dm$p.value))
   
   dm <- dm.test(e1 = tbl.overall.IIS$value,  e2 = tbl.overall.PCA$value,  h = 1, power = 2)
-  print(dm)
+  cat(sprintf("IIS vs PCA: %0.4f\n", dm$p.value))
   
   dm <- dm.test(e1 = tbl.overall.GVAR$value,  e2 = tbl.overall.VECM$value,  h = 1, power = 2)
-  print(dm)
+  cat(sprintf("GVAR vs VECM: %0.4f\n", dm$p.value))
   
   dm <- dm.test(e1 = tbl.overall.GVAR$value,  e2 = tbl.overall.PCA$value,  h = 1, power = 2)
-  print(dm)
+  cat(sprintf("GVAR vs PCA: %0.4f\n", dm$p.value))
   
-  dm <- dm.test(e1 = tbl.overall.VECM$value,  e2 = tbl.overall.PCA$value,  h = 1, power = 2)
-  print(dm)
+  dm <- dm.test(e1 = tbl.overall.VECM$value,  e2 = tbl.overall.PCA$value,  h = 1, power = 2, )
+  cat(sprintf("VECM vs PCA: %0.4f\n", dm$p.value))
   
 }
 
