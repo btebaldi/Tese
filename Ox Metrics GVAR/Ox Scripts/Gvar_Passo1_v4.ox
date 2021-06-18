@@ -472,7 +472,7 @@ main() {
 		// (Mudar flag para TRUE, para estimar todos modelos com IIS)
 		//	ANTIGA CONDICAO:	(iCont == 69) || (iCont == 84) || (iCont == 99) || TRUE
         if (is_IIS_ON) {
-            model.Autometrics(0.0001, "IIS", 1);
+            model.Autometrics(0.003, "IIS", 1);
         } else {
             //model.Autometrics(0.0001, "IIS", 1);
 			println("Processo IIS desligado para esta regiao");

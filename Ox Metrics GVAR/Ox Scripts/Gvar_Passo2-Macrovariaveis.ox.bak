@@ -377,7 +377,8 @@ main()
 		
 	// determina a janela de tempo do modelo
 	//model.SetSample(2004,1 ,2016, 12);
-	model.SetSelSampleByIndex(model.GetSelStart(), model.GetSelEnd());
+	// model.SetSelSampleByIndex(model.GetSelStart(), model.GetSelEnd());
+	model.SetSample(1995, 1, 2016, 12);
 //	println("GetSelStart", model.GetSelStart());
 //	println("GetSelEnd", model.GetSelEnd());
 

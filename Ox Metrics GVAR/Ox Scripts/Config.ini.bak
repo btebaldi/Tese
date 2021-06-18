@@ -31,7 +31,7 @@
 	aMacroVarNames = {"lpim_BR", "ln_Selic_aa", "Dln_IPCA"};
 
 	// TRUE / FALSE;
-	decl is_IIS_ON = TRUE;
+	decl is_IIS_ON = FALSE;
     
 // Ativa a impressao de 
 #define pritnConfig 
