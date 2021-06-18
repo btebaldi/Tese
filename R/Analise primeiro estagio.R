@@ -1,11 +1,11 @@
 library(readxl)
 library(ggplot2)
 
-Crit.s <- read_excel("ANALISE DE Criterios_de_Inforacao.xlsx", 
+Crit.s <- read_excel("Criterios_de_Inforacao (ref 2016).xlsx", 
                      range = "A2:D554")
 Crit.s$Source = "SEM"
 
-Crit.c <- read_excel("ANALISE DE Criterios_de_Inforacao.xlsx", 
+Crit.c <- read_excel("Criterios_de_Inforacao (ref 2016).xlsx", 
                      range = "F2:I554")
 Crit.c$Source = "COM"
  
