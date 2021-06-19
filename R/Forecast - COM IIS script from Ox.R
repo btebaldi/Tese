@@ -22,28 +22,32 @@ X.df <- read_excel("Excel Export/DatabaseDesAdm_RA_vForecast_v3.xlsx",
 
 X <- X.df[,-1] %>% data.matrix()
 
-mLag1 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mGyL1.rds")
-mLag2 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mGyL2.rds")
-mLag3 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mGyL3.rds")
+main_path <- "../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016 0-003/"
+export_file <- "./Excel Export/forecast_result_COM IIS (2016 ref 0-003).csv"
 
-mLag4 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mGyL4.rds")
-mLag5 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mGyL5.rds")
-mLag6 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mGyL6.rds")
 
-mLag7 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mGyL7.rds")
-mLag8 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mGyL8.rds")
-mLag9 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mGyL9.rds")
+mLag1 <- readRDS(paste(sep="", main_path, "mGy_inv_X_mGyL1.rds"))
+mLag2 <- readRDS(paste(sep="", main_path, "mGy_inv_X_mGyL2.rds"))
+mLag3 <- readRDS(paste(sep="", main_path, "mGy_inv_X_mGyL3.rds"))
 
-mLag10 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mGyL10.rds")
-mLag11 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mGyL11.rds")
-mLag12 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mGyL12.rds")
-mLag13 <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mGyL13.rds")
+mLag4 <- readRDS(paste(sep="", main_path, "mGy_inv_X_mGyL4.rds"))
+mLag5 <- readRDS(paste(sep="", main_path, "mGy_inv_X_mGyL5.rds"))
+mLag6 <- readRDS(paste(sep="", main_path, "mGy_inv_X_mGyL6.rds"))
+
+mLag7 <- readRDS(paste(sep="", main_path, "mGy_inv_X_mGyL7.rds"))
+mLag8 <- readRDS(paste(sep="", main_path, "mGy_inv_X_mGyL8.rds"))
+mLag9 <- readRDS(paste(sep="", main_path, "mGy_inv_X_mGyL9.rds"))
+
+mLag10 <- readRDS(paste(sep="", main_path, "mGy_inv_X_mGyL10.rds"))
+mLag11 <- readRDS(paste(sep="", main_path, "mGy_inv_X_mGyL11.rds"))
+mLag12 <- readRDS(paste(sep="", main_path, "mGy_inv_X_mGyL12.rds"))
+mLag13 <- readRDS(paste(sep="", main_path, "mGy_inv_X_mGyL13.rds"))
 
 # Carrega matriz de coeficiente de longo prazo
-mLagLR <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mL.rds")
+mLagLR <- readRDS(paste(sep="", main_path, "mGy_inv_X_mL.rds"))
 
 # Carrega matriz de coeficiente de constante e dummies sazonais
-mLagDm <- readRDS("../Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016/mGy_inv_X_mC.rds")
+mLagDm <- readRDS(paste(sep="", main_path, "mGy_inv_X_mC.rds"))
 mLagDm <- mLagDm[, 1:12]
 colnames(mLagDm) <- c("CONST", paste("M", 1:11))
 
@@ -109,4 +113,4 @@ for(i in 0:35){
 results.tbl$Regiao = str_split(results.tbl$variavel, "\\_", simplify = TRUE)[,1]
 results.tbl$Tipo = str_split(results.tbl$variavel, "\\_", simplify = TRUE)[,2]
 
-readr::write_excel_csv(results.tbl, file = "./Excel Export/forecast_result_COM IIS (2016).csv")
+readr::write_excel_csv(results.tbl, file = export_file)

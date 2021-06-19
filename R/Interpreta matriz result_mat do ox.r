@@ -24,7 +24,7 @@ mGyL.file_list <-   c(
   "mGy_inv_X_mL"
 )
 
-main_dir <- "C:/Users/Teo/Documents/GitHub/Tese/Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/SEM IIS 2016/"
+main_dir <- "C:/Users/Teo/Documents/GitHub/Tese/Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016 0-003/"
 
 for(item in mGyL.file_list) {
   
