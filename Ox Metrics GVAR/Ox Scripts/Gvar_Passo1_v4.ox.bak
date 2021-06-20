@@ -458,7 +458,13 @@ main() {
         //model.Select("X", {"betaMacro", 1, 1});
         // Adiciona variaveis constante e sesonals
         model.Select("U", {"Constant", 0, 0});
-        model.Select("U", {"CSeasonal", 0, 10});
+
+		if (is_DUMMY_ON) {
+            //model.Autometrics(0.0001, "IIS", 1);
+	        model.Select("U", {"CSeasonal", 0, 10});
+        }
+
+
 		
         // determina a janela de tempo do modelo
         //model.SetSample(model.GetYear1(),  model.GetPeriod1(),  model.GetYear2(),  model.GetPeriod2());
@@ -472,7 +478,7 @@ main() {
 		// (Mudar flag para TRUE, para estimar todos modelos com IIS)
 		//	ANTIGA CONDICAO:	(iCont == 69) || (iCont == 84) || (iCont == 99) || TRUE
         if (is_IIS_ON) {
-            model.Autometrics(0.003, "IIS", 1);
+            model.Autometrics(0.000001, "IIS", 1);
         } else {
             //model.Autometrics(0.0001, "IIS", 1);
 			println("Processo IIS desligado para esta regiao");
