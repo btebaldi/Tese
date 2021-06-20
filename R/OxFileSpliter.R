@@ -10,8 +10,6 @@ rm(list=ls())
 
 library(stringr)
 library(dplyr)
-library(here)
-
 
 # Variaveis internas ------------------------------------------------------
 

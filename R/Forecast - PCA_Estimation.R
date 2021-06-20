@@ -11,6 +11,15 @@ library(tidyr)
 library(factoextra)
 library(lubridate)
 
+
+file.name <- "forecast_result.csv"
+dir <- "PCA"
+
+
+export_file <- file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir, file.name)
+main_path <- dirname(export_file)
+
+
 # User defined function ---------------------------------------------------
 
 
@@ -71,9 +80,17 @@ for(i in 1:length(medias)){
 
 pca.both <- prcomp(data.both.c, center = FALSE, scale. = FALSE, rank. = 2*m)
 
-factoextra::fviz_screeplot(pca.both, addlabels = TRUE)
+g <- factoextra::fviz_screeplot(pca.both, addlabels = TRUE)
+
+
+print(g)
+ggsave(filename = sprintf("Scree plot PCA.png"),
+       path = main_path,
+       plot = g,
+       scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
 
 Forecast.PCA <- DX_t %*% pca.both$rotation
+
 
 
 
@@ -203,4 +220,4 @@ results.tbl$Regiao = str_split(results.tbl$variavel, "\\_", simplify = TRUE)[,1]
 results.tbl$Tipo = str_split(results.tbl$variavel, "\\_", simplify = TRUE)[,2]
 
 # Salva os dados para o futuro
-readr::write_excel_csv(results.tbl, file = "./Excel Export/forecast_result_PCA (2016).csv")
+readr::write_excel_csv(results.tbl, file = export_file)

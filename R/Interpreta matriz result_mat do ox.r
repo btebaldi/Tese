@@ -6,6 +6,18 @@ rm(list = ls())
 # Load library
 library(stringr)
 
+
+
+dir <- "COM IIS - Modelo 7"
+
+
+filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir, "Read Me Config.txt")
+file.out.path = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir, "Criterios_de_Inforacao.csv")
+file.exists(filepath)
+
+main_dir <- dirname(filepath)
+
+
 mGyL.file_list <-   c(
   # "mGy_inv_X_mC"
   "mGy_inv_X_mGyL1",
@@ -24,15 +36,16 @@ mGyL.file_list <-   c(
   "mGy_inv_X_mL"
 )
 
-main_dir <- "C:/Users/Teo/Documents/GitHub/Tese/Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS 2016 0-003/"
 
 for(item in mGyL.file_list) {
   
   # Caminho do arquivo a ser lido
-  fileName.mask <- paste(main_dir, "%s.mat", sep = "")
+  fileName <- sprintf("%s.mat", item)
+  # fileName.mask <- paste(main_dir, "%s.mat", sep = "")
   
-  fileName <- sprintf(fileName.mask, item)
-  
+  fileName <- file.path(main_dir, fileName)
+  # fileName <- sprintf(fileName.mask, item)
+
   # Abre o aqruivo para leitura
   con <- file(fileName, open="r")
   
@@ -66,7 +79,8 @@ for(item in mGyL.file_list) {
     
   }
 
-  saveRDS(M, file = sprintf(paste(main_dir, "%s.rds", sep = ""), item))
+  file.out <- file.path(main_dir, sprintf("%s.rds", item))
+  saveRDS(M, file = file.out)
   
 }
 
@@ -77,10 +91,10 @@ for(item in mGyL.file_list) {
 
 
 # Caminho do arquivo a ser lido
-fileName.mask <- paste(main_dir, "%s.mat", sep = "")
-  
+fileName <- sprintf("%s.mat", "mGy_inv_X_mC")
 
-fileName <- sprintf(fileName.mask, "mGy_inv_X_mC")
+fileName <- file.path(main_dir, fileName)
+
 
 # Abre o aqruivo para leitura
 con <- file(fileName, open="r")
@@ -115,6 +129,6 @@ for (i in 2:length(line)){
   
 }
 
-saveRDS(M, file = sprintf(paste(main_dir, "%s.rds", sep = "") , "mGy_inv_X_mC"))
-
+file.out <- file.path(main_dir, sprintf("%s.rds", "mGy_inv_X_mC"))
+saveRDS(M, file = file.out)
 

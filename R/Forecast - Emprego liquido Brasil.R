@@ -11,21 +11,26 @@ library(tsDyn)
 library(lubridate)
 library(stringr)
 
+
+
+file.name <- "forecast_result.csv"
+dir1 <- "AR1"
+dir13 <- "AR13"
+
+export_file1 <- file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir1, file.name)
+export_file13 <- file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir13, file.name)
+
+
 # Dataload ----------------------------------------------------------------
 
 # busca dados de estimacao
 region.db <- read_csv("../Ox Metrics GVAR/Database/DatabaseDesAdm_RA_v1.csv")
-# region.db <- read_csv("../Ox Metrics GVAR/Database/DatabaseDesAdm_RA_v1.csv")
+
 selVector <- lubridate::ymd(region.db$X1, truncated = 1) < as.Date("2017-01-01")
 
 region.db <- region.db[selVector, ]
 
 head(region.db)
-
-# busca dados Macro (nao utilizados)
-# macro.db <- read_excel("~/GitHub/Tese/Ox Metrics GVAR/Database/MacroVariables_forR_20210604.xlsx", 
-#                        na = "#N/A")
-# head(macro.db)
 
 
 # data para forecast em diferenca
@@ -149,6 +154,6 @@ results.tbl_ar1$Regiao = str_split(results.tbl_ar1$variavel, "\\_", simplify = T
 results.tbl_ar1$Tipo = str_split(results.tbl_ar1$variavel, "\\_", simplify = TRUE)[,2]
 
 # Salva os dados para o futuro
-readr::write_excel_csv(results.tbl, file = "./Excel Export/forecast_result_AR13 (2016).csv")
-readr::write_excel_csv(results.tbl_ar1, file = "./Excel Export/forecast_result_AR1 (2016).csv")
+readr::write_excel_csv(results.tbl, file = export_file13)
+readr::write_excel_csv(results.tbl_ar1, file = export_file1)
 

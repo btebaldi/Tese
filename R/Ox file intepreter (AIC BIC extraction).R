@@ -14,10 +14,12 @@ library(dplyr)
 
 # Variaveis internas ------------------------------------------------------
 
-fileName = "Gvar_Passo1_v4 (com IIS 2021-06-18 IIS 0-003).out"
-# fileName = "Gvar_Passo1_v4 (saida modelo SEM IIS).txt" <- <- <- <- %>% %>% 
-filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", fileName)
+fileName = "Gvar_Passo1_v4.out"
 
+dir <- "COM IIS - Modelo 7"
+
+filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir, fileName)
+file.out.path = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir, "Criterios_de_Inforacao.csv")
 
 file.exists(filepath)
 
@@ -130,6 +132,5 @@ while ( TRUE ) {
 
 close(ReadCon)
 
-readr::write_excel_csv2(x=tbl.results,
-                        file = sprintf("Criterios_de_Inforacao(%s) (ref 2016 w 0-003).csv", fileName))
+readr::write_excel_csv2(x=tbl.results, file = file.out.path)
 
