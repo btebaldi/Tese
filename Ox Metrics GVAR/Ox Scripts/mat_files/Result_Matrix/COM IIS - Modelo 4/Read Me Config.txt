@@ -1,0 +1,4 @@
+Periodo: 1995 - 2016
+IIS: ON
+IIS value: 0.003
+Dummy: FALSE

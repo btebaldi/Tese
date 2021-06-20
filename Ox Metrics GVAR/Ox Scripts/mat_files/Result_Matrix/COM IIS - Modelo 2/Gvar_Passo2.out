@@ -1,0 +1,284 @@
+--------------- Ox at 10:25:38 on 18-Jun-2021 ---------------
+
+Ox Professional version 8.00 (Windows_64/U/MT) (C) J.A. Doornik, 1994-2018
+******************************************
+------------------------------------------
+	Configuracao de variaveis
+------------------------------------------
+
+REGIOES
+	Quantidade de lags: 13
+	Quantidade de Regioes: 552
+
+DATABASE
+	Macrovariaveis: ../Database/MacroVariables.in7
+	Regioes: ../Database/DatabaseDesAdm_RA_v1.csv
+
+DIRETORIOS
+	W Matrix Dir: ./mat_files/W_Matrix/
+	Cointeration Matrix Dir: ./mat_files/Cointegration/
+	Raw Matrix Dir: ./mat_files/RawMatrix/
+	A Matrix Dir: ./mat_files/A_Matrix/
+	G Matrix Dir: ./mat_files/G_Matrix/
+	Result Matrix Dir: ./mat_files/Result_Matrix/
+******************************************
+>>> Inicio da estimacao do modelo de macrovariaveis
+
+
+*****************************************
+             Macrovariaveis 
+*****************************************
+
+Carregando dados das variaveis exogenas
+Carregando base de dados com informacoes regionais
+Construindo variaveis X_Adm e X_Des
+Concluido construcao das variaveis X_Adm e X_Des
+Construindo acumulado Net (X_Adm - X_Des)
+Salvando matriz W_w para ser utilizada depois
+Inicio um nomo objeto do tipo PcGive referente a macrovariaveis
+PcGive package version 15.0, object created on 18-06-2021
+(C) Jurgen A Doornik - requires a licensed version of PcGive Professional
+Carregando base de dados de macrovariaveis
+Iniciando construcao da variavel Delta para variaveis
+Adicionado Diff da variavel: lpim_BR
+Adicionado Diff da variavel: ln_Selic_aa
+Adicionado Diff da variavel: Dln_IPCA
+Adicionando variavel mX
+Adicionando variavel D_mX 
+Model Sample: 1996(4) - 2016(12)
+
+D_lpim_BR_1@D_lpim_BR              -0.38832
+D_lpim_BR_2@D_lpim_BR              -0.12392
+D_lpim_BR_3@D_lpim_BR               0.24942
+D_lpim_BR_5@D_lpim_BR            -0.0085955
+D_ln_Selic_aa_1@D_lpim_BR          -0.97218
+D_ln_Selic_aa_2@D_lpim_BR          -0.50482
+D_ln_Selic_aa_4@D_lpim_BR           0.15448
+D_ln_Selic_aa_5@D_lpim_BR          -0.34892
+D_ln_Selic_aa_13@D_lpim_BR         -0.41086
+D_Dln_IPCA_2@D_lpim_BR             -0.18945
+D_Dln_IPCA_4@D_lpim_BR              0.46020
+D_Dln_IPCA_7@D_lpim_BR             -0.54046
+D_Dln_IPCA_13@D_lpim_BR             0.54726
+D_mX_7@D_lpim_BR                1.0081e-008
+D_mX_13@D_lpim_BR               2.9815e-008
+I:1996(4)@D_lpim_BR               -0.029062
+I:1996(5)@D_lpim_BR                0.063893
+I:1996(6)@D_lpim_BR                -0.12997
+I:1996(7)@D_lpim_BR                0.091763
+I:1996(8)@D_lpim_BR               -0.059128
+I:1996(10)@D_lpim_BR              -0.026347
+I:1996(11)@D_lpim_BR              0.0021035
+I:1996(12)@D_lpim_BR              -0.021191
+I:1997(1)@D_lpim_BR               -0.015140
+I:1997(2)@D_lpim_BR               -0.034501
+I:1997(3)@D_lpim_BR                0.016215
+I:1997(4)@D_lpim_BR                0.030823
+I:1997(5)@D_lpim_BR               -0.042615
+I:1997(7)@D_lpim_BR               0.0085434
+I:1997(8)@D_lpim_BR               -0.048776
+I:1997(9)@D_lpim_BR                0.045162
+I:1997(11)@D_lpim_BR              -0.055447
+I:1997(12)@D_lpim_BR                0.12468
+I:1998(1)@D_lpim_BR                0.037422
+I:1998(5)@D_lpim_BR               -0.056636
+I:1998(6)@D_lpim_BR               -0.020611
+I:1998(8)@D_lpim_BR               -0.068608
+I:1998(9)@D_lpim_BR               -0.015818
+I:1998(10)@D_lpim_BR               0.056914
+I:1998(11)@D_lpim_BR                0.11373
+I:1998(12)@D_lpim_BR               0.057487
+I:1999(1)@D_lpim_BR                -0.12420
+I:1999(2)@D_lpim_BR              -0.0034779
+I:1999(3)@D_lpim_BR                 0.13029
+I:1999(4)@D_lpim_BR                0.052822
+I:1999(5)@D_lpim_BR               -0.049052
+I:1999(6)@D_lpim_BR                -0.11153
+I:1999(7)@D_lpim_BR               -0.075421
+I:1999(10)@D_lpim_BR               0.019624
+I:2000(1)@D_lpim_BR               -0.067774
+I:2000(2)@D_lpim_BR                0.085670
+I:2000(7)@D_lpim_BR               -0.035776
+I:2000(8)@D_lpim_BR               -0.012898
+I:2000(9)@D_lpim_BR               -0.032184
+I:2001(4)@D_lpim_BR               -0.037707
+I:2001(7)@D_lpim_BR             -0.00089616
+I:2002(6)@D_lpim_BR               -0.026793
+I:2002(10)@D_lpim_BR               0.040537
+I:2002(11)@D_lpim_BR               0.020504
+I:2002(12)@D_lpim_BR               0.015614
+I:2003(2)@D_lpim_BR                0.040346
+I:2003(8)@D_lpim_BR               -0.018587
+I:2003(9)@D_lpim_BR                0.065211
+I:2003(10)@D_lpim_BR              0.0086770
+Constant@D_lpim_BR              -0.00036075
+CSeasonal@D_lpim_BR                0.074508
+CSeasonal_1@D_lpim_BR              0.038606
+CSeasonal_2@D_lpim_BR               0.24610
+CSeasonal_3@D_lpim_BR               0.13509
+CSeasonal_4@D_lpim_BR               0.18270
+CSeasonal_5@D_lpim_BR              0.089737
+CSeasonal_6@D_lpim_BR               0.17870
+CSeasonal_7@D_lpim_BR               0.13259
+CSeasonal_8@D_lpim_BR               0.10259
+CSeasonal_9@D_lpim_BR               0.13477
+CSeasonal_10@D_lpim_BR             0.071236
+D_lpim_BR_1@D_ln_Selic_aa         0.0022598
+D_lpim_BR_2@D_ln_Selic_aa          0.015957
+D_lpim_BR_3@D_ln_Selic_aa          0.012547
+D_lpim_BR_5@D_ln_Selic_aa          0.011917
+D_ln_Selic_aa_1@D_ln_Selic_aa       0.68357
+D_ln_Selic_aa_2@D_ln_Selic_aa       0.21028
+D_ln_Selic_aa_4@D_ln_Selic_aa      -0.13885
+D_ln_Selic_aa_5@D_ln_Selic_aa      0.029781
+D_ln_Selic_aa_13@D_ln_Selic_aa     0.018851
+D_Dln_IPCA_2@D_ln_Selic_aa          0.15978
+D_Dln_IPCA_4@D_ln_Selic_aa          0.12860
+D_Dln_IPCA_7@D_ln_Selic_aa       -0.0044094
+D_Dln_IPCA_13@D_ln_Selic_aa        -0.12806
+D_mX_7@D_ln_Selic_aa            1.7666e-009
+D_mX_13@D_ln_Selic_aa          -4.6039e-010
+I:1996(4)@D_ln_Selic_aa            0.020538
+I:1996(5)@D_ln_Selic_aa           -0.024213
+I:1996(6)@D_ln_Selic_aa            0.057840
+I:1996(7)@D_ln_Selic_aa           -0.073692
+I:1996(8)@D_ln_Selic_aa            0.043177
+I:1996(10)@D_ln_Selic_aa          -0.015693
+I:1996(11)@D_ln_Selic_aa           0.018990
+I:1996(12)@D_ln_Selic_aa          -0.014088
+I:1997(1)@D_ln_Selic_aa           -0.012079
+I:1997(2)@D_ln_Selic_aa            0.047348
+I:1997(3)@D_ln_Selic_aa           -0.035391
+I:1997(4)@D_ln_Selic_aa           -0.015147
+I:1997(5)@D_ln_Selic_aa            0.014663
+I:1997(7)@D_ln_Selic_aa           -0.016420
+I:1997(8)@D_ln_Selic_aa            0.026674
+I:1997(9)@D_ln_Selic_aa           -0.013919
+I:1997(11)@D_ln_Selic_aa            0.19470
+I:1997(12)@D_ln_Selic_aa           -0.17420
+I:1998(1)@D_ln_Selic_aa           -0.030860
+I:1998(5)@D_ln_Selic_aa           0.0042821
+I:1998(6)@D_ln_Selic_aa           0.0031037
+I:1998(8)@D_ln_Selic_aa          -0.0037098
+I:1998(9)@D_ln_Selic_aa             0.12446
+I:1998(10)@D_ln_Selic_aa          -0.026426
+I:1998(11)@D_ln_Selic_aa          -0.082007
+I:1998(12)@D_ln_Selic_aa          -0.056790
+I:1999(1)@D_ln_Selic_aa            0.061213
+I:1999(2)@D_ln_Selic_aa            0.072587
+I:1999(3)@D_ln_Selic_aa           -0.012084
+I:1999(4)@D_ln_Selic_aa           -0.090550
+I:1999(5)@D_ln_Selic_aa           -0.039613
+I:1999(6)@D_ln_Selic_aa            0.024779
+I:1999(7)@D_ln_Selic_aa            0.033707
+I:1999(10)@D_ln_Selic_aa         -0.0065406
+I:2000(1)@D_ln_Selic_aa           0.0019037
+I:2000(2)@D_ln_Selic_aa          -0.0020932
+I:2000(7)@D_ln_Selic_aa          -0.0086001
+I:2000(8)@D_ln_Selic_aa           0.0064435
+I:2000(9)@D_ln_Selic_aa           0.0030407
+I:2001(4)@D_ln_Selic_aa           0.0048958
+I:2001(7)@D_ln_Selic_aa           0.0057116
+I:2002(6)@D_ln_Selic_aa          -0.0038650
+I:2002(10)@D_ln_Selic_aa           0.014050
+I:2002(11)@D_ln_Selic_aa          0.0039250
+I:2002(12)@D_ln_Selic_aa         0.00043637
+I:2003(2)@D_ln_Selic_aa          -0.0072217
+I:2003(8)@D_ln_Selic_aa          -0.0064303
+I:2003(9)@D_ln_Selic_aa          -0.0089388
+I:2003(10)@D_ln_Selic_aa          0.0049222
+Constant@D_ln_Selic_aa         -7.4083e-005
+CSeasonal@D_ln_Selic_aa          0.00055400
+CSeasonal_1@D_ln_Selic_aa         0.0047050
+CSeasonal_2@D_ln_Selic_aa         0.0011932
+CSeasonal_3@D_ln_Selic_aa         0.0011736
+CSeasonal_4@D_ln_Selic_aa         0.0014517
+CSeasonal_5@D_ln_Selic_aa        0.00048756
+CSeasonal_6@D_ln_Selic_aa         0.0022603
+CSeasonal_7@D_ln_Selic_aa        -0.0034156
+CSeasonal_8@D_ln_Selic_aa       -0.00011053
+CSeasonal_9@D_ln_Selic_aa        0.00013431
+CSeasonal_10@D_ln_Selic_aa        0.0010422
+D_lpim_BR_1@D_Dln_IPCA           0.00071702
+D_lpim_BR_2@D_Dln_IPCA            0.0036027
+D_lpim_BR_3@D_Dln_IPCA          -0.00088267
+D_lpim_BR_5@D_Dln_IPCA           -0.0024997
+D_ln_Selic_aa_1@D_Dln_IPCA        -0.045266
+D_ln_Selic_aa_2@D_Dln_IPCA         0.062820
+D_ln_Selic_aa_4@D_Dln_IPCA        0.0018541
+D_ln_Selic_aa_5@D_Dln_IPCA        -0.010779
+D_ln_Selic_aa_13@D_Dln_IPCA      -0.0081460
+D_Dln_IPCA_2@D_Dln_IPCA            -0.20787
+D_Dln_IPCA_4@D_Dln_IPCA           -0.077711
+D_Dln_IPCA_7@D_Dln_IPCA            -0.23247
+D_Dln_IPCA_13@D_Dln_IPCA          -0.072026
+D_mX_7@D_Dln_IPCA               2.8703e-009
+D_mX_13@D_Dln_IPCA             -1.3543e-009
+I:1996(4)@D_Dln_IPCA              0.0058553
+I:1996(5)@D_Dln_IPCA              0.0043231
+I:1996(6)@D_Dln_IPCA             0.00035758
+I:1996(7)@D_Dln_IPCA            -0.00050328
+I:1996(8)@D_Dln_IPCA             -0.0075969
+I:1996(10)@D_Dln_IPCA            -0.0036922
+I:1996(11)@D_Dln_IPCA            0.00056029
+I:1996(12)@D_Dln_IPCA             0.0013663
+I:1997(1)@D_Dln_IPCA              0.0055322
+I:1997(2)@D_Dln_IPCA             -0.0080739
+I:1997(3)@D_Dln_IPCA              0.0036317
+I:1997(4)@D_Dln_IPCA             -0.0016659
+I:1997(5)@D_Dln_IPCA             -0.0018450
+I:1997(7)@D_Dln_IPCA             -0.0054241
+I:1997(8)@D_Dln_IPCA              0.0016592
+I:1997(9)@D_Dln_IPCA            -0.00053250
+I:1997(11)@D_Dln_IPCA           8.1427e-005
+I:1997(12)@D_Dln_IPCA             0.0097699
+I:1998(1)@D_Dln_IPCA              -0.010962
+I:1998(5)@D_Dln_IPCA              0.0052753
+I:1998(6)@D_Dln_IPCA             -0.0035127
+I:1998(8)@D_Dln_IPCA             -0.0016475
+I:1998(9)@D_Dln_IPCA              0.0018176
+I:1998(10)@D_Dln_IPCA             0.0055181
+I:1998(11)@D_Dln_IPCA            -0.0066775
+I:1998(12)@D_Dln_IPCA             0.0017477
+I:1999(1)@D_Dln_IPCA             0.00054844
+I:1999(2)@D_Dln_IPCA              0.0084422
+I:1999(3)@D_Dln_IPCA              0.0039162
+I:1999(4)@D_Dln_IPCA             -0.0058607
+I:1999(5)@D_Dln_IPCA             -0.0059125
+I:1999(6)@D_Dln_IPCA            -0.00063836
+I:1999(7)@D_Dln_IPCA               0.010190
+I:1999(10)@D_Dln_IPCA             0.0071384
+I:2000(1)@D_Dln_IPCA             -0.0012096
+I:2000(2)@D_Dln_IPCA             -0.0032071
+I:2000(7)@D_Dln_IPCA              0.0093475
+I:2000(8)@D_Dln_IPCA              0.0010323
+I:2000(9)@D_Dln_IPCA             -0.0094721
+I:2001(4)@D_Dln_IPCA           -2.8126e-005
+I:2001(7)@D_Dln_IPCA              0.0066234
+I:2002(6)@D_Dln_IPCA              0.0037617
+I:2002(10)@D_Dln_IPCA             0.0041110
+I:2002(11)@D_Dln_IPCA              0.018375
+I:2002(12)@D_Dln_IPCA             -0.010723
+I:2003(2)@D_Dln_IPCA             -0.0070194
+I:2003(8)@D_Dln_IPCA              0.0028262
+I:2003(9)@D_Dln_IPCA              0.0023969
+I:2003(10)@D_Dln_IPCA            -0.0065712
+Constant@D_Dln_IPCA             -0.00012081
+CSeasonal@D_Dln_IPCA            -0.00067975
+CSeasonal_1@D_Dln_IPCA            0.0013653
+CSeasonal_2@D_Dln_IPCA           -0.0017861
+CSeasonal_3@D_Dln_IPCA           -0.0011908
+CSeasonal_4@D_Dln_IPCA           -0.0022670
+CSeasonal_5@D_Dln_IPCA           -0.0019338
+CSeasonal_6@D_Dln_IPCA            0.0020959
+CSeasonal_7@D_Dln_IPCA           -0.0054115
+CSeasonal_8@D_Dln_IPCA          -0.00086820
+CSeasonal_9@D_Dln_IPCA           0.00076058
+CSeasonal_10@D_Dln_IPCA         -0.00050829
+Processo H iniciado
+Processo U iniciado
+Processo U finalizado
+Processo Extracao da matriz de saturacao (IIS)
+Processo AlphaBeta iniciado
+Processo B iniciado
+*** Fim da estimacao dos modelos de macrovariaveis *** 
