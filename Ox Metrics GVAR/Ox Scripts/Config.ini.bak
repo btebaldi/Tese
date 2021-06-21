@@ -32,7 +32,8 @@
 
 	// TRUE / FALSE;
 	decl is_IIS_ON = TRUE;
-    decl is_DUMMY_ON = FALSE;
+	decl IIS_pvalue = 0.0000178;
+    decl is_DUMMY_ON = TRUE;
 // Ativa a impressao de 
 #define pritnConfig 
 
@@ -59,6 +60,10 @@
 	println("\tG Matrix Dir: ", txMatPathG_Matrix);
 	
 	println("\tResult Matrix Dir: ", txMatPathResult_Matrix);
+
+	println("\tis_IIS_ON: ",  is_IIS_ON);
+	println("\tIIS_pvalue: ", IIS_pvalue);
+	println("\tis_DUMMY_ON: ", is_DUMMY_ON);
 	println("******************************************");
 #endif
 

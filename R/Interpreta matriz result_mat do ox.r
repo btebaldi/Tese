@@ -8,7 +8,7 @@ library(stringr)
 
 
 
-dir <- "COM IIS - Modelo 8"
+dir <- "COM IIS - Modelo 9"
 
 
 filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir, "Read Me Config.txt")

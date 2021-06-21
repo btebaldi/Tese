@@ -235,6 +235,7 @@ main() {
      * Declaração de variaveis de configuracao do script
      *
      *************************************************** */
+	 
     // Variáveis do programa
     decl i, sVarSufix;
     println("Carregando dados de macrovariaveis");
@@ -478,7 +479,7 @@ main() {
 		// (Mudar flag para TRUE, para estimar todos modelos com IIS)
 		//	ANTIGA CONDICAO:	(iCont == 69) || (iCont == 84) || (iCont == 99) || TRUE
         if (is_IIS_ON) {
-            model.Autometrics(0.0000316, "IIS", 1);
+            model.Autometrics(IIS_pvalue, "IIS", 1);
         } else {
             //model.Autometrics(0.0001, "IIS", 1);
 			println("Processo IIS desligado para esta regiao");

@@ -11,7 +11,7 @@ library(tibble)
 library(ggplot2)
 library(tidyr)
 
-dir.COMIIS <- "COM IIS - Modelo 6"
+dir.COMIIS <- "COM IIS - Modelo 9"
 dir.SEMIIS <- "SEM IIS - Modelo 0"
 dir.VECM <- "VECM"
 dir.PCA <- "PCA"
@@ -1066,7 +1066,7 @@ tbl <- bind_rows(GVAR.IIS.error, GVAR.error, VECM.error, PCA.error)
 
 
 fn <- function(x){
-  return((x)^2)
+  return(abs(x))
 }
 
 tbl.net <- tbl %>% dplyr::filter(Tipo == "EmpLiq") %>% 
@@ -1121,12 +1121,19 @@ erros <- my_tbl %>% dplyr::filter(source == "PCA") %>% pull(value)
 MAFE.PCA <-  mean(erros)
 MAFE.PCA.sd <- sd(erros)
 
-metric <- c("MAFE.PCA" = MAFE.PCA^0.5,
-            "MAFE.VECM" = MAFE.VECM^0.5,
-            "MAFE.GVAR" = MAFE.GVAR^0.5,
-            "MAFE.GVAR_IIS" = MAFE.GVAR_IIS^0.5,
-            "MAFE.AR1" = MAFE.AR1^0.5,
-            "MAFE.AR13" = MAFE.AR13^0.5)
+# metric <- c("MAFE.PCA" = MAFE.PCA^0.5,
+#             "MAFE.VECM" = MAFE.VECM^0.5,
+#             "MAFE.GVAR" = MAFE.GVAR^0.5,
+#             "MAFE.GVAR_IIS" = MAFE.GVAR_IIS^0.5,
+#             "MAFE.AR1" = MAFE.AR1^0.5,
+#             "MAFE.AR13" = MAFE.AR13^0.5)
+
+metric <- c("MAFE.PCA" = MAFE.PCA,
+            "MAFE.VECM" = MAFE.VECM,
+            "MAFE.GVAR" = MAFE.GVAR,
+            "MAFE.GVAR_IIS" = MAFE.GVAR_IIS,
+            "MAFE.AR1" = MAFE.AR1,
+            "MAFE.AR13" = MAFE.AR13)
 
 metric.sd <- c(MAFE.PCA.sd,
                MAFE.VECM.sd,
