@@ -11,7 +11,7 @@ library(lubridate)
 
 
 file.name <- "forecast_result.csv"
-dir <- "COM IIS - Modelo 9"
+dir <- "COM IIS - Modelo 10"
 
 
 export_file <- file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir, file.name)

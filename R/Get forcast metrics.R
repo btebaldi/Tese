@@ -11,7 +11,7 @@ library(tibble)
 library(ggplot2)
 library(tidyr)
 
-dir.COMIIS <- "COM IIS - Modelo 9"
+dir.COMIIS <- "COM IIS - Modelo 10"
 dir.SEMIIS <- "SEM IIS - Modelo 0"
 dir.VECM <- "VECM"
 dir.PCA <- "PCA"

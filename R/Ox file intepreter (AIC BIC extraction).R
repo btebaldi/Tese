@@ -16,7 +16,7 @@ library(dplyr)
 
 fileName = "Gvar_Passo1_v4.out"
 
-dir <- "COM IIS - Modelo 9"
+dir <- "COM IIS - Modelo 10"
 
 filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir, fileName)
 file.out.path = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir, "Criterios_de_Inforacao.csv")

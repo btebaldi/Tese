@@ -61,6 +61,7 @@
 	
 	println("\tResult Matrix Dir: ", txMatPathResult_Matrix);
 
+    println("\nConfiguracoes");
 	println("\tis_IIS_ON: ",  is_IIS_ON);
 	println("\tIIS_pvalue: ", IIS_pvalue);
 	println("\tis_DUMMY_ON: ", is_DUMMY_ON);
