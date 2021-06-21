@@ -6,7 +6,7 @@ library(tidyr)
 library(ggplot2)
 
 dir.SEM <- "SEM IIS - Modelo 0"
-dir.COM <- "COM IIS - Modelo 7"
+dir.COM <- "COM IIS - Modelo 8"
 
 SEM_IIS.filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir.SEM, "Criterios_de_Inforacao.csv")
 COM_IIS.filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir.COM, "Criterios_de_Inforacao.csv")
@@ -53,3 +53,24 @@ summary(Crit.s)
 summary(Crit.c)
 
 sink()
+
+
+
+
+
+library(readxl)
+Relacao_Agregacao_Ox <- read_excel("../Ox Metrics GVAR/Ox Scripts/Dicionario Ox-GVAR.xlsx")
+
+tbl <- Crit.c %>%
+  dplyr::inner_join(Crit.s, by = c("region"="region")) %>% 
+  dplyr::inner_join(Relacao_Agregacao_Ox, by = c("region"="Contagem"))
+  
+tbl$ganho <- log(tbl$pop)/(tbl$BIC.x/tbl$BIC.y)
+
+tbl <- tbl %>% arrange(desc(ganho))
+
+
+library(writexl)
+writexl::write_xlsx(tbl, path = paste(g.path, "Ganho 1o Estagio - estatisticas descritivas.xlsx", sep = "/"))
+
+
