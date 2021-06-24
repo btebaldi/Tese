@@ -1,3 +1,6 @@
+# NAO UTILIZADO MAIS????
+
+
 # clear all
 rm(list = ls())
 

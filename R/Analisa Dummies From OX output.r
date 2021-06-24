@@ -14,9 +14,10 @@ library(dplyr)
 
 # Variaveis internas ------------------------------------------------------
 
-fileName = "Gvar_Passo1_v4 (COM IIS 2021-06-07).out"
+dir <- "COM IIS - Modelo 9"
+fileName = "Gvar_Passo1_v4.out"
 # fileName = "Gvar_Passo1_v4 (saida modelo SEM IIS).txt" <- <- <- <- %>% %>% 
-filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", fileName)
+filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir, fileName)
 
 
 file.exists(filepath)
@@ -97,7 +98,8 @@ while ( TRUE ) {
 close(ReadCon)
 
 readr::write_excel_csv2(x=tbl.results,
-                        file = sprintf("Dummies by region(%s) (ref 2016).csv", fileName))
+                        file = file.path(dirname(filepath), "Dummies by region.csv"))
+
 
 
 
@@ -120,7 +122,7 @@ for (i in 1:nrow(tbl.results)) {
 }
 
 
-write_rds(tbl.results2, "./Database/dummy_by_region.rds")
+write_rds(tbl.results2, file.path(dirname(filepath), "Dummies by region.rds"))
 
 
 

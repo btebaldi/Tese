@@ -11,7 +11,7 @@ library(tibble)
 library(ggplot2)
 library(tidyr)
 
-dir.COMIIS <- "COM IIS - Modelo 10"
+dir.COMIIS <- "COM IIS - Modelo 9"
 dir.SEMIIS <- "SEM IIS - Modelo 0"
 dir.VECM <- "VECM"
 dir.PCA <- "PCA"
@@ -1028,7 +1028,7 @@ for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
 
 for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
   my_tbl <- get(table)
-  my_tbl <- my_tbl %>% dplyr::filter(Regiao == "R151")
+  my_tbl <- my_tbl %>% dplyr::filter(Regiao == "R346")
   
   for (i in 1:nrow(Diebold.matrix)) {
     for (j in 1:ncol(Diebold.matrix)) {
@@ -1170,3 +1170,4 @@ my_tbl %>% group_by(Date, Tipo, name2) %>% summarise(value=sum(value)) %>%
   pivot_wider(names_from = Tipo, values_from = value) %>% 
 ggplot( ) + 
   geom_line(aes(x=Date, y = EmpLiq, colour=name2))
+
