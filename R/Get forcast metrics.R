@@ -3,7 +3,7 @@
 rm(list = ls())
 
 library(forecast)
-
+library(lubridate)
 library(readr)
 library(dplyr)
 library(stringr)
@@ -1149,7 +1149,7 @@ cat(sprintf("\n%13s = %f  (%f)", names(metric), metric, metric.sd))
 my_tbl$Date <- str_split(my_tbl$name, "\\_", simplify = TRUE)[,2]
 my_tbl$Date <- ymd(my_tbl$Date, truncated = 1)
 
-my_tbl %>% dplyr::filter(source %in% c("GVAR", "GVAR_IIS", "VECM")) %>% 
+my_tbl %>% dplyr::filter(source %in% c("GVAR", "GVAR_IIS", "VECM", "PCA")) %>% 
   ggplot() + 
   geom_line(aes(x=Date, y=value, colour=source), size = 1) + 
   geom_point(aes(x=Date, y=value, colour=source)) + 
