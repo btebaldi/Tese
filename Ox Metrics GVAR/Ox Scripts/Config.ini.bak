@@ -32,8 +32,8 @@
 
 	// TRUE / FALSE;
 	decl is_IIS_ON = TRUE;
-	decl IIS_pvalue = 0.0000178;
-    decl is_DUMMY_ON = TRUE;
+	decl IIS_pvalue = 0.0000247;
+    decl is_DUMMY_ON = FALSE;
 // Ativa a impressao de 
 #define pritnConfig 
 
