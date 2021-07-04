@@ -6,7 +6,7 @@ library(tidyr)
 library(ggplot2)
 
 dir.SEM <- "SEM IIS - Modelo 0"
-dir.COM <- "COM IIS - Modelo 19"
+dir.COM <- "COM IIS - Modelo 17"
 
 SEM_IIS.filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir.SEM, "Criterios_de_Inforacao.csv")
 COM_IIS.filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir.COM, "Criterios_de_Inforacao.csv")

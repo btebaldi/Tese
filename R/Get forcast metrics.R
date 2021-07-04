@@ -11,7 +11,7 @@ library(tibble)
 library(ggplot2)
 library(tidyr)
 
-dir.COMIIS <- "COM IIS - Modelo 16"
+dir.COMIIS <- "COM IIS - Modelo 9"
 dir.SEMIIS <- "SEM IIS - Modelo 0"
 dir.VECM <- "VECM"
 dir.PCA <- "PCA"
@@ -1177,5 +1177,27 @@ my_tbl <- my_tbl %>% dplyr::filter(name2 %in% c("Actual", "Forecast"))
 my_tbl %>% group_by(Date, Tipo, name2) %>% summarise(value=sum(value)) %>% 
   pivot_wider(names_from = Tipo, values_from = value) %>% 
 ggplot( ) + 
-  geom_line(aes(x=Date, y = EmpLiq, colour=name2))
+  geom_line(aes(x=Date, y = EmpLiq, colour=name2)) +
+  theme_bw() +
+  labs(title = "Emprego líquido",
+       subtitle = "Modelo GVAR IIS",
+       x=NULL, y= "Emprego líquido",
+       colour="Legenda")
 
+my_tbl <- VECM %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo"))
+my_tbl$Date <- str_split(my_tbl$name, "\\_", simplify = TRUE)[,2]
+my_tbl$Date <- ymd(my_tbl$Date, truncated = 1)
+my_tbl$name2 <- str_split(my_tbl$name, "\\_", simplify = TRUE)[,1]
+
+
+my_tbl <- my_tbl %>% dplyr::filter(name2 %in% c("Actual", "Forecast"))
+
+my_tbl %>% group_by(Date, Tipo, name2) %>% summarise(value=sum(value)) %>% 
+  pivot_wider(names_from = Tipo, values_from = value) %>% 
+  ggplot( ) + 
+  geom_line(aes(x=Date, y = EmpLiq, colour=name2)) +
+  theme_bw() +
+  labs(title = "Emprego líquido",
+       subtitle = "Modelo VECM",
+       x=NULL, y= "Emprego líquido",
+       colour="Legenda")
