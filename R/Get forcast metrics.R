@@ -11,7 +11,7 @@ library(tibble)
 library(ggplot2)
 library(tidyr)
 
-dir.COMIIS <- "COM IIS - Modelo 9"
+dir.COMIIS <- "COM IIS - Modelo 16"
 dir.SEMIIS <- "SEM IIS - Modelo 0"
 dir.VECM <- "VECM"
 dir.PCA <- "PCA"
@@ -260,6 +260,14 @@ PCA.error <- PCA %>% dplyr::select(variavel, Regiao, Tipo, starts_with("Error"))
 
 AR1.error <- AR1 %>% dplyr::select(variavel, Regiao, Tipo, starts_with("Error")) %>% mutate(source="AR1")
 AR13.error <- AR13 %>% dplyr::select(variavel, Regiao, Tipo, starts_with("Error")) %>% mutate(source="AR13")
+
+saveRDS(GVAR.IIS.error, file.path(dirname(GVAR.IIS.file), "Model_erros.rds"))
+# saveRDS(GVAR.error, file.path(dirname(GVAR.file), "Model_erros.rds"))
+# saveRDS(VECM.error, file.path(dirname(VECM.file), "Model_erros.rds"))
+# saveRDS(PCA.error, file.path(dirname(PCA.file), "Model_erros.rds"))
+# saveRDS(AR1.error, file.path(dirname(AR1.file), "Model_erros.rds"))
+# saveRDS(AR13.error, file.path(dirname(AR13.file), "Model_erros.rds"))
+
 
 # Fatores e nomes ---------------------------------------------------------
 
