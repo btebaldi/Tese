@@ -2,33 +2,43 @@ rm(list = ls())
 
 library(zip)
 
-OxOutFile <- file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", "COM IIS - Modelo 14", "Gvar_Passo1_v4.out")
+OxOutFile <- file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", "COM IIS - 2018", "Gvar_Passo1_v4.out")
 
-filesToZip <- c( "mGy.mat",
-                 # "mGy_inv_X_mC.mat",
-                 # "mGy_inv_X_mGyL1.mat",
-                 # "mGy_inv_X_mGyL2.mat",
-                 # "mGy_inv_X_mGyL3.mat",
-                 # "mGy_inv_X_mGyL4.mat",
-                 # "mGy_inv_X_mGyL5.mat",
-                 # "mGy_inv_X_mGyL6.mat",
-                 # "mGy_inv_X_mGyL7.mat",
-                 # "mGy_inv_X_mGyL8.mat",
-                 # "mGy_inv_X_mGyL9.mat",
-                 # "mGy_inv_X_mGyL10.mat",
-                 # "mGy_inv_X_mGyL11.mat",
-                 # "mGy_inv_X_mGyL12.mat",
-                 # "mGy_inv_X_mGyL13.mat",
-                 "mGy_inv_X_mL.mat")
+filesToZip <- c( "mGy",
+                 "mGy_inv_X_mC",
+                 "mGy_inv_X_mGyL1",
+                 "mGy_inv_X_mGyL2",
+                 "mGy_inv_X_mGyL3",
+                 "mGy_inv_X_mGyL4",
+                 "mGy_inv_X_mGyL5",
+                 "mGy_inv_X_mGyL6",
+                 "mGy_inv_X_mGyL7",
+                 "mGy_inv_X_mGyL8",
+                 "mGy_inv_X_mGyL9",
+                 "mGy_inv_X_mGyL10",
+                 "mGy_inv_X_mGyL11",
+                 "mGy_inv_X_mGyL12",
+                 "mGy_inv_X_mGyL13",
+                 "mGy_inv_X_mL")
 
 # # zip(zipfile = "MatFiles", files = file.path(dirname(OxOutFile), filesToZip))
 # zip(zipfile = "MatFiles.zip", files = "C:/Users/Teo/Documents/GitHub/Tese/Ox Metrics GVAR/Ox Scripts/mat_files/Result_Matrix/COM IIS - Modelo 4/mGy_inv_X_mGyL13.mat")
 # getwd()
 
-
-zip(
-  zipfile = "../MatFiles.zip",
-  files = file.path(dirname(OxOutFile), filesToZip),
-  include_directories = FALSE,
-  mode = "cherry-pick",
+for(FileBaseName in filesToZip){
+  ZipFile <- file.path(dirname(OxOutFile), paste(FileBaseName, ".zip", sep = ""))
+  
+  ToZip <- file.path(dirname(OxOutFile), paste(FileBaseName, ".mat", sep = ""))
+  zip(
+    zipfile = ZipFile,
+      files = ToZip,
+    include_directories = FALSE,
+    mode = "cherry-pick",
   )
+  
+  #Check its existence
+  if (file.exists(ZipFile)) {
+    #Delete file if it exists
+    file.remove(ToZip)
+  }
+}
