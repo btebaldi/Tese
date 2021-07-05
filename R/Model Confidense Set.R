@@ -12,8 +12,8 @@ library(tidyr)
 # User defined variables --------------------------------------------------
 
 p_value_crit <- 0.1
-# LossFunctionflag <- "MAE"
-LossFunctionflag <- "MSE"
+LossFunctionflag <- "MAE"
+# LossFunctionflag <- "MSE"
 
 if(LossFunctionflag == "MAE"){
   LossFunction <- function(x){
@@ -367,7 +367,7 @@ tbl.pca <- readRDS(PCA.file)
 
 unique(tbl.vecm$Tipo)
 
-serie_name <- "Admitidos"
+serie_name <- "Desligados"
 
 tbl.gvar <- tbl.gvar %>% filter(Tipo == serie_name)
 tbl.vecm <- tbl.vecm %>% filter(Tipo == serie_name)
