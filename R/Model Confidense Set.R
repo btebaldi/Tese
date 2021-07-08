@@ -101,6 +101,8 @@ MAE <- tbl.loss %>% pivot_longer(cols = as.character(model_list),
 
 MAE$keep <- TRUE
 
+MAE
+
 if(LossFunctionflag == "MSE"){
   MAE$MAE <- MAE$MAE^0.5
 }
@@ -262,6 +264,7 @@ MAE <- tbl.loss %>% pivot_longer(cols = as.character(model_list),
 
 MAE$keep <- TRUE
 
+MAE
 
 numberModels <- length(model_list)
 tbl.darude <- tibble(Id=1:(numberModels^2),
@@ -419,6 +422,7 @@ MAE <- tbl.loss %>% pivot_longer(cols = as.character(model_list),
 
 MAE$keep <- TRUE
 
+MAE
 
 numberModels <- length(model_list)
 tbl.darude <- tibble(Id=1:(numberModels^2),
