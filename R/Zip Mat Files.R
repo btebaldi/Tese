@@ -2,7 +2,7 @@ rm(list = ls())
 
 library(zip)
 
-OxOutFile <- file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", "COM IIS - Modelo 3", "Gvar_Passo1_v4.out")
+OxOutFile <- file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", "SEM IIS - Modelo 0", "Gvar_Passo1_v4.out")
 
 filesToZip <- c( "mGy",
                  "mGy_inv_X_mC",
