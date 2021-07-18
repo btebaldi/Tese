@@ -1,0 +1,128 @@
+
+tbl.adm
+     RMSE.PCA = 1913.649892 (8478.413114) 
+    RMSE.VECM = 1181.772407 (5343.982992) 
+    RMSE.GVAR = 1377.109561 (6051.602791) 
+RMSE.GVAR_IIS = 1292.539929 (5534.068368)
+tbl.des
+     RMSE.PCA = 1674.947569 (7419.556981) 
+    RMSE.VECM = 912.103500 (3657.606772) 
+    RMSE.GVAR = 1170.837126 (4418.326490) 
+RMSE.GVAR_IIS = 1045.366656 (4282.584966)
+tbl.net
+     RMSE.PCA = 2494.247236 (12683.745594) 
+    RMSE.VECM = 1278.030542 (5136.515360) 
+    RMSE.GVAR = 1404.781530 (5127.570621) 
+RMSE.GVAR_IIS = 1332.107606 (5165.206344)
+tbl.adm
+          PCA = -24.524835 (1913.540881) 
+         VECM = -45.868299 (1180.911639) 
+         GVAR = 2.836224 (1377.141291) 
+     GVAR_IIS = 15.864699 (1292.475084)
+tbl.des
+          PCA = 41.997354 (1674.463100) 
+         VECM = -19.424585 (911.919584) 
+         GVAR = 21.839691 (1170.662876) 
+     GVAR_IIS = -12.995022 (1045.312184)
+tbl.net
+          PCA = -66.522189 (2493.422735) 
+         VECM = -26.443714 (1277.789090) 
+         GVAR = -19.003467 (1404.688331) 
+     GVAR_IIS = 28.859721 (1331.828461)
+tbl.adm
+     MAFE.PCA = 526.069907  (1839.966502) 
+    MAFE.VECM = 335.183586  (1133.270760) 
+    MAFE.GVAR = 419.592726  (1311.662786) 
+MAFE.GVAR_IIS = 363.705465  (1240.344800)
+tbl.des
+     MAFE.PCA = 489.575369  (1601.840952) 
+    MAFE.VECM = 290.995935  (864.460390) 
+    MAFE.GVAR = 387.982110  (1104.713027) 
+MAFE.GVAR_IIS = 312.278244  (997.659176)
+tbl.net
+     MAFE.PCA = 751.646232  (2378.356968) 
+    MAFE.VECM = 420.988721  (1206.732714) 
+    MAFE.GVAR = 512.856294  (1307.851537) 
+MAFE.GVAR_IIS = 443.505127  (1256.142221)
+tbl.adm
+     RMSE.PCA = 0.002906 (0.006982) 
+    RMSE.VECM = 0.001907 (0.004195) 
+    RMSE.GVAR = 0.002341 (0.005091) 
+RMSE.GVAR_IIS = 0.002027 (0.004633)
+tbl.des
+     RMSE.PCA = 0.003204 (0.007426) 
+    RMSE.VECM = 0.001908 (0.005030) 
+    RMSE.GVAR = 0.002436 (0.006905) 
+RMSE.GVAR_IIS = 0.002108 (0.005931)
+tbl.net
+     RMSE.PCA = 0.004536 (0.009543) 
+    RMSE.VECM = 0.002616 (0.005868) 
+    RMSE.GVAR = 0.003129 (0.006875) 
+RMSE.GVAR_IIS = 0.002856 (0.006899)
+
+Table: tbl.adm
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.0000   0.0000   0.0000 
+     VECM   1.0000       NA   0.9893   0.9264 
+     GVAR   1.0000   0.0107       NA   0.0992 
+ GVAR_IIS   1.0000   0.0736   0.9008       NA
+
+Table: tbl.des
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.0000   0.0000   0.0000 
+     VECM   1.0000       NA   1.0000   0.9994 
+     GVAR   1.0000   0.0000       NA   0.0042 
+ GVAR_IIS   1.0000   0.0006   0.9958       NA
+
+Table: tbl.net
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.0000   0.0000   0.0000 
+     VECM   1.0000       NA   0.9808   0.8227 
+     GVAR   1.0000   0.0192       NA   0.1290 
+ GVAR_IIS   1.0000   0.1773   0.8710       NA
+
+Table: tbl.adm
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.0155   0.0084   0.0013 
+     VECM   0.9845       NA   0.6020   0.2610 
+     GVAR   0.9916   0.3980       NA   0.1298 
+ GVAR_IIS   0.9987   0.7390   0.8702       NA
+
+Table: tbl.des
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.0128   0.3030   0.1177 
+     VECM   0.9872       NA   0.9979   0.9819 
+     GVAR   0.6970   0.0021       NA   0.2502 
+ GVAR_IIS   0.8823   0.0181   0.7498       NA
+
+Table: tbl.net
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.1786   0.0066   0.0040 
+     VECM   0.8214       NA   0.0496   0.0026 
+     GVAR   0.9934   0.9504       NA   0.1721 
+ GVAR_IIS   0.9960   0.9974   0.8279       NA
+tbl.net
+     MAFE.PCA = 167210.631305  (172469.819764) 
+    MAFE.VECM = 73322.092443  (75084.473479) 
+    MAFE.GVAR = 61850.129828  (58668.834590) 
+MAFE.GVAR_IIS = 87034.222893  (94904.216136) 
+     MAFE.AR1 = 362152.345165  (451393.773778) 
+    MAFE.AR13 = 89917.386820  (96043.903243)

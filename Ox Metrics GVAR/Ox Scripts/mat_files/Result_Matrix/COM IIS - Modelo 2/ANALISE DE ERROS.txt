@@ -1,0 +1,805 @@
+
+> GVAR.IIS <- read_csv(GVAR.IIS.file,
++                      col_types = cols(
++                        .default = col_double(),
++                     .... [TRUNCATED] 
+
+> GVAR.IIS <- GVAR.IIS[-c(1:3), ]
+
+> head(GVAR.IIS)
+[38;5;246m# A tibble: 6 x 111[39m
+  variavel      Actual_2017M01 Forecast_2017M01 Error_2017M01 Actual_2017M02 Forecast_2017M02
+  [3m[38;5;246m<chr>[39m[23m                  [3m[38;5;246m<dbl>[39m[23m            [3m[38;5;246m<dbl>[39m[23m         [3m[38;5;246m<dbl>[39m[23m          [3m[38;5;246m<dbl>[39m[23m            [3m[38;5;246m<dbl>[39m[23m
+[38;5;250m1[39m R1_Admitidos            [4m2[24m353           [4m1[24m227.         [4m1[24m126.            -[31m178[39m           -[31m769[39m[31m.[39m 
+[38;5;250m2[39m R1_Desligados          -[31m[4m1[24m35[39m[31m7[39m          -[31m[4m1[24m42[39m[31m0[39m[31m.[39m           63.3           -[31m178[39m           -[31m680[39m[31m.[39m 
+[38;5;250m3[39m R2_Admitidos             232             48.3         184.             -[31m10[39m            -[31m57[39m[31m.[39m[31m9[39m
+[38;5;250m4[39m R2_Desligados           -[31m213[39m           -[31m168[39m[31m.[39m          -[31m44[39m[31m.[39m[31m7[39m              1            -[31m40[39m[31m.[39m[31m9[39m
+[38;5;250m5[39m R3_Admitidos             917            506.          411.              21           -[31m147[39m[31m.[39m 
+[38;5;250m6[39m R3_Desligados           -[31m139[39m           -[31m265[39m[31m.[39m          126.            -[31m100[39m            -[31m66[39m[31m.[39m[31m7[39m
+[38;5;246m# ... with 105 more variables: Error_2017M02 <dbl>, Actual_2017M03 <dbl>, Forecast_2017M03 <dbl>,[39m
+[38;5;246m#   Error_2017M03 <dbl>, Actual_2017M04 <dbl>, Forecast_2017M04 <dbl>, Error_2017M04 <dbl>,[39m
+[38;5;246m#   Actual_2017M05 <dbl>, Forecast_2017M05 <dbl>, Error_2017M05 <dbl>, Actual_2017M06 <dbl>,[39m
+[38;5;246m#   Forecast_2017M06 <dbl>, Error_2017M06 <dbl>, Actual_2017M07 <dbl>, Forecast_2017M07 <dbl>,[39m
+[38;5;246m#   Error_2017M07 <dbl>, Actual_2017M08 <dbl>, Forecast_2017M08 <dbl>, Error_2017M08 <dbl>,[39m
+[38;5;246m#   Actual_2017M09 <dbl>, Forecast_2017M09 <dbl>, Error_2017M09 <dbl>, Actual_2017M10 <dbl>,[39m
+[38;5;246m#   Forecast_2017M10 <dbl>, Error_2017M10 <dbl>, Actual_2017M11 <dbl>, Forecast_2017M11 <dbl>,[39m
+[38;5;246m#   Error_2017M11 <dbl>, Actual_2017M12 <dbl>, Forecast_2017M12 <dbl>, Error_2017M12 <dbl>,[39m
+[38;5;246m#   Actual_2018M01 <dbl>, Forecast_2018M01 <dbl>, Error_2018M01 <dbl>, Actual_2018M02 <dbl>,[39m
+[38;5;246m#   Forecast_2018M02 <dbl>, Error_2018M02 <dbl>, Actual_2018M03 <dbl>, Forecast_2018M03 <dbl>,[39m
+[38;5;246m#   Error_2018M03 <dbl>, Actual_2018M04 <dbl>, Forecast_2018M04 <dbl>, Error_2018M04 <dbl>,[39m
+[38;5;246m#   Actual_2018M05 <dbl>, Forecast_2018M05 <dbl>, Error_2018M05 <dbl>, Actual_2018M06 <dbl>,[39m
+[38;5;246m#   Forecast_2018M06 <dbl>, Error_2018M06 <dbl>, Actual_2018M07 <dbl>, Forecast_2018M07 <dbl>,[39m
+[38;5;246m#   Error_2018M07 <dbl>, Actual_2018M08 <dbl>, Forecast_2018M08 <dbl>, Error_2018M08 <dbl>,[39m
+[38;5;246m#   Actual_2018M09 <dbl>, Forecast_2018M09 <dbl>, Error_2018M09 <dbl>, Actual_2018M10 <dbl>,[39m
+[38;5;246m#   Forecast_2018M10 <dbl>, Error_2018M10 <dbl>, Actual_2018M11 <dbl>, Forecast_2018M11 <dbl>,[39m
+[38;5;246m#   Error_2018M11 <dbl>, Actual_2018M12 <dbl>, Forecast_2018M12 <dbl>, Error_2018M12 <dbl>,[39m
+[38;5;246m#   Actual_2019M01 <dbl>, Forecast_2019M01 <dbl>, Error_2019M01 <dbl>, Actual_2019M02 <dbl>,[39m
+[38;5;246m#   Forecast_2019M02 <dbl>, Error_2019M02 <dbl>, Actual_2019M03 <dbl>, Forecast_2019M03 <dbl>,[39m
+[38;5;246m#   Error_2019M03 <dbl>, Actual_2019M04 <dbl>, Forecast_2019M04 <dbl>, Error_2019M04 <dbl>,[39m
+[38;5;246m#   Actual_2019M05 <dbl>, Forecast_2019M05 <dbl>, Error_2019M05 <dbl>, Actual_2019M06 <dbl>,[39m
+[38;5;246m#   Forecast_2019M06 <dbl>, Error_2019M06 <dbl>, Actual_2019M07 <dbl>, Forecast_2019M07 <dbl>,[39m
+[38;5;246m#   Error_2019M07 <dbl>, Actual_2019M08 <dbl>, Forecast_2019M08 <dbl>, Error_2019M08 <dbl>,[39m
+[38;5;246m#   Actual_2019M09 <dbl>, Forecast_2019M09 <dbl>, Error_2019M09 <dbl>, Actual_2019M10 <dbl>,[39m
+[38;5;246m#   Forecast_2019M10 <dbl>, Error_2019M10 <dbl>, Actual_2019M11 <dbl>, Forecast_2019M11 <dbl>,[39m
+[38;5;246m#   Error_2019M11 <dbl>, ...[39m
+
+> GVAR <- read_csv(GVAR.file,
++                  col_types = cols(
++                    .default = col_double(),
++                    variavel = col_c .... [TRUNCATED] 
+
+> GVAR <- GVAR[-c(1:3), ]
+
+> head(GVAR)
+[38;5;246m# A tibble: 6 x 111[39m
+  variavel      Actual_2017M01 Forecast_2017M01 Error_2017M01 Actual_2017M02 Forecast_2017M02
+  [3m[38;5;246m<chr>[39m[23m                  [3m[38;5;246m<dbl>[39m[23m            [3m[38;5;246m<dbl>[39m[23m         [3m[38;5;246m<dbl>[39m[23m          [3m[38;5;246m<dbl>[39m[23m            [3m[38;5;246m<dbl>[39m[23m
+[38;5;250m1[39m R1_Admitidos            [4m2[24m353           [4m1[24m580.          773.            -[31m178[39m           -[31m173[39m[31m.[39m 
+[38;5;250m2[39m R1_Desligados          -[31m[4m1[24m35[39m[31m7[39m          -[31m[4m1[24m21[39m[31m5[39m[31m.[39m         -[31m142[39m[31m.[39m            -[31m178[39m           -[31m226[39m[31m.[39m 
+[38;5;250m3[39m R2_Admitidos             232             39.2         193.             -[31m10[39m            -[31m56[39m[31m.[39m[31m0[39m
+[38;5;250m4[39m R2_Desligados           -[31m213[39m           -[31m136[39m[31m.[39m          -[31m77[39m[31m.[39m[31m1[39m              1            -[31m43[39m[31m.[39m[31m6[39m
+[38;5;250m5[39m R3_Admitidos             917            483.          434.              21           -[31m101[39m[31m.[39m 
+[38;5;250m6[39m R3_Desligados           -[31m139[39m           -[31m253[39m[31m.[39m          114.            -[31m100[39m            -[31m62[39m[31m.[39m[31m6[39m
+[38;5;246m# ... with 105 more variables: Error_2017M02 <dbl>, Actual_2017M03 <dbl>, Forecast_2017M03 <dbl>,[39m
+[38;5;246m#   Error_2017M03 <dbl>, Actual_2017M04 <dbl>, Forecast_2017M04 <dbl>, Error_2017M04 <dbl>,[39m
+[38;5;246m#   Actual_2017M05 <dbl>, Forecast_2017M05 <dbl>, Error_2017M05 <dbl>, Actual_2017M06 <dbl>,[39m
+[38;5;246m#   Forecast_2017M06 <dbl>, Error_2017M06 <dbl>, Actual_2017M07 <dbl>, Forecast_2017M07 <dbl>,[39m
+[38;5;246m#   Error_2017M07 <dbl>, Actual_2017M08 <dbl>, Forecast_2017M08 <dbl>, Error_2017M08 <dbl>,[39m
+[38;5;246m#   Actual_2017M09 <dbl>, Forecast_2017M09 <dbl>, Error_2017M09 <dbl>, Actual_2017M10 <dbl>,[39m
+[38;5;246m#   Forecast_2017M10 <dbl>, Error_2017M10 <dbl>, Actual_2017M11 <dbl>, Forecast_2017M11 <dbl>,[39m
+[38;5;246m#   Error_2017M11 <dbl>, Actual_2017M12 <dbl>, Forecast_2017M12 <dbl>, Error_2017M12 <dbl>,[39m
+[38;5;246m#   Actual_2018M01 <dbl>, Forecast_2018M01 <dbl>, Error_2018M01 <dbl>, Actual_2018M02 <dbl>,[39m
+[38;5;246m#   Forecast_2018M02 <dbl>, Error_2018M02 <dbl>, Actual_2018M03 <dbl>, Forecast_2018M03 <dbl>,[39m
+[38;5;246m#   Error_2018M03 <dbl>, Actual_2018M04 <dbl>, Forecast_2018M04 <dbl>, Error_2018M04 <dbl>,[39m
+[38;5;246m#   Actual_2018M05 <dbl>, Forecast_2018M05 <dbl>, Error_2018M05 <dbl>, Actual_2018M06 <dbl>,[39m
+[38;5;246m#   Forecast_2018M06 <dbl>, Error_2018M06 <dbl>, Actual_2018M07 <dbl>, Forecast_2018M07 <dbl>,[39m
+[38;5;246m#   Error_2018M07 <dbl>, Actual_2018M08 <dbl>, Forecast_2018M08 <dbl>, Error_2018M08 <dbl>,[39m
+[38;5;246m#   Actual_2018M09 <dbl>, Forecast_2018M09 <dbl>, Error_2018M09 <dbl>, Actual_2018M10 <dbl>,[39m
+[38;5;246m#   Forecast_2018M10 <dbl>, Error_2018M10 <dbl>, Actual_2018M11 <dbl>, Forecast_2018M11 <dbl>,[39m
+[38;5;246m#   Error_2018M11 <dbl>, Actual_2018M12 <dbl>, Forecast_2018M12 <dbl>, Error_2018M12 <dbl>,[39m
+[38;5;246m#   Actual_2019M01 <dbl>, Forecast_2019M01 <dbl>, Error_2019M01 <dbl>, Actual_2019M02 <dbl>,[39m
+[38;5;246m#   Forecast_2019M02 <dbl>, Error_2019M02 <dbl>, Actual_2019M03 <dbl>, Forecast_2019M03 <dbl>,[39m
+[38;5;246m#   Error_2019M03 <dbl>, Actual_2019M04 <dbl>, Forecast_2019M04 <dbl>, Error_2019M04 <dbl>,[39m
+[38;5;246m#   Actual_2019M05 <dbl>, Forecast_2019M05 <dbl>, Error_2019M05 <dbl>, Actual_2019M06 <dbl>,[39m
+[38;5;246m#   Forecast_2019M06 <dbl>, Error_2019M06 <dbl>, Actual_2019M07 <dbl>, Forecast_2019M07 <dbl>,[39m
+[38;5;246m#   Error_2019M07 <dbl>, Actual_2019M08 <dbl>, Forecast_2019M08 <dbl>, Error_2019M08 <dbl>,[39m
+[38;5;246m#   Actual_2019M09 <dbl>, Forecast_2019M09 <dbl>, Error_2019M09 <dbl>, Actual_2019M10 <dbl>,[39m
+[38;5;246m#   Forecast_2019M10 <dbl>, Error_2019M10 <dbl>, Actual_2019M11 <dbl>, Forecast_2019M11 <dbl>,[39m
+[38;5;246m#   Error_2019M11 <dbl>, ...[39m
+
+> VECM <- read_csv(VECM.file,
++                  col_types = cols(
++                    .default = col_double(),
++                    variavel = col_c .... [TRUNCATED] 
+
+> VECM <- VECM[-c(1:3), ]
+
+> head(VECM)
+[38;5;246m# A tibble: 6 x 111[39m
+  variavel      Actual_2017M01 Forecast_2017M01 Error_2017M01 Actual_2017M02 Forecast_2017M02
+  [3m[38;5;246m<chr>[39m[23m                  [3m[38;5;246m<dbl>[39m[23m            [3m[38;5;246m<dbl>[39m[23m         [3m[38;5;246m<dbl>[39m[23m          [3m[38;5;246m<dbl>[39m[23m            [3m[38;5;246m<dbl>[39m[23m
+[38;5;250m1[39m R1_Admitidos            [4m2[24m353           [4m1[24m552.         801.             -[31m178[39m          -[31m506[39m[31m.[39m  
+[38;5;250m2[39m R1_Desligados          -[31m[4m1[24m35[39m[31m7[39m          -[31m[4m1[24m65[39m[31m4[39m[31m.[39m         297.             -[31m178[39m            19.1 
+[38;5;250m3[39m R2_Admitidos             232             97.4        135.              -[31m10[39m           -[31m34[39m[31m.[39m[31m9[39m 
+[38;5;250m4[39m R2_Desligados           -[31m213[39m           -[31m204[39m[31m.[39m          -[31m8[39m[31m.[39m[31m92[39m              1             8.51
+[38;5;250m5[39m R3_Admitidos             917            442.         475.               21          -[31m280[39m[31m.[39m  
+[38;5;250m6[39m R3_Desligados           -[31m139[39m           -[31m176[39m[31m.[39m          37.4            -[31m100[39m           -[31m72[39m[31m.[39m[31m6[39m 
+[38;5;246m# ... with 105 more variables: Error_2017M02 <dbl>, Actual_2017M03 <dbl>, Forecast_2017M03 <dbl>,[39m
+[38;5;246m#   Error_2017M03 <dbl>, Actual_2017M04 <dbl>, Forecast_2017M04 <dbl>, Error_2017M04 <dbl>,[39m
+[38;5;246m#   Actual_2017M05 <dbl>, Forecast_2017M05 <dbl>, Error_2017M05 <dbl>, Actual_2017M06 <dbl>,[39m
+[38;5;246m#   Forecast_2017M06 <dbl>, Error_2017M06 <dbl>, Actual_2017M07 <dbl>, Forecast_2017M07 <dbl>,[39m
+[38;5;246m#   Error_2017M07 <dbl>, Actual_2017M08 <dbl>, Forecast_2017M08 <dbl>, Error_2017M08 <dbl>,[39m
+[38;5;246m#   Actual_2017M09 <dbl>, Forecast_2017M09 <dbl>, Error_2017M09 <dbl>, Actual_2017M10 <dbl>,[39m
+[38;5;246m#   Forecast_2017M10 <dbl>, Error_2017M10 <dbl>, Actual_2017M11 <dbl>, Forecast_2017M11 <dbl>,[39m
+[38;5;246m#   Error_2017M11 <dbl>, Actual_2017M12 <dbl>, Forecast_2017M12 <dbl>, Error_2017M12 <dbl>,[39m
+[38;5;246m#   Actual_2018M01 <dbl>, Forecast_2018M01 <dbl>, Error_2018M01 <dbl>, Actual_2018M02 <dbl>,[39m
+[38;5;246m#   Forecast_2018M02 <dbl>, Error_2018M02 <dbl>, Actual_2018M03 <dbl>, Forecast_2018M03 <dbl>,[39m
+[38;5;246m#   Error_2018M03 <dbl>, Actual_2018M04 <dbl>, Forecast_2018M04 <dbl>, Error_2018M04 <dbl>,[39m
+[38;5;246m#   Actual_2018M05 <dbl>, Forecast_2018M05 <dbl>, Error_2018M05 <dbl>, Actual_2018M06 <dbl>,[39m
+[38;5;246m#   Forecast_2018M06 <dbl>, Error_2018M06 <dbl>, Actual_2018M07 <dbl>, Forecast_2018M07 <dbl>,[39m
+[38;5;246m#   Error_2018M07 <dbl>, Actual_2018M08 <dbl>, Forecast_2018M08 <dbl>, Error_2018M08 <dbl>,[39m
+[38;5;246m#   Actual_2018M09 <dbl>, Forecast_2018M09 <dbl>, Error_2018M09 <dbl>, Actual_2018M10 <dbl>,[39m
+[38;5;246m#   Forecast_2018M10 <dbl>, Error_2018M10 <dbl>, Actual_2018M11 <dbl>, Forecast_2018M11 <dbl>,[39m
+[38;5;246m#   Error_2018M11 <dbl>, Actual_2018M12 <dbl>, Forecast_2018M12 <dbl>, Error_2018M12 <dbl>,[39m
+[38;5;246m#   Actual_2019M01 <dbl>, Forecast_2019M01 <dbl>, Error_2019M01 <dbl>, Actual_2019M02 <dbl>,[39m
+[38;5;246m#   Forecast_2019M02 <dbl>, Error_2019M02 <dbl>, Actual_2019M03 <dbl>, Forecast_2019M03 <dbl>,[39m
+[38;5;246m#   Error_2019M03 <dbl>, Actual_2019M04 <dbl>, Forecast_2019M04 <dbl>, Error_2019M04 <dbl>,[39m
+[38;5;246m#   Actual_2019M05 <dbl>, Forecast_2019M05 <dbl>, Error_2019M05 <dbl>, Actual_2019M06 <dbl>,[39m
+[38;5;246m#   Forecast_2019M06 <dbl>, Error_2019M06 <dbl>, Actual_2019M07 <dbl>, Forecast_2019M07 <dbl>,[39m
+[38;5;246m#   Error_2019M07 <dbl>, Actual_2019M08 <dbl>, Forecast_2019M08 <dbl>, Error_2019M08 <dbl>,[39m
+[38;5;246m#   Actual_2019M09 <dbl>, Forecast_2019M09 <dbl>, Error_2019M09 <dbl>, Actual_2019M10 <dbl>,[39m
+[38;5;246m#   Forecast_2019M10 <dbl>, Error_2019M10 <dbl>, Actual_2019M11 <dbl>, Forecast_2019M11 <dbl>,[39m
+[38;5;246m#   Error_2019M11 <dbl>, ...[39m
+
+> PCA <- read_csv(PCA.file,
++                 col_types = cols(
++                   .default = col_double(),
++                   variavel = col_charac .... [TRUNCATED] 
+
+> PCA <- PCA[-c(1:3), ]
+
+> head(PCA)
+[38;5;246m# A tibble: 6 x 111[39m
+  variavel      Actual_2017M01 Forecast_2017M01 Error_2017M01 Actual_2017M02 Forecast_2017M02
+  [3m[38;5;246m<chr>[39m[23m                  [3m[38;5;246m<dbl>[39m[23m            [3m[38;5;246m<dbl>[39m[23m         [3m[38;5;246m<dbl>[39m[23m          [3m[38;5;246m<dbl>[39m[23m            [3m[38;5;246m<dbl>[39m[23m
+[38;5;250m1[39m R1_Admitidos            [4m2[24m353            [4m2[24m925.        -[31m572[39m[31m.[39m            -[31m178[39m            234. 
+[38;5;250m2[39m R1_Desligados          -[31m[4m1[24m35[39m[31m7[39m           -[31m[4m2[24m20[39m[31m2[39m[31m.[39m         845.            -[31m178[39m            702. 
+[38;5;250m3[39m R2_Admitidos             232             161.          71.0            -[31m10[39m            -[31m47[39m[31m.[39m[31m2[39m
+[38;5;250m4[39m R2_Desligados           -[31m213[39m            -[31m129[39m[31m.[39m         -[31m84[39m[31m.[39m[31m0[39m              1            -[31m75[39m[31m.[39m[31m3[39m
+[38;5;250m5[39m R3_Admitidos             917             883.          33.9             21           -[31m134[39m[31m.[39m 
+[38;5;250m6[39m R3_Desligados           -[31m139[39m            -[31m588[39m[31m.[39m         449.            -[31m100[39m            -[31m56[39m[31m.[39m[31m6[39m
+[38;5;246m# ... with 105 more variables: Error_2017M02 <dbl>, Actual_2017M03 <dbl>, Forecast_2017M03 <dbl>,[39m
+[38;5;246m#   Error_2017M03 <dbl>, Actual_2017M04 <dbl>, Forecast_2017M04 <dbl>, Error_2017M04 <dbl>,[39m
+[38;5;246m#   Actual_2017M05 <dbl>, Forecast_2017M05 <dbl>, Error_2017M05 <dbl>, Actual_2017M06 <dbl>,[39m
+[38;5;246m#   Forecast_2017M06 <dbl>, Error_2017M06 <dbl>, Actual_2017M07 <dbl>, Forecast_2017M07 <dbl>,[39m
+[38;5;246m#   Error_2017M07 <dbl>, Actual_2017M08 <dbl>, Forecast_2017M08 <dbl>, Error_2017M08 <dbl>,[39m
+[38;5;246m#   Actual_2017M09 <dbl>, Forecast_2017M09 <dbl>, Error_2017M09 <dbl>, Actual_2017M10 <dbl>,[39m
+[38;5;246m#   Forecast_2017M10 <dbl>, Error_2017M10 <dbl>, Actual_2017M11 <dbl>, Forecast_2017M11 <dbl>,[39m
+[38;5;246m#   Error_2017M11 <dbl>, Actual_2017M12 <dbl>, Forecast_2017M12 <dbl>, Error_2017M12 <dbl>,[39m
+[38;5;246m#   Actual_2018M01 <dbl>, Forecast_2018M01 <dbl>, Error_2018M01 <dbl>, Actual_2018M02 <dbl>,[39m
+[38;5;246m#   Forecast_2018M02 <dbl>, Error_2018M02 <dbl>, Actual_2018M03 <dbl>, Forecast_2018M03 <dbl>,[39m
+[38;5;246m#   Error_2018M03 <dbl>, Actual_2018M04 <dbl>, Forecast_2018M04 <dbl>, Error_2018M04 <dbl>,[39m
+[38;5;246m#   Actual_2018M05 <dbl>, Forecast_2018M05 <dbl>, Error_2018M05 <dbl>, Actual_2018M06 <dbl>,[39m
+[38;5;246m#   Forecast_2018M06 <dbl>, Error_2018M06 <dbl>, Actual_2018M07 <dbl>, Forecast_2018M07 <dbl>,[39m
+[38;5;246m#   Error_2018M07 <dbl>, Actual_2018M08 <dbl>, Forecast_2018M08 <dbl>, Error_2018M08 <dbl>,[39m
+[38;5;246m#   Actual_2018M09 <dbl>, Forecast_2018M09 <dbl>, Error_2018M09 <dbl>, Actual_2018M10 <dbl>,[39m
+[38;5;246m#   Forecast_2018M10 <dbl>, Error_2018M10 <dbl>, Actual_2018M11 <dbl>, Forecast_2018M11 <dbl>,[39m
+[38;5;246m#   Error_2018M11 <dbl>, Actual_2018M12 <dbl>, Forecast_2018M12 <dbl>, Error_2018M12 <dbl>,[39m
+[38;5;246m#   Actual_2019M01 <dbl>, Forecast_2019M01 <dbl>, Error_2019M01 <dbl>, Actual_2019M02 <dbl>,[39m
+[38;5;246m#   Forecast_2019M02 <dbl>, Error_2019M02 <dbl>, Actual_2019M03 <dbl>, Forecast_2019M03 <dbl>,[39m
+[38;5;246m#   Error_2019M03 <dbl>, Actual_2019M04 <dbl>, Forecast_2019M04 <dbl>, Error_2019M04 <dbl>,[39m
+[38;5;246m#   Actual_2019M05 <dbl>, Forecast_2019M05 <dbl>, Error_2019M05 <dbl>, Actual_2019M06 <dbl>,[39m
+[38;5;246m#   Forecast_2019M06 <dbl>, Error_2019M06 <dbl>, Actual_2019M07 <dbl>, Forecast_2019M07 <dbl>,[39m
+[38;5;246m#   Error_2019M07 <dbl>, Actual_2019M08 <dbl>, Forecast_2019M08 <dbl>, Error_2019M08 <dbl>,[39m
+[38;5;246m#   Actual_2019M09 <dbl>, Forecast_2019M09 <dbl>, Error_2019M09 <dbl>, Actual_2019M10 <dbl>,[39m
+[38;5;246m#   Forecast_2019M10 <dbl>, Error_2019M10 <dbl>, Actual_2019M11 <dbl>, Forecast_2019M11 <dbl>,[39m
+[38;5;246m#   Error_2019M11 <dbl>, ...[39m
+
+> AR13 <- read_csv(AR13.file,
++                  col_types = cols(
++                    .default = col_double(),
++                    variavel = col_c .... [TRUNCATED] 
+
+> head(AR13)
+[38;5;246m# A tibble: 6 x 111[39m
+  variavel    Actual_2017M01 Forecast_2017M01 Error_2017M01 Actual_2017M02 Forecast_2017M02
+  [3m[38;5;246m<chr>[39m[23m                [3m[38;5;246m<dbl>[39m[23m            [3m[38;5;246m<dbl>[39m[23m         [3m[38;5;246m<dbl>[39m[23m          [3m[38;5;246m<dbl>[39m[23m            [3m[38;5;246m<dbl>[39m[23m
+[38;5;250m1[39m R1_EmpLiqui           [4m3[24m710            [4m2[24m859.         -[31m851[39m[31m.[39m              0           -[31m964[39m[31m.[39m 
+[38;5;250m2[39m R2_EmpLiqui            445             237.         -[31m208[39m[31m.[39m            -[31m11[39m           -[31m119[39m[31m.[39m 
+[38;5;250m3[39m R3_EmpLiqui           [4m1[24m056             645.         -[31m411[39m[31m.[39m            121           -[31m263[39m[31m.[39m 
+[38;5;250m4[39m R4_EmpLiqui           [4m1[24m102             461.         -[31m641[39m[31m.[39m            126           -[31m372[39m[31m.[39m 
+[38;5;250m5[39m R5_EmpLiqui            262             113.         -[31m149[39m[31m.[39m             -[31m2[39m           -[31m103[39m[31m.[39m 
+[38;5;250m6[39m R6_EmpLiqui           [4m1[24m044             599.         -[31m445[39m[31m.[39m             36            -[31m53[39m[31m.[39m[31m2[39m
+[38;5;246m# ... with 105 more variables: Error_2017M02 <dbl>, Actual_2017M03 <dbl>, Forecast_2017M03 <dbl>,[39m
+[38;5;246m#   Error_2017M03 <dbl>, Actual_2017M04 <dbl>, Forecast_2017M04 <dbl>, Error_2017M04 <dbl>,[39m
+[38;5;246m#   Actual_2017M05 <dbl>, Forecast_2017M05 <dbl>, Error_2017M05 <dbl>, Actual_2017M06 <dbl>,[39m
+[38;5;246m#   Forecast_2017M06 <dbl>, Error_2017M06 <dbl>, Actual_2017M07 <dbl>, Forecast_2017M07 <dbl>,[39m
+[38;5;246m#   Error_2017M07 <dbl>, Actual_2017M08 <dbl>, Forecast_2017M08 <dbl>, Error_2017M08 <dbl>,[39m
+[38;5;246m#   Actual_2017M09 <dbl>, Forecast_2017M09 <dbl>, Error_2017M09 <dbl>, Actual_2017M10 <dbl>,[39m
+[38;5;246m#   Forecast_2017M10 <dbl>, Error_2017M10 <dbl>, Actual_2017M11 <dbl>, Forecast_2017M11 <dbl>,[39m
+[38;5;246m#   Error_2017M11 <dbl>, Actual_2017M12 <dbl>, Forecast_2017M12 <dbl>, Error_2017M12 <dbl>,[39m
+[38;5;246m#   Actual_2018M01 <dbl>, Forecast_2018M01 <dbl>, Error_2018M01 <dbl>, Actual_2018M02 <dbl>,[39m
+[38;5;246m#   Forecast_2018M02 <dbl>, Error_2018M02 <dbl>, Actual_2018M03 <dbl>, Forecast_2018M03 <dbl>,[39m
+[38;5;246m#   Error_2018M03 <dbl>, Actual_2018M04 <dbl>, Forecast_2018M04 <dbl>, Error_2018M04 <dbl>,[39m
+[38;5;246m#   Actual_2018M05 <dbl>, Forecast_2018M05 <dbl>, Error_2018M05 <dbl>, Actual_2018M06 <dbl>,[39m
+[38;5;246m#   Forecast_2018M06 <dbl>, Error_2018M06 <dbl>, Actual_2018M07 <dbl>, Forecast_2018M07 <dbl>,[39m
+[38;5;246m#   Error_2018M07 <dbl>, Actual_2018M08 <dbl>, Forecast_2018M08 <dbl>, Error_2018M08 <dbl>,[39m
+[38;5;246m#   Actual_2018M09 <dbl>, Forecast_2018M09 <dbl>, Error_2018M09 <dbl>, Actual_2018M10 <dbl>,[39m
+[38;5;246m#   Forecast_2018M10 <dbl>, Error_2018M10 <dbl>, Actual_2018M11 <dbl>, Forecast_2018M11 <dbl>,[39m
+[38;5;246m#   Error_2018M11 <dbl>, Actual_2018M12 <dbl>, Forecast_2018M12 <dbl>, Error_2018M12 <dbl>,[39m
+[38;5;246m#   Actual_2019M01 <dbl>, Forecast_2019M01 <dbl>, Error_2019M01 <dbl>, Actual_2019M02 <dbl>,[39m
+[38;5;246m#   Forecast_2019M02 <dbl>, Error_2019M02 <dbl>, Actual_2019M03 <dbl>, Forecast_2019M03 <dbl>,[39m
+[38;5;246m#   Error_2019M03 <dbl>, Actual_2019M04 <dbl>, Forecast_2019M04 <dbl>, Error_2019M04 <dbl>,[39m
+[38;5;246m#   Actual_2019M05 <dbl>, Forecast_2019M05 <dbl>, Error_2019M05 <dbl>, Actual_2019M06 <dbl>,[39m
+[38;5;246m#   Forecast_2019M06 <dbl>, Error_2019M06 <dbl>, Actual_2019M07 <dbl>, Forecast_2019M07 <dbl>,[39m
+[38;5;246m#   Error_2019M07 <dbl>, Actual_2019M08 <dbl>, Forecast_2019M08 <dbl>, Error_2019M08 <dbl>,[39m
+[38;5;246m#   Actual_2019M09 <dbl>, Forecast_2019M09 <dbl>, Error_2019M09 <dbl>, Actual_2019M10 <dbl>,[39m
+[38;5;246m#   Forecast_2019M10 <dbl>, Error_2019M10 <dbl>, Actual_2019M11 <dbl>, Forecast_2019M11 <dbl>,[39m
+[38;5;246m#   Error_2019M11 <dbl>, ...[39m
+
+> AR1 <- read_csv(AR1.file,
++                 col_types = cols(
++                   .default = col_double(),
++                   variavel = col_charac .... [TRUNCATED] 
+
+> head(AR1)
+[38;5;246m# A tibble: 6 x 111[39m
+  variavel    Actual_2017M01 Forecast_2017M01 Error_2017M01 Actual_2017M02 Forecast_2017M02
+  [3m[38;5;246m<chr>[39m[23m                [3m[38;5;246m<dbl>[39m[23m            [3m[38;5;246m<dbl>[39m[23m         [3m[38;5;246m<dbl>[39m[23m          [3m[38;5;246m<dbl>[39m[23m            [3m[38;5;246m<dbl>[39m[23m
+[38;5;250m1[39m R1_EmpLiqui           [4m3[24m710          523.           -[31m[4m3[24m18[39m[31m7[39m[31m.[39m              0           -[31m[4m1[24m23[39m[31m1[39m[31m.[39m
+[38;5;250m2[39m R2_EmpLiqui            445           62.1           -[31m383[39m[31m.[39m            -[31m11[39m            -[31m166[39m[31m.[39m
+[38;5;250m3[39m R3_EmpLiqui           [4m1[24m056           36.1          -[31m[4m1[24m02[39m[31m0[39m[31m.[39m            121            -[31m372[39m[31m.[39m
+[38;5;250m4[39m R4_EmpLiqui           [4m1[24m102          -[31m86[39m[31m.[39m[31m8[39m          -[31m[4m1[24m18[39m[31m9[39m[31m.[39m            126            -[31m506[39m[31m.[39m
+[38;5;250m5[39m R5_EmpLiqui            262            0.392         -[31m262[39m[31m.[39m             -[31m2[39m            -[31m103[39m[31m.[39m
+[38;5;250m6[39m R6_EmpLiqui           [4m1[24m044           15.4          -[31m[4m1[24m02[39m[31m9[39m[31m.[39m             36            -[31m419[39m[31m.[39m
+[38;5;246m# ... with 105 more variables: Error_2017M02 <dbl>, Actual_2017M03 <dbl>, Forecast_2017M03 <dbl>,[39m
+[38;5;246m#   Error_2017M03 <dbl>, Actual_2017M04 <dbl>, Forecast_2017M04 <dbl>, Error_2017M04 <dbl>,[39m
+[38;5;246m#   Actual_2017M05 <dbl>, Forecast_2017M05 <dbl>, Error_2017M05 <dbl>, Actual_2017M06 <dbl>,[39m
+[38;5;246m#   Forecast_2017M06 <dbl>, Error_2017M06 <dbl>, Actual_2017M07 <dbl>, Forecast_2017M07 <dbl>,[39m
+[38;5;246m#   Error_2017M07 <dbl>, Actual_2017M08 <dbl>, Forecast_2017M08 <dbl>, Error_2017M08 <dbl>,[39m
+[38;5;246m#   Actual_2017M09 <dbl>, Forecast_2017M09 <dbl>, Error_2017M09 <dbl>, Actual_2017M10 <dbl>,[39m
+[38;5;246m#   Forecast_2017M10 <dbl>, Error_2017M10 <dbl>, Actual_2017M11 <dbl>, Forecast_2017M11 <dbl>,[39m
+[38;5;246m#   Error_2017M11 <dbl>, Actual_2017M12 <dbl>, Forecast_2017M12 <dbl>, Error_2017M12 <dbl>,[39m
+[38;5;246m#   Actual_2018M01 <dbl>, Forecast_2018M01 <dbl>, Error_2018M01 <dbl>, Actual_2018M02 <dbl>,[39m
+[38;5;246m#   Forecast_2018M02 <dbl>, Error_2018M02 <dbl>, Actual_2018M03 <dbl>, Forecast_2018M03 <dbl>,[39m
+[38;5;246m#   Error_2018M03 <dbl>, Actual_2018M04 <dbl>, Forecast_2018M04 <dbl>, Error_2018M04 <dbl>,[39m
+[38;5;246m#   Actual_2018M05 <dbl>, Forecast_2018M05 <dbl>, Error_2018M05 <dbl>, Actual_2018M06 <dbl>,[39m
+[38;5;246m#   Forecast_2018M06 <dbl>, Error_2018M06 <dbl>, Actual_2018M07 <dbl>, Forecast_2018M07 <dbl>,[39m
+[38;5;246m#   Error_2018M07 <dbl>, Actual_2018M08 <dbl>, Forecast_2018M08 <dbl>, Error_2018M08 <dbl>,[39m
+[38;5;246m#   Actual_2018M09 <dbl>, Forecast_2018M09 <dbl>, Error_2018M09 <dbl>, Actual_2018M10 <dbl>,[39m
+[38;5;246m#   Forecast_2018M10 <dbl>, Error_2018M10 <dbl>, Actual_2018M11 <dbl>, Forecast_2018M11 <dbl>,[39m
+[38;5;246m#   Error_2018M11 <dbl>, Actual_2018M12 <dbl>, Forecast_2018M12 <dbl>, Error_2018M12 <dbl>,[39m
+[38;5;246m#   Actual_2019M01 <dbl>, Forecast_2019M01 <dbl>, Error_2019M01 <dbl>, Actual_2019M02 <dbl>,[39m
+[38;5;246m#   Forecast_2019M02 <dbl>, Error_2019M02 <dbl>, Actual_2019M03 <dbl>, Forecast_2019M03 <dbl>,[39m
+[38;5;246m#   Error_2019M03 <dbl>, Actual_2019M04 <dbl>, Forecast_2019M04 <dbl>, Error_2019M04 <dbl>,[39m
+[38;5;246m#   Actual_2019M05 <dbl>, Forecast_2019M05 <dbl>, Error_2019M05 <dbl>, Actual_2019M06 <dbl>,[39m
+[38;5;246m#   Forecast_2019M06 <dbl>, Error_2019M06 <dbl>, Actual_2019M07 <dbl>, Forecast_2019M07 <dbl>,[39m
+[38;5;246m#   Error_2019M07 <dbl>, Actual_2019M08 <dbl>, Forecast_2019M08 <dbl>, Error_2019M08 <dbl>,[39m
+[38;5;246m#   Actual_2019M09 <dbl>, Forecast_2019M09 <dbl>, Error_2019M09 <dbl>, Actual_2019M10 <dbl>,[39m
+[38;5;246m#   Forecast_2019M10 <dbl>, Error_2019M10 <dbl>, Actual_2019M11 <dbl>, Forecast_2019M11 <dbl>,[39m
+[38;5;246m#   Error_2019M11 <dbl>, ...[39m
+
+> # Adiciona emprego liquido ------------------------------------------------
+> GVAR.IIS <- Add.EmpLiq(GVAR.IIS)
+
+> GVAR <- Add.EmpLiq(GVAR)
+
+> VECM <- Add.EmpLiq(VECM)
+
+> PCA <- Add.EmpLiq(PCA)
+
+> # Cria tabelas de erro -----------------------------------------------------------------------
+> 
+> GVAR.IIS.error <- GVAR.IIS %>%  dplyr::select(va .... [TRUNCATED] 
+
+> GVAR.error <- GVAR %>% dplyr::select(variavel, Regiao, Tipo, starts_with("Error")) %>% mutate(source="GVAR")
+
+> VECM.error <- VECM %>% dplyr::select(variavel, Regiao, Tipo, starts_with("Error")) %>% mutate(source="VECM")
+
+> PCA.error <- PCA %>% dplyr::select(variavel, Regiao, Tipo, starts_with("Error")) %>% mutate(source="PCA")
+
+> AR1.error <- AR1 %>% dplyr::select(variavel, Regiao, Tipo, starts_with("Error")) %>% mutate(source="AR1")
+
+> AR13.error <- AR13 %>% dplyr::select(variavel, Regiao, Tipo, starts_with("Error")) %>% mutate(source="AR13")
+
+> saveRDS(GVAR.IIS.error, file.path(dirname(GVAR.IIS.file), "Model_erros.rds"))
+
+> # saveRDS(GVAR.error, file.path(dirname(GVAR.file), "Model_erros.rds"))
+> # saveRDS(VECM.error, file.path(dirname(VECM.file), "Model_erros.rds"))
+>  .... [TRUNCATED] 
+
+> my.labels <- c("São Paulo",
++             "Rio de Janeiro",
++             "Serrana do Sertão Alagoano",
++             "Brasilia",
++             "Bel ..." ... [TRUNCATED] 
+
+> # Contas para MSE ---------------------------------------------------------
+> rm(list = setdiff(ls(), c("GVAR.IIS.error", "GVAR.error", "VECM.error" .... [TRUNCATED] 
+
+> tbl <- bind_rows(GVAR.IIS.error, GVAR.error, VECM.error, PCA.error)
+
+> summary(tbl)
+   variavel            Regiao              Tipo           Error_2017M01       Error_2017M02      
+ Length:6624        Length:6624        Length:6624        Min.   :-66238.13   Min.   :-23804.91  
+ Class :character   Class :character   Class :character   1st Qu.:  -542.28   1st Qu.:  -176.77  
+ Mode  :character   Mode  :character   Mode  :character   Median :  -146.21   Median :     3.85  
+                                                          Mean   :  -298.17   Mean   :     1.51  
+                                                          3rd Qu.:    82.18   3rd Qu.:   176.41  
+                                                          Max.   : 75849.02   Max.   : 36057.13  
+ Error_2017M03       Error_2017M04       Error_2017M05      Error_2017M06      
+ Min.   :-29885.07   Min.   :-26757.15   Min.   :-22333.7   Min.   :-36887.20  
+ 1st Qu.:  -195.69   1st Qu.:   -90.25   1st Qu.:  -165.4   1st Qu.:  -161.93  
+ Median :    -5.68   Median :    36.35   Median :   -13.2   Median :    -0.33  
+ Mean   :    32.38   Mean   :   111.12   Mean   :  -100.3   Mean   :   -85.58  
+ 3rd Qu.:   161.16   3rd Qu.:   211.60   3rd Qu.:   103.6   3rd Qu.:   120.48  
+ Max.   : 44183.82   Max.   : 28426.67   Max.   : 14347.6   Max.   : 16266.12  
+ Error_2017M07       Error_2017M08        Error_2017M09        Error_2017M10      
+ Min.   :-29161.22   Min.   :-19348.795   Min.   :-26343.332   Min.   :-20245.52  
+ 1st Qu.:  -123.03   1st Qu.:  -138.644   1st Qu.:  -119.354   1st Qu.:  -122.57  
+ Median :    10.49   Median :    -3.869   Median :     5.425   Median :     5.33  
+ Mean   :   -27.81   Mean   :   -25.330   Mean   :    23.101   Mean   :   -57.77  
+ 3rd Qu.:   138.10   3rd Qu.:   121.416   3rd Qu.:   129.891   3rd Qu.:   120.38  
+ Max.   :  7464.85   Max.   : 19855.473   Max.   : 14653.784   Max.   : 36952.11  
+ Error_2017M11        Error_2017M12       Error_2018M01      Error_2018M02      
+ Min.   :-21631.262   Min.   :-78935.75   Min.   :-57087.8   Min.   :-24937.04  
+ 1st Qu.:  -120.993   1st Qu.:  -233.77   1st Qu.:  -176.6   1st Qu.:  -130.09  
+ Median :     5.817   Median :    -1.76   Median :    21.1   Median :    18.71  
+ Mean   :    -3.642   Mean   :  -134.69   Mean   :   158.6   Mean   :    93.62  
+ 3rd Qu.:   131.327   3rd Qu.:   173.92   3rd Qu.:   236.5   3rd Qu.:   214.44  
+ Max.   : 27935.097   Max.   : 36310.15   Max.   :123811.5   Max.   : 41435.78  
+ Error_2018M03       Error_2018M04        Error_2018M05       Error_2018M06      
+ Min.   :-47377.06   Min.   :-26217.113   Min.   :-16871.53   Min.   :-17489.29  
+ 1st Qu.:  -190.05   1st Qu.:  -134.405   1st Qu.:   -90.76   1st Qu.:   -66.55  
+ Median :   -20.43   Median :     5.576   Median :    14.94   Median :    34.64  
+ Mean   :   -46.37   Mean   :   -63.039   Mean   :    10.10   Mean   :    84.01  
+ 3rd Qu.:   112.83   3rd Qu.:   134.112   3rd Qu.:   136.55   3rd Qu.:   200.43  
+ Max.   : 37585.20   Max.   :  9401.987   Max.   : 21810.19   Max.   : 11412.29  
+ Error_2018M07       Error_2018M08       Error_2018M09       Error_2018M10      
+ Min.   :-9355.730   Min.   :-31504.07   Min.   :-17106.72   Min.   :-22697.75  
+ 1st Qu.: -118.132   1st Qu.:  -228.38   1st Qu.:   -67.52   1st Qu.:  -133.02  
+ Median :    6.296   Median :   -34.36   Median :    27.28   Median :    -6.61  
+ Mean   :    3.465   Mean   :  -164.75   Mean   :   102.54   Mean   :   -49.39  
+ 3rd Qu.:  126.292   3rd Qu.:    65.01   3rd Qu.:   167.59   3rd Qu.:    92.31  
+ Max.   :13727.080   Max.   : 11653.69   Max.   : 25621.82   Max.   : 21104.58  
+ Error_2018M11        Error_2018M12       Error_2019M01       Error_2019M02      
+ Min.   :-23603.868   Min.   :-53799.28   Min.   :-41615.86   Min.   :-45852.56  
+ 1st Qu.:  -127.766   1st Qu.:  -242.71   1st Qu.:  -157.28   1st Qu.:  -282.04  
+ Median :     2.318   Median :    -4.14   Median :    39.22   Median :   -48.55  
+ Mean   :   -42.013   Mean   :   -99.08   Mean   :   278.41   Mean   :  -224.02  
+ 3rd Qu.:   127.584   3rd Qu.:   183.52   3rd Qu.:   276.57   3rd Qu.:    96.68  
+ Max.   : 14895.995   Max.   : 45080.85   Max.   :113305.00   Max.   : 47215.60  
+ Error_2019M03      Error_2019M04       Error_2019M05        Error_2019M06      
+ Min.   :-9553.70   Min.   :-51094.52   Min.   :-21852.327   Min.   :-40869.50  
+ 1st Qu.:  -79.75   1st Qu.:  -156.59   1st Qu.:  -133.253   1st Qu.:  -148.88  
+ Median :   58.48   Median :     1.38   Median :     2.766   Median :     7.56  
+ Mean   :  347.33   Mean   :   -68.57   Mean   :   -55.488   Mean   :   -74.60  
+ 3rd Qu.:  316.26   3rd Qu.:   127.91   3rd Qu.:   134.887   3rd Qu.:   136.91  
+ Max.   :60992.89   Max.   : 31457.69   Max.   : 15237.582   Max.   : 12085.86  
+ Error_2019M07        Error_2019M08       Error_2019M09        Error_2019M10      
+ Min.   :-17714.643   Min.   :-6917.989   Min.   :-25664.457   Min.   :-31680.36  
+ 1st Qu.:  -120.169   1st Qu.: -133.797   1st Qu.:  -113.077   1st Qu.:  -146.75  
+ Median :     8.192   Median :    0.859   Median :     6.808   Median :   -10.82  
+ Mean   :    26.808   Mean   :   41.729   Mean   :   -18.563   Mean   :   -59.28  
+ 3rd Qu.:   147.898   3rd Qu.:  142.620   3rd Qu.:   122.932   3rd Qu.:    98.82  
+ Max.   : 16342.209   Max.   :27442.450   Max.   : 10562.499   Max.   : 26997.08  
+ Error_2019M11        Error_2019M12          source         
+ Min.   :-30434.724   Min.   :-48936.99   Length:6624       
+ 1st Qu.:  -132.997   1st Qu.:  -226.86   Class :character  
+ Median :     0.371   Median :     2.41   Mode  :character  
+ Mean   :   -26.955   Mean   :   -61.84                     
+ 3rd Qu.:   122.970   3rd Qu.:   207.51                     
+ Max.   : 20646.065   Max.   : 30555.26                     
+
+> fn <- function(x){
++   return(x^2)
++ }
+
+> tbl.overall <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo != "EmpLiq")
+
+> tbl.adm <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo == "Admitidos")
+
+> tbl.des <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo == "Desligados")
+
+> tbl.net <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo == "EmpLiq")
+
+> tbl.overall <- tbl.overall %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.adm <- tbl.adm %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.des <- tbl.des %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.net <- tbl.net %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> legend.names <- c("tbl.overall"="MSE Overall", "tbl.adm"="Admitidos", "tbl.des"="Desligados",  "tbl.net"="Emprego Liquido")
+
+> for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
++   my_tbl <- get(table)
++   
++   erros <- my_tbl %>% dplyr::filter(source == "GVAR_IIS") %>% pul .... [TRUNCATED] 
+
+tbl.adm
+     RMSE.PCA = 1913.649892 (8478.413114) 
+    RMSE.VECM = 1181.772407 (5343.982992) 
+    RMSE.GVAR = 1377.109561 (6051.602791) 
+RMSE.GVAR_IIS = 1159.168038 (4676.245907)
+tbl.des
+     RMSE.PCA = 1674.947569 (7419.556981) 
+    RMSE.VECM = 912.103500 (3657.606772) 
+    RMSE.GVAR = 1170.837126 (4418.326490) 
+RMSE.GVAR_IIS = 1189.844495 (5649.619349)
+tbl.net
+     RMSE.PCA = 2494.247236 (12683.745594) 
+    RMSE.VECM = 1278.030542 (5136.515360) 
+    RMSE.GVAR = 1404.781530 (5127.570621) 
+RMSE.GVAR_IIS = 1334.415159 (5229.205247)
+> # Contas para Erros simples ---------------------------------------------------------
+> rm(list = setdiff(ls(), c("GVAR.IIS.error", "GVAR.error", "V ..." ... [TRUNCATED] 
+
+> tbl <- bind_rows(GVAR.IIS.error, GVAR.error, VECM.error, PCA.error)
+
+> fn <- function(x){
++   return(x)
++ }
+
+> tbl.overall <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo != "EmpLiq")
+
+> tbl.adm <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo == "Admitidos")
+
+> tbl.des <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo == "Desligados")
+
+> tbl.net <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo == "EmpLiq")
+
+> tbl.overall <- tbl.overall %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.adm <- tbl.adm %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.des <- tbl.des %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.net <- tbl.net %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> legend.names <- c("tbl.overall"="Overall", "tbl.adm"="Adm", "tbl.des"="Des",  "tbl.net"="Net")
+
+> # table <- "tbl.overall"
+> for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
++   my_tbl <- get(table)
++   
++   erros <- my_tbl %>% dplyr::filter(so .... [TRUNCATED] 
+
+tbl.adm
+          PCA = -24.524835 (1913.540881) 
+         VECM = -45.868299 (1180.911639) 
+         GVAR = 2.836224 (1377.141291) 
+     GVAR_IIS = -11.210124 (1159.142997)
+tbl.des
+          PCA = 41.997354 (1674.463100) 
+         VECM = -19.424585 (911.919584) 
+         GVAR = 21.839691 (1170.662876) 
+     GVAR_IIS = -15.409986 (1189.774638)
+tbl.net
+          PCA = -66.522189 (2493.422735) 
+         VECM = -26.443714 (1277.789090) 
+         GVAR = -19.003467 (1404.688331) 
+     GVAR_IIS = 4.199862 (1334.442126)
+> # Contas para MAE ---------------------------------------------------------
+> 
+> rm(list = setdiff(ls(), c("GVAR.IIS.error", "GVAR.error", "VECM.err ..." ... [TRUNCATED] 
+
+> tbl <- bind_rows(GVAR.IIS.error, GVAR.error, VECM.error, PCA.error)
+
+> fn <- function(x){
++   return(abs(x))
++ }
+
+> tbl.overall <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo != "EmpLiq")
+
+> tbl.adm <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo == "Admitidos")
+
+> tbl.des <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo == "Desligados")
+
+> tbl.net <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo == "EmpLiq")
+
+> tbl.overall <- tbl.overall %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.adm <- tbl.adm %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.des <- tbl.des %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.net <- tbl.net %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> legend.names <- c("tbl.overall"="MAE Overall", "tbl.adm"="MAE Adm", "tbl.des"="MAE Des",  "tbl.net"="MAE Net")
+
+> for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
++   my_tbl <- get(table)
++   
++   erros <- my_tbl %>% dplyr::filter(source == "GVAR_IIS") %>% pul .... [TRUNCATED] 
+
+tbl.adm
+     MAFE.PCA = 526.069907  (1839.966502) 
+    MAFE.VECM = 335.183586  (1133.270760) 
+    MAFE.GVAR = 419.592726  (1311.662786) 
+MAFE.GVAR_IIS = 352.427852  (1104.321746)
+tbl.des
+     MAFE.PCA = 489.575369  (1601.840952) 
+    MAFE.VECM = 290.995935  (864.460390) 
+    MAFE.GVAR = 387.982110  (1104.713027) 
+MAFE.GVAR_IIS = 321.476275  (1145.621653)
+tbl.net
+     MAFE.PCA = 751.646232  (2378.356968) 
+    MAFE.VECM = 420.988721  (1206.732714) 
+    MAFE.GVAR = 512.856294  (1307.851537) 
+MAFE.GVAR_IIS = 438.282469  (1260.417486)
+> # Avaliacao por tamanho da Populacao --------------------------------------
+> rm(list = setdiff(ls(), c("GVAR.IIS.error", "GVAR.error", "VECM.error" .... [TRUNCATED] 
+
+> tbl <- bind_rows(GVAR.IIS.error, GVAR.error, VECM.error, PCA.error)
+
+> # Faz strip do numero da regiao e tipo
+> 
+> library(readxl)
+
+> Relacao_Agregacao_Ox <- read_excel("../Ox Metrics GVAR/Ox Scripts/Dicionario Ox-GVAR.xlsx")
+
+> tbl <- Relacao_Agregacao_Ox %>% 
++   mutate(Regiao = Ox, Pop=pop) %>% 
++   dplyr::select(Regiao, Pop) %>%
++   right_join(tbl) %>% 
++   mutate(
++     .... [TRUNCATED] 
+
+> fn <- function(x){
++   # return(abs(x))
++   return((x)^2)
++ }
+
+> tbl.overall <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo != "EmpLiq")
+
+> tbl.adm <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo == "Admitidos")
+
+> tbl.des <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo == "Desligados")
+
+> tbl.net <- tbl %>% mutate_if(is.numeric, fn) %>% dplyr::filter(Tipo == "EmpLiq")
+
+> tbl.overall <- tbl.overall %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.adm <- tbl.adm %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.des <- tbl.des %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.net <- tbl.net %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> legend.names <- c("tbl.overall"="MAE by pop. Overall", "tbl.adm"="MAE by pop. Adm", "tbl.des"="MAE by pop. Des",  "tbl.net"="MAE by pop. Net")
+
+> for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
++   my_tbl <- get(table)
++   
++   erros <- my_tbl %>% dplyr::filter(source == "GVAR_IIS") %>% pul .... [TRUNCATED] 
+
+tbl.adm
+     RMSE.PCA = 0.002906 (0.006982) 
+    RMSE.VECM = 0.001907 (0.004195) 
+    RMSE.GVAR = 0.002341 (0.005091) 
+RMSE.GVAR_IIS = 0.002044 (0.004924)
+tbl.des
+     RMSE.PCA = 0.003204 (0.007426) 
+    RMSE.VECM = 0.001908 (0.005030) 
+    RMSE.GVAR = 0.002436 (0.006905) 
+RMSE.GVAR_IIS = 0.002193 (0.006114)
+tbl.net
+     RMSE.PCA = 0.004536 (0.009543) 
+    RMSE.VECM = 0.002616 (0.005868) 
+    RMSE.GVAR = 0.003129 (0.006875) 
+RMSE.GVAR_IIS = 0.002933 (0.007166)
+> # Calculo de Diebold e Mariano --------------------------------------------
+> rm(list = setdiff(ls(), c("GVAR.IIS.error", "GVAR.error", "VECM.error" .... [TRUNCATED] 
+
+> tbl <- bind_rows(GVAR.IIS.error, GVAR.error, VECM.error, PCA.error)
+
+> print_matrix <- function(x){
++   
++   length.max <- max(nchar(colnames(x)))
++   
++   # header <- paste(rep(paste("%", length.max, "s", sep=""), ncol .... [TRUNCATED] 
+
+> # dm.test(e1 = GVAR.IIS.error,  e2 = GVAR.error,  h = 1, power = 2)
+> 
+> tbl.overall <- tbl %>% dplyr::filter(Tipo != "EmpLiq")
+
+> tbl.adm <- tbl %>% dplyr::filter(Tipo == "Admitidos")
+
+> tbl.des <- tbl %>% dplyr::filter(Tipo == "Desligados")
+
+> tbl.net <- tbl %>% dplyr::filter(Tipo == "EmpLiq")
+
+> tbl.overall <- tbl.overall %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.adm <- tbl.adm %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.des <- tbl.des %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> tbl.net <- tbl.net %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
+
+> Diebold.matrix <- matrix(NA, nrow = 4, ncol = 4)
+
+> rownames(Diebold.matrix) <- c("PCA", "VECM", "GVAR",  "GVAR_IIS")
+
+> colnames(Diebold.matrix) <- c("PCA", "VECM", "GVAR",  "GVAR_IIS")
+
+> for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
++   my_tbl <- get(table)
++   
++   for (i in 1:nrow(Diebold.matrix)) {
++     for (j in 1:ncol(Dieb .... [TRUNCATED] 
+
+
+Table: tbl.adm
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.0000   0.0000   0.0000 
+     VECM   1.0000       NA   0.9893   0.3751 
+     GVAR   1.0000   0.0107       NA   0.0010 
+ GVAR_IIS   1.0000   0.6249   0.9990       NA
+
+Table: tbl.des
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.0000   0.0000   0.0001 
+     VECM   1.0000       NA   1.0000   0.9980 
+     GVAR   1.0000   0.0000       NA   0.5812 
+ GVAR_IIS   0.9999   0.0020   0.4188       NA
+
+Table: tbl.net
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.0000   0.0000   0.0000 
+     VECM   1.0000       NA   0.9808   0.7746 
+     GVAR   1.0000   0.0192       NA   0.1649 
+ GVAR_IIS   1.0000   0.2254   0.8351       NA
+> for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
++   my_tbl <- get(table)
++   my_tbl <- my_tbl %>% dplyr::filter(Regiao == "R346")
++   
++   for (i .... [TRUNCATED] 
+
+
+Table: tbl.adm
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.0155   0.0084   0.0001 
+     VECM   0.9845       NA   0.6020   0.0751 
+     GVAR   0.9916   0.3980       NA   0.0072 
+ GVAR_IIS   0.9999   0.9249   0.9928       NA
+
+Table: tbl.des
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.0128   0.3030   0.0720 
+     VECM   0.9872       NA   0.9979   0.9410 
+     GVAR   0.6970   0.0021       NA   0.1320 
+ GVAR_IIS   0.9280   0.0590   0.8680       NA
+
+Table: tbl.net
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.1786   0.0066   0.0004 
+     VECM   0.8214       NA   0.0496   0.0008 
+     GVAR   0.9934   0.9504       NA   0.0248 
+ GVAR_IIS   0.9996   0.9992   0.9752       NA
+> # ANALISE BRASIL TODO -----------------------------------------------------
+> rm(list = setdiff(ls(), c("GVAR.IIS.error", "GVAR.error", "VECM.error" .... [TRUNCATED] 
+
+> tbl <- bind_rows(GVAR.IIS.error, GVAR.error, VECM.error, PCA.error)
+
+> # Faz strip do numero da regiao e tipo
+> 
+> 
+> fn <- function(x){
++   return(abs(x))
++ }
+
+> tbl.net <- tbl %>% dplyr::filter(Tipo == "EmpLiq") %>% 
++   group_by(source) %>% summarise_if(.predicate = is.numeric, .funs = sum) %>% 
++   mutate_ .... [TRUNCATED] 
+
+> # tbl <- tbl %>% group_by(Tipo, source) %>% summarise_if(.predicate = is.numeric, .funs = sum) %>% ungroup()
+> # group_by(source) %>% 
+> # summarise .... [TRUNCATED] 
+
+> MAFE.AR1 <-  mean(erros)
+
+> MAFE.AR1.sd <- sd(erros)
+
+> erros <- AR13.error %>% summarise_if(.predicate = is.numeric, .funs = sum) %>% 
++   mutate_if(.predicate = is.numeric, .funs = fn) %>% 
++   mutate(s .... [TRUNCATED] 
+
+> MAFE.AR13 <-  mean(erros)
+
+> MAFE.AR13.sd <- sd(erros)
+
+> tbl.net <- tbl.net %>%
++   # dplyr::select(-variavel, -Regiao, -Tipo) %>% 
++   # mutate_if(is.numeric, .funs = fn) %>% 
++   pivot_longer(cols = -c(" ..." ... [TRUNCATED] 
+
+> legend.names <- c("tbl.overall"="MAE Overall", "tbl.adm"="MAE Adm", "tbl.des"="MAE Des",  "tbl.net"="MAE Net")
+
+> table <- "tbl.net"
+
+> my_tbl <- get(table)
+
+> erros <- my_tbl %>% dplyr::filter(source == "GVAR_IIS") %>% pull(value)
+
+> MAFE.GVAR_IIS <-  mean(erros)
+
+> MAFE.GVAR_IIS.sd <- sd(erros)
+
+> erros <- my_tbl %>% dplyr::filter(source == "GVAR") %>% pull(value)
+
+> MAFE.GVAR <-  mean(erros)
+
+> MAFE.GVAR.sd <- sd(erros)
+
+> erros <- my_tbl %>% dplyr::filter(source == "VECM") %>% pull(value)
+
+> MAFE.VECM <-  mean(erros)
+
+> MAFE.VECM.sd <- sd(erros)
+
+> erros <- my_tbl %>% dplyr::filter(source == "PCA") %>% pull(value)
+
+> MAFE.PCA <-  mean(erros)
+
+> MAFE.PCA.sd <- sd(erros)
+
+> # metric <- c("MAFE.PCA" = MAFE.PCA^0.5,
+> #             "MAFE.VECM" = MAFE.VECM^0.5,
+> #             "MAFE.GVAR" = MAFE.GVAR^0.5,
+> #             " ..." ... [TRUNCATED] 
+
+> metric.sd <- c(MAFE.PCA.sd,
++                MAFE.VECM.sd,
++                MAFE.GVAR.sd,
++                MAFE.GVAR_IIS.sd,
++                MAFE.A .... [TRUNCATED] 
+
+> cat(sprintf("\n%s", table))
+
+tbl.net
+> cat(sprintf("\n%13s = %f  (%f)", names(metric), metric, metric.sd))
+
+     MAFE.PCA = 167210.631305  (172469.819764) 
+    MAFE.VECM = 73322.092443  (75084.473479) 
+    MAFE.GVAR = 61850.129828  (58668.834590) 
+MAFE.GVAR_IIS = 81549.783375  (109701.403667) 
+     MAFE.AR1 = 362152.345165  (451393.773778) 
+    MAFE.AR13 = 89917.386820  (96043.903243)
+> my_tbl$Date <- str_split(my_tbl$name, "\\_", simplify = TRUE)[,2]
+
+> my_tbl$Date <- ymd(my_tbl$Date, truncated = 1)
+
+> my_tbl %>% dplyr::filter(source %in% c("GVAR", "GVAR_IIS", "VECM", "PCA")) %>% 
++   ggplot() + 
++   geom_line(aes(x=Date, y=value, colour=source), s .... [TRUNCATED] 
+
+> my_tbl <- GVAR.IIS %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo"))
+
+> my_tbl$Date <- str_split(my_tbl$name, "\\_", simplify = TRUE)[,2]
+
+> my_tbl$Date <- ymd(my_tbl$Date, truncated = 1)
+
+> my_tbl$name2 <- str_split(my_tbl$name, "\\_", simplify = TRUE)[,1]
+
+> my_tbl <- my_tbl %>% dplyr::filter(name2 %in% c("Actual", "Forecast"))
+
+> my_tbl %>% group_by(Date, Tipo, name2) %>% summarise(value=sum(value)) %>% 
++   pivot_wider(names_from = Tipo, values_from = value) %>% 
++ ggplot( ) .... [TRUNCATED] 
+
+> my_tbl <- VECM %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo"))
+
+> my_tbl$Date <- str_split(my_tbl$name, "\\_", simplify = TRUE)[,2]
+
+> my_tbl$Date <- ymd(my_tbl$Date, truncated = 1)
+
+> my_tbl$name2 <- str_split(my_tbl$name, "\\_", simplify = TRUE)[,1]
+
+> my_tbl <- my_tbl %>% dplyr::filter(name2 %in% c("Actual", "Forecast"))
+
+> my_tbl %>% group_by(Date, Tipo, name2) %>% summarise(value=sum(value)) %>% 
++   pivot_wider(names_from = Tipo, values_from = value) %>% 
++   ggplot( .... [TRUNCATED] 
+
+> sink()

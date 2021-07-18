@@ -11,7 +11,7 @@ library(tibble)
 library(ggplot2)
 library(tidyr)
 
-dir.COMIIS <- "COM IIS - Modelo 9"
+dir.COMIIS <- "COM IIS - Modelo 19"
 dir.SEMIIS <- "SEM IIS - Modelo 0"
 dir.VECM <- "VECM"
 dir.PCA <- "PCA"
@@ -179,6 +179,9 @@ PCA.file <- file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result
 
 AR1.file <- file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir.AR1, "forecast_result.csv")
 AR13.file <- file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir.AR13, "forecast_result.csv")
+
+
+# sink(file.path(dirname(GVAR.IIS.file), "ANALISE DE ERROS.txt"))
 
 GVAR.IIS <- read_csv(GVAR.IIS.file,
                      col_types = cols(
@@ -1201,3 +1204,7 @@ my_tbl %>% group_by(Date, Tipo, name2) %>% summarise(value=sum(value)) %>%
        subtitle = "Modelo VECM",
        x=NULL, y= "Emprego líquido",
        colour="Legenda")
+
+
+# sink()
+

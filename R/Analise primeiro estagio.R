@@ -2,11 +2,12 @@
 # Setup -------------------------------------------------------------------
 rm(list = ls())
 library(readr)
+library(dplyr)
 library(tidyr)
 library(ggplot2)
 
 dir.SEM <- "SEM IIS - Modelo 0"
-dir.COM <- "COM IIS - Modelo 17"
+dir.COM <- "COM IIS - Modelo 1"
 
 SEM_IIS.filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir.SEM, "Criterios_de_Inforacao.csv")
 COM_IIS.filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir.COM, "Criterios_de_Inforacao.csv")
@@ -18,22 +19,27 @@ file.exists(COM_IIS.filepath)
 # Abrindo os dados --------------------------------------------------------
 Crit.s <- read_delim(SEM_IIS.filepath, ";", escape_double = FALSE, 
                      locale = locale(decimal_mark = ",", grouping_mark = "."), trim_ws = TRUE)
-Crit.s$Source = "SEM"
+Crit.s$Source = "GVAR"
 
 Crit.c <- read_delim(COM_IIS.filepath, ";", escape_double = FALSE, 
                      locale = locale(decimal_mark = ",", grouping_mark = "."), trim_ws = TRUE)
-Crit.c$Source = "COM"
+Crit.c$Source = "GVAR-IIS"
 
 
 # Criando os graficos -----------------------------------------------------
 tbl <- bind_rows(Crit.c, Crit.s)
 
+colnames(tbl) <- c("region", "AIC", "BIC", "HQC", "Source")
+
 g <- tbl |>
-  pivot_longer(cols = c("AIC", "BIC", "HaQ")) |>
+  pivot_longer(cols = c("AIC", "BIC", "HQC")) |>
   ggplot() + 
   geom_boxplot(aes(x=name, y=value, colour=Source), outlier.alpha = 0.25) + 
-  labs() +
-  theme_bw()
+  labs(title = "Information criteria comparison",
+       caption = "Source: Elaborated by the author",
+       y= NULL,
+       x=NULL) +
+  theme_bw()+theme(legend.position="bottom", legend.box = "horizontal")
 
 print(g)
 
