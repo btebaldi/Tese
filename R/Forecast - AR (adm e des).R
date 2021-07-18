@@ -65,17 +65,29 @@ for (j in 1:552) {
   tbl[, paste("R", j, "_EmpLiquido", sep="")] <- tbl[, paste("R", j, "_Admitidos", sep="")] - tbl[, paste("R", j, "_Desligados", sep="")]
   
   y <- tbl[[paste("R", j, "_EmpLiquido", sep="")]]
+  ya <- tbl[[paste("R", j, "_Admitidos", sep="")]]
+  yd <- tbl[[paste("R", j, "_Desligados", sep="")]]
   
   dy <- diff(y)
+  dya <- diff(ya)
+  dyd <- diff(yd)
   
   mdl.ar1 <- stats::arima(dy, order = c(1,0,0), method = "CSS")
-  summary(mdl.ar1)
+  mdl.ar1a <- stats::arima(dya, order = c(1,0,0), method = "CSS")
+  mdl.ar1d <- stats::arima(dyd, order = c(1,0,0), method = "CSS")
   
   mdl.ar13 <- stats::arima(dy, order = c(13,0,0), method = "CSS")
-  summary(mdl.ar13)
+  mdl.ar13a <- stats::arima(dya, order = c(13,0,0), method = "CSS")
+  mdl.ar13d <- stats::arima(dyd, order = c(13,0,0), method = "CSS")
+
   
   mLag1_ar1 <- mdl.ar1$coef["ar1"]
+  mLag1_ar1a <- mdl.ar1a$coef["ar1"]
+  mLag1_ar1d <- mdl.ar1d$coef["ar1"]
+  
   mLagDm_ar1 <- mdl.ar1$coef["intercept"]
+  mLagDm_ar1a <- mdl.ar1a$coef["intercept"]
+  mLagDm_ar1d <- mdl.ar1d$coef["intercept"]
   # mLagDm_ar1 <- 0
   
   # determina coeficientes de Lag
@@ -93,12 +105,44 @@ for (j in 1:552) {
   mLag12 <- mdl.ar13$coef["ar12"]
   mLag13 <- mdl.ar13$coef["ar13"]
   
+  mLag1a <- mdl.ar13a$coef["ar1"]
+  mLag2a <- mdl.ar13a$coef["ar2"]
+  mLag3a <- mdl.ar13a$coef["ar3"]
+  mLag4a <- mdl.ar13a$coef["ar4"]
+  mLag5a <- mdl.ar13a$coef["ar5"]
+  mLag6a <- mdl.ar13a$coef["ar6"]
+  mLag7a <- mdl.ar13a$coef["ar7"]
+  mLag8a <- mdl.ar13a$coef["ar8"]
+  mLag9a <- mdl.ar13a$coef["ar9"]
+  mLag10a <- mdl.ar13a$coef["ar10"]
+  mLag11a <- mdl.ar13a$coef["ar11"]
+  mLag12a <- mdl.ar13a$coef["ar12"]
+  mLag13a <- mdl.ar13a$coef["ar13"]
+  
+  mLag1d <- mdl.ar13d$coef["ar1"]
+  mLag2d <- mdl.ar13d$coef["ar2"]
+  mLag3d <- mdl.ar13d$coef["ar3"]
+  mLag4d <- mdl.ar13d$coef["ar4"]
+  mLag5d <- mdl.ar13d$coef["ar5"]
+  mLag6d <- mdl.ar13d$coef["ar6"]
+  mLag7d <- mdl.ar13d$coef["ar7"]
+  mLag8d <- mdl.ar13d$coef["ar8"]
+  mLag9d <- mdl.ar13d$coef["ar9"]
+  mLag10d <- mdl.ar13d$coef["ar10"]
+  mLag11d <- mdl.ar13d$coef["ar11"]
+  mLag12d <- mdl.ar13d$coef["ar12"]
+  mLag13d <- mdl.ar13d$coef["ar13"]
+  
   # Determina coeficientes de constante 
   mLagDm <- mdl.ar13$coef["intercept"]
+  mLagDma <- mdl.ar13a$coef["intercept"]
+  mLagDmd <- mdl.ar13d$coef["intercept"]
   # mLagDm <- 0
   
   # Determina qual a lina a regiao esta na matriz de forecast
   idx <-  which(DX.df$Variavel %in% paste("R", j, c("_Admitidos", "_Desligados"), sep = ""))
+  idxa <-  which(DX.df$Variavel %in% paste("R", j, c("_Admitidos"), sep = ""))
+  idxd <-  which(DX.df$Variavel %in% paste("R", j, c("_Desligados"), sep = ""))
   
   # i=0
   # para cada lag calcula o forecast
