@@ -1054,7 +1054,7 @@ for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
 
 for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
   my_tbl <- get(table)
-  my_tbl <- my_tbl %>% dplyr::filter(Regiao == "R346")
+  my_tbl <- my_tbl %>% dplyr::filter(Regiao == "R552")
   
   for (i in 1:nrow(Diebold.matrix)) {
     for (j in 1:ncol(Diebold.matrix)) {
