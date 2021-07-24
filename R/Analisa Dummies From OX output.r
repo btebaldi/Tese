@@ -14,7 +14,7 @@ library(dplyr)
 
 # Variaveis internas ------------------------------------------------------
 
-dir <- "COM IIS - Modelo 9"
+dir <- "COM IIS - Modelo 8"
 fileName = "Gvar_Passo1_v4.out"
 # fileName = "Gvar_Passo1_v4 (saida modelo SEM IIS).txt" <- <- <- <- %>% %>% 
 filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir, fileName)

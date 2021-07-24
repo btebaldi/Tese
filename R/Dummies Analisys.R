@@ -6,7 +6,7 @@ library(dplyr)
 # library(tidyr)
 library(ggplot2)
 
-dir.COM <- "COM IIS - Modelo 9"
+dir.COM <- "COM IIS - Modelo 8"
 
 COM_IIS.filepath = file.path("..", "Ox Metrics GVAR","Ox Scripts", "mat_files", "Result_Matrix", dir.COM, "Dummies by region.rds")
 
@@ -60,7 +60,7 @@ tbl3$Rib1[tbl3$Date %in% seq(from=as.Date("2012-12-01"),
 # 2 2016-12-01   183 (Temer - Michel Miguel Elias Temer Lulia)
 # https://www.foreignaffairs.com/articles/brazil/2016-05-16/will-temer-end-crisis-brazil
 # https://en.wikipedia.org/wiki/Michel_Temer
-tbl3$Rib1[tbl3$Date %in% seq(from=as.Date("2016-08-01"),
+tbl3$Rib1[tbl3$Date %in% seq(from=as.Date("2016-04-01"),
                              to=as.Date("2016-12-01"),
                              by="month")] <- 1
 
@@ -69,8 +69,8 @@ tbl3$Rib1[tbl3$Date %in% seq(from=as.Date("2016-08-01"),
 g <- ggplot(tbl3) + 
   geom_ribbon(aes(ymin = 0, ymax = Inf*Rib1, x = Date), fill = "blue", alpha=0.3) +
   geom_col(aes(x=Date, y=qtd), alpha = 1) + 
-  labs(title="Number of regions per Dummy",
-       y="Count",
+  labs(title="Number of models per Dummy",
+       y="Model count",
        x=NULL,
        caption = "Source: elaborated by the author") +
   theme_bw() 
@@ -92,7 +92,7 @@ tbl2 <- tbl %>% group_by(region) %>%
 
 g2 <- ggplot(tbl2) +
   geom_bar(aes(x=qtd), fill="grey50") + 
-  labs(title="Amount of dummy per region",
+  labs(title="Amount of dummies in each region",
        y="Number of regions",
        x="Dummies",
        caption = "Source: elaborated by the author") +

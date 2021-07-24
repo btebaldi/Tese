@@ -11,7 +11,7 @@ library(tibble)
 library(ggplot2)
 library(tidyr)
 
-dir.COMIIS <- "COM IIS - Modelo 19"
+dir.COMIIS <- "COM IIS - Modelo 8"
 dir.SEMIIS <- "SEM IIS - Modelo 0"
 dir.VECM <- "VECM"
 dir.PCA <- "PCA"
@@ -276,12 +276,12 @@ saveRDS(GVAR.IIS.error, file.path(dirname(GVAR.IIS.file), "Model_erros.rds"))
 
 my.levels <- c("R404", "R346", "R193", "R552", "R280", "R151", "R191")
 my.labels <- c("São Paulo",
-            "Rio de Janeiro",
-            "Serrana do Sertão Alagoano",
-            "Brasilia",
-            "Belo Horizonte",
-            "Natal",
-            "Recife")
+               "Rio de Janeiro",
+               "Serrana do Sertão Alagoano",
+               "Brasilia",
+               "Belo Horizonte",
+               "Natal",
+               "Recife")
 
 # Contas para MSE ---------------------------------------------------------
 rm(list = setdiff(ls(), c("GVAR.IIS.error", "GVAR.error", "VECM.error", "PCA.error", "AR1.error", "AR13.error",
@@ -305,7 +305,7 @@ tbl.adm <- tbl.adm %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "sou
 tbl.des <- tbl.des %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
 tbl.net <- tbl.net %>% pivot_longer(cols = -c("variavel", "Regiao", "Tipo", "source"))
 
-legend.names <- c("tbl.overall"="MSE Overall", "tbl.adm"="Admitidos", "tbl.des"="Desligados",  "tbl.net"="Emprego Liquido")
+legend.names <- c("tbl.overall"="MSE Overall", "tbl.adm"="Admitted to the work force", "tbl.des"="Discharged the work force",  "tbl.net"="Net Employment")
 
 for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
   my_tbl <- get(table)
@@ -354,19 +354,22 @@ for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
                            labels = my.labels )) %>%
     ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
-    labs(title = "Root mean square error",
+    labs(title = "São Paulo forecast error distribution",
          subtitle = sprintf("Series: %s", legend.names[table]),
          y = NULL,
-         x = NULL
+         x = NULL,
+         colour="Model",
+         caption = "Source: elaborated by the author"
     ) +
-    theme_bw()
+    theme_bw()+
+    theme(legend.position="bottom")
   
   # print(g)
   ggsave(filename = sprintf("RMSE - SP - %s.png", legend.names[table]),
          path = "Graficos",
          plot = g,
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
-
+  
   
   g <- my_tbl %>%
     dplyr::filter(Regiao %in% c("R404")) %>%
@@ -376,12 +379,15 @@ for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
                            labels = my.labels )) %>%
     ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
-    labs(title = "Root mean square error",
+    labs(title = "São Paulo forecast error distribution",
          subtitle = sprintf("Series: %s", legend.names[table]),
+         colour="Model",
          y = NULL,
-         x = NULL
+         x = NULL,
+         caption = "Source: elaborated by the author"
     ) +
-    theme_bw()
+    theme_bw()+
+    theme(legend.position="bottom")
   
   # print(g)
   ggsave(filename = sprintf("RMSE - SP (NO PCA) - %s.png", legend.names[table]),
@@ -398,19 +404,22 @@ for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
                            labels = my.labels )) %>%
     ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
-    labs(title = "Root mean square error",
+    labs(title = "Rio de Janeiro forecast error distribution",
          subtitle = sprintf("Series: %s", legend.names[table]),
          y = NULL,
-         x = NULL
+         x = NULL,
+         colour="Model",
+         caption = "Source: elaborated by the author"
     ) +
-    theme_bw()
-
+    theme_bw()+
+    theme(legend.position="bottom")
+  
   # print(g)
   ggsave(filename = sprintf("RMSE - RJ - %s.png", legend.names[table]),
          path = "Graficos",
          plot = g,
          scale=1, units = "in", dpi = 300,width = 10.4, height = 5.85)
-
+  
   g <- my_tbl %>%
     dplyr::filter(Regiao %in% c("R280")) %>%
     mutate(Regiao = factor(Regiao,
@@ -418,12 +427,15 @@ for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
                            labels = my.labels )) %>%
     ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
-    labs(title = "Root mean square error",
+    labs(title = "Belo Horizonte forecast error distribution",
          subtitle = sprintf("Series: %s", legend.names[table]),
          y = NULL,
-         x = NULL
+         x = NULL,
+         colour="Model",
+         caption = "Source: elaborated by the author"
     ) +
-    theme_bw()
+    theme_bw()+
+    theme(legend.position="bottom")
   
   # print(g)
   ggsave(filename = sprintf("RMSE - BH - %s.png", legend.names[table]),
@@ -438,12 +450,15 @@ for(table in c("tbl.adm", "tbl.des",  "tbl.net")){
                            labels = my.labels )) %>%
     ggplot(aes(y=Regiao, x = value)) +
     geom_boxplot(aes(colour = source), outlier.alpha = 0.5) +
-    labs(title = "Root mean square error",
+    labs(title = "Brasilia forecast error distribution",
          subtitle = sprintf("Series: %s", legend.names[table]),
          y = NULL,
-         x = NULL
+         x = NULL,
+         colour="Model",
+         caption = "Source: elaborated by the author"
     ) +
-    theme_bw()
+    theme_bw()+
+    theme(legend.position="bottom")
   
   # print(g)
   ggsave(filename = sprintf("RMSE - DF - %s.png", legend.names[table]),
@@ -1179,7 +1194,7 @@ my_tbl <- my_tbl %>% dplyr::filter(name2 %in% c("Actual", "Forecast"))
 
 my_tbl %>% group_by(Date, Tipo, name2) %>% summarise(value=sum(value)) %>% 
   pivot_wider(names_from = Tipo, values_from = value) %>% 
-ggplot( ) + 
+  ggplot( ) + 
   geom_line(aes(x=Date, y = EmpLiq, colour=name2)) +
   theme_bw() +
   labs(title = "Emprego líquido",
