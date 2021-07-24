@@ -1,0 +1,29 @@
+Table: tbl.adm
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.0363   0.0524   0.0278 
+     VECM   0.9637       NA   0.8433   0.5039 
+     GVAR   0.9476   0.1567       NA   0.2916 
+ GVAR_IIS   0.9722   0.4961   0.7084       NA
+
+Table: tbl.des
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.3236   0.2439   0.4736 
+     VECM   0.6764       NA   0.2254   0.6980 
+     GVAR   0.7561   0.7746       NA   0.8002 
+ GVAR_IIS   0.5264   0.3020   0.1998       NA
+
+Table: tbl.net
+Alternative hypothesis is that method on column is more accurate than method on row.
+Low p-value means method on column is more accurate than method on row
+
+               PCA     VECM     GVAR GVAR_IIS 
+      PCA       NA   0.0276   0.0324   0.0062 
+     VECM   0.9724       NA   0.8493   0.2018 
+     GVAR   0.9676   0.1507       NA   0.0226 
+ GVAR_IIS   0.9938   0.7982   0.9774       NA
